@@ -71,23 +71,36 @@
                 </div>
             </section>
 
-            <section class="section fade-in" aria-labelledby="signup-heading">
+            <!-- Join Caregiver Network Section -->
+            <section class="section fade-in caregiver-network-section" aria-labelledby="signup-heading">
                 <h2 id="signup-heading">Join our caregiver network</h2>
-                <form action="https://formspree.io/f/your-form-id" method="post" class="card">
-                    <label for="care-first">First name</label>
-                    <input id="care-first" name="firstName" type="text" autocomplete="given-name" required>
-                    <label for="care-last">Last name</label>
-                    <input id="care-last" name="lastName" type="text" autocomplete="family-name" required>
-                    <label for="care-email">Email</label>
-                    <input id="care-email" name="email" type="email" autocomplete="email" required>
-                    <label for="care-country">Country</label>
-                    <input id="care-country" name="country" type="text" autocomplete="country-name">
-                    <label>
-                        <input type="checkbox" name="isParentCaregiver" value="yes" checked>
-                        I am a CDKL5 parent/caregiver
-                    </label>
-                    <button class="btn btn-primary" type="submit">Connect me</button>
-                </form>
+                <div class="caregiver-network-card">
+                    <form action="https://formspree.io/f/your-form-id" method="post" class="caregiver-form">
+                        <div class="form-group">
+                            <label for="care-first">First name</label>
+                            <input id="care-first" name="firstName" type="text" autocomplete="given-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="care-last">Last name</label>
+                            <input id="care-last" name="lastName" type="text" autocomplete="family-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="care-email">Email</label>
+                            <input id="care-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="care-country">Country</label>
+                            <input id="care-country" name="country" type="text" autocomplete="country-name" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="isParentCaregiver" value="yes" checked>
+                                <span>I am a CDKL5 parent/caregiver</span>
+                            </label>
+                        </div>
+                        <button class="btn-caregiver-submit" type="submit">Connect me</button>
+                    </form>
+                </div>
             </section>
 
             <section class="section fade-in" aria-labelledby="resources-heading">

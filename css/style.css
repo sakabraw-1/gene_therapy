@@ -2033,3 +2033,117 @@ section[id] {
         font-size: 1.5rem;
     }
 }
+
+/* ============================================
+   CAREGIVER NETWORK FORM STYLES
+   ============================================ */
+
+.caregiver-network-section {
+    margin: 3rem 0;
+}
+
+.caregiver-network-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.caregiver-network-card {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #ef9a9a 100%);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.caregiver-form {
+    max-width: 600px;
+}
+
+.caregiver-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.caregiver-form label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.caregiver-form input[type="text"],
+.caregiver-form input[type="email"] {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.caregiver-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(48, 63, 159, 0.1);
+}
+
+.caregiver-form .checkbox-group {
+    margin: 1rem 0;
+}
+
+.caregiver-form .checkbox-label {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+    color: #333;
+}
+
+.caregiver-form .checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.btn-caregiver-submit {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(48, 63, 159, 0.3);
+}
+
+.btn-caregiver-submit:hover {
+    background: #283593;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(48, 63, 159, 0.4);
+}
+
+/* Responsive Caregiver Network */
+@media (max-width: 900px) {
+    .caregiver-network-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .caregiver-network-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .caregiver-network-card {
+        padding: 1.5rem;
+    }
+}
