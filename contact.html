@@ -50,60 +50,58 @@
     <main>
         <div class="container">
             <section class="section fade-in">
-                <span class="badge">We are here to help</span>
-                <h1>Contact our coalition</h1>
-                <p>Reach out for scientific partnerships, media requests, fundraising collaboration, or caregiver support. We respond within two business days.</p>
+                <h1 style="text-align: center; margin-bottom: 1rem; color: #303F9F;">Contact Us</h1>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">Reach out for scientific partnerships, media requests, fundraising collaboration, or caregiver support. We respond within two business days.</p>
             </section>
 
-            <section class="section fade-in" aria-labelledby="contact-form-heading">
-                <div class="card-grid">
-                    <article class="card">
-                        <h2 id="contact-form-heading">Send us a message</h2>
-                        <form action="https://formspree.io/f/your-form-id" method="post">
-                            <label for="contact-name">Name</label>
-                            <input id="contact-name" name="name" type="text" required>
-                            <label for="contact-email">Email</label>
+            <section class="section fade-in">
+                <div class="contact-form-card">
+                    <h2 style="text-align: center; color: #303F9F; margin-bottom: 2rem; font-size: 1.75rem;">Contact Form</h2>
+                    <form action="https://formspree.io/f/your-form-id" method="post">
+                        <div class="form-group">
+                            <label for="contact-first-name">
+                                Name <span style="color: #666; font-size: 0.875rem;">(required)</span>
+                            </label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <label for="contact-first-name" style="font-size: 0.875rem; color: #666; margin-bottom: 0.25rem; display: block;">First Name</label>
+                                    <input id="contact-first-name" name="firstName" type="text" required>
+                                </div>
+                                <div>
+                                    <label for="contact-last-name" style="font-size: 0.875rem; color: #666; margin-bottom: 0.25rem; display: block;">Last Name</label>
+                                    <input id="contact-last-name" name="lastName" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">
+                                Email <span style="color: #666; font-size: 0.875rem;">(required)</span>
+                            </label>
                             <input id="contact-email" name="email" type="email" required>
-                            <label for="contact-topic">Topic</label>
-                            <select id="contact-topic" name="topic" required>
-                                <option value="" disabled selected>Select a topic</option>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-topic">Reason for Contact</label>
+                            <select id="contact-topic" name="topic" required style="appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22%3E%3Cpath d=%22M0 0l6 8 6-8z%22 fill=%22%23333%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;">
+                                <option value="" disabled selected>Select an option</option>
                                 <option value="caregiver-support">Caregiver support</option>
                                 <option value="donations">Donations</option>
                                 <option value="partnership">Partnership</option>
                                 <option value="media">Media inquiry</option>
                                 <option value="other">Other</option>
                             </select>
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" name="message" rows="5" required></textarea>
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                        </form>
-                    </article>
-                    <article class="card">
-                        <h2>Direct contacts</h2>
-                        <p>Email: <a href="mailto:hello@cdkl5southasia.com">hello@cdkl5southasia.com</a></p>
-                        <p>Media: <a href="mailto:media@cdkl5southasia.com">media@cdkl5southasia.com</a></p>
-                        <p>Mailing address:<br>CDKL5 Gene Therapy Coalition<br>1200 Innovation Way, Suite 200<br>Cambridge, MA 02139</p>
-                        <p>Office hours: Monday–Friday, 9 a.m.–5 p.m. ET</p>
-                        <p>For urgent caregiver support, call our helpline at <a href="tel:+18885554363">1-888-555-4363</a>.</p>
-                    </article>
-                </div>
-            </section>
+                        </div>
 
-            <section class="section fade-in" aria-labelledby="legal-heading">
-                <h2 id="legal-heading">Legal &amp; compliance</h2>
-                <div class="card-grid">
-                    <article class="card">
-                        <h3>Privacy policy</h3>
-                        <p>We collect only the information you share voluntarily and use secure systems to manage donor and caregiver data. We never sell or rent personal information.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Terms of use</h3>
-                        <p>Website content is provided for educational purposes. Using the site denotes agreement to respect intellectual property and refrain from unauthorized distribution.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Medical disclaimer</h3>
-                        <p>Information shared here does not replace medical advice. Always consult your healthcare providers regarding treatment decisions and clinical trial participation.</p>
-                    </article>
+                        <div class="form-group">
+                            <label for="contact-message">
+                                Message <span style="color: #666; font-size: 0.875rem;">(required)</span>
+                            </label>
+                            <textarea id="contact-message" name="message" rows="6" required style="resize: vertical; min-height: 120px;"></textarea>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit" style="background-color: #303F9F; padding: 0.875rem 3rem; font-size: 1rem; font-weight: 600; width: auto; display: inline-block; margin-top: 1rem;">SUBMIT</button>
+                    </form>
                 </div>
             </section>
         </div>

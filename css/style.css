@@ -2401,6 +2401,59 @@ section[id] {
     box-shadow: 0 6px 20px rgba(48, 63, 159, 0.4);
 }
 
+/* Contact Form Card */
+.contact-form-card {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #ef9a9a 100%);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form-card .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form-card .form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.contact-form-card input[type="text"],
+.contact-form-card input[type="email"],
+.contact-form-card select,
+.contact-form-card textarea {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.contact-form-card input:focus,
+.contact-form-card select:focus,
+.contact-form-card textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(48, 63, 159, 0.1);
+}
+
+.contact-form-card select {
+    cursor: pointer;
+}
+
+.contact-form-card textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
 /* Responsive Volunteer Page */
 @media (max-width: 900px) {
     .volunteer-form-section .page-title {
@@ -2447,5 +2500,22 @@ section[id] {
     .volunteer-form .radio-options {
         flex-direction: column;
         gap: 0.75rem;
+    }
+}
+
+/* Responsive Contact Page */
+@media (max-width: 900px) {
+    .contact-form-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+
+    .contact-form-card h2 {
+        font-size: 1.5rem !important;
     }
 }
