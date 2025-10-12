@@ -2197,3 +2197,233 @@ section[id] {
         padding: 1.5rem;
     }
 }
+
+/* ============================================
+   VOLUNTEER PAGE STYLES
+   ============================================ */
+
+.volunteer-page {
+    padding-top: 80px;
+}
+
+.volunteer-form-section {
+    background: white;
+    padding: 4rem 0;
+}
+
+.volunteer-form-section .page-title {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.volunteer-form-section .page-description {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+.volunteer-form-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.volunteer-form-card {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #ef9a9a 100%);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.volunteer-form-card .form-heading {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.volunteer-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.volunteer-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.volunteer-form label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.volunteer-form label svg {
+    vertical-align: middle;
+    margin-right: 0.3rem;
+}
+
+.volunteer-form .required {
+    color: #E57373;
+}
+
+.volunteer-form input[type="text"],
+.volunteer-form input[type="email"],
+.volunteer-form select {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.volunteer-form input:focus,
+.volunteer-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(48, 63, 159, 0.1);
+}
+
+.volunteer-form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.5rem;
+}
+
+.volunteer-form .checkbox-group {
+    margin: 1rem 0;
+}
+
+.volunteer-form .checkbox-label {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+    color: #333;
+}
+
+.volunteer-form .checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.volunteer-form .radio-group {
+    margin-bottom: 1.5rem;
+}
+
+.volunteer-form .radio-group-label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.volunteer-form .radio-options {
+    display: flex;
+    gap: 2rem;
+}
+
+.volunteer-form .radio-label {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+    color: #333;
+}
+
+.volunteer-form .radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.btn-submit-volunteer {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(48, 63, 159, 0.3);
+}
+
+.btn-submit-volunteer:hover {
+    background: #283593;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(48, 63, 159, 0.4);
+}
+
+/* Responsive Volunteer Page */
+@media (max-width: 900px) {
+    .volunteer-form-section .page-title {
+        font-size: 2.2rem;
+    }
+
+    .volunteer-form-section .page-description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .volunteer-form-card {
+        padding: 2rem;
+    }
+
+    .volunteer-form .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .volunteer-form-section {
+        padding: 2rem 0;
+    }
+
+    .volunteer-form-section .page-title {
+        font-size: 1.8rem;
+    }
+
+    .volunteer-form-section .page-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .volunteer-form-card {
+        padding: 1.5rem;
+    }
+
+    .volunteer-form-card .form-heading {
+        font-size: 1.2rem;
+    }
+
+    .volunteer-form .radio-options {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

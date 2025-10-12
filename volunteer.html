@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Discover how to donate, host events, volunteer, or launch a fundraising team to accelerate CDKL5 gene therapy trials.">
-    <title>Get Involved | Accelerate CDKL5 Trials</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - CDKL5 Gene Therapy</title>
+    <meta name="description" content="Join our volunteer team to support CDKL5 gene therapy research and help families affected by CDKL5 deficiency disorder.">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);} // minimal GA placeholder
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-XXXXXXX-X');
     </script>
@@ -47,34 +46,78 @@
         </nav>
     </header>
 
-    <main class="ways-to-help-page">
-        <!-- Hero Section with Quick Links -->
-        <div class="hero-nav">
+    <main class="volunteer-page">
+        <!-- Volunteer Form Section -->
+        <section class="section volunteer-form-section">
             <div class="container">
-                <div class="hero-quick-links">
-                    <a href="donate.html" class="quick-link">Donate</a>
-                    <a href="volunteer.html" class="quick-link">Volunteer</a>
-                    <a href="plan-event.html" class="quick-link">Plan an Event</a>
-                    <a href="contact.html" class="quick-link">Contact Us</a>
-                </div>
-            </div>
-        </div>
+                <h1 class="page-title">Volunteer</h1>
+                <p class="page-description">Join our dedicated team of volunteers making a difference in the lives of children and families affected by CDKL5 deficiency disorder. Your time and skills can help advance research, support families, and raise awareness.</p>
+                
+                <div class="volunteer-form-wrapper">
+                    <div class="volunteer-form-card">
+                        <h2 class="form-heading">Sign up to volunteer</h2>
+                        <form action="https://formspree.io/f/your-form-id" method="post" class="volunteer-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First name <span class="required">*</span></label>
+                                    <input type="text" id="first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last name <span class="required">*</span></label>
+                                    <input type="text" id="last-name" name="lastName" required>
+                                </div>
+                            </div>
 
-        <!-- Ways to Help Hero -->
-        <section class="ways-hero">
-            <div class="container">
-                <div class="ways-hero-content">
-                    <h1>Ways to Help</h1>
-                    <p class="hero-subtitle">Thank You for Being a Champion of Hope for CDKL5!</p>
-                    <div class="hero-text">
-                        <p>Your support is helping to bring the first treatment—and new hope—to children and families around the world.</p>
-                        <p>There are many meaningful ways to get involved: make a gift, host a fundraiser, start your own fundraising page, or introduce us to someone who may want to support this life-changing mission.</p>
-                        <p>However you choose to help, you're making a lasting difference for children and families who need it most.</p>
-                    </div>
-                    <div class="hero-cta-buttons">
-                        <a href="donate.html" class="btn-hero-cta">DONATE</a>
-                        <a href="volunteer.html" class="btn-hero-cta">VOLUNTEER</a>
-                        <a href="plan-event.html" class="btn-hero-cta">PLAN AN EVENT</a>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" value="yes">
+                                    <span>Subscribe me to newsletter</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    Where are you located? <span class="required">*</span>
+                                </label>
+                                <input type="text" id="location" name="location" placeholder="City, State/Province, Country" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="volunteer-team">Which team would you like to volunteer for? <span class="required">*</span></label>
+                                <select id="volunteer-team" name="volunteerTeam" required>
+                                    <option value="">Select a team...</option>
+                                    <option value="CDKL5 Advocates">CDKL5 Advocates</option>
+                                    <option value="CDKL5 Fundraising Committee">CDKL5 Fundraising Committee</option>
+                                    <option value="CDKL5 Event Navigators">CDKL5 Event Navigators</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group radio-group">
+                                <label class="radio-group-label">Are you a CDKL5 syndrome parent or caregiver? <span class="required">*</span></label>
+                                <div class="radio-options">
+                                    <label class="radio-label">
+                                        <input type="radio" name="isParentCaregiver" value="yes" required>
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="isParentCaregiver" value="no" required>
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit-volunteer">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -86,9 +129,9 @@
         <div class="container">
             <div class="progress-panel-content">
                 <div class="progress-panel-arrow">
-                    <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
-                        <path d="M10 30 Q 40 10, 70 30 T 110 30" stroke="#E57373" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
-                        <path d="M105 25 L 115 30 L 105 35" fill="#E57373"/>
+                    <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+                        <path d="M10 40 Q 40 20, 70 40 T 110 40" stroke="#E57373" stroke-width="3" fill="none" stroke-dasharray="5,5" stroke-linecap="round"/>
+                        <path d="M105 35 L 115 40 L 105 45 Z" fill="#E57373"/>
                     </svg>
                 </div>
                 <div class="progress-panel-label">
@@ -121,7 +164,7 @@
                 </div>
                 <div>
                     <h3>Stay connected</h3>
-                    <form action="https://formspree.io/f/your-form-id" method="post">
+                    <form id="newsletter" action="https://formspree.io/f/your-form-id" method="post">
                         <label for="newsletter-first-name">First name</label>
                         <input id="newsletter-first-name" name="firstName" type="text" autocomplete="given-name" required>
                         <label for="newsletter-last-name">Last name</label>
