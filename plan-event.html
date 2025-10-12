@@ -18,29 +18,31 @@
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="index.html" class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 5L25 15L35 15L27.5 22.5L30 32.5L20 26L10 32.5L12.5 22.5L5 15L15 15L20 5Z" fill="#303F9F"/>
-                        <circle cx="20" cy="20" r="3" fill="#E57373"/>
-                    </svg>
-                    <span>CDKL5 Gene Therapy</span>
-                </a>
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="get-involved.html">Get Involved</a></li>
-                    <li><a href="parents-caregivers.html">Parents & Caregivers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="donate.html" class="nav-donate">DONATE</a></li>
-                </ul>
-            </div>
+        <nav class="navbar container" aria-label="Main navigation">
+            <a href="index.html" class="logo" aria-label="CDKL5 Gene Therapy home">
+                <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="helixGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#303F9F" />
+                            <stop offset="100%" stop-color="#E57373" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M16 8c16 0 16 48 32 48" stroke="url(#helixGradient)" stroke-width="6" fill="none" stroke-linecap="round" />
+                    <path d="M48 8c-16 0-16 48-32 48" stroke="#FFB6A2" stroke-width="6" fill="none" stroke-linecap="round" />
+                    <circle cx="16" cy="8" r="4" fill="#303F9F" />
+                    <circle cx="48" cy="56" r="4" fill="#E57373" />
+                </svg>
+                <span>CDKL5 Gene Therapy</span>
+            </a>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="primary-navigation" data-nav-links>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="parents-caregivers.html">Parents &amp; Caregivers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html" class="nav-donate">Donate</a></li>
+            </ul>
         </nav>
     </header>
 
