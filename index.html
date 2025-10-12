@@ -269,6 +269,102 @@
         </div>
     </footer>
 
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="thank-you-modal">
+        <div class="thank-you-content">
+            <button class="modal-close" onclick="closeThankYouModal()">&times;</button>
+            <div class="modal-icon">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <circle cx="40" cy="40" r="38" fill="#4CAF50" opacity="0.1"/>
+                    <circle cx="40" cy="40" r="30" fill="#4CAF50" opacity="0.2"/>
+                    <path d="M25 40 L35 50 L55 30" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2 class="modal-title">Thank You! 🎉</h2>
+            <p class="modal-message">
+                Your generosity is bringing <strong>real hope</strong> to children and families affected by CDKL5!
+            </p>
+            <div class="modal-hearts">
+                <span class="heart">❤️</span>
+                <span class="heart">💚</span>
+                <span class="heart">💙</span>
+                <span class="heart">💛</span>
+                <span class="heart">💜</span>
+            </div>
+            <p class="modal-impact">
+                <strong>Your donation matters!</strong><br>
+                Every contribution accelerates groundbreaking gene therapy research and brings us closer to a cure.
+            </p>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <span class="stat-icon">🧬</span>
+                    <span class="stat-text">Funding Research</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-icon">👨‍👩‍👧‍👦</span>
+                    <span class="stat-text">Supporting Families</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-icon">🎯</span>
+                    <span class="stat-text">Changing Lives</span>
+                </div>
+            </div>
+            <p class="modal-footer">
+                You'll receive a confirmation email shortly.<br>
+                <em>Together, we're making the impossible possible!</em> ✨
+            </p>
+            <button class="btn-modal-close" onclick="closeThankYouModal()">Continue</button>
+        </div>
+    </div>
+
     <script src="js/script.js" defer></script>
+    <script>
+        // Thank You Modal Functions
+        function showThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (!modal) return;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                modal.querySelector('.thank-you-content').classList.add('modal-animate');
+            }, 10);
+            
+            const hearts = modal.querySelectorAll('.heart');
+            hearts.forEach((heart, index) => {
+                setTimeout(() => {
+                    heart.style.animation = `heartBounce 0.6s ease ${index * 0.1}s`;
+                }, 500);
+            });
+        }
+        
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (!modal) return;
+            
+            modal.querySelector('.thank-you-content').classList.remove('modal-animate');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        
+        document.getElementById('thankYouModal')?.addEventListener('click', function(e) {
+            if (e.target === this) closeThankYouModal();
+        });
+        
+        // Track donate button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const donateButtons = document.querySelectorAll('a[href*="donate"]');
+            donateButtons.forEach(button => {
+                if (button.href && (button.href.includes('square') || button.href.includes('paypal') || button.href.includes('venmo'))) {
+                    button.addEventListener('click', function(e) {
+                        setTimeout(() => showThankYouModal(), 800);
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
