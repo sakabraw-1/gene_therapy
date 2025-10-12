@@ -695,10 +695,19 @@ blockquote {
     transition: all var(--transition);
 }
 
-.amount-btn:hover,
-.amount-btn.selected {
+.amount-btn:hover {
     border-color: var(--navy);
     background: rgba(48, 63, 159, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(48, 63, 159, 0.15);
+}
+
+.amount-btn.active,
+.amount-btn.selected {
+    border-color: var(--navy);
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 4px 12px rgba(48, 63, 159, 0.3);
 }
 
 .custom-amount {
@@ -739,12 +748,24 @@ blockquote {
     background: #F5F5F5;
     border-radius: 8px;
     cursor: pointer;
+    transition: all var(--transition);
+    border: 2px solid transparent;
+}
+
+.checkbox-option:hover {
+    background: #E8E8E8;
+}
+
+.checkbox-option.checked {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #4CAF50;
 }
 
 .checkbox-option input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    accent-color: var(--navy);
 }
 
 .payment-buttons {

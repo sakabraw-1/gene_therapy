@@ -221,6 +221,66 @@
         });
     }
 
+    function initDonationPage() {
+        // Only run on donate page
+        if (!document.querySelector('.donate-page')) {
+            return;
+        }
+
+        // Toggle between One Time and Monthly
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active to clicked button
+                button.classList.add('active');
+            });
+        });
+
+        // Amount button selection
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        const customAmountInput = document.getElementById('custom-amount');
+        
+        amountButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all amount buttons
+                amountButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active to clicked button
+                button.classList.add('active');
+                // Clear custom amount input
+                if (customAmountInput) {
+                    customAmountInput.value = '';
+                }
+            });
+        });
+
+        // Custom amount input
+        if (customAmountInput) {
+            customAmountInput.addEventListener('input', () => {
+                // Remove active from all amount buttons when typing custom amount
+                if (customAmountInput.value) {
+                    amountButtons.forEach(btn => btn.classList.remove('active'));
+                }
+            });
+        }
+
+        // Checkbox interactions
+        const checkboxOptions = document.querySelectorAll('.checkbox-option');
+        checkboxOptions.forEach(option => {
+            const checkbox = option.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        option.classList.add('checked');
+                    } else {
+                        option.classList.remove('checked');
+                    }
+                });
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         initProgressBars();
         initCountdown();
@@ -228,5 +288,6 @@
         initFadeIns();
         initCarousel();
         highlightActiveNav();
+        initDonationPage();
     });
 }());
