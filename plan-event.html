@@ -247,43 +247,49 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CDKL5 Gene Therapy</h3>
-                    <p>Accelerating research to bring gene therapy treatments to children with CDKL5 deficiency disorder.</p>
+            <div class="footer-grid">
+                <div>
+                    <h3>Donate</h3>
+                    <p>Every contribution advances manufacturing runs and safety studies.</p>
+                    <a class="btn btn-primary" href="https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr" target="_blank" rel="noopener">Donate with Square</a>
+                    <a class="btn btn-secondary" href="https://www.paypal.com/us/fundraiser/charity/3700987" target="_blank" rel="noopener">Donate with PayPal</a>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="parents-caregivers.html">Parents & Caregivers</a></li>
-                    </ul>
+                <div>
+                    <h3>Stay connected</h3>
+                    <form id="newsletter" action="https://formspree.io/f/your-form-id" method="post">
+                        <label for="newsletter-first-name">First name</label>
+                        <input id="newsletter-first-name" name="firstName" type="text" autocomplete="given-name" required>
+                        <label for="newsletter-last-name">Last name</label>
+                        <input id="newsletter-last-name" name="lastName" type="text" autocomplete="family-name" required>
+                        <label for="newsletter-email">Email</label>
+                        <input id="newsletter-email" name="email" type="email" autocomplete="email" required>
+                        <label>
+                            <input type="checkbox" name="isParentCaregiver" value="yes">
+                            I am a CDKL5 parent/caregiver
+                        </label>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
                 </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="donate.html">Donate</a></li>
-                        <li><a href="registry.html">Patient Registry</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <p>Email: <a href="mailto:hello@cdkl5southasia.com">hello@cdkl5southasia.com</a></p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">Facebook</a>
-                        <a href="#" aria-label="Twitter">Twitter</a>
+                <div>
+                    <h3>Connect with us</h3>
+                    <p>Follow real-time updates from families and clinicians.</p>
+                    <p><a href="https://www.facebook.com/CDKL5foundation/" target="_blank" rel="noopener">Facebook</a></p>
+                    <p><a href="https://www.instagram.com/cdkl5southasia?igsh=eW14bmhjZWI0Y3V2" target="_blank" rel="noopener">Instagram</a></p>
+                    <div class="progress-wrapper" data-progress-bar>
+                        <p><strong data-raised data-raised="200000"></strong> raised of <strong data-goal data-goal="3500000"></strong></p>
+                        <div class="progress-track" aria-hidden="true">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <p class="countdown" data-countdown aria-live="polite">Loading countdown…</p>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 CDKL5 Gene Therapy Initiative. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            <div class="footer-legal">
+                <p>Privacy Policy: We respect your privacy. | Terms of Use: Standard terms apply. | Medical Disclaimer: This site shares research updates and is not medical advice. Donations support 501(c)(3) led programs.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
