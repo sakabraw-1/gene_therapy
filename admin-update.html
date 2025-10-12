@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Update Donation Progress | CDKL5 Gene Therapy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .admin-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .admin-section h2 {
+            margin-top: 0;
+            color: #303F9F;
+        }
+        .current-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #303F9F;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #303F9F;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #303F9F;
+        }
+        .btn-update {
+            background: #303F9F;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn-update:hover {
+            background: #1a237e;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #666;
+        }
+        .btn-secondary:hover {
+            background: #444;
+        }
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            display: none;
+        }
+        .help-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav data-nav class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">CDKL5 Gene Therapy</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="admin-container">
+            <h1>Donation Progress Admin Panel</h1>
+            <p style="color: #666; margin-bottom: 30px;">Update the fundraising progress displayed across all pages of the website.</p>
+
+            <div class="admin-section">
+                <h2>Current Statistics</h2>
+                <div class="current-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Current Raised</div>
+                        <div class="stat-value" id="currentRaised">Loading...</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Goal Amount</div>
+                        <div class="stat-value">$3,500,000</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Percentage</div>
+                        <div class="stat-value" id="percentage">Loading...</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Last Updated</div>
+                        <div class="stat-value" id="lastUpdate" style="font-size: 1.2rem;">Never</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Add New Donation</h2>
+                <div class="input-group">
+                    <label for="donationAmount">Donation Amount ($)</label>
+                    <input type="number" id="donationAmount" placeholder="Enter amount (e.g., 1000)" min="0" step="0.01">
+                    <p class="help-text">This will be added to the current total.</p>
+                </div>
+                <button class="btn-update" onclick="addNewDonation()">Add Donation</button>
+            </div>
+
+            <div class="admin-section">
+                <h2>Set Total Amount</h2>
+                <div class="input-group">
+                    <label for="totalAmount">Total Raised ($)</label>
+                    <input type="number" id="totalAmount" placeholder="Enter total amount" min="0" step="0.01">
+                    <p class="help-text">This will replace the current total with the exact amount you enter.</p>
+                </div>
+                <button class="btn-update" onclick="setTotalAmount()">Update Total</button>
+                <button class="btn-update btn-secondary" onclick="resetToDefault()">Reset to Default ($200,000)</button>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✓ Progress updated successfully! Changes will appear on all pages.
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Update display with current values
+        function updateDisplay() {
+            const current = window.CDKL5.getCurrentRaisedAmount();
+            const goal = 3500000;
+            const percentage = ((current / goal) * 100).toFixed(2);
+            
+            document.getElementById('currentRaised').textContent = 
+                new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(current);
+            
+            document.getElementById('percentage').textContent = percentage + '%';
+            
+            const lastUpdate = localStorage.getItem('cdkl5_last_update');
+            if (lastUpdate) {
+                const date = new Date(lastUpdate);
+                document.getElementById('lastUpdate').textContent = date.toLocaleString();
+            } else {
+                document.getElementById('lastUpdate').textContent = 'Never';
+            }
+        }
+
+        function showSuccess() {
+            const msg = document.getElementById('successMessage');
+            msg.style.display = 'block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        function addNewDonation() {
+            const amount = parseFloat(document.getElementById('donationAmount').value);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid donation amount.');
+                return;
+            }
+            
+            window.CDKL5.addDonation(amount);
+            updateDisplay();
+            showSuccess();
+            document.getElementById('donationAmount').value = '';
+        }
+
+        function setTotalAmount() {
+            const amount = parseFloat(document.getElementById('totalAmount').value);
+            if (isNaN(amount) || amount < 0) {
+                alert('Please enter a valid total amount.');
+                return;
+            }
+            
+            window.CDKL5.updateRaisedAmount(amount);
+            window.CDKL5.refreshProgress();
+            updateDisplay();
+            showSuccess();
+            document.getElementById('totalAmount').value = '';
+        }
+
+        function resetToDefault() {
+            if (confirm('Are you sure you want to reset the total to $200,000?')) {
+                window.CDKL5.updateRaisedAmount(200000);
+                window.CDKL5.refreshProgress();
+                updateDisplay();
+                showSuccess();
+            }
+        }
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>

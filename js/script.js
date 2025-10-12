@@ -1,9 +1,31 @@
 // Shared JavaScript for CDKL5 Gene Therapy site
 (function () {
     const GOAL_AMOUNT = 3500000;
-    const RAISED_AMOUNT = 200000;
+    const INITIAL_RAISED_AMOUNT = 200000;
     const TRIAL_DATE = new Date('2026-06-30T23:59:59Z');
     const CAROUSEL_INTERVAL_MS = 5000;
+
+    // Get current raised amount from localStorage or use initial value
+    function getCurrentRaisedAmount() {
+        const stored = localStorage.getItem('cdkl5_raised_amount');
+        return stored ? parseFloat(stored) : INITIAL_RAISED_AMOUNT;
+    }
+
+    // Update raised amount in localStorage
+    function updateRaisedAmount(newAmount) {
+        localStorage.setItem('cdkl5_raised_amount', newAmount.toString());
+        localStorage.setItem('cdkl5_last_update', new Date().toISOString());
+    }
+
+    // Add a donation to the total
+    function addDonation(amount) {
+        const current = getCurrentRaisedAmount();
+        const newTotal = current + amount;
+        updateRaisedAmount(newTotal);
+        // Refresh all progress bars on the page
+        initProgressBars();
+        return newTotal;
+    }
 
     function formatCurrency(amount) {
         return new Intl.NumberFormat('en-US', {
@@ -15,6 +37,8 @@
 
     function initProgressBars() {
         const bars = document.querySelectorAll('[data-progress-bar]');
+        const currentRaised = getCurrentRaisedAmount();
+        
         bars.forEach((bar) => {
             const track = bar.querySelector('.progress-bar');
             const raisedEl = bar.querySelector('[data-raised]');
@@ -22,12 +46,21 @@
             if (!track || !raisedEl || !goalEl) {
                 return;
             }
-            const raisedAmount = Number(raisedEl.dataset.raised || RAISED_AMOUNT);
+            // Always use the current raised amount from localStorage
+            const raisedAmount = currentRaised;
             const goalAmount = Number(goalEl.dataset.goal || GOAL_AMOUNT);
             const percentage = Math.min(100, Math.max(0, (raisedAmount / goalAmount) * 100));
+            
+            // Animate the progress bar
+            track.style.transition = 'width 1s ease-out';
             track.style.width = `${percentage.toFixed(2)}%`;
+            
+            // Update the text with animation
             raisedEl.textContent = formatCurrency(raisedAmount);
             goalEl.textContent = formatCurrency(goalAmount);
+            
+            // Update data attributes for consistency
+            raisedEl.dataset.raised = raisedAmount.toString();
         });
     }
 
@@ -412,8 +445,12 @@
                 const donation = JSON.parse(pendingDonation);
                 const timeSince = Date.now() - donation.timestamp;
                 
-                // If donation was initiated in last 10 minutes, show thank you
+                // If donation was initiated in last 10 minutes, consider it completed
                 if (timeSince < 600000) { // 10 minutes
+                    // Add donation to total raised amount
+                    const newTotal = addDonation(donation.amount);
+                    console.log(`Donation of $${donation.amount} added! New total: $${newTotal}`);
+                    
                     // Show thank you modal
                     setTimeout(() => {
                         if (typeof showThankYouModal === 'function') {
@@ -431,6 +468,14 @@
             }
         }
     }
+
+    // Expose functions globally for manual updates and testing
+    window.CDKL5 = {
+        addDonation: addDonation,
+        getCurrentRaisedAmount: getCurrentRaisedAmount,
+        updateRaisedAmount: updateRaisedAmount,
+        refreshProgress: initProgressBars
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
         initProgressBars();
