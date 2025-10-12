@@ -178,6 +178,28 @@ header {
     color: var(--black);
 }
 
+.btn-donate-hero {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: #ff6600;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all var(--transition);
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+    margin-top: 1.5rem;
+}
+
+.btn-donate-hero:hover {
+    background: #e55a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
+}
+
 .btn:hover,
 .btn:focus {
     filter: brightness(1.05);
