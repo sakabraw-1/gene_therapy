@@ -218,6 +218,62 @@ header {
     box-shadow: 0 16px 36px rgba(48, 63, 159, 0.16);
 }
 
+/* Social Cards with Icons */
+.social-card {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.social-card:hover .social-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.facebook-icon svg {
+    width: 45px;
+    height: 45px;
+}
+
+.instagram-icon svg {
+    width: 45px;
+    height: 45px;
+}
+
+.call-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.social-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.social-card p {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.social-card .btn {
+    margin-top: auto;
+}
+
 .progress-wrapper {
     background: var(--pink);
     padding: 1.5rem;
