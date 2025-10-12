@@ -1691,6 +1691,23 @@ section[id] {
     padding: 4rem 0;
 }
 
+.event-form-section .page-title {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.event-form-section .page-description {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
 .event-form-wrapper {
     max-width: 700px;
     margin: 0 auto;
@@ -1701,6 +1718,14 @@ section[id] {
     border-radius: 12px;
     padding: 3rem;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.event-form-card .form-heading {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
 }
 
 .event-form-card h1 {
@@ -1983,6 +2008,15 @@ section[id] {
 
 /* Responsive Plan Event Page */
 @media (max-width: 900px) {
+    .event-form-section .page-title {
+        font-size: 2.2rem;
+    }
+
+    .event-form-section .page-description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
     .event-form-card {
         padding: 2rem;
     }
@@ -2012,8 +2046,21 @@ section[id] {
         padding: 2rem 0;
     }
 
+    .event-form-section .page-title {
+        font-size: 1.8rem;
+    }
+
+    .event-form-section .page-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
     .event-form-card {
         padding: 1.5rem;
+    }
+
+    .event-form-card .form-heading {
+        font-size: 1.2rem;
     }
 
     .event-form-card h1 {
