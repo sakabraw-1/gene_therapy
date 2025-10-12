@@ -1,0 +1,17 @@
+# Backup files
+*_old.html
+*_backup.html
+about_old.html
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
