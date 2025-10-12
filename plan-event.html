@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan an Event - CDKL5 Gene Therapy</title>
+    <meta name="description" content="Host a fundraising event to support CDKL5 gene therapy research. Get event ideas and sign up for support.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXXX-X');
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L25 15L35 15L27.5 22.5L30 32.5L20 26L10 32.5L12.5 22.5L5 15L15 15L20 5Z" fill="#303F9F"/>
+                        <circle cx="20" cy="20" r="3" fill="#E57373"/>
+                    </svg>
+                    <span>CDKL5 Gene Therapy</span>
+                </a>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                    <li><a href="parents-caregivers.html">Parents & Caregivers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="donate.html" class="nav-donate">DONATE</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="plan-event-page">
+        <!-- Event Form Section -->
+        <section class="section event-form-section">
+            <div class="container">
+                <div class="event-form-wrapper">
+                    <div class="event-form-card">
+                        <h1>Sign up for help with your event</h1>
+                        <form action="https://formspree.io/f/your-form-id" method="post" class="event-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name <span class="required">*</span></label>
+                                    <input type="text" id="first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name <span class="required">*</span></label>
+                                    <input type="text" id="last-name" name="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" value="yes">
+                                    <span>Sign up for news and updates</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <div class="phone-input">
+                                    <select id="phone-country" name="phoneCountry">
+                                        <option value="+1">+1 (US)</option>
+                                        <option value="+44">+44 (UK)</option>
+                                        <option value="+91">+91 (IN)</option>
+                                        <option value="+61">+61 (AU)</option>
+                                        <option value="+81">+81 (JP)</option>
+                                        <option value="+86">+86 (CN)</option>
+                                        <option value="+49">+49 (DE)</option>
+                                        <option value="+33">+33 (FR)</option>
+                                        <option value="+39">+39 (IT)</option>
+                                        <option value="+34">+34 (ES)</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" placeholder="Phone number" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    Where are you located? <span class="required">*</span>
+                                </label>
+                                <input type="text" id="location" name="location" placeholder="City, State/Province, Country" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="event-details">Tell us about your event and why you're hosting it <span class="required">*</span></label>
+                                <textarea id="event-details" name="eventDetails" rows="5" placeholder="Describe your event, its purpose, expected attendees, and how it will help raise awareness or funds for CDKL5 research..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="event-date">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    Approximate date of event/fundraiser <span class="required">*</span>
+                                </label>
+                                <input type="date" id="event-date" name="eventDate" required>
+                            </div>
+
+                            <button type="submit" class="btn-submit-event">Submit Event Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fundraising Ideas Section -->
+        <section class="section fundraising-ideas-section">
+            <div class="container">
+                <h2>Fundraising Event Ideas</h2>
+                
+                <div class="idea-cards">
+                    <div class="idea-card card-purple">
+                        <div class="idea-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3>Get-togethers with friends or coworkers</h3>
+                    </div>
+
+                    <div class="idea-card card-pink">
+                        <div class="idea-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <h3>Local community fundraisers</h3>
+                    </div>
+
+                    <div class="idea-card card-green">
+                        <div class="idea-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                                <rect x="2" y="7" width="20" height="5"></rect>
+                                <line x1="12" y1="22" x2="12" y2="7"></line>
+                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                            </svg>
+                        </div>
+                        <h3>School-based fundraisers</h3>
+                    </div>
+
+                    <div class="idea-card card-blue">
+                        <div class="idea-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3>Sport, fitness and travel fundraisers</h3>
+                    </div>
+                </div>
+
+                <!-- Restaurant Partnership Section -->
+                <div class="restaurant-partnership">
+                    <div class="restaurant-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#303F9F" stroke-width="2">
+                            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+                            <path d="M7 2v20"></path>
+                            <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                        </svg>
+                    </div>
+                    <h3>Partner with local restaurants</h3>
+                    <p>A fun way to fundraise is to partner with a restaurant – who doesn't like eating and raising money for great causes!? There are different ways they can help...</p>
+                    
+                    <div class="restaurant-options">
+                        <div class="restaurant-option">
+                            <h4>Host a lunch or dinner</h4>
+                            <p>Work with the restaurant for a date and time to invite friends and family to dine together. The restaurant will donate a portion of the proceeds from your event to our cause.</p>
+                        </div>
+
+                        <div class="restaurant-option">
+                            <h4>'Dine to donate' events</h4>
+                            <p>Coordinate a specific day where a portion of all the proceeds made that day go to The CDKL5 Foundation. Promote your event within your community!</p>
+                        </div>
+
+                        <div class="restaurant-option">
+                            <h4>Request a donation</h4>
+                            <p>Request a donation from the restaurant. It could be "in-kind," which could be in the form of gift cards for you to use in a raffle. Or the restaurant can make a direct monetary donation to our foundation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Progress Panel -->
+    <section class="progress-panel">
+        <div class="container">
+            <div class="progress-panel-content">
+                <div class="progress-panel-arrow">
+                    <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                        <path d="M10 30 Q 40 10, 70 30 T 110 30" stroke="#E57373" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M105 25 L 115 30 L 105 35" fill="#E57373"/>
+                    </svg>
+                </div>
+                <div class="progress-panel-text">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" data-progress="6"></div>
+                    </div>
+                    <p class="progress-amount"><strong>$200,000</strong> raised of $3.5M goal</p>
+                </div>
+                <a href="donate.html" class="btn-take-action">TAKE ACTION</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CDKL5 Gene Therapy</h3>
+                    <p>Accelerating research to bring gene therapy treatments to children with CDKL5 deficiency disorder.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="parents-caregivers.html">Parents & Caregivers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="registry.html">Patient Registry</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>Email: <a href="mailto:hello@cdkl5southasia.com">hello@cdkl5southasia.com</a></p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CDKL5 Gene Therapy Initiative. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
