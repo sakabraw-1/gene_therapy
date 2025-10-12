@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Register for the CDKL5 Patient Registry to help advance gene therapy research and connect with the community.">
+    <title>Patient Registry | CDKL5 Gene Therapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} // minimal GA placeholder
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXXX-X');
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar container" aria-label="Main navigation">
+            <a href="index.html" class="logo" aria-label="CDKL5 Gene Therapy home">
+                <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="helixGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#303F9F" />
+                            <stop offset="100%" stop-color="#E57373" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M16 8c16 0 16 48 32 48" stroke="url(#helixGradient)" stroke-width="6" fill="none" stroke-linecap="round" />
+                    <path d="M48 8c-16 0-16 48-32 48" stroke="#FFB6A2" stroke-width="6" fill="none" stroke-linecap="round" />
+                    <circle cx="16" cy="8" r="4" fill="#303F9F" />
+                    <circle cx="48" cy="56" r="4" fill="#E57373" />
+                </svg>
+                <span>CDKL5 Gene Therapy</span>
+            </a>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="primary-navigation" data-nav-links>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="parents-caregivers.html">Parents &amp; Caregivers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html" class="nav-donate">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="registry-page">
+        <div class="registry-hero">
+            <div class="container">
+                <div class="registry-hero-content">
+                    <h1>CDKL5 Patient Registry: Register For An Account</h1>
+                    <p>Create an account to take part in our study and help advance CDKL5 gene therapy research.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="registry-wrapper">
+                <div class="registry-form-container">
+                    <form id="registry-form" class="registry-form" action="https://formspree.io/f/your-form-id" method="POST">
+                        
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <h2>Personal Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="first-name">First Name <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" placeholder="Enter First Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last-name">Last Name <span class="required">*</span></label>
+                                <input type="text" id="last-name" name="lastName" placeholder="Enter Last Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+                                <span class="field-icon">📧</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telephone">Telephone <span class="required">*</span></label>
+                                <div class="phone-input">
+                                    <select id="country-code" name="countryCode" class="country-code">
+                                        <option value="+1">🇺🇸 +1</option>
+                                        <option value="+44">🇬🇧 +44</option>
+                                        <option value="+61">🇦🇺 +61</option>
+                                        <option value="+33">🇫🇷 +33</option>
+                                        <option value="+49">🇩🇪 +49</option>
+                                        <option value="+39">🇮🇹 +39</option>
+                                        <option value="+34">🇪🇸 +34</option>
+                                        <option value="+81">🇯🇵 +81</option>
+                                        <option value="+86">🇨🇳 +86</option>
+                                        <option value="+91">🇮🇳 +91</option>
+                                        <option value="+55">🇧🇷 +55</option>
+                                        <option value="+27">🇿🇦 +27</option>
+                                        <option value="+52">🇲🇽 +52</option>
+                                        <option value="+65">🇸🇬 +65</option>
+                                    </select>
+                                    <input type="tel" id="telephone" name="telephone" placeholder="(555) 555-5555" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">Role <span class="required">*</span></label>
+                                <select id="role" name="role" required>
+                                    <option value="">Select Role</option>
+                                    <option value="parent">Parent/Guardian</option>
+                                    <option value="caregiver">Primary Caregiver</option>
+                                    <option value="patient">Patient (Adult)</option>
+                                    <option value="family-member">Family Member</option>
+                                    <option value="healthcare-provider">Healthcare Provider</option>
+                                    <option value="researcher">Researcher</option>
+                                    <option value="advocate">Patient Advocate</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Patient Information Section -->
+                        <div class="form-section">
+                            <h2>Patient Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="patient-name">Patient Name</label>
+                                <input type="text" id="patient-name" name="patientName" placeholder="Enter Patient Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date-of-birth">Date of Birth</label>
+                                <input type="date" id="date-of-birth" name="dateOfBirth">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="diagnosis-date">Date of CDKL5 Diagnosis</label>
+                                <input type="date" id="diagnosis-date" name="diagnosisDate">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mutation-type">Mutation Type (if known)</label>
+                                <input type="text" id="mutation-type" name="mutationType" placeholder="e.g., c.175C>T">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="current-treatments">Current Treatments</label>
+                                <textarea id="current-treatments" name="currentTreatments" rows="3" placeholder="List current medications and therapies"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Location Information -->
+                        <div class="form-section">
+                            <h2>Location Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="country">Country <span class="required">*</span></label>
+                                <select id="country" name="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="United States">United States</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State/Province</label>
+                                <input type="text" id="state" name="state" placeholder="Enter State or Province">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" placeholder="Enter City">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postal-code">Postal/Zip Code</label>
+                                <input type="text" id="postal-code" name="postalCode" placeholder="Enter Postal Code">
+                            </div>
+                        </div>
+
+                        <!-- Clinical Trial Interest -->
+                        <div class="form-section">
+                            <h2>Clinical Trial Interest</h2>
+                            
+                            <div class="form-group">
+                                <label>Interested in clinical trial participation?</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="trialInterest" value="yes" required>
+                                        <span>Yes, very interested</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="trialInterest" value="maybe">
+                                        <span>Maybe, need more information</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="trialInterest" value="no">
+                                        <span>No, not at this time</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preferred-contact">Preferred Method of Contact</label>
+                                <select id="preferred-contact" name="preferredContact">
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="both">Both Email and Phone</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="questions">Questions or Additional Information</label>
+                                <textarea id="questions" name="questions" rows="4" placeholder="Share any questions or information you'd like us to know"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Password Section -->
+                        <div class="form-section">
+                            <h2>Account Security</h2>
+                            
+                            <div class="form-group">
+                                <label for="password">Password <span class="required">*</span></label>
+                                <input type="password" id="password" name="password" placeholder="Enter Password" required minlength="6">
+                                <span class="field-icon toggle-password" data-target="password">🔒</span>
+                                <small class="form-hint">Minimum of 6 characters</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+                                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" required minlength="6">
+                                <span class="field-icon toggle-password" data-target="confirm-password">🔒</span>
+                            </div>
+                        </div>
+
+                        <!-- Consent and Privacy -->
+                        <div class="form-section">
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="consent" required>
+                                    <span>I consent to participate in the CDKL5 Patient Registry and understand my data will be used for research purposes. <span class="required">*</span></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacyPolicy" required>
+                                    <span>I have read and agree to the <a href="#" target="_blank">Privacy Policy</a> and <a href="#" target="_blank">Terms of Service</a>. <span class="required">*</span></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter">
+                                    <span>I would like to receive updates about CDKL5 gene therapy research and clinical trial opportunities.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">Submit Registration</button>
+                            <p class="login-link">Already have an account? <a href="#login">Please Log In</a></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="registry-sidebar">
+                    <div class="info-card">
+                        <div class="dna-icon">
+                            <svg viewBox="0 0 200 200" width="150" height="150">
+                                <defs>
+                                    <linearGradient id="dnaGradient" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#ff6b6b" />
+                                        <stop offset="100%" stop-color="#ffa07a" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M50 20 Q 80 10, 100 40 T 150 60 Q 120 90, 100 120 T 50 180" 
+                                      stroke="url(#dnaGradient)" 
+                                      stroke-width="8" 
+                                      fill="none" 
+                                      stroke-linecap="round"/>
+                                <path d="M150 20 Q 120 10, 100 40 T 50 60 Q 80 90, 100 120 T 150 180" 
+                                      stroke="#FFB6A2" 
+                                      stroke-width="8" 
+                                      fill="none" 
+                                      stroke-linecap="round"/>
+                                <circle cx="50" cy="20" r="8" fill="#ff6b6b"/>
+                                <circle cx="150" cy="20" r="8" fill="#ffa07a"/>
+                                <circle cx="150" cy="60" r="8" fill="#ff6b6b"/>
+                                <circle cx="50" cy="60" r="8" fill="#ffa07a"/>
+                                <circle cx="50" cy="180" r="8" fill="#ff6b6b"/>
+                                <circle cx="150" cy="180" r="8" fill="#ffa07a"/>
+                            </svg>
+                        </div>
+                        <h3>Why Register?</h3>
+                        <ul class="benefits-list">
+                            <li>✓ Help advance CDKL5 research</li>
+                            <li>✓ Get updates on clinical trials</li>
+                            <li>✓ Connect with the community</li>
+                            <li>✓ Access exclusive resources</li>
+                            <li>✓ Share your family's journey</li>
+                            <li>✓ Contribute to gene therapy development</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card stats-card">
+                        <h3>Registry Impact</h3>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Families Registered</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">45</div>
+                            <div class="stat-label">Countries Represented</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Q2 2026</div>
+                            <div class="stat-label">Trial Start Date</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Questions?</h3>
+                        <p>Contact our patient registry coordinator:</p>
+                        <p><strong>Email:</strong> <a href="mailto:registry@childscure.org">registry@childscure.org</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+18885554363">1-888-555-4363</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Progress Panel -->
+    <section class="progress-panel">
+        <div class="container">
+            <div class="progress-panel-content">
+                <div class="progress-panel-arrow">
+                    <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                        <path d="M10 30 Q 40 10, 70 30 T 110 30" stroke="#E57373" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M105 25 L 115 30 L 105 35" fill="#E57373"/>
+                    </svg>
+                </div>
+                <div class="progress-panel-label">
+                    <span>Progress to CDKL5 Gene Therapy!</span>
+                </div>
+                <div class="progress-panel-bar">
+                    <div class="progress-panel-track">
+                        <div class="progress-panel-fill" style="width: 6%"></div>
+                        <div class="progress-panel-indicator"></div>
+                    </div>
+                </div>
+                <div class="progress-panel-amount">
+                    <span class="amount">$200K</span>
+                </div>
+                <div class="progress-panel-cta">
+                    <a href="donate.html" class="btn-take-action">TAKE ACTION</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="parents-caregivers.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Stay Connected</h3>
+                    <form action="https://formspree.io/f/your-form-id" method="post">
+                        <label for="footer-email-registry" class="visually-hidden">Email address</label>
+                        <input type="email" id="footer-email-registry" name="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-secondary">Subscribe</button>
+                    </form>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p>Email: <a href="mailto:hello@childscure.org">hello@childscure.org</a></p>
+                    <p>&copy; 2025 CDKL5 Gene Therapy Coalition. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Password toggle functionality
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.textContent = '🔓';
+                } else {
+                    input.type = 'password';
+                    this.textContent = '🔒';
+                }
+            });
+        });
+
+        // Password match validation
+        document.getElementById('registry-form').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match. Please try again.');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
