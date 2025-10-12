@@ -894,3 +894,141 @@ blockquote {
         grid-template-columns: 1fr;
     }
 }
+
+/* ====== Progress Panel (Bottom Bar) ====== */
+.progress-panel {
+    background: linear-gradient(135deg, #283e7a 0%, #1a2850 100%);
+    padding: 1.5rem 0;
+    margin-top: 0;
+}
+
+.progress-panel-content {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+}
+
+.progress-panel-arrow {
+    display: flex;
+    align-items: center;
+}
+
+.progress-panel-label {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.progress-panel-bar {
+    flex: 1;
+    min-width: 200px;
+}
+
+.progress-panel-track {
+    position: relative;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    overflow: visible;
+}
+
+.progress-panel-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #ff6600 0%, #ff8c00 100%);
+    border-radius: 25px;
+    transition: width 1s ease;
+}
+
+.progress-panel-indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: #ff6600;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+}
+
+.progress-panel-amount {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.progress-panel-cta {
+    margin-left: 1rem;
+}
+
+.btn-take-action {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: #ff6600;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all var(--transition);
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+}
+
+.btn-take-action:hover {
+    background: #e55a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
+}
+
+/* Responsive Progress Panel */
+@media (max-width: 900px) {
+    .progress-panel-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .progress-panel-arrow {
+        display: none;
+    }
+
+    .progress-panel-label {
+        font-size: 1rem;
+    }
+
+    .progress-panel-amount {
+        font-size: 2rem;
+    }
+
+    .progress-panel-cta {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .progress-panel {
+        padding: 1rem 0;
+    }
+
+    .progress-panel-amount {
+        font-size: 1.5rem;
+    }
+
+    .progress-panel-track {
+        height: 30px;
+    }
+
+    .progress-panel-indicator {
+        width: 40px;
+        height: 40px;
+    }
+}
