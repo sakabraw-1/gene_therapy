@@ -227,6 +227,9 @@
             return;
         }
 
+        let selectedAmount = 0;
+        let isMonthly = false;
+
         // Toggle between One Time and Monthly
         const toggleButtons = document.querySelectorAll('.toggle-btn');
         toggleButtons.forEach(button => {
@@ -235,6 +238,9 @@
                 toggleButtons.forEach(btn => btn.classList.remove('active'));
                 // Add active to clicked button
                 button.classList.add('active');
+                // Track if monthly is selected
+                isMonthly = button.dataset.giftType === 'monthly';
+                updatePaymentButtons();
             });
         });
 
@@ -252,6 +258,9 @@
                 if (customAmountInput) {
                     customAmountInput.value = '';
                 }
+                // Get selected amount
+                selectedAmount = parseInt(button.dataset.amount) || 0;
+                updatePaymentButtons();
             });
         });
 
@@ -261,9 +270,104 @@
                 // Remove active from all amount buttons when typing custom amount
                 if (customAmountInput.value) {
                     amountButtons.forEach(btn => btn.classList.remove('active'));
+                    selectedAmount = parseInt(customAmountInput.value) || 0;
+                    updatePaymentButtons();
                 }
             });
         }
+
+        // Update payment button URLs with selected amount
+        function updatePaymentButtons() {
+            const paymentButtons = document.querySelectorAll('.btn-give');
+            
+            paymentButtons.forEach(button => {
+                const baseUrl = button.dataset.baseUrl || button.href;
+                
+                // Store original URL if not already stored
+                if (!button.dataset.baseUrl) {
+                    button.dataset.baseUrl = button.href;
+                }
+
+                // Update button text to show amount
+                if (selectedAmount > 0) {
+                    const amountText = `$${selectedAmount.toLocaleString()}`;
+                    const frequency = isMonthly ? '/month' : '';
+                    
+                    if (button.textContent.includes('Credit Card')) {
+                        button.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                            Give ${amountText}${frequency} via Credit Card
+                        `;
+                    } else if (button.textContent.includes('PayPal')) {
+                        button.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 00-.794.68l-.04.22-.63 3.993-.029.17a.804.804 0 01-.794.68H7.72a.483.483 0 01-.477-.558L7.418 21h1.518l.95-6.02h1.385c4.678 0 7.75-2.203 8.796-6.502z"/>
+                            </svg>
+                            Give ${amountText}${frequency} via PayPal
+                        `;
+                    } else if (button.textContent.includes('Venmo')) {
+                        button.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16.9 3.3c.4.8.6 1.6.6 2.6 0 3.3-2.8 7.6-5.1 10.6H7.7L5.5 3.6l4.4-.4 1.5 10.8c1.1-1.8 2.6-4.6 2.6-6.8 0-.9-.2-1.6-.4-2.2l3.3-.7z"/>
+                            </svg>
+                            Give ${amountText}${frequency} via Venmo
+                        `;
+                    }
+
+                    // Add amount to URL (for services that support it)
+                    // Note: You'll need to check each payment gateway's URL parameter format
+                    // This is a placeholder - actual implementation depends on your payment processor
+                    
+                } else {
+                    // Reset to original text if no amount selected
+                    if (button.textContent.includes('Credit Card')) {
+                        button.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                            Give via Credit Card
+                        `;
+                    } else if (button.textContent.includes('PayPal')) {
+                        button.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 00-.794.68l-.04.22-.63 3.993-.029.17a.804.804 0 01-.794.68H7.72a.483.483 0 01-.477-.558L7.418 21h1.518l.95-6.02h1.385c4.678 0 7.75-2.203 8.796-6.502z"/>
+                            </svg>
+                            Give via PayPal
+                        `;
+                    } else if (button.textContent.includes('Venmo')) {
+                        button.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16.9 3.3c.4.8.6 1.6.6 2.6 0 3.3-2.8 7.6-5.1 10.6H7.7L5.5 3.6l4.4-.4 1.5 10.8c1.1-1.8 2.6-4.6 2.6-6.8 0-.9-.2-1.6-.4-2.2l3.3-.7z"/>
+                            </svg>
+                            Give via Venmo
+                        `;
+                    }
+                }
+            });
+        }
+
+        // Store donation info in localStorage when payment button is clicked
+        const paymentButtons = document.querySelectorAll('.btn-give');
+        paymentButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (selectedAmount > 0) {
+                    // Store donation details
+                    localStorage.setItem('pendingDonation', JSON.stringify({
+                        amount: selectedAmount,
+                        isMonthly: isMonthly,
+                        timestamp: Date.now()
+                    }));
+                } else {
+                    // Show alert if no amount selected
+                    e.preventDefault();
+                    alert('Please select or enter a donation amount before proceeding.');
+                }
+            });
+        });
 
         // Checkbox interactions
         const checkboxOptions = document.querySelectorAll('.checkbox-option');
@@ -279,6 +383,38 @@
                 });
             }
         });
+
+        // Initialize button states
+        updatePaymentButtons();
+    }
+
+    // Check for completed donation (when user returns from payment gateway)
+    function checkForCompletedDonation() {
+        const pendingDonation = localStorage.getItem('pendingDonation');
+        
+        if (pendingDonation) {
+            try {
+                const donation = JSON.parse(pendingDonation);
+                const timeSince = Date.now() - donation.timestamp;
+                
+                // If donation was initiated in last 10 minutes, show thank you
+                if (timeSince < 600000) { // 10 minutes
+                    // Show thank you modal
+                    setTimeout(() => {
+                        if (typeof showThankYouModal === 'function') {
+                            showThankYouModal();
+                        }
+                        // Clear the pending donation
+                        localStorage.removeItem('pendingDonation');
+                    }, 1000);
+                } else {
+                    // Too old, clear it
+                    localStorage.removeItem('pendingDonation');
+                }
+            } catch (e) {
+                localStorage.removeItem('pendingDonation');
+            }
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -289,5 +425,6 @@
         initCarousel();
         highlightActiveNav();
         initDonationPage();
+        checkForCompletedDonation();
     });
 }());

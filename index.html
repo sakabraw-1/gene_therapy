@@ -353,18 +353,6 @@
         document.getElementById('thankYouModal')?.addEventListener('click', function(e) {
             if (e.target === this) closeThankYouModal();
         });
-        
-        // Track donate button clicks
-        document.addEventListener('DOMContentLoaded', function() {
-            const donateButtons = document.querySelectorAll('a[href*="donate"]');
-            donateButtons.forEach(button => {
-                if (button.href && (button.href.includes('square') || button.href.includes('paypal') || button.href.includes('venmo'))) {
-                    button.addEventListener('click', function(e) {
-                        setTimeout(() => showThankYouModal(), 800);
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>

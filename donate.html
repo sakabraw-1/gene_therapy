@@ -318,6 +318,8 @@
         // Thank You Modal Functions
         function showThankYouModal() {
             const modal = document.getElementById('thankYouModal');
+            if (!modal) return;
+            
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
@@ -337,6 +339,8 @@
         
         function closeThankYouModal() {
             const modal = document.getElementById('thankYouModal');
+            if (!modal) return;
+            
             modal.querySelector('.thank-you-content').classList.remove('modal-animate');
             setTimeout(() => {
                 modal.style.display = 'none';
@@ -345,24 +349,10 @@
         }
         
         // Close modal when clicking outside
-        document.getElementById('thankYouModal').addEventListener('click', function(e) {
+        document.getElementById('thankYouModal')?.addEventListener('click', function(e) {
             if (e.target === this) {
                 closeThankYouModal();
             }
-        });
-        
-        // Add click handlers to donation buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const donationButtons = document.querySelectorAll('.btn-give');
-            
-            donationButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Show modal after a short delay to simulate processing
-                    setTimeout(() => {
-                        showThankYouModal();
-                    }, 800);
-                });
-            });
         });
     </script>
 </body>
