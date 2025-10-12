@@ -260,6 +260,7 @@
                 }
                 // Get selected amount
                 selectedAmount = parseInt(button.dataset.amount) || 0;
+                console.log('Amount button clicked:', selectedAmount);
                 updatePaymentButtons();
             });
         });
@@ -278,14 +279,25 @@
 
         // Update payment button URLs with selected amount
         function updatePaymentButtons() {
+            console.log('updatePaymentButtons called, selectedAmount:', selectedAmount, 'isMonthly:', isMonthly);
             const paymentButtons = document.querySelectorAll('.btn-give');
+            console.log('Found payment buttons:', paymentButtons.length);
             
             paymentButtons.forEach(button => {
-                const baseUrl = button.dataset.baseUrl || button.href;
-                
                 // Store original URL if not already stored
                 if (!button.dataset.baseUrl) {
                     button.dataset.baseUrl = button.href;
+                }
+                
+                // Identify button type by href if not already set
+                if (!button.dataset.paymentType) {
+                    if (button.href.includes('square')) {
+                        button.dataset.paymentType = 'square';
+                    } else if (button.href.includes('paypal')) {
+                        button.dataset.paymentType = 'paypal';
+                    } else if (button.href.includes('venmo')) {
+                        button.dataset.paymentType = 'venmo';
+                    }
                 }
 
                 // Update button text to show amount
@@ -293,7 +305,7 @@
                     const amountText = `$${selectedAmount.toLocaleString()}`;
                     const frequency = isMonthly ? '/month' : '';
                     
-                    if (button.textContent.includes('Credit Card')) {
+                    if (button.dataset.paymentType === 'square') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -301,14 +313,14 @@
                             </svg>
                             Give ${amountText}${frequency} via Credit Card
                         `;
-                    } else if (button.textContent.includes('PayPal')) {
+                    } else if (button.dataset.paymentType === 'paypal') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 00-.794.68l-.04.22-.63 3.993-.029.17a.804.804 0 01-.794.68H7.72a.483.483 0 01-.477-.558L7.418 21h1.518l.95-6.02h1.385c4.678 0 7.75-2.203 8.796-6.502z"/>
                             </svg>
                             Give ${amountText}${frequency} via PayPal
                         `;
-                    } else if (button.textContent.includes('Venmo')) {
+                    } else if (button.dataset.paymentType === 'venmo') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M16.9 3.3c.4.8.6 1.6.6 2.6 0 3.3-2.8 7.6-5.1 10.6H7.7L5.5 3.6l4.4-.4 1.5 10.8c1.1-1.8 2.6-4.6 2.6-6.8 0-.9-.2-1.6-.4-2.2l3.3-.7z"/>
@@ -317,13 +329,16 @@
                         `;
                     }
 
-                    // Add amount to URL (for services that support it)
-                    // Note: You'll need to check each payment gateway's URL parameter format
-                    // This is a placeholder - actual implementation depends on your payment processor
+                    // Add amount to Square URL (Square supports amount parameter)
+                    if (button.dataset.paymentType === 'square') {
+                        // Square URLs can accept amount in cents via checkout API
+                        // For now, we'll just update the display text
+                        // You can customize the URL here if Square provides amount parameters
+                    }
                     
                 } else {
                     // Reset to original text if no amount selected
-                    if (button.textContent.includes('Credit Card')) {
+                    if (button.dataset.paymentType === 'square') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -331,14 +346,14 @@
                             </svg>
                             Give via Credit Card
                         `;
-                    } else if (button.textContent.includes('PayPal')) {
+                    } else if (button.dataset.paymentType === 'paypal') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 00-.794.68l-.04.22-.63 3.993-.029.17a.804.804 0 01-.794.68H7.72a.483.483 0 01-.477-.558L7.418 21h1.518l.95-6.02h1.385c4.678 0 7.75-2.203 8.796-6.502z"/>
                             </svg>
                             Give via PayPal
                         `;
-                    } else if (button.textContent.includes('Venmo')) {
+                    } else if (button.dataset.paymentType === 'venmo') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M16.9 3.3c.4.8.6 1.6.6 2.6 0 3.3-2.8 7.6-5.1 10.6H7.7L5.5 3.6l4.4-.4 1.5 10.8c1.1-1.8 2.6-4.6 2.6-6.8 0-.9-.2-1.6-.4-2.2l3.3-.7z"/>
