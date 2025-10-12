@@ -55,7 +55,12 @@
                 <div class="event-form-wrapper">
                     <div class="event-form-card">
                         <h2 class="form-heading">Sign up for help with your event</h2>
-                        <form action="https://formspree.io/f/your-form-id" method="post" class="event-form">
+                        <form name="event-form" method="post" data-netlify="true" netlify-honeypot="bot-field" class="event-form">
+                            <input type="hidden" name="form-name" value="event-form">
+                            <p style="display: none;">
+                                <label>Don't fill this out: <input name="bot-field" /></label>
+                            </p>
+                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="first-name">First Name <span class="required">*</span></label>
@@ -258,7 +263,11 @@
                 </div>
                 <div>
                     <h3>Stay connected</h3>
-                    <form id="newsletter" action="https://formspree.io/f/your-form-id" method="post">
+                    <form id="newsletter" name="newsletter" method="post" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <p style="display: none;">
+                            <label>Don't fill this out: <input name="bot-field" /></label>
+                        </p>
                         <label for="newsletter-first-name">First name</label>
                         <input id="newsletter-first-name" name="firstName" type="text" autocomplete="given-name" required>
                         <label for="newsletter-last-name">Last name</label>

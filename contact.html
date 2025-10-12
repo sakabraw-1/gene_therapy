@@ -57,7 +57,14 @@
             <section class="section fade-in">
                 <div class="contact-form-card">
                     <h2 style="text-align: center; color: #303F9F; margin-bottom: 2rem; font-size: 1.75rem;">Contact Form</h2>
-                    <form action="https://formspree.io/f/your-form-id" method="post">
+                    <form name="contact-form" method="post" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact-form">
+                        
+                        <!-- Spam protection (hidden field) -->
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+
                         <div class="form-group">
                             <label for="contact-first-name">
                                 Name <span style="color: #666; font-size: 0.875rem;">(required)</span>
@@ -147,7 +154,11 @@
                 </div>
                 <div>
                     <h3>Stay connected</h3>
-                    <form action="https://formspree.io/f/your-form-id" method="post">
+                    <form name="newsletter" method="post" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <p style="display: none;">
+                            <label>Don't fill this out: <input name="bot-field" /></label>
+                        </p>
                         <label for="newsletter-first-name">First name</label>
                         <input id="newsletter-first-name" name="firstName" type="text" autocomplete="given-name" required>
                         <label for="newsletter-last-name">Last name</label>
