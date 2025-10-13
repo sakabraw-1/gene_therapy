@@ -127,7 +127,40 @@
                     </div>
                     <div class="carousel-dots" role="tablist" aria-label="Carousel pagination"></div>
                 </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-view-all" onclick="openGalleryModal()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                        </svg>
+                        View All 47 Families
+                    </button>
+                </div>
             </section>
+
+            <!-- Photo Gallery Modal -->
+            <div id="galleryModal" class="gallery-modal">
+                <div class="gallery-modal-content">
+                    <div class="gallery-modal-header">
+                        <h2>Our CDKL5 Families</h2>
+                        <button class="gallery-close" onclick="closeGalleryModal()">&times;</button>
+                    </div>
+                    <div class="gallery-grid" id="galleryGrid">
+                        <!-- Photos will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lightbox for full-size viewing -->
+            <div id="lightbox" class="lightbox">
+                <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+                <button class="lightbox-prev" onclick="prevLightboxImage()">‹</button>
+                <button class="lightbox-next" onclick="nextLightboxImage()">›</button>
+                <img id="lightboxImage" class="lightbox-image" src="" alt="">
+                <div class="lightbox-counter" id="lightboxCounter"></div>
+            </div>
 
             <section class="section fade-in">
                 <div class="card-grid">

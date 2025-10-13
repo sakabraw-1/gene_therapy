@@ -486,5 +486,139 @@
         highlightActiveNav();
         initDonationPage();
         checkForCompletedDonation();
+        initGallery();
     });
 }());
+
+// ========================================
+// Gallery Modal & Lightbox Functions
+// ========================================
+
+// Array of image filenames (same as carousel)
+const galleryImages = [
+    'image 41.jpg', 'image 42.jpg', 'image 43.jpg', 'image 44.jpg', 'image 45.jpg',
+    'image 46.jpg', 'image 47.jpg', 'image 48.jpg', 'image 49.jpg', 'image 50.jpg',
+    'image 51.jpg', 'image 52.jpg', 'image 53.jpg', 'image 54.jpg', 'image 55.jpg',
+    'image 56.jpg', 'image 57.jpg', 'image 58.jpg', 'image 59.jpg', 'image 60.jpg',
+    'image 61.jpg', 'image 62.jpg', 'image 63.jpg', 'image 64.jpg', 'image 65.jpg',
+    'image 66.jpg', 'image 67.jpg', 'image 68.jpg', 'image 69.jpg', 'image 70.jpg',
+    'image 71.jpg', 'image 72.jpg', 'image 73.jpg', 'image 74.jpg', 'image 75.jpg',
+    'image 76.jpg', 'image 77.jpg', 'image 78.jpg', 'image 79.jpg', 'image 80.jpg',
+    'image 81.jpg', 'image 82.jpg', 'image 83.jpg', 'image 84.jpg', 'image 85.jpg',
+    'image 86.jpg', 'image 87.jpg'
+];
+
+let currentLightboxIndex = 0;
+
+// Initialize gallery
+function initGallery() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid) return;
+
+    // Populate gallery grid with all images
+    galleryImages.forEach((filename, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.onclick = () => openLightbox(index);
+        
+        const img = document.createElement('img');
+        img.src = `images/${filename}`;
+        img.alt = `CDKL5 Family ${index + 1}`;
+        img.loading = 'lazy'; // Lazy load for performance
+        
+        const overlay = document.createElement('div');
+        overlay.className = 'gallery-item-overlay';
+        overlay.textContent = `Family ${index + 1}`;
+        
+        item.appendChild(img);
+        item.appendChild(overlay);
+        galleryGrid.appendChild(item);
+    });
+}
+
+// Open gallery modal
+function openGalleryModal() {
+    const modal = document.getElementById('galleryModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+// Close gallery modal
+function closeGalleryModal() {
+    const modal = document.getElementById('galleryModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Open lightbox with specific image
+function openLightbox(index) {
+    currentLightboxIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const counter = document.getElementById('lightboxCounter');
+    
+    if (lightbox && lightboxImage) {
+        lightboxImage.src = `images/${galleryImages[index]}`;
+        lightboxImage.alt = `CDKL5 Family ${index + 1}`;
+        counter.textContent = `${index + 1} / ${galleryImages.length}`;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Close lightbox
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Previous image in lightbox
+function prevLightboxImage() {
+    currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+    openLightbox(currentLightboxIndex);
+}
+
+// Next image in lightbox
+function nextLightboxImage() {
+    currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+    openLightbox(currentLightboxIndex);
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+            prevLightboxImage();
+        } else if (e.key === 'ArrowRight') {
+            nextLightboxImage();
+        } else if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    }
+    
+    const modal = document.getElementById('galleryModal');
+    if (modal && modal.classList.contains('active') && e.key === 'Escape') {
+        closeGalleryModal();
+    }
+});
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const galleryModal = document.getElementById('galleryModal');
+    if (e.target === galleryModal) {
+        closeGalleryModal();
+    }
+    
+    const lightbox = document.getElementById('lightbox');
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
