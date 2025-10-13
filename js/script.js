@@ -494,18 +494,55 @@
 // Gallery Modal & Lightbox Functions
 // ========================================
 
-// Array of image filenames (same as carousel)
+// Array of images with inspirational quotes
 const galleryImages = [
-    'image 41.jpg', 'image 42.jpg', 'image 43.jpg', 'image 44.jpg', 'image 45.jpg',
-    'image 46.jpg', 'image 47.jpg', 'image 48.jpg', 'image 49.jpg', 'image 50.jpg',
-    'image 51.jpg', 'image 52.jpg', 'image 53.jpg', 'image 54.jpg', 'image 55.jpg',
-    'image 56.jpg', 'image 57.jpg', 'image 58.jpg', 'image 59.jpg', 'image 60.jpg',
-    'image 61.jpg', 'image 62.jpg', 'image 63.jpg', 'image 64.jpg', 'image 65.jpg',
-    'image 66.jpg', 'image 67.jpg', 'image 68.jpg', 'image 69.jpg', 'image 70.jpg',
-    'image 71.jpg', 'image 72.jpg', 'image 73.jpg', 'image 74.jpg', 'image 75.jpg',
-    'image 76.jpg', 'image 77.jpg', 'image 78.jpg', 'image 79.jpg', 'image 80.jpg',
-    'image 81.jpg', 'image 82.jpg', 'image 83.jpg', 'image 84.jpg', 'image 85.jpg',
-    'image 86.jpg', 'image 87.jpg'
+    { file: 'image 41.jpg', quote: 'Every smile is a victory' },
+    { file: 'image 42.jpg', quote: 'Hope grows stronger every day' },
+    { file: 'image 43.jpg', quote: 'Fighting with love and courage' },
+    { file: 'image 44.jpg', quote: 'Small steps, giant leaps' },
+    { file: 'image 45.jpg', quote: 'Stronger than CDKL5' },
+    { file: 'image 46.jpg', quote: 'Love knows no limits' },
+    { file: 'image 47.jpg', quote: 'Warriors in tiny bodies' },
+    { file: 'image 48.jpg', quote: 'Never giving up' },
+    { file: 'image 49.jpg', quote: 'Every moment is precious' },
+    { file: 'image 50.jpg', quote: 'Brave hearts, bright futures' },
+    { file: 'image 51.jpg', quote: 'Defying all odds' },
+    { file: 'image 52.jpg', quote: 'Spreading joy despite challenges' },
+    { file: 'image 53.jpg', quote: 'Together we are stronger' },
+    { file: 'image 54.jpg', quote: 'Miracle in progress' },
+    { file: 'image 55.jpg', quote: 'Unstoppable spirit' },
+    { file: 'image 56.jpg', quote: 'Hope is our superpower' },
+    { file: 'image 57.jpg', quote: 'Living life to the fullest' },
+    { file: 'image 58.jpg', quote: 'Powered by love' },
+    { file: 'image 59.jpg', quote: 'Breaking barriers daily' },
+    { file: 'image 60.jpg', quote: 'Our hero, our inspiration' },
+    { file: 'image 61.jpg', quote: 'Fierce determination' },
+    { file: 'image 62.jpg', quote: 'Spreading awareness, sharing hope' },
+    { file: 'image 63.jpg', quote: 'Celebrating every milestone' },
+    { file: 'image 64.jpg', quote: 'Warrior with a beautiful soul' },
+    { file: 'image 65.jpg', quote: 'Fighting for tomorrow' },
+    { file: 'image 66.jpg', quote: 'Family united by love' },
+    { file: 'image 67.jpg', quote: 'Stronger together' },
+    { file: 'image 68.jpg', quote: 'Progress over perfection' },
+    { file: 'image 69.jpg', quote: 'Never stop believing' },
+    { file: 'image 70.jpg', quote: 'Creating new possibilities' },
+    { file: 'image 71.jpg', quote: 'Turning hope into action' },
+    { file: 'image 72.jpg', quote: 'Brave beyond measure' },
+    { file: 'image 73.jpg', quote: 'Love conquers all' },
+    { file: 'image 74.jpg', quote: 'Our little fighter' },
+    { file: 'image 75.jpg', quote: 'Rewriting the story' },
+    { file: 'image 76.jpg', quote: 'Stronger than yesterday' },
+    { file: 'image 77.jpg', quote: 'Hope in every heartbeat' },
+    { file: 'image 78.jpg', quote: 'Courage runs in the family' },
+    { file: 'image 79.jpg', quote: 'Making every day count' },
+    { file: 'image 80.jpg', quote: 'Defying expectations' },
+    { file: 'image 81.jpg', quote: 'Powered by determination' },
+    { file: 'image 82.jpg', quote: 'Our journey, our hope' },
+    { file: 'image 83.jpg', quote: 'Fighting for a cure' },
+    { file: 'image 84.jpg', quote: 'Believing in miracles' },
+    { file: 'image 85.jpg', quote: 'Together toward a cure' },
+    { file: 'image 86.jpg', quote: 'Our greatest blessing' },
+    { file: 'image 87.jpg', quote: 'Hope never fades' }
 ];
 
 let currentLightboxIndex = 0;
@@ -516,20 +553,30 @@ function initGallery() {
     if (!galleryGrid) return;
 
     // Populate gallery grid with all images
-    galleryImages.forEach((filename, index) => {
+    galleryImages.forEach((imageData, index) => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
         item.onclick = () => openLightbox(index);
         
         const img = document.createElement('img');
-        img.src = `images/${filename}`;
-        img.alt = `CDKL5 Family ${index + 1}`;
+        img.src = `images/${imageData.file}`;
+        img.alt = imageData.quote;
         img.loading = 'lazy'; // Lazy load for performance
+        
+        // Add error handling for missing images
+        img.onerror = function() {
+            console.warn(`Image not found: ${imageData.file}`);
+            this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23ddd" width="400" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
+        };
         
         const overlay = document.createElement('div');
         overlay.className = 'gallery-item-overlay';
-        overlay.textContent = `Family ${index + 1}`;
         
+        const quoteText = document.createElement('p');
+        quoteText.className = 'gallery-quote';
+        quoteText.textContent = `"${imageData.quote}"`;
+        
+        overlay.appendChild(quoteText);
         item.appendChild(img);
         item.appendChild(overlay);
         galleryGrid.appendChild(item);
@@ -562,9 +609,10 @@ function openLightbox(index) {
     const counter = document.getElementById('lightboxCounter');
     
     if (lightbox && lightboxImage) {
-        lightboxImage.src = `images/${galleryImages[index]}`;
-        lightboxImage.alt = `CDKL5 Family ${index + 1}`;
-        counter.textContent = `${index + 1} / ${galleryImages.length}`;
+        const imageData = galleryImages[index];
+        lightboxImage.src = `images/${imageData.file}`;
+        lightboxImage.alt = imageData.quote;
+        counter.textContent = `${index + 1} / ${galleryImages.length} - "${imageData.quote}"`;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
