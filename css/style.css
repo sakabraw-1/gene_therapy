@@ -3718,4 +3718,442 @@ section[id] {
     }
 }
 
+/* ========================================
+   COMMUNITY EVENTS PAGE STYLES
+   ======================================== */
+
+.community-events-page main {
+    padding-top: 6rem;
+}
+
+/* Hero Section */
+.community-events-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 1.5rem;
+    text-align: center;
+}
+
+.community-events-hero .page-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.community-events-hero .page-description {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    opacity: 0.95;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-cta .btn-primary {
+    background: white;
+    color: #764ba2;
+}
+
+.hero-cta .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.hero-cta .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.hero-cta .btn-secondary:hover {
+    background: white;
+    color: #764ba2;
+    text-decoration: none;
+}
+
+/* Section Styling */
+.section-heading {
+    font-size: 2.5rem;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    color: #555;
+}
+
+/* Community Events Grid */
+.community-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.community-event-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.community-event-card:hover {
+    border-color: #9C27B0;
+    box-shadow: 0 15px 40px rgba(156, 39, 176, 0.15);
+    transform: translateY(-5px);
+}
+
+.event-organizer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.event-organizer-badge svg {
+    width: 16px;
+    height: 16px;
+}
+
+.community-event-card .event-title {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.community-event-card .event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.community-event-card .event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.community-event-card .event-meta-item svg {
+    flex-shrink: 0;
+    color: #9C27B0;
+}
+
+.community-event-card .event-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.community-event-card .event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #E0E0E0;
+}
+
+.community-event-card .btn-event {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.community-event-card .btn-event:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    text-decoration: none;
+}
+
+.community-event-card .event-type {
+    font-size: 0.85rem;
+    color: #9C27B0;
+    font-weight: 600;
+    background: rgba(156, 39, 176, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+}
+
+/* No Events Message */
+.no-events-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: var(--border-radius);
+    border: 2px dashed rgba(156, 39, 176, 0.3);
+}
+
+.no-events-message svg {
+    margin: 0 auto 1.5rem;
+}
+
+.no-events-message h3 {
+    font-size: 1.75rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.no-events-message p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Event CTA Section */
+.event-cta-section {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 4rem 1.5rem;
+}
+
+.event-cta-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.event-cta-card h2 {
+    font-size: 2.25rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.event-cta-card p {
+    font-size: 1.15rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.15rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+/* Past Events Grid */
+.past-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.past-event-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    border-left: 5px solid #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.past-event-card:hover {
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.15);
+    transform: translateY(-3px);
+}
+
+.past-event-success {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.success-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.success-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.past-event-info h3 {
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.past-event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.past-event-meta span {
+    font-size: 0.85rem;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+}
+
+.past-event-info p {
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Event Ideas Section */
+.event-ideas-section {
+    background: #F5F5F5;
+}
+
+.idea-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.idea-item {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.idea-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.idea-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.idea-item h3 {
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.idea-item p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .community-events-hero .page-title {
+        font-size: 2rem;
+    }
+
+    .community-events-hero .page-description {
+        font-size: 1.05rem;
+    }
+
+    .community-events-grid,
+    .past-events-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .event-cta-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .event-cta-card h2 {
+        font-size: 1.75rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn-large {
+        width: 100%;
+    }
+
+    .idea-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .community-event-card .event-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .community-event-card .event-type {
+        text-align: center;
+    }
+}
+
 
