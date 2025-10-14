@@ -2049,6 +2049,42 @@ section[id] {
     line-height: 1.6;
 }
 
+/* Other Events Section on Plan Event Page */
+.other-events-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 3rem 1.5rem;
+}
+
+.other-events-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.other-events-card h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.other-events-card p {
+    font-size: 1.15rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.other-events-card .btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.15rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
 /* Responsive Plan Event Page */
 @media (max-width: 900px) {
     .event-form-section .page-title {
