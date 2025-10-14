@@ -487,6 +487,22 @@
         initDonationPage();
         checkForCompletedDonation();
         initGallery();
+
+        // Footer Awareness Image Auto-Rotate (every 24 hours)
+        const footerImg = document.getElementById('footer-awareness-img');
+        if (footerImg && window.galleryImages && Array.isArray(window.galleryImages)) {
+            // Use UTC midnight as the change point
+            const now = new Date();
+            const utcMidnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+            // Pick image index based on days since epoch
+            const daysSinceEpoch = Math.floor(utcMidnight / (1000 * 60 * 60 * 24));
+            const imgIndex = daysSinceEpoch % window.galleryImages.length;
+            const imgData = window.galleryImages[imgIndex];
+            if (imgData && imgData.file) {
+                footerImg.src = `images/${imgData.file}`;
+                footerImg.alt = imgData.quote || 'CDKL5 Awareness Child';
+            }
+        }
     });
 }());
 
@@ -495,7 +511,7 @@
 // ========================================
 
 // Array of images with inspirational quotes (using actual image filenames)
-const galleryImages = [
+window.galleryImages = [
     { file: 'image 1.jpg', quote: 'Every smile is a victory' },
     { file: 'image 2.jpg', quote: 'Hope grows stronger every day' },
     { file: 'image 3.jpg', quote: 'Fighting with love and courage' },
