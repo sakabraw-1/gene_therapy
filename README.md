@@ -9,14 +9,16 @@ Help reach $3.5M to fund Phase I/II clinical trials for CDKL5 Deficiency Disorde
 Deployed on Netlify: [Coming Soon]
 
 ## ✨ Features
-- **5 Complete Pages**: Home, About, Get Involved, Parents & Caregivers, Contact
-- **Interactive Carousel**: Auto-rotating gallery of 47 community photos
+- **Multiple Pages**: Home, About, Get Involved, Donate, Parents & Caregivers, Contact, Community Events, Volunteer, Registry
+- **Interactive Carousel**: Auto-rotating gallery of community photos
 - **Real-time Countdown**: Days until Q2 2026 trial launch
-- **Progress Tracking**: Visual $200K/$3.5M fundraising progress bar
+- **Progress Tracking**: Visual fundraising progress bar
 - **Responsive Design**: Mobile-first, accessible (WCAG-compliant)
-- **Donation Integration**: Square & PayPal buttons throughout
-- **Email Signups**: Formspree-powered newsletter subscription
+- **Donation Integration**: Square, PayPal, and Zelle payment options
+- **Email Signups**: Netlify Forms-powered newsletter subscription
 - **Scientific Citations**: Linked references to PubMed, Ultragenyx, CDKL5.com
+- **Event Management**: Community event planning and registration
+- **Photo Gallery**: Modal gallery with lightbox viewing
 
 ## 🛠️ Tech Stack
 - **HTML5** - Semantic markup
@@ -24,21 +26,28 @@ Deployed on Netlify: [Coming Soon]
 - **Vanilla JavaScript** - No frameworks
 - **Google Fonts** - Open Sans
 - **Google Analytics** - Metrics tracking (placeholder)
-- **Netlify** - Free hosting & deployment
+- **Netlify** - Free hosting & deployment with forms
 
 ## 📁 Structure
 ```
 /
-├── index.html              # Home page with hero & carousel
-├── about.html              # Team (18 members) & preclinical data
-├── get-involved.html       # Donation, events, volunteer forms
-├── parents-caregivers.html # Resources & Centers of Excellence
-├── contact.html            # Contact form & legal disclaimers
+├── index.html              # Home page with hero, carousel & progress
+├── about.html              # Team & preclinical data
+├── get-involved.html       # Ways to help & volunteer
+├── donate.html             # Donation options (Square, PayPal, Zelle)
+├── parents-caregivers.html # Resources & support
+├── contact.html            # Contact form
+├── community-events.html   # Event listings
+├── volunteer.html          # Volunteer opportunities
+├── registry.html           # Patient registry
+├── plan-event.html         # Event planning tools
+├── event-details.html      # Specific event info
 ├── css/
 │   └── style.css          # Shared styles
 ├── js/
-│   └── script.js          # Carousel, countdown, progress bar
-├── images/                 # 47 community photos
+│   └── script.js          # Interactions & animations
+├── images/                 # Community photos
+├── docs/                   # Documentation & guides
 ├── netlify.toml           # Deployment config
 └── README.md
 ```

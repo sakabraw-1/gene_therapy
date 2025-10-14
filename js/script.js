@@ -89,18 +89,6 @@
         setInterval(updateCountdown, 60000);
     }
 
-    function initNavToggle() {
-        const toggle = document.querySelector('[data-nav-toggle]');
-        const links = document.querySelector('[data-nav-links]');
-        if (!toggle || !links) {
-            return;
-        }
-        toggle.addEventListener('click', () => {
-            const isOpen = links.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', String(isOpen));
-        });
-    }
-
     function initFadeIns() {
         const fadeEls = document.querySelectorAll('.fade-in');
         if (!('IntersectionObserver' in window)) {
@@ -480,7 +468,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         initProgressBars();
         initCountdown();
-        initNavToggle();
         initFadeIns();
         initCarousel();
         highlightActiveNav();
