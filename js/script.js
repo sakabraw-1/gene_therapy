@@ -138,7 +138,7 @@
             'image 34.jpg', 'image 35.jpg', 'image 36.jpg', 'image 37.jpg', 'image 38.jpg',
             'image 39.jpg', 'image 40.jpg', 'image 41.jpg', 'image 42.jpg', 'image 43.jpg',
             'image 44.jpg', 'image 45.jpg', 'image 46.jpg', 'image 47.jpg', 'image 48.jpg',
-            'image 49.jpg', 'image 50.jpg', 'image 51.jpg', 'image 52.jpg'
+            'image 49.jpg', 'image 50.jpg', 'image 51.jpg', 'image 52.jpg', 'image 53.jpg'
         ];
 
         const slides = [];
@@ -544,7 +544,9 @@ const galleryImages = [
     { file: 'image 49.jpg', quote: 'Our greatest blessing' },
     { file: 'image 50.jpg', quote: 'Hope never fades' },
     { file: 'image 51.jpg', quote: 'Shining bright through challenges' },
-    { file: 'image 52.jpg', quote: 'A heart full of courage' }
+    { file: 'image 52.jpg', quote: 'A heart full of courage' },
+    { file: 'image 53.jpg', quote: 'Strength in every moment' },
+    { file: 'image 53.jpg', quote: 'Strength in every moment' }
 ];
 
 let currentLightboxIndex = 0;

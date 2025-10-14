@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDKL5 Children Grid Demo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .child-grid-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin: 40px auto;
+      max-width: 1100px;
+      padding: 0 16px;
+    }
+    .child-card-demo {
+      background: #f7f6fd;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(102,126,234,0.08);
+      text-align: center;
+      padding: 24px 12px 18px 12px;
+      transition: box-shadow 0.2s;
+    }
+    .child-card-demo:hover {
+      box-shadow: 0 4px 16px rgba(102,126,234,0.18);
+    }
+    .child-card-demo img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      background: #e0e7ff;
+      border: 3px solid #667eea;
+    }
+    .child-card-demo h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.15rem;
+      color: #5e35b1;
+    }
+    .child-card-demo p {
+      margin: 0 0 8px 0;
+      font-size: 0.98rem;
+      color: #333;
+    }
+    .awareness-fact-demo {
+      display: block;
+      font-size: 0.92rem;
+      color: #764ba2;
+      background: #ede7f6;
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin: 0 auto;
+      max-width: 90%;
+    }
+    @media (max-width: 600px) {
+      .child-card-demo img {
+        width: 90px;
+        height: 90px;
+      }
+      .child-card-demo {
+        padding: 16px 6px 12px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; margin-top:32px; color:#667eea;">CDKL5 Children Grid Demo</h1>
+  <p style="text-align:center; color:#444; margin-bottom:24px;">A simple, parent-friendly way to showcase many children with quick facts.<br>Just add a photo, name, age, and a short awareness message!</p>
+
+  <div class="child-grid-demo">
+    <div class="child-card-demo">
+      <img src="images/image_12.jpg" alt="Emily, Age 5">
+      <h3>Emily, 5</h3>
+      <p>Loves painting and music.</p>
+      <span class="awareness-fact-demo">Did you know? CDKL5 affects 1 in 40,000 children.</span>
+    </div>
+    <div class="child-card-demo">
+      <img src="images/image_13.jpg" alt="Aiden, Age 7">
+      <h3>Aiden, 7</h3>
+      <p>Enjoys listening to stories.</p>
+      <span class="awareness-fact-demo">CDKL5 can cause seizures and developmental delays.</span>
+    </div>
+    <div class="child-card-demo">
+      <img src="images/image_14.jpg" alt="Sofia, Age 4">
+      <h3>Sofia, 4</h3>
+      <p>Smiles brighten every room.</p>
+      <span class="awareness-fact-demo">Early diagnosis helps families get support.</span>
+    </div>
+    <div class="child-card-demo">
+      <img src="images/image_15.jpg" alt="Liam, Age 6">
+      <h3>Liam, 6</h3>
+      <p>Loves animals and cartoons.</p>
+      <span class="awareness-fact-demo">CDKL5 is a rare genetic disorder.</span>
+    </div>
+    <!-- Add more child cards as needed -->
+  </div>
+
+  <p style="text-align:center; margin:40px 0 20px 0; color:#555; font-size:1rem;">To add a new child, just copy a card and change the image, name, age, and fact.<br>No long stories needed—easy for parents to update!</p>
+
+</body>
+</html>
