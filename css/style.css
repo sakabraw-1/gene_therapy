@@ -118,6 +118,10 @@ header {
     box-shadow: 0 2px 8px rgba(255, 102, 0, 0.3);
 }
 
+.nav-donate-item {
+    margin-left: auto;
+}
+
 .nav-donate:hover,
 .nav-donate:focus {
     background: #e55a00;
