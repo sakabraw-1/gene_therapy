@@ -1,50 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Help accelerate CDKL5 AAV9 gene therapy toward first-in-human trials. Donate, volunteer, and learn how gene therapy restores CDKL5 protein and hope for families.">
-    <title>CDKL5 Gene Therapy | Hope Through Science</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);} // minimal GA placeholder
-        gtag('js', new Date());
-        gtag('config', 'UA-XXXXXXX-X');
-    </script>
-</head>
-<body>
-    <header>
-        <nav class="navbar container" aria-label="Main navigation">
-            <a href="index.html" class="logo" aria-label="CDKL5 Gene Therapy home">
-                <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
-                    <defs>
-                        <linearGradient id="helixGradient" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#303F9F" />
-                            <stop offset="100%" stop-color="#E57373" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M16 8c16 0 16 48 32 48" stroke="url(#helixGradient)" stroke-width="6" fill="none" stroke-linecap="round" />
-                    <path d="M48 8c-16 0-16 48-32 48" stroke="#FFB6A2" stroke-width="6" fill="none" stroke-linecap="round" />
-                    <circle cx="16" cy="8" r="4" fill="#303F9F" />
-                    <circle cx="48" cy="56" r="4" fill="#E57373" />
-                </svg>
-                <span>CDKL5 Gene Therapy</span>
-            </a>
-            <button class="nav-toggle" type="button" data-nav-toggle aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">☰</button>
-            <ul class="nav-links" id="primary-navigation" data-nav-links>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="get-involved.html">Get Involved</a></li>
-                <li><a href="parents-caregivers.html">Parents &amp; Caregivers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="donate.html" class="nav-donate">Donate</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Donate</h3>
+                    <p>Every contribution advances manufacturing runs and safety studies.</p>
+                    <a class="btn btn-primary" href="https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr" target="_blank" rel="noopener">Donate with Square</a>
+                    <a class="btn btn-secondary" href="https://www.paypal.com/us/fundraiser/charity/3700987" target="_blank" rel="noopener">Donate with PayPal</a>
+                </div>
+                <div>
+                    <h3>Stay connected</h3>
+                    <form name="newsletter" method="post" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <p style="display: none;">
+                            <label>Don't fill this out: <input name="bot-field" /></label>
+                        </p>
+                        <label for="newsletter-first-name">First name</label>
+                        <input id="newsletter-first-name" name="firstName" type="text" autocomplete="given-name" required>
+                        <label for="newsletter-last-name">Last name</label>
+                        <input id="newsletter-last-name" name="lastName" type="text" autocomplete="family-name" required>
+                        <label for="newsletter-email">Email</label>
+                        <input id="newsletter-email" name="email" type="email" autocomplete="email" required>
+                        <label>
+                            <input type="checkbox" name="isParentCaregiver" value="yes">
+                            I am a CDKL5 parent/caregiver
+                        </label>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
+                </div>
+                <div>
+                    <h3>Connect with us</h3>
+                    <p>Follow real-time updates from families and clinicians.</p>
+                    <p><a href="https://www.facebook.com/CDKL5foundation/" target="_blank" rel="noopener">Facebook</a></p>
+                    <p><a href="https://www.instagram.com/cdkl5southasia?igsh=eW14bmhjZWI0Y3V2" target="_blank" rel="noopener">Instagram</a></p>
+                    <div class="progress-wrapper" data-progress-bar>
+                        <p><strong data-raised data-raised="200000"></strong> raised of <strong data-goal data-goal="3500000"></strong></p>
+                        <div class="progress-track" aria-hidden="true">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <p class="countdown" data-countdown aria-live="polite">Loading countdown…</p>
+                    </div>
+                </div>
+                <!-- Awareness Image Demo -->
+                <div style="text-align:center; margin-top:18px;">
+                    <img src="images/image 53.jpg" alt="CDKL5 Awareness Child" style="width:90px;height:90px;object-fit:cover;border-radius:14px;box-shadow:0 2px 8px #764ba233;border:2px solid #667eea;background:#ede7f6;">
+                    <div style="margin-top:8px;font-size:0.95rem;color:#764ba2;background:#ede7f6;padding:5px 10px;border-radius:8px;max-width:120px;display:inline-block;">CDKL5 gene therapy brings hope to children and families.</div>
+                </div>
+                <!-- End Awareness Image Demo -->
+            </div>
+            <div class="footer-legal">
+                <p>Privacy Policy: We respect your privacy. | Terms of Use: Standard terms apply. | Medical Disclaimer: This site shares research updates and is not medical advice. Donations support 501(c)(3) led programs.</p>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -65,6 +71,19 @@
                     <p class="countdown" data-countdown aria-live="polite">Loading countdown…</p>
                 </div>
             </section>
+            <!-- CDKL5 Awareness Banner Demo Section -->
+            <section class="cdkl5-awareness-banner" style="display:flex;gap:32px;justify-content:center;align-items:center;margin:32px 0 16px 0;flex-wrap:wrap;background:#ede7f6;padding:18px 0;border-radius:18px;box-shadow:0 2px 8px #764ba233;">
+                <div style="text-align:center;">
+                    <img src="images/image 12.jpg" alt="CDKL5 Awareness Child" style="width:110px;height:110px;object-fit:cover;border-radius:16px;box-shadow:0 2px 8px #764ba233;border:3px solid #667eea;background:#ede7f6;">
+                </div>
+                <div style="text-align:center;">
+                    <img src="images/image 53.jpg" alt="CDKL5 Awareness Child" style="width:110px;height:110px;object-fit:cover;border-radius:16px;box-shadow:0 2px 8px #764ba233;border:3px solid #667eea;background:#ede7f6;">
+                </div>
+                <div style="text-align:center;max-width:320px;">
+                    <div style="font-size:1.08rem;color:#764ba2;background:#fff;padding:10px 18px;border-radius:12px;box-shadow:0 1px 4px #764ba222;display:inline-block;">CDKL5 gene therapy brings hope and progress to children and families worldwide.</div>
+                </div>
+            </section>
+            <!-- End Demo Section -->
             <!-- CDKL5 Awareness Children Images Demo Section -->
             <section class="cdkl5-awareness-images" style="display:flex;gap:32px;justify-content:center;align-items:center;margin:32px 0 16px 0;flex-wrap:wrap;">
                 <div style="text-align:center;">
