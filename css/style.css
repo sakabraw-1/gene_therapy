@@ -130,15 +130,6 @@ header {
     box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
 }
 
-.nav-toggle {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--navy);
-    border-radius: 8px;
-    padding: 0.45rem;
-    color: var(--navy);
-}
-
 .hero {
     display: grid;
     gap: 2rem;
@@ -497,7 +488,6 @@ input:focus,
 textarea:focus,
 select:focus,
 .btn:focus,
-.nav-toggle:focus,
 .carousel-btn:focus,
 .carousel-dot:focus {
     outline: 3px solid rgba(48, 63, 159, 0.35);
@@ -532,10 +522,6 @@ blockquote {
     .navbar {
         flex-wrap: wrap;
         gap: 1rem;
-    }
-
-    .nav-toggle {
-        display: inline-flex;
     }
 
     .nav-links {
