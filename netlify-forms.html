@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Netlify Forms Placeholder</title>
+  <meta name="robots" content="noindex">
+  <style>body{display:none !important}</style>
+</head>
+<body>
+  <!-- This hidden file exists so Netlify will detect the footer-newsletter form at build time.
+       Do not remove unless you change the form name in inc/footer.html. -->
+  <form name="footer-newsletter" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="footer-newsletter">
+    <p style="display:none">
+      <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+    </p>
+    <input name="firstName" type="text" />
+    <input name="lastName" type="text" />
+    <input name="email" type="email" />
+  </form>
+</body>
+</html>

@@ -17,44 +17,7 @@
     </script>
 </head>
 <body>
-    <header>
-        <nav class="navbar container" aria-label="Main navigation">
-            <a href="index.html" class="logo" aria-label="CDKL5 Gene Therapy home">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-                    <!-- DNA Helix Background -->
-                    <path d="M8 12 Q24 8 40 12 Q24 16 8 12 Z" fill="#303F9F" opacity="0.1"/>
-                    <path d="M8 36 Q24 40 40 36 Q24 32 8 36 Z" fill="#E57373" opacity="0.1"/>
-                    
-                    <!-- DNA Strands -->
-                    <path d="M12 10 L12 14 L16 12 L20 14 L24 12 L28 14 L32 12 L36 14 L36 10" 
-                          stroke="#303F9F" stroke-width="2" fill="none"/>
-                    <path d="M12 38 L12 34 L16 36 L20 34 L24 36 L28 34 L32 36 L36 34 L36 38" 
-                          stroke="#E57373" stroke-width="2" fill="none"/>
-                    
-                    <!-- Connecting Bars -->
-                    <rect x="14" y="12" width="2" height="24" fill="#FFB6A2"/>
-                    <rect x="22" y="12" width="2" height="24" fill="#FFB6A2"/>
-                    <rect x="30" y="12" width="2" height="24" fill="#FFB6A2"/>
-                    
-                    <!-- Medical Cross -->
-                    <rect x="18" y="18" width="12" height="3" fill="#303F9F"/>
-                    <rect x="22.5" y="15" width="3" height="18" fill="#303F9F"/>
-                    
-                    <!-- CDKL5 Text -->
-                    <text x="24" y="42" text-anchor="middle" font-size="6" font-family="Arial, sans-serif" font-weight="bold" fill="#303F9F">CDKL5</text>
-                </svg>
-                <span>CDKL5 Gene Therapy</span>
-            </a>
-            <ul class="nav-links" id="primary-navigation" data-nav-links>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="get-involved.html">Get Involved</a></li>
-                <li><a href="parents-caregivers.html">Parents &amp; Caregivers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="donate.html" class="nav-donate">Donate</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div data-include="inc/header.html"></div>
 
     <main class="volunteer-page">
         <!-- Volunteer Form Section -->
@@ -118,7 +81,7 @@
                             </div>
 
                             <div class="form-group radio-group">
-                                <label class="radio-group-label">Are you a CDKL5 syndrome parent or caregiver? <span class="required">*</span></label>
+                                <label class="radio-group-label">Are you a CDKL5 Deficiency Disorder parent or caregiver? <span class="required">*</span></label>
                                 <div class="radio-options">
                                     <label class="radio-label">
                                         <input type="radio" name="isParentCaregiver" value="yes" required>
@@ -139,83 +102,9 @@
         </section>
     </main>
 
-    <!-- Progress Panel -->
-    <section class="progress-panel">
-        <div class="container">
-            <div class="progress-panel-content">
-                <div class="progress-panel-arrow">
-                    <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
-                        <path d="M10 40 Q 40 20, 70 40 T 110 40" stroke="#E57373" stroke-width="3" fill="none" stroke-dasharray="5,5" stroke-linecap="round"/>
-                        <path d="M105 35 L 115 40 L 105 45 Z" fill="#E57373"/>
-                    </svg>
-                </div>
-                <div class="progress-panel-label">
-                    <span>Progress to CDKL5 Gene Therapy!</span>
-                </div>
-                <div class="progress-panel-bar">
-                    <div class="progress-panel-track">
-                        <div class="progress-panel-fill" style="width: 6%"></div>
-                        <div class="progress-panel-indicator"></div>
-                    </div>
-                </div>
-                <div class="progress-panel-amount">
-                    <span class="amount">$200K</span>
-                </div>
-                <div class="progress-panel-cta">
-                    <a href="donate.html" class="btn-take-action">TAKE ACTION</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div data-include="inc/footer.html"></div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3>Donate</h3>
-                    <p>Every contribution advances manufacturing runs and safety studies.</p>
-                    <a class="btn btn-primary" href="donate.html">Donate</a>
-                </div>
-                <div>
-                    <h3>Stay connected</h3>
-                    <form id="newsletter" name="newsletter" method="post" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="newsletter">
-                        <p style="display: none;">
-                            <label>Don't fill this out: <input name="bot-field" /></label>
-                        </p>
-                        <label for="newsletter-first-name">First name</label>
-                        <input id="newsletter-first-name" name="firstName" type="text" autocomplete="given-name" required>
-                        <label for="newsletter-last-name">Last name</label>
-                        <input id="newsletter-last-name" name="lastName" type="text" autocomplete="family-name" required>
-                        <label for="newsletter-email">Email</label>
-                        <input id="newsletter-email" name="email" type="email" autocomplete="email" required>
-                        <label>
-                            <input type="checkbox" name="isParentCaregiver" value="yes">
-                            I am a CDKL5 parent/caregiver
-                        </label>
-                        <button class="btn btn-primary" type="submit">Subscribe</button>
-                    </form>
-                </div>
-                <div>
-                    <h3>Connect with us</h3>
-                    <p>Follow real-time updates from families and clinicians.</p>
-                    <p><a href="https://www.facebook.com/CDKL5foundation/" target="_blank" rel="noopener">Facebook</a></p>
-                    <p><a href="https://www.instagram.com/cdkl5southasia?igsh=eW14bmhjZWI0Y3V2" target="_blank" rel="noopener">Instagram</a></p>
-                    <div class="progress-wrapper" data-progress-bar>
-                        <p><strong data-raised data-raised="200000"></strong> raised of <strong data-goal data-goal="3500000"></strong></p>
-                        <div class="progress-track" aria-hidden="true">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <p class="countdown" data-countdown aria-live="polite">Loading countdown…</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-legal">
-                <p>Privacy Policy: We respect your privacy. | Terms of Use: Standard terms apply. | Medical Disclaimer: This site shares research updates and is not medical advice. Donations support 501(c)(3) led programs.</p>
-            </div>
-        </div>
-    </footer>
-
+    <script src="js/includes-loader.js" defer></script>
     <script src="js/script.js" defer></script>
 </body>
 </html>

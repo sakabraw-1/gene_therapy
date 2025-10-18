@@ -108,6 +108,48 @@
         fadeEls.forEach((el) => observer.observe(el));
     }
 
+    // Initialize fundraising panel inside the shared footer if present
+    function initFooterFundraising() {
+        try {
+            const footer = document.querySelector('footer');
+            if (!footer) return;
+
+            // Find our fundraising panel elements
+            const fundPanel = footer.querySelector('.fundraising-panel');
+            const fundAmountEl = footer.querySelector('.fundraising-amount');
+            const fundBar = footer.querySelector('.fundraising-bar');
+            const fundCountdown = footer.querySelector('.fundraising-countdown');
+
+            if (!fundPanel || !fundAmountEl || !fundBar) return;
+
+            const current = getCurrentRaisedAmount();
+            const goal = GOAL_AMOUNT;
+            const pct = Math.min(100, Math.max(0, (current / goal) * 100));
+
+            // Format and set text
+            fundAmountEl.innerHTML = `<strong>${formatCurrency(current)}</strong> raised of <strong>${formatCurrency(goal)}</strong>`;
+            fundBar.style.transition = 'width 1s ease-out';
+            fundBar.style.width = `${pct.toFixed(2)}%`;
+
+            // If there's a fundraising countdown element, reuse the same TRIAL_DATE logic
+            if (fundCountdown) {
+                const now = new Date();
+                const diff = TRIAL_DATE.getTime() - now.getTime();
+                if (diff <= 0) {
+                    fundCountdown.textContent = 'Clinical trial window is now opening.';
+                } else {
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                    fundCountdown.textContent = `${days} days, ${hours} hours, ${minutes} minutes`;
+                }
+            }
+        } catch (e) {
+            // non-fatal
+            console.warn('initFooterFundraising error', e);
+        }
+    }
+
     function buildCarouselSlides(container) {
         const track = container.querySelector('.carousel-track');
         const dotsContainer = container.querySelector('.carousel-dots');
@@ -474,6 +516,8 @@
         initDonationPage();
         checkForCompletedDonation();
         initGallery();
+        // Initialize footer fundraising if the include is already present
+        initFooterFundraising();
 
         // Footer Awareness Image Auto-Rotate (every 24 hours)
         const footerImg = document.getElementById('footer-awareness-img');
@@ -490,6 +534,13 @@
                 footerImg.alt = imgData.quote || 'CDKL5 Awareness Child';
             }
         }
+    });
+
+    // Also initialize footer fundraising after includes are loaded (includes-loader dispatches this event)
+    document.addEventListener('includes:loaded', () => {
+        initProgressBars();
+        initFooterFundraising();
+        initCountdown();
     });
 }());
 

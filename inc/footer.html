@@ -1,0 +1,130 @@
+<footer>
+    <!-- Shared progress strip (appears above footer content on every page) -->
+    <div class="progress-panel" aria-hidden="true">
+        <div class="container">
+            <div class="progress-panel-content">
+                <div class="progress-panel-arrow">
+                    <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                        <path d="M10 30 Q 40 10, 70 30 T 110 30" stroke="#E57373" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M105 25 L 115 30 L 105 35" fill="#E57373"/>
+                    </svg>
+                </div>
+                <div class="progress-panel-label">
+                    <span>Progress to CDKL5 Gene Therapy!</span>
+                </div>
+                <div class="progress-panel-bar">
+                    <div class="progress-panel-track">
+                        <div class="progress-panel-fill" style="width: 6%"></div>
+                        <div class="progress-panel-indicator"></div>
+                    </div>
+                </div>
+                <div class="progress-panel-amount">
+                    <span class="amount">$200K</span>
+                </div>
+                <div class="progress-panel-cta">
+                    <a href="donate.html" class="btn-take-action">TAKE ACTION</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Column 1: Donate -->
+            <div>
+                <h3>Donate</h3>
+                <p>Support our work — every donation accelerates research and trials.</p>
+                <a class="btn btn-primary btn-donate-pill" href="donate.html">Donate</a>
+            </div>
+
+            <!-- Column 2: Stay connected form -->
+            <div class="footer-newsletter-col">
+                <h3>Stay connected</h3>
+                <!-- Netlify newsletter form: posts to Netlify Forms. Honeypot field name: bot-field -->
+                <form id="footer-newsletter" name="footer-newsletter" method="post" data-netlify="true" netlify-honeypot="bot-field" aria-label="Subscribe to updates">
+                    <input type="hidden" name="form-name" value="footer-newsletter">
+                    <!-- Honeypot for spam bots -->
+                    <p style="display:none">
+                        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+
+                    <div class="form-row form-row-inline">
+                        <label for="footer-first">First name</label>
+                        <input id="footer-first" name="firstName" type="text" placeholder="First name">
+                    </div>
+
+                    <div class="form-row form-row-inline">
+                        <label for="footer-last">Last name</label>
+                        <input id="footer-last" name="lastName" type="text" placeholder="Last name">
+                    </div>
+
+                    <div class="form-row form-row-inline">
+                        <label for="footer-email">Email</label>
+                        <input id="footer-email" name="email" type="email" placeholder="Email" required aria-required="true">
+                    </div>
+
+                    <div class="form-row">
+                            <label class="checkbox-label"><input type="checkbox" id="footer-is-parent" name="isParentCaregiver" value="yes"> I am a CDKL5 parent/caregiver</label>
+                    </div>
+
+                    <div class="form-row">
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                <p id="footer-newsletter-success" class="form-hint" style="display:none">Thanks — you're subscribed! Check your inbox to confirm.</p>
+            </div>
+
+            <!-- Column 3: Fundraising goal + CTA -->
+            <div>
+                <h3>Fundraising goal</h3>
+                <div class="fundraising-panel">
+                    <div class="fundraising-amount"><strong>$200,000</strong> raised of <strong>$3,500,000</strong></div>
+                    <div class="fundraising-track" aria-hidden="true">
+                        <div class="fundraising-bar" style="width:6%;"></div>
+                    </div>
+                    <p class="fundraising-countdown">255 days, 12 hours, 4 minutes</p>
+                    <a class="btn btn-secondary" href="get-involved.html">Take action</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <p>Privacy Policy: We respect your privacy. | Terms of Use: Standard terms apply. | Medical Disclaimer: This site shares research updates and is not medical advice. Donations support 501(c)(3) led programs.</p>
+        </div>
+    </div>
+</footer>
+<script>
+// Footer newsletter: AJAX POST to the current page so Netlify (once the site is deployed)
+// records the submission. Shows a friendly success message on completion.
+;(function(){
+    function serializeForm(form){
+        var pairs = [];
+        var fm = new FormData(form);
+        for(var pair of fm.entries()){
+            pairs.push(encodeURIComponent(pair[0]) + '=' + encodeURIComponent(pair[1]));
+        }
+        return pairs.join('&');
+    }
+
+    document.addEventListener('submit', function(e){
+        var form = e.target;
+        if(!form || form.id !== 'footer-newsletter') return;
+        e.preventDefault();
+        var body = serializeForm(form);
+        // POST to the page's path — Netlify will accept submissions for registered forms
+        fetch(window.location.pathname || '/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: body
+        }).then(function(resp){
+            if(!resp.ok) throw new Error('Network response was not ok');
+            form.style.display = 'none';
+            var msg = document.getElementById('footer-newsletter-success');
+            if(msg) msg.style.display = 'block';
+        }).catch(function(){
+            // Fallback to normal submit if AJAX fails
+            form.submit();
+        });
+    }, false);
+})();
+</script>

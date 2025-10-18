@@ -84,6 +84,26 @@ header {
     height: 40px;
 }
 
+/* Stacked site title: top line (acronym) and bottom line (descriptor) */
+.site-name {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.site-name-top {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--navy);
+}
+
+.site-name-bottom {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--navy);
+    text-transform: none;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -163,14 +183,15 @@ header {
     box-shadow: var(--shadow-soft);
 }
 
-.btn-primary {
-    background: var(--navy);
-    color: var(--white);
+/* Make all primary action buttons orange pill by default */
+.btn-primary, .btn {
+    background: #ff6600 !important;
+    color: white !important;
 }
 
 .btn-secondary {
-    background: var(--peach);
-    color: var(--black);
+    background: #ff6600 !important;
+    color: white !important;
 }
 
 .btn-donate-hero {
@@ -199,6 +220,72 @@ header {
 .btn:focus {
     filter: brightness(1.05);
     transform: translateY(-2px);
+}
+
+/* Hero CTA: make the two buttons stacked and visually identical */
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* center on narrow screens for a balanced look */
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.hero-cta .btn {
+    /* Match visual style for both CTAs inside hero-cta */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    padding: 0.95rem 2.25rem;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: none;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition);
+    background: var(--navy) !important;
+    color: var(--white) !important;
+    border: none !important;
+}
+
+.hero-cta .btn:hover,
+.hero-cta .btn:focus {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 8px 22px rgba(48, 63, 159, 0.18);
+}
+
+/* Orange pill variant for hero CTA that mirrors the nav donate style */
+.hero-cta .btn-donate-pill {
+    background: #ff6600 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.35);
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+}
+
+.hero-cta .btn-donate-pill:hover,
+.hero-cta .btn-donate-pill:focus {
+    background: #e55a00 !important;
+    box-shadow: 0 6px 20px rgba(229, 90, 0, 0.45);
+    transform: translateY(-2px);
+}
+
+@media (min-width: 900px) {
+    /* On wider screens place CTAs side-by-side and center them */
+    .hero-cta {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* slightly reduce min-width so two buttons fit nicely side-by-side */
+    .hero-cta .btn {
+        min-width: 160px;
+    }
 }
 
 .section {
@@ -444,13 +531,161 @@ header {
 footer {
     background: var(--navy);
     color: var(--white);
-    padding: 3rem 1.5rem 2rem;
+    /* tighter vertical padding to remove large gaps shown in the design */
+    padding: 0.75rem 1rem 0.75rem;
 }
 
 .footer-grid {
     display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* allocate more space to the middle 'Stay connected' column so the newsletter form has room */
+    gap: 1rem;
+    grid-template-columns: 1fr 420px 360px;
+    /* make column content align to top for consistent rows */
+    align-items: start;
+}
+
+/* Footer newsletter form adjustments: labels above inputs and inputs aligned to right column visual */
+.footer-grid form {
+    display: block;
+}
+
+.footer-grid .form-row {
+    margin-bottom: 1rem;
+}
+
+.footer-grid label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.footer-grid input[type="text"],
+.footer-grid input[type="email"] {
+    display: inline-block;
+    width: 220px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    border: none;
+    margin-left: 1rem;
+    background: white;
+    color: #222;
+}
+
+.footer-grid .checkbox-label {
+    color: var(--white);
+}
+
+.footer-grid .form-hint {
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Newsletter column layout: center the form block and align fields neatly */
+.footer-newsletter-col {
+    display: flex;
+    justify-content: center; /* center the form under the column heading */
+}
+
+.footer-newsletter-col form {
+    width: 360px; /* use the extra middle column space */
+    max-width: 100%;
+    display: block;
+}
+
+.footer-newsletter-col .form-row label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.4rem;
+}
+
+.footer-newsletter-col input[type="text"],
+.footer-newsletter-col input[type="email"] {
+    width: 100%;
+    margin-left: 0; /* remove left indent */
+}
+
+/* Inline rows: label and input on same line */
+.form-row.form-row-inline {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    column-gap: 12px;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.form-row.form-row-inline label {
+    text-align: right;
+    padding-right: 8px;
+    color: var(--white);
+}
+
+.form-row.form-row-inline input[type="text"],
+.form-row.form-row-inline input[type="email"] {
+    width: 100%;
+}
+
+/* Three-column row for footer fields */
+.form-row.form-row-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+}
+
+.form-row.form-row-three .field label {
+    display: block;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+}
+
+.form-row.form-row-three .field input {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .form-row.form-row-three {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-newsletter-col form {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+.footer-newsletter-col .checkbox-label {
+    margin-top: 0.5rem;
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--white);
+}
+
+/* Keep checkbox label text on a single line and prevent wrapping */
+.footer-newsletter-col .checkbox-label {
+    white-space: nowrap;
+}
+
+.footer-newsletter-col .btn {
+    width: 160px; /* keep button a compact pill */
+    margin: 0.75rem auto 0; /* center under the inputs */
+}
+
+.footer-newsletter-col .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.footer-newsletter-col .form-row:last-of-type {
+    margin-top: 0.5rem;
+}
+
+.footer-newsletter-col .btn {
+    width: 100%;
+    margin-top: 0.75rem;
 }
 
 .footer-grid a {
@@ -458,9 +693,10 @@ footer {
 }
 
 .footer-legal {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    /* soften the divider and reduce spacing */
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
     font-size: 0.85rem;
 }
 
@@ -492,6 +728,109 @@ select:focus,
 .carousel-dot:focus {
     outline: 3px solid rgba(48, 63, 159, 0.35);
     outline-offset: 2px;
+}
+
+/* Footer-specific tweaks */
+.footer-grid .form-row {
+    margin-bottom: 0.25rem;
+}
+.footer-grid > div:nth-child(2) {
+    /* center the newsletter column visually and reduce excess vertical spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-grid > div:nth-child(2) form {
+    width: 100%;
+    max-width: 280px; /* compact column to feel connected */
+    margin: 0; /* no extra gap */
+}
+.footer-grid > div:nth-child(2) .form-row label {
+    display:block;
+    margin-bottom: 0.25rem;
+    color: rgba(255,255,255,0.9);
+}
+.footer-grid > div:nth-child(2) input[type="text"],
+.footer-grid > div:nth-child(2) input[type="email"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+.footer-grid > div:nth-child(2) .form-hint {
+    margin-top: 0.25rem;
+    opacity: 0.9;
+}
+.form-hint {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.95);
+    margin-top: 0.25rem;
+    font-weight: 600;
+}
+
+/* Make sure hidden newsletter success message doesn't reserve space */
+#footer-newsletter-success {
+    display: none; /* default hidden */
+    margin: 0;
+    padding: 0;
+}
+
+#footer-newsletter-success[aria-hidden="false"],
+#footer-newsletter-success.show {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.fundraising-panel {
+    background: rgba(255,255,255,0.04);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+.fundraising-amount {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+.fundraising-track {
+    background: rgba(255,255,255,0.06);
+    height: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+.fundraising-bar {
+    background: linear-gradient(90deg,var(--peach),var(--red));
+    height: 100%;
+    width: 0%;
+}
+.fundraising-countdown {
+    font-weight: 700;
+    margin: 0.5rem 0 1rem;
+}
+
+/* Button sizing in footer to match screenshot */
+.btn-donate-pill {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border-radius: 30px;
+}
+.footer-grid .btn {
+    min-width: 160px;
+}
+
+@media (max-width: 720px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-grid .btn { min-width: auto; width: 100%; }
 }
 
 .badge {
@@ -559,7 +898,8 @@ blockquote {
                 url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"%3E%3Cfilter id="noise"%3E%3CfeTurbulence baseFrequency="0.9" numOctaves="4"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E');
     background-size: cover;
     background-position: center;
-    padding: 4rem 0 3rem;
+    /* reduced vertical padding to tighten layout */
+    padding: 2.5rem 0 2rem;
     text-align: center;
     color: white;
     position: relative;
@@ -597,11 +937,14 @@ blockquote {
 
 .donate-form-wrapper {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    /* make the left form column larger so the form card isn't narrow */
+    grid-template-columns: 2fr 1fr;
     gap: 2rem;
-    margin: -2rem auto 3rem;
+    margin: -0.75rem auto 2rem;
     max-width: 1200px;
+    width: calc(100% - 2rem);
     position: relative;
+    align-items: start; /* ensure columns align at top */
 }
 
 .donate-form-card {
@@ -609,6 +952,13 @@ blockquote {
     border-radius: 12px;
     padding: 2.5rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* allow the donate card to stretch and not be constrained by internal content */
+.donate-form-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 .donate-steps {
@@ -800,6 +1150,28 @@ blockquote {
     border-color: var(--navy);
 }
 
+/* On desktop keep the primary payment buttons inline to avoid a tall, narrow column */
+@media (min-width: 900px) {
+    .payment-buttons {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .payment-buttons .btn-give {
+        flex: 1 1 auto;
+    }
+}
+
+/* Ensure embedded widgets or iframes inside the donate card can expand to the available width */
+.donate-form-card iframe,
+.donate-form-card .widget,
+.donate-form-card embed,
+.donate-form-card object {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+}
+
 .donation-info {
     border-top: 1px solid #E0E0E0;
     padding-top: 1.5rem;
@@ -860,6 +1232,20 @@ blockquote {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+/* make right column cards stretch to match height of left form on desktop */
+@media (min-width: 900px) {
+    .donation-impact {
+        align-items: stretch;
+    }
+
+    .donation-impact .impact-card {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 }
 
 .impact-card {
@@ -987,14 +1373,14 @@ blockquote {
 /* ====== Progress Panel (Bottom Bar) ====== */
 .progress-panel {
     background: linear-gradient(135deg, #283e7a 0%, #1a2850 100%);
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     margin-top: 0;
 }
 
 .progress-panel-content {
     display: grid;
     grid-template-columns: auto auto 1fr auto auto;
-    gap: 2rem;
+    gap: 1.25rem;
     align-items: center;
 }
 
