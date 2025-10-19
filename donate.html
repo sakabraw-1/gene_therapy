@@ -34,6 +34,14 @@
         <div class="container">
             <div class="donate-form-wrapper">
                 <div class="donate-form-card">
+                    <form name="donation-form" method="post" data-netlify="true" netlify-honeypot="bot-field" class="donation-form">
+                        <input type="hidden" name="form-name" value="donation-form">
+                        <p style="display:none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        <!-- store chosen amount and frequency for form submission -->
+                        <input type="hidden" id="donation-amount-hidden" name="amount" value="">
+                        <input type="hidden" id="donation-frequency-hidden" name="frequency" value="one-time">
                     <div class="donate-steps">
                         <span class="step active" aria-current="step">1</span>
                         <span class="step" aria-current="false">2</span>
@@ -96,6 +104,15 @@
 
                     <!-- Step 3: Payment & Review -->
                     <div data-step="3" style="display:none;">
+                        <div class="form-group">
+                            <label>Payment method</label>
+                            <div class="radio-options">
+                                <label class="radio-label"><input type="radio" name="paymentMethod" value="credit_card" checked> Credit Card</label>
+                                <label class="radio-label"><input type="radio" name="paymentMethod" value="paypal"> PayPal</label>
+                                <label class="radio-label"><input type="radio" name="paymentMethod" value="zelle"> Zelle</label>
+                            </div>
+                        </div>
+
                         <div class="payment-buttons">
                             <a href="https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr" target="_blank" rel="noopener" class="btn-give btn-give-primary">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -130,6 +147,8 @@
                             <button class="btn btn-back">Back</button>
                         </div>
                     </div>
+
+                    </form>
 
                     <!-- 'Other Ways to Give' moved to the right column (donation-impact) to align with the donation overview -->
                 </div>

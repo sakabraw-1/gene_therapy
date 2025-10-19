@@ -347,6 +347,9 @@
                 selectedAmount = parseInt(button.dataset.amount) || 0;
                 console.log('Amount button clicked:', selectedAmount);
                 updatePaymentButtons();
+                // sync hidden field for form
+                const hiddenAmt = document.getElementById('donation-amount-hidden');
+                if (hiddenAmt) hiddenAmt.value = selectedAmount;
             });
         });
 
@@ -358,9 +361,20 @@
                     amountButtons.forEach(btn => btn.classList.remove('active'));
                     selectedAmount = parseInt(customAmountInput.value) || 0;
                     updatePaymentButtons();
+                    const hiddenAmt = document.getElementById('donation-amount-hidden');
+                    if (hiddenAmt) hiddenAmt.value = selectedAmount;
                 }
             });
         }
+
+        // Frequency toggle sync to hidden field
+        const toggleButtonsAll = document.querySelectorAll('.toggle-btn');
+        toggleButtonsAll.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const hiddenFreq = document.getElementById('donation-frequency-hidden');
+                if (hiddenFreq) hiddenFreq.value = btn.dataset.giftType || 'one-time';
+            });
+        });
 
         // Update payment button URLs with selected amount
         function updatePaymentButtons() {
