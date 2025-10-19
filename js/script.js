@@ -488,6 +488,46 @@
         updatePaymentButtons();
     }
 
+    // --- Multi-step donate form controller ---
+    function initDonateStepper() {
+        const steps = Array.from(document.querySelectorAll('.donate-steps .step'));
+        const panels = Array.from(document.querySelectorAll('[data-step]'));
+        if (!steps.length || !panels.length) return;
+
+        let current = 1;
+
+        function setStep(n) {
+            if (n < 1) n = 1;
+            if (n > steps.length) n = steps.length;
+            current = n;
+            steps.forEach((s, idx) => {
+                const active = idx === (n - 1);
+                s.classList.toggle('active', active);
+                s.setAttribute('aria-current', active ? 'step' : 'false');
+            });
+            panels.forEach((p) => {
+                p.style.display = Number(p.dataset.step) === n ? '' : 'none';
+            });
+        }
+
+        // delegation for next/back buttons and clickable dots
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-next')) {
+                e.preventDefault();
+                setStep(current + 1);
+            } else if (e.target.closest('.btn-back')) {
+                e.preventDefault();
+                setStep(current - 1);
+            } else if (e.target.matches('.donate-steps .step')) {
+                const idx = steps.indexOf(e.target);
+                if (idx !== -1) setStep(idx + 1);
+            }
+        });
+
+        // initialize
+        setStep(1);
+    }
+
     // Check for completed donation (when user returns from payment gateway)
     function checkForCompletedDonation() {
         const pendingDonation = localStorage.getItem('pendingDonation');
@@ -536,6 +576,7 @@
         initCarousel();
         highlightActiveNav();
         initDonationPage();
+    initDonateStepper();
         checkForCompletedDonation();
         initGallery();
         // Initialize footer fundraising if the include is already present
@@ -563,6 +604,7 @@
         initProgressBars();
         initFooterFundraising();
         initCountdown();
+        initDonateStepper();
     });
 }());
 
