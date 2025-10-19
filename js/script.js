@@ -520,8 +520,16 @@
                 s.setAttribute('aria-current', active ? 'step' : 'false');
             });
             panels.forEach((p) => {
-                p.style.display = Number(p.dataset.step) === n ? '' : 'none';
+                const isActive = Number(p.dataset.step) === n;
+                p.style.display = isActive ? '' : 'none';
+                // set aria-hidden for accessibility
+                p.setAttribute('aria-hidden', isActive ? 'false' : 'true');
             });
+
+            // update visible indicator for debugging
+            const indicator = document.querySelector('.donate-step-number');
+            if (indicator) indicator.textContent = String(n);
+            console.log('Donate step set to', n);
         }
 
         // delegation for next/back buttons only (dots remain visual)
