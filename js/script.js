@@ -504,47 +504,16 @@
 
     // --- Multi-step donate form controller ---
     function initDonateStepper() {
-        const steps = Array.from(document.querySelectorAll('.donate-steps .step'));
-        const panels = Array.from(document.querySelectorAll('[data-step]'));
-        if (!steps.length || !panels.length) return;
-
-        let current = 1;
-
-        function setStep(n) {
-            if (n < 1) n = 1;
-            if (n > steps.length) n = steps.length;
-            current = n;
-            steps.forEach((s, idx) => {
-                const active = idx === (n - 1);
-                s.classList.toggle('active', active);
-                s.setAttribute('aria-current', active ? 'step' : 'false');
-            });
-            panels.forEach((p) => {
-                const isActive = Number(p.dataset.step) === n;
-                p.style.display = isActive ? '' : 'none';
-                // set aria-hidden for accessibility
-                p.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-            });
-
-            // update visible indicator for debugging
-            const indicator = document.querySelector('.donate-step-number');
-            if (indicator) indicator.textContent = String(n);
-            console.log('Donate step set to', n);
+        // For single-page donate layout we don't use a stepper. Keep this function as a no-op
+        // so older initialization calls won't cause errors.
+        if (document.querySelector('.donate-steps')) {
+            // If someone still has the old step markup, we won't interfere — the original logic
+            // is intentionally conservative and will not run if missing parts are present.
+            console.log('initDonateStepper: donate-steps present but single-page layout expected.');
+        } else {
+            console.log('initDonateStepper: single-page donate layout - stepper disabled');
         }
-
-        // delegation for next/back buttons only (dots remain visual)
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.btn-next')) {
-                e.preventDefault();
-                setStep(current + 1);
-            } else if (e.target.closest('.btn-back')) {
-                e.preventDefault();
-                setStep(current - 1);
-            }
-        });
-
-        // initialize
-        setStep(1);
+        return;
     }
 
     // Check for completed donation (when user returns from payment gateway)
