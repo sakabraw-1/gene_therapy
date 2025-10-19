@@ -510,7 +510,7 @@
             });
         }
 
-        // delegation for next/back buttons and clickable dots
+        // delegation for next/back buttons only (dots remain visual)
         document.addEventListener('click', (e) => {
             if (e.target.closest('.btn-next')) {
                 e.preventDefault();
@@ -518,9 +518,6 @@
             } else if (e.target.closest('.btn-back')) {
                 e.preventDefault();
                 setStep(current - 1);
-            } else if (e.target.matches('.donate-steps .step')) {
-                const idx = steps.indexOf(e.target);
-                if (idx !== -1) setStep(idx + 1);
             }
         });
 
