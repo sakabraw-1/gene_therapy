@@ -5,6 +5,7 @@
     --peach: #ffb6a2;
     --red: #e57373;
     --navy: #303f9f;
+        --purple: #5e35b1;
     --black: #000000;
     --body-font: "Open Sans", "Helvetica Neue", Arial, sans-serif;
     --max-width: 1100px;
@@ -3939,6 +3940,12 @@ section[id] {
     background: none;
     border: none;
     cursor: pointer;
+    /* New volunteer heading styles */
+.volunteer-heading {
+    color: var(--purple);
+    font-weight: 700;
+    font-size: 36px; /* match H2 sizing on the page */
+}
     transition: all 0.3s ease;
     padding: 0;
     width: 40px;
