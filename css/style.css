@@ -288,6 +288,39 @@ header {
     }
 }
 
+/* When a hero-cta has the .stacked modifier, force a vertical stack even on wide screens */
+.hero-cta.stacked {
+    flex-direction: column !important;
+    align-items: center; /* center the stacked buttons in the card */
+}
+
+.hero-cta.stacked .btn-donate-pill {
+    width: 300px; /* widen to better accommodate multi-word label */
+}
+
+.hero-cta.stacked .btn-donate-pill + .btn-donate-pill {
+    margin-top: 0.5rem;
+    opacity: 0.98;
+}
+
+/* Keep hero CTA pill text on a single line and slightly reduce size so long labels fit */
+.hero-cta.stacked .btn-donate-pill,
+.hero-cta .btn-donate-pill {
+    white-space: nowrap;
+    font-size: 0.92rem;
+    padding: 0.65rem 1.9rem;
+    letter-spacing: 0.01em;
+}
+
+/* If the text still overflows, reduce letter-spacing modestly on very small screens */
+@media (max-width: 420px) {
+    .hero-cta.stacked .btn-donate-pill,
+    .hero-cta .btn-donate-pill {
+        font-size: 0.88rem;
+        padding: 0.6rem 1.4rem;
+    }
+}
+
 .section {
     margin-bottom: 4rem;
 }
@@ -296,6 +329,13 @@ header {
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     margin-bottom: 1rem;
     color: var(--navy);
+}
+
+/* Ensure the two card headings match exactly (Take action now and AAV9 card) */
+#cta-heading,
+#boat-heading {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.05;
 }
 
 .section p {
@@ -312,6 +352,38 @@ header {
     padding: 1.75rem;
     background: var(--pink);
     border-radius: var(--border-radius);
+    .hero-content .subhead {
+        font-size: 1.25rem;
+        color: rgba(0,0,0,0.85);
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    .hero-content .supporting {
+        color: rgba(0,0,0,0.7);
+        margin-bottom: 1rem;
+    }
+
+    /* Accent for hero progress title */
+    .progress-wrapper .progress-hero-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        font-size: 1.05rem;
+    }
+    .progress-wrapper .title-accent {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #FF8C00;
+        border-radius: 999px;
+        box-shadow: 0 2px 6px rgba(255,140,0,0.4);
+    }
+    .hero-progress-copy {
+        color: white;
+        margin-top: 0.5rem;
+    }
     box-shadow: var(--shadow-soft);
     transition: transform var(--transition), box-shadow var(--transition);
 }
@@ -1423,7 +1495,7 @@ blockquote {
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(50%, -50%);
+    transform: translate(0, -50%); /* don't push the circle into the amount column */
     width: 50px;
     height: 50px;
     background: #ff6600;
@@ -1434,10 +1506,18 @@ blockquote {
 
 .progress-panel-amount {
     color: white;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 1.25rem; /* slightly larger for emphasis */
+    font-weight: 700; /* bolder emphasis */
     white-space: nowrap;
 }
+
+/* ensure amount is readable and sits to the left of the circular indicator */
+.progress-panel-amount { 
+    position: relative;
+    margin-right: 56px; /* leave space for the circular indicator */
+    z-index: 3; 
+}
+.progress-panel-indicator { z-index: 2; }
 
 .progress-panel-cta {
     margin-left: 1rem;
@@ -1480,8 +1560,9 @@ blockquote {
         font-size: 1rem;
     }
 
+    /* Keep amount consistent with label on narrow screens as well */
     .progress-panel-amount {
-        font-size: 2rem;
+        font-size: 1.1rem;
     }
 
     .progress-panel-cta {
@@ -1495,7 +1576,7 @@ blockquote {
     }
 
     .progress-panel-amount {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 
     .progress-panel-track {

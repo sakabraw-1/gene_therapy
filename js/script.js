@@ -41,14 +41,23 @@
         
         bars.forEach((bar) => {
             const track = bar.querySelector('.progress-bar');
-            const raisedEl = bar.querySelector('[data-raised]');
-            const goalEl = bar.querySelector('[data-goal]');
+            let raisedEl = bar.querySelector('[data-raised]') || bar.querySelector('.hero-progress-copy strong[data-raised]');
+            let goalEl = bar.querySelector('[data-goal]') || bar.querySelector('.hero-progress-copy strong[data-goal]');
+
+            // hero progress wrapper uses a different structure; allow it through
             if (!track || !raisedEl || !goalEl) {
-                return;
+                // still attempt to update a hero-style progress wrapper
+                const heroRaised = bar.querySelector('.hero-progress-copy strong[data-raised]') || bar.querySelector('.hero-progress-copy strong:first-of-type');
+                const heroGoal = bar.querySelector('.hero-progress-copy strong[data-goal]') || bar.querySelector('.hero-progress-copy strong:last-of-type');
+                if (!track || !heroRaised || !heroGoal) return;
+                // Use hero elements as fallbacks if the normal elements aren't present
+                if (!raisedEl) raisedEl = heroRaised;
+                if (!goalEl) goalEl = heroGoal;
             }
             // Always use the current raised amount from localStorage
             const raisedAmount = currentRaised;
-            const goalAmount = Number(goalEl.dataset.goal || GOAL_AMOUNT);
+            // If the goal element carries a data-goal attribute use it, otherwise fall back to the constant
+            const goalAmount = Number((goalEl && goalEl.dataset && goalEl.dataset.goal) ? goalEl.dataset.goal : GOAL_AMOUNT);
             const percentage = Math.min(100, Math.max(0, (raisedAmount / goalAmount) * 100));
             
             // Animate the progress bar
@@ -56,11 +65,24 @@
             track.style.width = `${percentage.toFixed(2)}%`;
             
             // Update the text with animation
-            raisedEl.textContent = formatCurrency(raisedAmount);
-            goalEl.textContent = formatCurrency(goalAmount);
+            // If we have hero-style elements that are plain <strong> tags, set text accordingly
+            try {
+                raisedEl.textContent = formatCurrency(raisedAmount);
+                goalEl.textContent = formatCurrency(goalAmount);
+            } catch (e) {
+                // ignore
+            }
             
             // Update data attributes for consistency
             raisedEl.dataset.raised = raisedAmount.toString();
+            // If the wrapper contains a hero progress copy paragraph, update it as well
+            const heroCopy = bar.querySelector('.hero-progress-copy');
+            if (heroCopy) {
+                const hr = heroCopy.querySelector('strong[data-raised]');
+                const hg = heroCopy.querySelector('strong[data-goal]');
+                if (hr) hr.textContent = formatCurrency(raisedAmount);
+                if (hg) hg.textContent = formatCurrency(goalAmount);
+            }
         });
     }
 
@@ -598,9 +620,7 @@ window.galleryImages = [
     { file: 'image 49.jpg', quote: 'Our greatest blessing' },
     { file: 'image 50.jpg', quote: 'Hope never fades' },
     { file: 'image 51.jpg', quote: 'Shining bright through challenges' },
-    { file: 'image 52.jpg', quote: 'A heart full of courage' },
-    { file: 'image 53.jpg', quote: 'Strength in every moment' },
-    { file: 'image 53.jpg', quote: 'Strength in every moment' }
+    { file: 'image 52.jpg', quote: 'A heart full of courage' }
 ];
 
 let currentLightboxIndex = 0;
@@ -610,35 +630,59 @@ function initGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
     if (!galleryGrid) return;
 
-    // Populate gallery grid with all images
-    galleryImages.forEach((imageData, index) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.onclick = () => openLightbox(index);
-        
-        const img = document.createElement('img');
-        img.src = `images/${imageData.file}`;
-        img.alt = imageData.quote;
-        img.loading = 'lazy'; // Lazy load for performance
-        
-        // Add error handling for missing images
-        img.onerror = function() {
-            console.warn(`Image not found: ${imageData.file}`);
-            this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23ddd" width="400" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
-        };
-        
-        const overlay = document.createElement('div');
-        overlay.className = 'gallery-item-overlay';
-        
-        const quoteText = document.createElement('p');
-        quoteText.className = 'gallery-quote';
-        quoteText.textContent = `"${imageData.quote}"`;
-        
-        overlay.appendChild(quoteText);
-        item.appendChild(img);
-        item.appendChild(overlay);
-        galleryGrid.appendChild(item);
-    });
+    // Populate gallery grid with all images. We'll pre-check images to avoid broken tiles.
+    const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23ddd" width="400" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
+
+    // Helper: verifies an image URL is loadable (returns a promise)
+    function checkImage(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve({ ok: true });
+            img.onerror = () => resolve({ ok: false });
+            // Start load
+            img.src = url;
+        });
+    }
+
+    // Build DOM entries in sequence to keep indices stable
+    (async function buildGallery() {
+        for (let index = 0; index < galleryImages.length; index++) {
+            const imageData = galleryImages[index];
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.onclick = () => openLightbox(index);
+
+            const img = document.createElement('img');
+            img.alt = imageData.quote || '';
+            img.loading = 'lazy';
+
+            const url = `images/${imageData.file}`;
+            try {
+                const res = await checkImage(url);
+                if (res.ok) {
+                    img.src = url;
+                } else {
+                    console.warn(`gallery preload failed for: ${imageData.file}`);
+                    img.src = PLACEHOLDER_SVG;
+                }
+            } catch (e) {
+                console.warn('error checking image', imageData.file, e);
+                img.src = PLACEHOLDER_SVG;
+            }
+
+            const overlay = document.createElement('div');
+            overlay.className = 'gallery-item-overlay';
+
+            const quoteText = document.createElement('p');
+            quoteText.className = 'gallery-quote';
+            quoteText.textContent = `"${imageData.quote}"`;
+
+            overlay.appendChild(quoteText);
+            item.appendChild(img);
+            item.appendChild(overlay);
+            galleryGrid.appendChild(item);
+        }
+    })();
 }
 
 // Open gallery modal
