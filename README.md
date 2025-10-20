@@ -42,12 +42,50 @@ Deployed on Netlify: [Coming Soon]
 ├── registry.html           # Patient registry
 ├── plan-event.html         # Event planning tools
 ├── event-details.html      # Specific event info
+├── thank-you.html          # Post-donation thank you
+├── netlify-forms.html      # Form testing page
+├── admin/
+│   └── admin-update.html   # Admin update interface
+├── archive/
+│   └── about_old.html      # Archived old about page
+├── demos/
+│   └── children-grid-demo.html # Demo page
 ├── css/
 │   └── style.css          # Shared styles
-├── js/
-│   └── script.js          # Interactions & animations
-├── images/                 # Community photos
 ├── docs/                   # Documentation & guides
+│   ├── DOCUMENTATION_INDEX.md
+│   ├── START_HERE.md
+│   ├── WEBSITE_GUIDE.md
+│   ├── QUICK_REFERENCE.md
+│   ├── VISUAL_GUIDE.md
+│   ├── WEBSITE_REVIEW.md
+│   ├── HOW_TO_MANAGE_PHOTOS.md
+│   ├── EVENT_MANAGEMENT_FOR_PARENTS.md
+│   ├── EVENT_UPDATE_TUTORIAL.md
+│   ├── EVENT_SYSTEM_COMPLETE.md
+│   ├── LIVE_PROGRESS_SYSTEM.md
+│   ├── COMPLETE_PARENT_GUIDE.md
+│   ├── FUNDRAISING_MANAGEMENT.md
+│   ├── HOW_TO_ADD_COMMUNITY_EVENTS.md
+│   ├── HOW_TO_ADD_EVENTS.md
+│   ├── COMMUNITY_EVENTS_DECISION.md
+│   ├── JJ_CDKKL5.md
+│   ├── NETLIFY_AUTO_CONFIRMATION_SETUP.md
+│   ├── ToDo.md
+│   ├── WEBSITE_HANDOVER_GUIDE.md
+│   └── images/             # Documentation images
+├── images/                 # Community photos
+│   └── logos/              # Logo assets
+├── inc/                    # HTML includes
+│   ├── header.html
+│   └── footer.html
+├── js/                     # JavaScript files
+│   ├── script.js           # Main interactions
+│   └── includes-loader.js  # Include loader
+├── CNAME                   # Custom domain
+├── netlify.toml            # Netlify config
+└── README.md
+```
 ├── netlify.toml           # Deployment config
 └── README.md
 ```

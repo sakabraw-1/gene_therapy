@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120" role="img" aria-labelledby="title desc">
+  <title id="title">Gene Therapy logo - DNA helix</title>
+  <desc id="desc">Stylized DNA helix in blue, green, and purple with site branding</desc>
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2EA3F2"/>
+      <stop offset="50%" stop-color="#6EE7B7"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <!-- helix strands -->
+  <g transform="translate(20,10)">
+    <path d="M20 0 C 40 30, 40 90, 20 120" stroke="url(#g1)" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M60 0 C 40 30, 40 90, 60 120" stroke="#0F172A" stroke-width="6" opacity="0.15" fill="none" stroke-linecap="round"/>
+    <path d="M20 10 C 40 40, 40 80, 20 110" stroke="url(#g1)" stroke-width="4" fill="none" opacity="0.8"/>
+    <!-- crossbars -->
+    <g stroke="#0F172A" stroke-width="3" stroke-linecap="round" opacity="0.85">
+      <line x1="20" y1="10" x2="60" y2="10"/>
+      <line x1="20" y1="30" x2="60" y2="30"/>
+      <line x1="20" y1="50" x2="60" y2="50"/>
+      <line x1="20" y1="70" x2="60" y2="70"/>
+      <line x1="20" y1="90" x2="60" y2="90"/>
+      <line x1="20" y1="110" x2="60" y2="110"/>
+    </g>
+  </g>
+  <!-- text -->
+  <g transform="translate(110,56)">
+  <text x="0" y="-6" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#0F172A">Gene Therapy</text>
+  <text x="0" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#374151">Coalition</text>
+  </g>
+</svg>
