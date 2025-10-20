@@ -728,6 +728,46 @@ footer {
     }
 }
 
+/* Mobile nav toggle (hamburger) */
+button.nav-toggle {
+    background: transparent;
+    border: none;
+    width: 44px;
+    height: 44px;
+    display: none; /* hidden by default on desktop */
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+@media (max-width: 900px) {
+    button.nav-toggle { display: inline-flex; }
+}
+button.nav-toggle .hamburger {
+    width: 22px;
+    height: 2px;
+    background: var(--navy);
+    display: block;
+    position: relative;
+}
+button.nav-toggle .hamburger::before,
+button.nav-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--navy);
+}
+button.nav-toggle .hamburger::before { top: -7px; }
+button.nav-toggle .hamburger::after { top: 7px; }
+
+/* Ensure gallery modal and lightbox overlay above sticky header */
+.gallery-modal,
+.lightbox {
+    z-index: 2000; /* header uses 999; place overlays above */
+}
+
 .footer-newsletter-col .checkbox-label {
     margin-top: 0.5rem;
     display: inline-flex;
