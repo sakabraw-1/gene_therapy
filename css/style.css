@@ -1521,6 +1521,55 @@ blockquote {
         font-size: 1.5rem;
     }
 
+        /* Mobile bottom navigation bar */
+        .mobile-bottom-nav {
+            display: none; /* hidden by default, enabled via media query */
+        }
+
+        @media (max-width: 900px) {
+            .mobile-bottom-nav {
+                display: flex;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 64px;
+                align-items: center;
+                justify-content: space-around;
+                gap: 6px;
+                padding: env(safe-area-inset-bottom, 8px) 8px 8px;
+                background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+                box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+                z-index: 4000;
+            }
+
+            .mobile-bottom-nav .mbn-item {
+                text-decoration: none;
+                color: var(--navy);
+                font-weight: 700;
+                font-size: 0.95rem;
+                padding: 10px 12px;
+                border-radius: 10px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 56px;
+                min-height: 44px;
+                background: transparent;
+            }
+
+            .mobile-bottom-nav .mbn-item.mbn-donate {
+                background: #ff6600;
+                color: white;
+                padding: 10px 16px;
+                border-radius: 999px;
+                box-shadow: 0 6px 18px rgba(255,102,0,0.25);
+            }
+
+            /* Reserve space so page content isn't hidden under the nav */
+            body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 8px)); }
+        }
+
     .donate-hero p {
         font-size: 1rem;
     }

@@ -748,6 +748,27 @@
     document.addEventListener('includes:loaded', runNavDiagnostics);
 })();
 
+// Mobile bottom nav: mark active link and ensure focusable
+(function() {
+    function initMobileBottomNav() {
+        try {
+            const nav = document.querySelector('.mobile-bottom-nav');
+            if (!nav) return;
+            const items = Array.from(nav.querySelectorAll('.mbn-item'));
+            const path = window.location.pathname.split('/').pop() || 'index.html';
+            items.forEach((a) => {
+                const p = a.dataset.path || a.getAttribute('href').split('/').pop();
+                a.classList.toggle('active', p === path);
+            });
+        } catch (e) {
+            console.warn('initMobileBottomNav error', e);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileBottomNav);
+    document.addEventListener('includes:loaded', initMobileBottomNav);
+})();
+
 // ========================================
 // Gallery Modal & Lightbox Functions
 // ========================================
