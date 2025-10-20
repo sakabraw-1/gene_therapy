@@ -587,6 +587,40 @@
         }
     });
 
+    // Runtime: ensure images have keyword-rich alt/title attributes (non-destructive)
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            const siteKeywords = [
+                'India', 'US', 'Gene Therapy', 'Rare Disease', 'CDKL5', 'CDD', 'International', 'Foundation', 'CDKL5 Research', 'Rare Disease Research', 'LouLou'
+            ];
+
+            const keywordString = siteKeywords.join(', ');
+            const imgs = Array.from(document.querySelectorAll('img'));
+            imgs.forEach((img, idx) => {
+                // Do not overwrite good existing alts
+                const hasAlt = img.hasAttribute('alt') && img.getAttribute('alt').trim() !== '';
+                if (!hasAlt) {
+                    // Build a friendly name from filename
+                    const src = img.getAttribute('src') || '';
+                    let name = src.split('/').pop() || 'image';
+                    name = name.replace(/[-_\.\d]+/g, ' ').replace(/\s+/g, ' ').trim();
+                    // For the first image (index 0), force LouLou keyword
+                    const prefix = (idx === 0) ? 'LouLou — ' : '';
+                    const alt = `${prefix}${name} — ${keywordString}`;
+                    img.setAttribute('alt', alt);
+                }
+                // Ensure a title exists (helps some crawlers)
+                if (!img.hasAttribute('title') || img.getAttribute('title').trim() === '') {
+                    const t = img.getAttribute('alt') || img.getAttribute('src');
+                    img.setAttribute('title', t);
+                }
+            });
+            console.log('Image alt/title enrichment applied');
+        } catch (e) {
+            console.warn('Image enrichment error', e);
+        }
+    });
+
     // Also initialize footer fundraising after includes are loaded (includes-loader dispatches this event)
     document.addEventListener('includes:loaded', () => {
         initProgressBars();
