@@ -768,6 +768,22 @@ button.nav-toggle .hamburger::after { top: 7px; }
     z-index: 2000; /* header uses 999; place overlays above */
 }
 
+/* Defensive: ensure the mobile nav toggle is always reachable when visible */
+button.nav-toggle {
+    /* keep default hidden on desktop; sizing and pointer-events guaranteed when shown */
+    min-width: 44px;
+    min-height: 44px;
+    pointer-events: auto !important;
+}
+
+@media (max-width: 900px) {
+    /* force the toggle above most overlays when visible on mobile */
+    button.nav-toggle {
+        z-index: 3001 !important;
+        position: relative;
+    }
+}
+
 .footer-newsletter-col .checkbox-label {
     margin-top: 0.5rem;
     display: inline-flex;
