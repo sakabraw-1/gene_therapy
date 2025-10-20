@@ -4048,7 +4048,6 @@ section[id] {
     cursor: pointer;
     border-radius: 12px;
     overflow: hidden;
-    aspect-ratio: 1;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -4061,8 +4060,8 @@ section[id] {
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: 220px; /* fixed thumbnail height better on mobile */
+    object-fit: cover; /* avoid sliced/striped look */
     object-position: center;
     background: #1a1a1a;
     transition: all 0.3s ease;

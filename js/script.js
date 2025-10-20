@@ -306,6 +306,43 @@
         });
     }
 
+    // Mobile navigation toggle
+    function initMobileNav() {
+        // Prefer direct element hookup, but also support delegated clicks if header is injected later
+        const toggle = document.getElementById('navToggle');
+        const nav = document.getElementById('primary-navigation');
+
+        function doToggle() {
+            const navEl = document.getElementById('primary-navigation');
+            const toggleEl = document.getElementById('navToggle');
+            if (!navEl || !toggleEl) return;
+            const isOpen = navEl.classList.toggle('is-open');
+            toggleEl.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        if (toggle && nav) {
+            // If both elements exist now, attach directly
+            toggle.addEventListener('click', doToggle);
+
+            // Close menu when a link is clicked (useful for single-page nav)
+            nav.addEventListener('click', function(e) {
+                if (e.target && e.target.tagName === 'A' && nav.classList.contains('is-open')) {
+                    nav.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+            return;
+        }
+
+        // Fallback: delegated handler (covers cases where the header is replaced after init)
+        document.addEventListener('click', function delegatedNavHandler(e) {
+            const btn = e.target.closest && e.target.closest('#navToggle');
+            if (btn) {
+                doToggle();
+            }
+        });
+    }
+
     function initDonationPage() {
         // Only run on donate page
         if (!document.querySelector('.donate-page')) {
@@ -563,6 +600,7 @@
         initFadeIns();
         initCarousel();
         highlightActiveNav();
+        initMobileNav();
         initDonationPage();
     initDonateStepper();
         checkForCompletedDonation();
@@ -627,6 +665,8 @@
         initFooterFundraising();
         initCountdown();
         initDonateStepper();
+        initMobileNav();
+        highlightActiveNav();
     });
 }());
 
