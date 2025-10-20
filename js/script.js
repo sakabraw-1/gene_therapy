@@ -680,6 +680,74 @@
     });
 }());
 
+// --- Diagnostic helper: run when URL contains ?diag=nav ---
+(function() {
+    function runNavDiagnostics() {
+        try {
+            if (!location.search.includes('diag=nav')) return;
+            console.log('NAV DIAGNOSTIC: starting');
+            const btn = document.getElementById('navToggle');
+            if (!btn) {
+                console.warn('NAV DIAGNOSTIC: #navToggle not found in DOM');
+                return;
+            }
+            const rect = btn.getBoundingClientRect();
+            console.log('NAV DIAGNOSTIC: bounding rect', rect);
+            const cs = window.getComputedStyle(btn);
+            console.log('NAV DIAGNOSTIC: computed style', {
+                display: cs.display,
+                visibility: cs.visibility,
+                pointerEvents: cs.pointerEvents,
+                zIndex: cs.zIndex
+            });
+
+            // Elements stacked at the center point of the button
+            const cx = Math.round(rect.left + rect.width / 2);
+            const cy = Math.round(rect.top + rect.height / 2);
+            const stacked = document.elementsFromPoint(cx, cy).map(el => ({
+                tag: el.tagName,
+                id: el.id || null,
+                classes: el.className || null,
+                zIndex: window.getComputedStyle(el).zIndex || null
+            }));
+            console.log('NAV DIAGNOSTIC: elementsFromPoint at center', stacked);
+
+            // Attach temporary listeners to surface events
+            ['click','pointerup','touchend'].forEach((ev) => {
+                btn.addEventListener(ev, function diagHandler(e) {
+                    console.log('NAV DIAGNOSTIC: event on #navToggle', ev, e.type, e);
+                }, { capture: true });
+            });
+
+            document.addEventListener('click', function docClickDbg(e) {
+                console.log('NAV DIAGNOSTIC: document click', { target: e.target, x: e.clientX, y: e.clientY });
+            }, { capture: true });
+
+            // Visual outline showing the hit area
+            const o = document.createElement('div');
+            o.style.position = 'fixed';
+            o.style.left = rect.left + 'px';
+            o.style.top = rect.top + 'px';
+            o.style.width = rect.width + 'px';
+            o.style.height = rect.height + 'px';
+            o.style.border = '3px dashed red';
+            o.style.background = 'rgba(255,0,0,0.06)';
+            o.style.zIndex = '2147483647';
+            o.style.pointerEvents = 'none';
+            o.id = 'nav-diagnostic-outline';
+            document.body.appendChild(o);
+
+            console.log('NAV DIAGNOSTIC: outline added (id=nav-diagnostic-outline). Reload the page and interact with the toggle to see console logs.');
+        } catch (err) {
+            console.warn('NAV DIAGNOSTIC: error', err);
+        }
+    }
+
+    // Run after includes are loaded and also on DOMContentLoaded as a safety
+    document.addEventListener('DOMContentLoaded', runNavDiagnostics);
+    document.addEventListener('includes:loaded', runNavDiagnostics);
+})();
+
 // ========================================
 // Gallery Modal & Lightbox Functions
 // ========================================
