@@ -323,6 +323,16 @@
         if (toggle && nav) {
             // If both elements exist now, attach directly
             toggle.addEventListener('click', doToggle);
+            // also support touch/pointer events for mobile devices
+            toggle.addEventListener('pointerup', doToggle);
+            toggle.addEventListener('touchend', doToggle);
+            // keyboard: Enter and Space
+            toggle.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    doToggle();
+                }
+            });
 
             // Close menu when a link is clicked (useful for single-page nav)
             nav.addEventListener('click', function(e) {
