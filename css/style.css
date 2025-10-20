@@ -728,39 +728,6 @@ footer {
     }
 }
 
-/* Mobile nav toggle (hamburger) */
-button.nav-toggle {
-    background: transparent;
-    border: none;
-    width: 44px;
-    height: 44px;
-    display: none; /* hidden by default on desktop */
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    cursor: pointer;
-}
-@media (max-width: 900px) {
-    button.nav-toggle { display: inline-flex; }
-}
-button.nav-toggle .hamburger {
-    width: 22px;
-    height: 2px;
-    background: var(--navy);
-    display: block;
-    position: relative;
-}
-button.nav-toggle .hamburger::before,
-button.nav-toggle .hamburger::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 22px;
-    height: 2px;
-    background: var(--navy);
-}
-button.nav-toggle .hamburger::before { top: -7px; }
-button.nav-toggle .hamburger::after { top: 7px; }
 
 /* Ensure gallery modal and lightbox overlay above sticky header */
 .gallery-modal,
@@ -768,21 +735,7 @@ button.nav-toggle .hamburger::after { top: 7px; }
     z-index: 2000; /* header uses 999; place overlays above */
 }
 
-/* Defensive: ensure the mobile nav toggle is always reachable when visible */
-button.nav-toggle {
-    /* keep default hidden on desktop; sizing and pointer-events guaranteed when shown */
-    min-width: 44px;
-    min-height: 44px;
-    pointer-events: auto !important;
-}
-
-@media (max-width: 900px) {
-    /* force the toggle above most overlays when visible on mobile */
-    button.nav-toggle {
-        z-index: 3001 !important;
-        position: relative;
-    }
-}
+/* Mobile nav removed: using bottom nav instead */
 
 .footer-newsletter-col .checkbox-label {
     margin-top: 0.5rem;
