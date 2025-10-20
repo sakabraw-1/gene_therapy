@@ -1438,6 +1438,30 @@ blockquote {
     }
 
     .donate-hero h1 {
+        /* Team group visual styles */
+        .team-group {
+            margin: 1.25rem 0 2rem;
+        }
+        .group-title {
+            font-size: 1.125rem; /* slightly smaller than section h2 */
+            color: var(--purple);
+            margin: 0 0 0.75rem 0;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .team-group .card-grid {
+            gap: 1rem;
+        }
+        /* Slightly lighter card background on about page lists to separate visually */
+        main .team-group .card {
+            background: #fff8f7; /* subtle warm tint */
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        @media (max-width: 520px) {
+            .group-title {
+                font-size: 1rem;
+            }
+        }
         font-size: 1.5rem;
     }
 
