@@ -41,20 +41,17 @@
         
         bars.forEach((bar) => {
             const track = bar.querySelector('.progress-bar');
-            let raisedEl = bar.querySelector('[data-raised]') || bar.querySelector('.hero-progress-copy strong[data-raised]');
             let goalEl = bar.querySelector('[data-goal]') || bar.querySelector('.hero-progress-copy strong[data-goal]');
 
             // hero progress wrapper uses a different structure; allow it through
-            if (!track || !raisedEl || !goalEl) {
+            if (!track || !goalEl) {
                 // still attempt to update a hero-style progress wrapper
-                const heroRaised = bar.querySelector('.hero-progress-copy strong[data-raised]') || bar.querySelector('.hero-progress-copy strong:first-of-type');
                 const heroGoal = bar.querySelector('.hero-progress-copy strong[data-goal]') || bar.querySelector('.hero-progress-copy strong:last-of-type');
-                if (!track || !heroRaised || !heroGoal) return;
+                if (!track || !heroGoal) return;
                 // Use hero elements as fallbacks if the normal elements aren't present
-                if (!raisedEl) raisedEl = heroRaised;
                 if (!goalEl) goalEl = heroGoal;
             }
-            // Always use the current raised amount from localStorage
+            // Always use the current raised amount from localStorage for progress calculation
             const raisedAmount = currentRaised;
             // If the goal element carries a data-goal attribute use it, otherwise fall back to the constant
             const goalAmount = Number((goalEl && goalEl.dataset && goalEl.dataset.goal) ? goalEl.dataset.goal : GOAL_AMOUNT);
@@ -64,23 +61,18 @@
             track.style.transition = 'width 1s ease-out';
             track.style.width = `${percentage.toFixed(2)}%`;
             
-            // Update the text with animation
-            // If we have hero-style elements that are plain <strong> tags, set text accordingly
+            // Update the goal text only (no raised amount display)
             try {
-                raisedEl.textContent = formatCurrency(raisedAmount);
                 goalEl.textContent = formatCurrency(goalAmount);
             } catch (e) {
                 // ignore
             }
             
             // Update data attributes for consistency
-            raisedEl.dataset.raised = raisedAmount.toString();
             // If the wrapper contains a hero progress copy paragraph, update it as well
             const heroCopy = bar.querySelector('.hero-progress-copy');
             if (heroCopy) {
-                const hr = heroCopy.querySelector('strong[data-raised]');
                 const hg = heroCopy.querySelector('strong[data-goal]');
-                if (hr) hr.textContent = formatCurrency(raisedAmount);
                 if (hg) hg.textContent = formatCurrency(goalAmount);
             }
         });
@@ -148,8 +140,8 @@
             const goal = GOAL_AMOUNT;
             const pct = Math.min(100, Math.max(0, (current / goal) * 100));
 
-            // Format and set text
-            fundAmountEl.innerHTML = `<strong>${formatCurrency(current)}</strong> raised of <strong>${formatCurrency(goal)}</strong>`;
+            // Format and set text - only show goal, no raised amount
+            fundAmountEl.innerHTML = `Goal: <strong>${formatCurrency(goal)}</strong>`;
             fundBar.style.transition = 'width 1s ease-out';
             fundBar.style.width = `${pct.toFixed(2)}%`;
 
