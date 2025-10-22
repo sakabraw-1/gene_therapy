@@ -1613,6 +1613,11 @@ blockquote {
     margin-left: 1rem;
 }
 
+.progress-panel-cta .btn {
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
 .btn-take-action {
     display: inline-block;
     padding: 0.8rem 2rem;
