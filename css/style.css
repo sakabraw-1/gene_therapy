@@ -1616,6 +1616,8 @@ blockquote {
 .progress-panel-cta .btn {
     white-space: nowrap;
     min-width: fit-content;
+    min-width: 140px;
+    padding: 0.85rem 2rem;
 }
 
 .btn-take-action {
