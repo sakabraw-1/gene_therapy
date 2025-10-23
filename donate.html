@@ -1,4 +1,4 @@
-    <!-- Supported by logo cards removed as per user request -->
+3700987    <!-- Supported by logo cards removed as per user request -->
                         <!-- Tax Deductible text removed as per user request -->
 <!DOCTYPE html>
 <html lang="en">
@@ -130,6 +130,18 @@
                             <button type="button" class="btn btn-give-stacked btn-give-cc">Donate via Credit Card</button>
                             <button type="button" class="btn btn-give-stacked btn-give-paypal">Donate via PayPal</button>
                             <button type="button" class="btn btn-give-stacked btn-give-zelle">Donate via Zelle</button>
+                        <script>
+                        // Payment button handlers
+                        document.querySelector('.btn-give-cc').onclick = function() {
+                            window.open('https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr', '_blank');
+                        };
+                        document.querySelector('.btn-give-paypal').onclick = function() {
+                            window.open('https://www.paypal.com/us/fundraiser/charity/3700987', '_blank');
+                        };
+                        document.querySelector('.btn-give-zelle').onclick = function() {
+                            window.open('https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0hJTEQnUyBDVVJFIEdFTkVUSUMgUkVTRUFSQ0ggTk9OIFBST0ZJVCIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6ImphaW51am9nYW5pQGdtYWlsLmNvbSJ9', '_blank');
+                        };
+                        </script>
                         </div>
                     </div>
 
