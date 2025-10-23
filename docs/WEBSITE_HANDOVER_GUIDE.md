@@ -11,7 +11,7 @@
 
 #### Option A: Google Workspace (Recommended)
 - Sign up at: https://workspace.google.com/
-- Create `hello@cdkl5genetherapy.com`
+- Create `support@cdkl5genetherapy.com`
 - Cost: $6/user/month
 - Professional email with Gmail interface
 
@@ -23,7 +23,7 @@
 
 #### Option C: Your Current Email Provider
 - If you already have email hosting, add the domain there
-- Forward `hello@cdkl5genetherapy.com` to your existing inbox
+- Forward `support@cdkl5genetherapy.com` to your existing inbox
 
 ## Workspace Management
 
