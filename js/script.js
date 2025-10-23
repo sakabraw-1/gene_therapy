@@ -1,7 +1,22 @@
 // --- Enforce donation form validation before payment redirect ---
 function enforceDonationValidation() {
     if (!document.querySelector('.donate-page')) return;
+    function showDonationFormError(msg) {
+        var err = document.getElementById('donation-form-error');
+        if (err) {
+            err.textContent = msg;
+            err.style.display = 'block';
+        }
+    }
+    function clearDonationFormError() {
+        var err = document.getElementById('donation-form-error');
+        if (err) {
+            err.textContent = '';
+            err.style.display = 'none';
+        }
+    }
     function validateDonationForm() {
+        clearDonationFormError();
         // Amount
         const amountRadios = document.querySelectorAll('input[type="radio"][name="amount"]');
         let amountSelected = false;
@@ -13,13 +28,13 @@ function enforceDonationValidation() {
             }
         });
         if (!amountSelected) {
-            alert('Please select a donation amount.');
+            showDonationFormError('Please select a donation amount.');
             return false;
         }
         if (amountValue === 'custom') {
             const customInput = document.getElementById('custom-amount');
             if (!customInput.value || isNaN(customInput.value) || Number(customInput.value) < 1) {
-                alert('Please enter a valid custom amount.');
+                showDonationFormError('Please enter a valid custom amount.');
                 return false;
             }
         }
@@ -28,20 +43,20 @@ function enforceDonationValidation() {
         const last = document.getElementById('donor-last').value.trim();
         const email = document.getElementById('donor-email').value.trim();
         if (!first) {
-            alert('Please enter your first name.');
+            showDonationFormError('Please enter your first name.');
             return false;
         }
         if (!last) {
-            alert('Please enter your last name.');
+            showDonationFormError('Please enter your last name.');
             return false;
         }
         if (!email) {
-            alert('Please enter your email address.');
+            showDonationFormError('Please enter your email address.');
             return false;
         }
         // Basic email format check
         if (!/^\S+@\S+\.\S+$/.test(email)) {
-            alert('Please enter a valid email address.');
+            showDonationFormError('Please enter a valid email address.');
             return false;
         }
         return true;
