@@ -1,3 +1,84 @@
+// --- Enforce donation form validation before payment redirect ---
+function enforceDonationValidation() {
+    if (!document.querySelector('.donate-page')) return;
+    function validateDonationForm() {
+        // Amount
+        const amountRadios = document.querySelectorAll('input[type="radio"][name="amount"]');
+        let amountSelected = false;
+        let amountValue = '';
+        amountRadios.forEach(radio => {
+            if (radio.checked) {
+                amountSelected = true;
+                amountValue = radio.value;
+            }
+        });
+        if (!amountSelected) {
+            alert('Please select a donation amount.');
+            return false;
+        }
+        if (amountValue === 'custom') {
+            const customInput = document.getElementById('custom-amount');
+            if (!customInput.value || isNaN(customInput.value) || Number(customInput.value) < 1) {
+                alert('Please enter a valid custom amount.');
+                return false;
+            }
+        }
+        // Donor info
+        const first = document.getElementById('donor-first').value.trim();
+        const last = document.getElementById('donor-last').value.trim();
+        const email = document.getElementById('donor-email').value.trim();
+        if (!first) {
+            alert('Please enter your first name.');
+            return false;
+        }
+        if (!last) {
+            alert('Please enter your last name.');
+            return false;
+        }
+        if (!email) {
+            alert('Please enter your email address.');
+            return false;
+        }
+        // Basic email format check
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert('Please enter a valid email address.');
+            return false;
+        }
+        return true;
+    }
+    // Attach to payment buttons
+    const ccBtn = document.querySelector('.btn-give-cc');
+    const paypalBtn = document.querySelector('.btn-give-paypal');
+    const zelleBtn = document.querySelector('.btn-give-zelle');
+    if (ccBtn) {
+        ccBtn.addEventListener('click', function(e) {
+            if (!validateDonationForm()) {
+                e.preventDefault();
+                return false;
+            }
+            window.open('https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr', '_blank');
+        });
+    }
+    if (paypalBtn) {
+        paypalBtn.addEventListener('click', function(e) {
+            if (!validateDonationForm()) {
+                e.preventDefault();
+                return false;
+            }
+            window.open('https://www.paypal.com/us/fundraiser/charity/3700987', '_blank');
+        });
+    }
+    if (zelleBtn) {
+        zelleBtn.addEventListener('click', function(e) {
+            if (!validateDonationForm()) {
+                e.preventDefault();
+                return false;
+            }
+            window.open('https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0hJTEQnUyBDVVJFIEdFTkVUSUMgUkVTRUFSQ0ggTk9OIFBST0ZJVCIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6ImphaW51am9nYW5pQGdtYWlsLmNvbSJ9', '_blank');
+        });
+    }
+}
+
 // Timeline Accordion Interactivity
 document.addEventListener('DOMContentLoaded', function () {
     var panels = document.querySelectorAll('.timeline-panel');
@@ -579,6 +660,9 @@ document.addEventListener('DOMContentLoaded', function () {
         initGallery();
         // Initialize footer fundraising if the include is already present
         initFooterFundraising();
+
+        // Enforce validation on payment buttons
+        enforceDonationValidation();
 
         // Footer Awareness Image Auto-Rotate (every 24 hours)
         const footerImg = document.getElementById('footer-awareness-img');
