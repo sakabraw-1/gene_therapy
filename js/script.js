@@ -1,3 +1,19 @@
+// Timeline Accordion Interactivity
+document.addEventListener('DOMContentLoaded', function () {
+    var panels = document.querySelectorAll('.timeline-panel');
+    panels.forEach(function(panel) {
+        var header = panel.querySelector('.timeline-header');
+        header.addEventListener('click', function() {
+            var isActive = panel.classList.contains('active');
+            // Collapse all
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            // Expand clicked if not already active
+            if (!isActive) panel.classList.add('active');
+        });
+    });
+    // Optionally, open the first panel by default
+    if (panels.length > 0) panels[0].classList.add('active');
+});
 // Shared JavaScript for CDKL5 Gene Therapy site
 (function () {
     const GOAL_AMOUNT = 3500000;

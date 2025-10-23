@@ -1,3 +1,657 @@
+/* Peach color payment buttons for donate page */
+.payment-links-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+.btn-give-stacked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.9rem 1.2rem;
+    background: linear-gradient(90deg, #ffd6cc 0%, #ffb6a2 100%);
+    color: #d95c00 !important;
+    box-shadow: 0 2px 8px rgba(255, 183, 153, 0.10);
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    margin: 0;
+    text-align: center;
+    outline: none;
+    min-width: 180px;
+    min-height: 48px;
+    white-space: nowrap;
+}
+.btn-give-stacked:hover, .btn-give-stacked:focus {
+    background: linear-gradient(90deg, #ffb6a2 0%, #ffd6cc 100%);
+    color: #b34700 !important;
+}
+/* Inline Row with Divider for footer */
+.footer-supported-divider {
+    text-align: center;
+    margin: 2.2rem 0 1.5rem;
+}
+.divider-logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.7rem;
+}
+.divider-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+.divider-logo-svg {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+.divider-logo-label {
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: #4f5bd5;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.1em;
+}
+.divider-separator {
+    width: 2px;
+    height: 48px;
+    background: linear-gradient(180deg, #b3b3ff 0%, #4f5bd5 100%);
+    border-radius: 2px;
+    margin: 0 1.2rem;
+    opacity: 0.7;
+}
+@media (max-width: 700px) {
+    .divider-logo-row {
+        gap: 1.2rem;
+    }
+    .divider-separator {
+        margin: 0 0.7rem;
+        height: 36px;
+    }
+}
+@media (max-width: 500px) {
+    .divider-logo-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+    }
+    .divider-separator {
+        width: 36px;
+        height: 2px;
+        margin: 0.7rem 0;
+        background: linear-gradient(90deg, #b3b3ff 0%, #4f5bd5 100%);
+    }
+}
+/* Minimalist Side-by-Side Logos for footer */
+.footer-supported-minimal {
+    text-align: center;
+    margin: 2.2rem 0 1.5rem;
+}
+.minimal-logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.7rem;
+}
+.minimal-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+.minimal-logo-svg {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+.minimal-logo-label {
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: #4f5bd5;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.1em;
+}
+@media (max-width: 700px) {
+    .minimal-logo-row {
+        gap: 1.2rem;
+    }
+}
+@media (max-width: 500px) {
+    .minimal-logo-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+    }
+}
+/* Badge Cluster for footer */
+.footer-badge-cluster-bg {
+    background: linear-gradient(135deg, #e3e3ff 0%, #b3b3ff 100%);
+    border-radius: 24px;
+    padding: 2.2rem 0 1.5rem 0;
+    margin: 2.2rem 0 1.5rem 0;
+}
+.footer-badge-cluster {
+    text-align: center;
+}
+.badge-cluster-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.7rem;
+    transform: translateY(10px) rotate(-4deg);
+}
+.badge-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.badge-logo-circle {
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 24px #4f5bd544, 0 0 0 3px #4f5bd5;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0.2rem;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.badge-logo-circle:hover {
+    box-shadow: 0 8px 32px #7a6ee6cc, 0 0 0 4px #6fd1b3;
+    transform: scale(1.07);
+}
+.badge-logo-label {
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: #4f5bd5;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.1em;
+}
+.badge-cluster-caption {
+    color: #4f5bd5;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    margin-top: 0.2em;
+    font-weight: 600;
+}
+@media (max-width: 700px) {
+    .badge-cluster-row {
+        gap: 1.2rem;
+        transform: none;
+    }
+}
+@media (max-width: 500px) {
+    .badge-cluster-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+        transform: none;
+    }
+}
+/* Minimalist Inline Logo Row for footer */
+.footer-logo-inline-row {
+    text-align: center;
+    margin: 2.2rem 0 1.5rem;
+}
+.inline-logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.7rem;
+}
+.inline-logo {
+    display: flex;
+    align-items: center;
+    transition: filter 0.2s;
+}
+.inline-logo-svg {
+    filter: grayscale(1) brightness(0.7);
+    transition: filter 0.22s, fill 0.22s;
+}
+.inline-logo:hover .inline-logo-svg {
+    filter: grayscale(0) brightness(0) drop-shadow(0 2px 8px #0002);
+}
+.inline-logo-caption {
+    color: #bbb;
+    font-size: 1.02rem;
+    letter-spacing: 0.04em;
+    margin-top: 0.2em;
+}
+@media (max-width: 700px) {
+    .inline-logo-row {
+        gap: 1.2rem;
+    }
+}
+@media (max-width: 500px) {
+    .inline-logo-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+    }
+}
+/* Framed Logo Strip for footer */
+.footer-logo-strip {
+    text-align: center;
+    margin: 2.2rem 0 1.5rem;
+}
+.framed-logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+.framed-logo {
+    position: relative;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0002, 0 0 0 3px #b3b3ff44;
+    border: 2.5px solid;
+    border-image: linear-gradient(135deg, #7a6ee6 0%, #6fd1b3 100%);
+    border-image-slice: 1;
+    padding: 1.2rem 1.5rem 1.1rem 1.5rem;
+    min-width: 150px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.framed-logo:hover {
+    box-shadow: 0 8px 32px #7a6ee6cc, 0 0 0 3.5px #7a6ee6;
+    transform: translateY(-3px) scale(1.05);
+}
+.framed-logo-img {
+    margin-bottom: 0.7rem;
+}
+.framed-logo-title {
+    font-weight: 700;
+    font-size: 1.08rem;
+    color: #4f5bd5;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.1em;
+}
+.framed-logo-sub {
+    font-size: 0.92rem;
+    color: #b36ee6;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    margin-top: 0.1em;
+}
+.logo-badge {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: linear-gradient(135deg, #7a6ee6 0%, #6fd1b3 100%);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.18em 0.7em;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #b3b3ff44;
+    z-index: 2;
+}
+@media (max-width: 700px) {
+    .framed-logo-row {
+        gap: 1.2rem;
+    }
+    .framed-logo {
+        min-width: 120px;
+        padding: 0.8rem 1.1rem 0.9rem 1.1rem;
+    }
+}
+@media (max-width: 500px) {
+    .framed-logo-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+    }
+    .framed-logo {
+        width: 90vw;
+        max-width: 320px;
+        min-width: 0;
+    }
+}
+/* Card-style logo grid for partners/awards */
+.supported-by-cards {
+    text-align: center;
+    margin: 2rem 0 1.5rem;
+}
+.supported-label {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.7rem;
+}
+.logo-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2.2rem;
+}
+.logo-card {
+    background: linear-gradient(135deg, #fff 80%, #e3e3ff 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #0003, 0 0 0 2px #b3b3ff44;
+    padding: 1.2rem 1.8rem 1.3rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    max-width: 200px;
+    transition: box-shadow 0.18s, transform 0.18s;
+    border: 1.5px solid #b3b3ff;
+}
+.logo-card:hover {
+    box-shadow: 0 6px 32px #7a6ee6cc, 0 0 0 2.5px #7a6ee6;
+    transform: translateY(-3px) scale(1.06);
+}
+.logo-svg.childscure ellipse {
+    fill: #b3b3ff;
+    transition: fill 0.2s;
+}
+.logo-svg.childscure rect {
+    fill: #7a6ee6;
+    transition: fill 0.2s;
+}
+.logo-svg.childscure path {
+    stroke: #5e35b1;
+    stroke-width: 3;
+    fill: none;
+    transition: stroke 0.2s;
+}
+.logo-svg.childscure:hover ellipse {
+    fill: #a0a0ff;
+}
+.logo-svg.childscure:hover rect {
+    fill: #5e35b1;
+}
+.logo-svg.childscure:hover path {
+    stroke: #3d2466;
+}
+.logo-svg.cdkl5sa rect {
+    fill: #f3f3ff;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa text {
+    fill: #7a6ee6;
+    font-weight: bold;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa circle:first-of-type {
+    fill: #ffd166;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa circle:last-of-type {
+    fill: #7a6ee6;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa line {
+    stroke: #ffd166;
+    stroke-width: 1.1;
+    transition: stroke 0.2s;
+}
+.logo-svg.cdkl5sa:hover rect {
+    fill: #e0e0ff;
+}
+.logo-svg.cdkl5sa:hover text {
+    fill: #5e35b1;
+}
+.logo-svg.cdkl5sa:hover circle:first-of-type {
+    fill: #ffb300;
+}
+.logo-svg.cdkl5sa:hover circle:last-of-type {
+    fill: #3d2466;
+}
+.logo-svg.cdkl5sa:hover line {
+    stroke: #ffb300;
+}
+.logo-card-label {
+    font-weight: 700;
+    font-size: 1.08rem;
+    color: #4f5bd5;
+    letter-spacing: 0.01em;
+    margin-top: 0.7rem;
+    text-shadow: 0 2px 8px #e3e3ff88;
+}
+@media (max-width: 700px) {
+    .logo-card-grid {
+        gap: 1.2rem;
+    }
+    .logo-card {
+        min-width: 100px;
+        padding: 0.8rem 1.1rem 0.9rem 1.1rem;
+    }
+}
+@media (max-width: 500px) {
+    .logo-card-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+    }
+    .logo-card {
+        width: 90vw;
+        max-width: 320px;
+        min-width: 0;
+    }
+}
+/* Supported by horizontal SVG logo strip */
+.supported-by-strip {
+    text-align: center;
+    margin: 2rem 0 1.5rem;
+}
+.supported-label {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.7rem;
+}
+.logo-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+}
+.logo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 110px;
+    transition: transform 0.18s;
+}
+.logo-item:hover {
+    transform: scale(1.07);
+}
+.logo-svg.childscure ellipse {
+    fill: #b3b3ff;
+    transition: fill 0.2s;
+}
+.logo-svg.childscure rect {
+    fill: #7a6ee6;
+    transition: fill 0.2s;
+}
+.logo-svg.childscure path {
+    stroke: #5e35b1;
+    stroke-width: 3;
+    fill: none;
+    transition: stroke 0.2s;
+}
+.logo-svg.childscure:hover ellipse {
+    fill: #a0a0ff;
+}
+.logo-svg.childscure:hover rect {
+    fill: #5e35b1;
+}
+.logo-svg.childscure:hover path {
+    stroke: #3d2466;
+}
+.logo-svg.cdkl5sa rect {
+    fill: #f3f3ff;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa text {
+    fill: #7a6ee6;
+    font-weight: bold;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa circle:first-of-type {
+    fill: #ffd166;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa circle:last-of-type {
+    fill: #7a6ee6;
+    transition: fill 0.2s;
+}
+.logo-svg.cdkl5sa line {
+    stroke: #ffd166;
+    stroke-width: 1.1;
+    transition: stroke 0.2s;
+}
+.logo-svg.cdkl5sa:hover rect {
+    fill: #e0e0ff;
+}
+.logo-svg.cdkl5sa:hover text {
+    fill: #5e35b1;
+}
+.logo-svg.cdkl5sa:hover circle:first-of-type {
+    fill: #ffb300;
+}
+.logo-svg.cdkl5sa:hover circle:last-of-type {
+    fill: #3d2466;
+}
+.logo-svg.cdkl5sa:hover line {
+    stroke: #ffb300;
+}
+.logo-text {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+@media (max-width: 600px) {
+    .logo-strip {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .logo-item {
+        min-width: 0;
+        justify-content: center;
+    }
+}
+/* Horizontal logo strip for partner logos (footer and donate) */
+.logo-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.logo-strip span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 110px;
+}
+@media (max-width: 600px) {
+    .logo-strip {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .logo-strip span {
+        min-width: 0;
+        justify-content: center;
+    }
+}
+/* Timeline Accordion Styles */
+.timeline-accordion {
+    background: none;
+    border-radius: var(--border-radius);
+    margin: 2.5rem 0 2rem;
+    box-shadow: none;
+}
+.timeline-panel {
+    background: #ffebee;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.1rem;
+    box-shadow: 0 4px 18px rgba(25, 118, 210, 0.07);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+.timeline-header {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: left;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1976d2;
+    padding: 1.1rem 1.5rem;
+    cursor: pointer;
+    background: #ffebee;
+    transition: background 0.2s;
+    border-bottom: 1px solid #e3e3e3;
+}
+.timeline-header:after {
+    content: '\25BC';
+    float: right;
+    font-size: 1.1rem;
+    color: #1976d2;
+    transition: transform 0.2s;
+}
+.timeline-panel.active .timeline-header:after {
+    transform: rotate(180deg);
+}
+.timeline-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #ffebee;
+    color: #222;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.2s;
+}
+.timeline-panel.active .timeline-content {
+    padding: 1rem 1.5rem 1.3rem;
+    max-height: 200px;
+}
+@media (max-width: 600px) {
+    .timeline-header {
+        font-size: 1rem;
+        padding: 0.9rem 1rem;
+    }
+    .timeline-content {
+        font-size: 0.97rem;
+        padding: 0 1rem;
+    }
+    .timeline-panel.active .timeline-content {
+        padding: 0.8rem 1rem 1rem;
+    }
+}
 /* Shared styles for CDKL5 Gene Therapy site */
 :root {
     --white: #ffffff;
@@ -903,6 +1557,7 @@ select:focus,
     display: inline-block;
     padding: 0.6rem 1.25rem;
     border-radius: 30px;
+    color: #fff !important;
 }
 .footer-grid .btn {
     min-width: 160px;
@@ -1217,21 +1872,21 @@ blockquote {
     transition: all var(--transition);
 }
 
-.btn-give-primary {
-    background: #6B7A8F;
-    color: white;
-}
-
-.btn-give-primary:hover {
-    background: #5A6A7F;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(107, 122, 143, 0.3);
-}
-
-.btn-give-secondary {
-    background: #F5F5F5;
-    color: var(--navy);
-    border: 2px solid #E0E0E0;
+.btn-primary {
+    background: linear-gradient(90deg, #ff7300 0%, #ff9100 100%);
+    color: #fff !important;
+    border: none;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.7rem 2.2rem;
+    box-shadow: 0 2px 8px rgba(255, 115, 0, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    outline: none;
+    min-width: 140px;
+    min-height: 44px;
+    white-space: nowrap;
 }
 
 .btn-give-secondary:hover {
