@@ -162,62 +162,174 @@
 
             <!-- Timeline Progress Panel -->
             <section class="section fade-in" aria-labelledby="timeline-heading">
-                <h2 id="timeline-heading" style="color:#1976d2;">Timeline: Gene Therapy Milestones</h2>
-                <div class="timeline-accordion">
-                    <div class="timeline-panel">
-                        <button class="timeline-header">APR 2024</button>
-                        <div class="timeline-content">
-                            <p>Pre-IND meeting with FDA. Vector design freeze and feedback integration.</p>
+                <h2 id="timeline-heading" style="color:#1976d2; text-align:center; display:none;">Timeline: Gene Therapy Milestones</h2>
+                <div class="vertical-timeline" style="display:none;">
+                    <div class="vtimeline-line"></div>
+                    <div class="vtimeline-item vtimeline-right">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">APR 2024</div>
+                            <div class="vtimeline-title">Initial preclinical experiments, efficacy & safety studies</div>
                         </div>
                     </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">AUG 2024</button>
-                        <div class="timeline-content">
-                            <p>Translational toxicology launch in partnership with CRO network.</p>
+                    <div class="vtimeline-item vtimeline-left">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">AUG 2024</div>
+                            <div class="vtimeline-title">Vector construction and in vitro testing</div>
                         </div>
                     </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">OCT 2024</button>
-                        <div class="timeline-content">
-                            <p>IND-enabling studies and CRO network expansion.</p>
+                    <div class="vtimeline-item vtimeline-right">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">OCT 2024</div>
+                            <div class="vtimeline-title">CDKL5 function restoration in disease models</div>
                         </div>
                     </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">FEB 2025</button>
-                        <div class="timeline-content">
-                            <p>GMP manufacturing and release assays finalized.</p>
+                    <div class="vtimeline-item vtimeline-left">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">FEB 2025</div>
+                            <div class="vtimeline-title">Toxicology studies begin<br>&rarr; 6-month monitoring</div>
                         </div>
                     </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">pre-IND</button>
-                        <div class="timeline-content">
-                            <p>pre-IND discussion with the US FDA completed in Sep 2025.</p>
+                    <div class="vtimeline-item vtimeline-right">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">pre-IND</div>
+                            <div class="vtimeline-title">pre-IND discussion with the US FDA <b>completed in Sep 2025</b></div>
                         </div>
                     </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">NOW</button>
-                        <div class="timeline-content">
-                            <p>IND writing, manufacturing, and regulatory preparations underway.</p>
+                    <div class="vtimeline-item vtimeline-left vtimeline-now">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">NOW</div>
+                            <div class="vtimeline-title">IND-enabling studies, manufacturing, and regulatory preparation</div>
                         </div>
                     </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">IND SUBMISSION</button>
-                        <div class="timeline-content">
-                            <p>Planned 2026 – FDA submission milestone.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-panel">
-                        <button class="timeline-header">UCSF PHASE I/II CLINICAL TRIAL (Lead: Dr. Nalin Gupta)</button>
-                        <div class="timeline-content">
-                            <p><strong>UCSF Phase I/II Clinical Trial</strong><br>
-                            <em>Lead: Dr. Nalin Gupta (Chief of Pediatric Neurological Surgery)</em><br>
-                            June-July 2026<br>
-                            n=5<br>
-                            18+ years, and 6-12 years of age
-                            </p>
+                    <div class="vtimeline-item vtimeline-right">
+                        <div class="vtimeline-dot"></div>
+                        <div class="vtimeline-content">
+                            <div class="vtimeline-date">projected IND submission</div>
+                            <div class="vtimeline-title">IND package to FDA (projected)</div>
                         </div>
                     </div>
                 </div>
+                <style>
+                .vertical-timeline {
+                    position: relative;
+                    max-width: 600px;
+                    margin: 3rem auto 2rem auto;
+                    padding: 0 0 2rem 0;
+                }
+                .vtimeline-line {
+                    position: absolute;
+                    left: 50%;
+                    top: 0;
+                    width: 4px;
+                    height: 100%;
+                    background: linear-gradient(to bottom, #1976d2 0%, #b3e0ff 100%);
+                    transform: translateX(-50%);
+                    z-index: 0;
+                }
+                .vtimeline-item {
+                    position: relative;
+                    width: 50%;
+                    padding: 1.2em 2.5em 1.2em 2.5em;
+                    box-sizing: border-box;
+                }
+                .vtimeline-right {
+                    left: 50%;
+                    text-align: left;
+                }
+                .vtimeline-left {
+                    left: 0;
+                    text-align: right;
+                }
+                .vtimeline-dot {
+                    position: absolute;
+                    top: 50%;
+                    right: -18px;
+                    width: 22px;
+                    height: 22px;
+                    background: #fff;
+                    border: 4px solid #1976d2;
+                    border-radius: 50%;
+                    z-index: 2;
+                    transform: translateY(-50%);
+                    font-size: 1.1em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    color: #1976d2;
+                }
+                .vtimeline-left .vtimeline-dot {
+                    left: -18px;
+                    right: auto;
+                }
+                .vtimeline-dot-arrow {
+                    background: #1976d2;
+                    color: #fff;
+                    border-radius: 50%;
+                    font-size: 1.5em;
+                    border: 4px solid #1976d2;
+                }
+                .vtimeline-content {
+                    background: #f7fbff;
+                    border-radius: 12px;
+                    padding: 1.1em 1.3em;
+                    box-shadow: 0 2px 12px #1976d21a;
+                    display: inline-block;
+                    min-width: 180px;
+                    max-width: 320px;
+                }
+                .vtimeline-date {
+                    font-weight: 800;
+                    color: #1976d2;
+                    font-size: 1.1em;
+                    margin-bottom: 0.2em;
+                }
+                .vtimeline-title {
+                    font-size: 1em;
+                    color: #222;
+                    font-weight: 600;
+                }
+                .vtimeline-now .vtimeline-content {
+                    background: #fff3e0;
+                    border-left: 5px solid #ff9800;
+                }
+                .vtimeline-arrow .vtimeline-dot {
+                    background: #1976d2;
+                    color: #fff;
+                    font-size: 1.5em;
+                    border: 4px solid #1976d2;
+                }
+                @media (max-width: 700px) {
+                    .vertical-timeline {
+                        max-width: 98vw;
+                        padding: 0 0 2rem 0;
+                    }
+                    .vtimeline-item, .vtimeline-left, .vtimeline-right {
+                        width: 100%;
+                        left: 0 !important;
+                        text-align: left !important;
+                        padding: 1.2em 1.2em 1.2em 3.2em;
+                    }
+                    .vtimeline-dot, .vtimeline-left .vtimeline-dot {
+                        left: -8px !important;
+                        right: auto !important;
+                    }
+                }
+                </style>
+                    </style>
+                <script>
+                // Animate progress fill and allow easy updates
+                window.addEventListener('DOMContentLoaded', function() {
+                    var fill = document.getElementById('gtProgressFill');
+                    setTimeout(function() { fill.style.width = '65%'; }, 200);
+                });
+                </script>
             </section>
 
             <section class="section fade-in" aria-labelledby="data-heading">

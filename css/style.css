@@ -1,3 +1,63 @@
+/* ====== Photo Mosaic Heart Section ====== */
+.donate-photo-mosaic {
+    position: relative;
+    max-width: 420px;
+    margin: 2.5rem auto 0 auto;
+    text-align: center;
+}
+.mosaic-heart-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.1/1;
+    max-width: 340px;
+    margin: 0 auto 1.2em auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background: #fff7f0;
+}
+.mosaic-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    aspect-ratio: 1/1;
+    box-shadow: 0 1px 4px #e573731a;
+}
+.mosaic-heart-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+@media (max-width: 600px) {
+    .donate-photo-mosaic {
+        max-width: 98vw;
+    }
+    .mosaic-heart-wrapper {
+        max-width: 98vw;
+    }
+    .mosaic-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
 /* Peach color payment buttons for donate page */
 .payment-links-stacked {
     display: flex;
@@ -1840,9 +1900,15 @@ blockquote {
     background: #E8E8E8;
 }
 
-.checkbox-option.checked {
-    background: rgba(76, 175, 80, 0.1);
-    border-color: #4CAF50;
+.checkbox-option.checked, .checkbox-option input[type="radio"]:checked + span, .checkbox-option input[type="radio"]:checked {
+    background: #fff7f0;
+    border-color: #ff6600 !important;
+    box-shadow: 0 0 0 2px #ff660033;
+}
+.checkbox-option input[type="radio"]:focus {
+    outline: none;
+    border-color: #ff6600 !important;
+    box-shadow: 0 0 0 2px #ff6600aa;
 }
 
 .checkbox-option input[type="checkbox"] {
