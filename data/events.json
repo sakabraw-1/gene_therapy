@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "type": "past",
+      "title": "Gene Therapy for CDKL5: The History, Progress & Next Steps",
+      "date": "2025-10-26",
+      "time": "9:00 - 10:00 AM CDT",
+      "description": "The US FDA has provided positive feedback + IND suggestions for gene replacement therapy for CDKL5.",
+      "speakers": [
+        { "name": "Rachel Bailey, PhD", "role": "Lead Researcher" },
+        { "name": "Jainu Jogani", "role": "Parent Advocate" }
+      ],
+      "hostedBy": "American Society of Gene + Cell Therapy & Child's Cure Genetic Research",
+      "videoLink": "https://cdkl5genetherapy.com/videos/eventvideo_2610.mp4"
+    }
+  ]
+}
