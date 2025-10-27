@@ -5472,4 +5472,91 @@ section[id] {
     }
 }
 
+/* Event Details Page Form Styles */
+.event-registration-sidebar {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-registration-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #303F9F;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #303F9F;
+    box-shadow: 0 0 0 2px rgba(48, 63, 159, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-primary {
+    background-color: #303F9F;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-primary:hover {
+    background-color: #1e2e7d;
+}
+
+/* Responsive adjustments for event details form */
+@media (max-width: 768px) {
+    .event-content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .event-registration-sidebar {
+        padding: 20px;
+        order: -1; /* Move form above content on mobile */
+    }
+    
+    .btn-primary {
+        padding: 14px 24px;
+    }
+}
 
