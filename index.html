@@ -41,58 +41,14 @@
                 </div>
             </section>
 
+            <!-- Upcoming Events Section -->
+            <section class="section fade-in event-announcement" id="upcoming-events">
+                <!-- Upcoming events will be dynamically inserted here by JavaScript -->
+            </section>
+
             <!-- Past Events Section -->
-            <section class="section fade-in event-announcement">
-                <div class="event-panel" style="display: flex; align-items: center; justify-content: space-between;">
-                    <div style="flex: 1; padding-right: 20px;">
-                        <div class="event-badge">PAST WEBINAR</div>
-                        <h2 class="event-title">Gene Therapy for CDKL5:<br>The History, Progress & Next Steps</h2>
-                        <div class="event-meta">
-                            <div class="event-meta-item">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                <span><strong>Sunday, October 26, 2025</strong></span>
-                            </div>
-                            <div class="event-meta-item">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                                <span><strong>9:00 - 10:00 AM CDT</strong></span>
-                            </div>
-                        </div>
-                        <p class="event-description">The US FDA has provided positive feedback + IND suggestions for gene replacement therapy for CDKL5. Join us to get the latest on definitive work being done and next steps!</p>
-                        <div class="event-speakers">
-                            <div class="speaker">
-                                <div class="speaker-avatar">RB</div>
-                                <div class="speaker-info">
-                                    <strong>Rachel Bailey, PhD</strong>
-                                    <span>Lead Researcher</span>
-                                </div>
-                            </div>
-                            <div class="speaker">
-                                <div class="speaker-avatar">JJ</div>
-                                <div class="speaker-info">
-                                    <strong>Jainu Jogani</strong>
-                                    <span>Parent Advocate</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="event-organizations">
-                            <strong>Hosted by:</strong> American Society of Gene + Cell Therapy & Child's Cure Genetic Research
-                        </p>
-                    </div>
-                    <div style="flex: 1;">
-                        <video controls width="100%">
-                            <source src="videos/eventvideo_2610.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
+            <section class="section fade-in event-announcement" id="past-events">
+                <!-- Past events will be dynamically inserted here by JavaScript -->
             </section>
 
             <section class="section fade-in" aria-labelledby="carousel-heading">
@@ -210,7 +166,7 @@
                                     <div style="flex: 1; padding-right: 20px;">
                                         <div class="event-badge">UPCOMING EVENT</div>
                                         <h2 class="event-title">${event.title}</h2>
-                                        <p class="event-description">${event.description}</p>
+                                        <a href="event-details.html" class="btn btn-event">View Details & Register</a>
                                     </div>
                                     <div style="flex: 1;">
                                         <img src="images/upcoming-placeholder.jpg" alt="Upcoming Event Placeholder" style="width: 100%; border-radius: 8px;">
