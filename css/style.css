@@ -5474,11 +5474,12 @@ section[id] {
 
 /* Event Details Page Form Styles */
 .event-registration-sidebar {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #ef9a9a 100%);
     padding: 30px;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .event-registration-sidebar h3 {
@@ -5557,6 +5558,12 @@ section[id] {
     
     .btn-primary {
         padding: 14px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .event-registration-sidebar {
+        padding: 1.5rem;
     }
 }
 
