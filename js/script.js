@@ -96,29 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function initCountdown() {
-        const countdownEls = document.querySelectorAll('[data-countdown]');
-        if (!countdownEls.length) {
-            return;
-        }
-
-        function updateCountdown() {
-            const now = new Date();
-            const diff = TRIAL_DATE.getTime() - now.getTime();
-            countdownEls.forEach((el) => {
-                if (diff <= 0) {
-                    el.textContent = 'Clinical trial window is now opening.';
-                    return;
-                }
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                el.textContent = `${days} days, ${hours} hours, ${minutes} minutes`;
-            });
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 60000);
-    }
+    // Countdown removed as per user request
 
     function initFadeIns() {
         const fadeEls = document.querySelectorAll('.fade-in');
@@ -149,8 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const fundPanel = footer.querySelector('.fundraising-panel');
             const fundAmountEl = footer.querySelector('.fundraising-amount');
             const fundBar = footer.querySelector('.fundraising-bar');
-            const fundCountdown = footer.querySelector('.fundraising-countdown');
-
+            // Countdown logic removed as per user request
             if (!fundPanel || !fundAmountEl || !fundBar) return;
 
             const current = getCurrentRaisedAmount();
@@ -161,20 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
             fundAmountEl.innerHTML = `Goal: <strong>${formatCurrency(goal)}</strong>`;
             fundBar.style.transition = 'width 1s ease-out';
             fundBar.style.width = `${pct.toFixed(2)}%`;
-
-            // If there's a fundraising countdown element, reuse the same TRIAL_DATE logic
-            if (fundCountdown) {
-                const now = new Date();
-                const diff = TRIAL_DATE.getTime() - now.getTime();
-                if (diff <= 0) {
-                    fundCountdown.textContent = 'Clinical trial window is now opening.';
-                } else {
-                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                    fundCountdown.textContent = `${days} days, ${hours} hours, ${minutes} minutes`;
-                }
-            }
         } catch (e) {
             // non-fatal
             console.warn('initFooterFundraising error', e);
