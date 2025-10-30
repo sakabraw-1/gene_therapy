@@ -67,13 +67,16 @@
     background: #fff7f0;
 }
 .mosaic-grid img {
-    width: 100%;
-    height: 100%;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 6px;
+    object-position: center;
+    border-radius: 50%;
     display: block;
-    aspect-ratio: 1/1;
+    margin: 0 auto;
     box-shadow: 0 1px 4px #e573731a;
+    background: #e0e7ff;
+    border: 3px solid #667eea;
 }
 .mosaic-heart-overlay {
     position: absolute;
@@ -94,6 +97,10 @@
     .mosaic-grid {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 1fr);
+    }
+    .mosaic-grid img {
+        width: 90px;
+        height: 90px;
     }
 }
 /* Peach color payment buttons for donate page */
@@ -4843,13 +4850,20 @@ section[id] {
 }
 
 .gallery-item img {
-    width: 100%;
-    height: 220px; /* fixed thumbnail height better on mobile */
-    object-fit: cover; /* avoid sliced/striped look */
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
     object-position: center;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
     background: #1a1a1a;
     transition: all 0.3s ease;
 }
+    .gallery-item img {
+        width: 110px;
+        height: 110px;
+    }
 
 .gallery-item:hover img {
     filter: brightness(1.1);
