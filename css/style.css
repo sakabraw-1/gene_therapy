@@ -2241,13 +2241,14 @@ blockquote {
     }
 
         /* Mobile bottom navigation bar */
+
         .mobile-bottom-nav {
-            display: none; /* hidden by default, enabled via media query */
+            display: none !important; /* hidden by default, enabled via media query */
         }
 
         @media (max-width: 900px) {
             .mobile-bottom-nav {
-                display: flex;
+                display: flex !important;
                 position: fixed;
                 left: 0;
                 right: 0;
