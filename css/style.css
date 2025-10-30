@@ -1,3 +1,41 @@
+/* ====== Donate Page Carded Two-Column Layout ====== */
+.donate-page {
+    background: #f7f6fd;
+    min-height: 100vh;
+    padding: 0;
+}
+.donate-two-col-outer {
+    background: #fff;
+    max-width: 1200px;
+    margin: 2.5rem auto 2rem auto;
+    border-radius: 2em;
+    box-shadow: 0 4px 32px #e6e6f6;
+    padding: 2.5rem 2.5vw;
+}
+.donate-two-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}
+.donate-main-col, .donation-impact {
+    background: none;
+    box-shadow: none;
+}
+@media (max-width: 900px) {
+    .donate-two-col {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .donate-two-col-outer {
+        padding: 1.2rem 0.5rem;
+        border-radius: 1.2em;
+    }
+}
 /* ====== Photo Mosaic Heart Section ====== */
 .donate-photo-mosaic {
     position: relative;
