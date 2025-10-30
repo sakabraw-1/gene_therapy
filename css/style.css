@@ -1,3 +1,25 @@
+/* === Footer Font Size & Spacing Improvements === */
+footer, .footer-grid, .footer-newsletter-col, .footer-supported-divider {
+    font-size: 15px;
+    line-height: 1.7;
+}
+footer h3, .footer-grid h3 {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 0.7em;
+}
+.footer-grid > div {
+    padding-bottom: 28px;
+}
+footer .footer-newsletter-col label,
+footer .footer-newsletter-col input,
+footer .footer-newsletter-col button {
+    font-size: 15px;
+}
+footer .footer-supported-divider {
+    margin-top: 28px !important;
+    margin-bottom: 28px !important;
+}
 /* ====== Donate Page Carded Two-Column Layout ====== */
 .donate-page {
     background: #f7f6fd;
