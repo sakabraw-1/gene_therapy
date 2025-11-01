@@ -31,12 +31,17 @@
                     <a class="btn btn-donate-hero" href="donate.html">DONATE NOW</a>
                 </div>
                 <div class="progress-wrapper" data-progress-bar>
-                    <h2 class="progress-hero-title">Fuel the Future <span class="title-accent"></span></h2>
-                    <div style="font-size:1.08em; color:#5e35b1; margin:0.3em 0 0.7em 0; font-weight:600; text-align:center;">Our goal: $3.5M to launch trials.</div>
-                    <div class="progress-track" aria-hidden="true">
-                        <div class="progress-bar"></div>
+                    <div class="footer-card" style="max-width: 420px; margin: 0 auto; box-shadow: 0 4px 24px 0 rgba(255,186,140,0.10), 0 2px 8px rgba(0,0,0,0.07);">
+                        <div class="footer-goal-badge">Our Goal</div>
+                        <div class="footer-progress-bar large enhanced">
+                            <div class="footer-progress enhanced" style="width: 25%"></div>
+                            <div class="footer-progress-indicator"></div>
+                        </div>
+                        <div class="footer-goal-amount" style="text-align:center;">$3.5M <span>to launch trials</span></div>
+                        <div class="footer-quote-card" style="margin-top:1.2em; text-align:center; color:#5e35b1; font-style:italic; font-size:1.08em;">
+                            Together, we are the cure.
+                        </div>
                     </div>
-                    <blockquote class="hero-quote" style="margin:1.2em 0 0 0; font-size:1.08em; color:#5e35b1; font-style:italic; text-align:center;">“Together, we are the cure.”</blockquote>
                 </div>
             </section>
 
@@ -207,7 +212,7 @@
                                         </p>
                                     </div>
                                     <div style="flex: 1;">
-                                        <iframe src="${event.videoLink}" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                                        <iframe src="${event.videoLink.replace(/([?&])autoplay=1(&|$)/, '$1').replace(/\?$/, '')}" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             `;
