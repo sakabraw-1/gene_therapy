@@ -1,3 +1,422 @@
+/* Large Footer Progress Bar Styles */
+.footer-progress-outer {
+    background: #223075;
+    padding: 0 0 18px 0;
+}
+.footer-progress-panel {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 18px 16px 0 16px;
+}
+.footer-progress-arrow {
+    flex-shrink: 0;
+}
+.footer-progress-label {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-right: 18px;
+    letter-spacing: 0.01em;
+}
+.footer-progress-bar.large {
+    height: 22px;
+    border-radius: 12px;
+    background: #f3e6e1;
+    margin: 18px 0 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: visible;
+    position: relative;
+}
+.footer-progress-bar.large.enhanced {
+    box-shadow: 0 4px 16px 0 rgba(255,186,140,0.18), 0 2px 8px rgba(0,0,0,0.07);
+    background: linear-gradient(90deg, #ffe5d0 0%, #f3e6e1 100%);
+}
+.footer-progress-bar.large .footer-progress {
+    height: 100%;
+    border-radius: 12px 0 0 12px;
+    background: linear-gradient(90deg, #ffb88c 0%, #ff7e5f 100%);
+    box-shadow: 0 2px 8px rgba(255,186,140,0.15);
+    transition: width 1s cubic-bezier(.4,2,.6,1);
+}
+.footer-progress-bar.large.enhanced .footer-progress.enhanced {
+    background: linear-gradient(90deg, #ffb88c 0%, #ff7e5f 100%);
+    box-shadow: 0 4px 16px 0 rgba(255,186,140,0.18);
+}
+.footer-progress-bar.large.enhanced .footer-progress-indicator {
+    position: absolute;
+    top: 50%;
+    left: calc(25% - 11px); /* 25% progress, minus half indicator size */
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, #ffb88c 60%, #ff7e5f 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(255,186,140,0.25), 0 0 0 4px #fff3ed;
+    border: 3px solid #fff;
+    z-index: 2;
+    transition: left 1s cubic-bezier(.4,2,.6,1);
+}
+.footer-progress-bar-fill {
+    background: linear-gradient(90deg, #ff6a00 60%, #ffd700 100%);
+    height: 100%;
+    border-radius: 12px;
+}
+.footer-progress-amount {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-left: 8px;
+}
+.footer-progress-cta {
+    margin-left: 18px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 999px;
+    background: #ff6a00;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(255,106,0,0.10);
+    transition: background 0.18s, transform 0.18s;
+}
+.footer-progress-cta:hover {
+    background: #e55a00;
+    transform: scale(1.05);
+}
+.footer-goal-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff6a00 60%, #ffd700 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    padding: 6px 18px;
+    margin-bottom: 18px;
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 8px rgba(255,106,0,0.10);
+}
+.footer-progress-bar.large {
+    height: 18px;
+    margin: 18px 0 12px 0;
+}
+.footer-goal-amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #232e8e;
+    margin-bottom: 10px;
+}
+.footer-goal-amount span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    margin-left: 8px;
+}
+.footer-supported-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 8px;
+}
+/* Footer Main Styles */
+.footer-main {
+    background: #232e8e;
+    color: #fff;
+    padding: 0 0 24px 0;
+    font-family: inherit;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 16px 0 16px;
+}
+.footer-grid {
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footer-card {
+    background: #fff;
+    color: #232e8e;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 32px 24px;
+    flex: 1 1 280px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+.footer-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.footer-btn {
+    background: #ff6a00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255,106,0,0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.footer-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 4px 16px rgba(255,106,0,0.18);
+}
+.footer-form input[type="text"],
+.footer-form input[type="email"] {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #dbe2ef;
+    font-size: 1rem;
+}
+.footer-form button {
+    width: 100%;
+}
+.footer-socials {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+}
+.footer-social-link svg {
+    display: block;
+}
+.footer-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e3e6f6;
+    border-radius: 6px;
+    margin: 12px 0 8px 0;
+    overflow: hidden;
+}
+.footer-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6a00 60%, #ffd700 100%);
+    border-radius: 6px;
+}
+.footer-goal-text {
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+.footer-facebook-card {
+    margin-top: 12px;
+    background: #1877f3;
+    color: #fff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(24,119,243,0.10);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.footer-facebook-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 18px rgba(255,106,0,0.18);
+    background: #145db2;
+}
+.footer-facebook-card svg {
+    flex-shrink: 0;
+}
+.footer-facebook-card span {
+    font-weight: 700;
+    font-size: 1rem;
+}
+.footer-supported {
+    text-align: center;
+    margin: 24px 0 0 0;
+}
+.footer-supported span {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+}
+.footer-supported img {
+    height: 48px;
+    margin: 0 12px;
+    vertical-align: middle;
+    background: #fff;
+    border-radius: 8px;
+    padding: 4px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.footer-legal {
+    background: #1a1f5c;
+    color: #dbe2ef;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 12px 8px 0 8px;
+    margin-top: 32px;
+    border-radius: 0 0 18px 18px;
+}
+@media (max-width: 900px) {
+    .footer-grid {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .footer-card {
+        min-width: 0;
+        width: 100%;
+    }
+}
+/* FAQ PAGE STYLES (MATCH ABOUT PAGE) */
+.faq-title {
+    font-size: 2.2rem;
+    color: #5e35b1 !important;
+    font-weight: 800;
+    margin-bottom: 18px;
+    text-align: center;
+}
+.faq-search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+.faq-search-bar input {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #bdbfff;
+    font-size: 1.1rem;
+    outline: none;
+    transition: border 0.18s;
+    background: #f7f8fc;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+.faq-search-bar input:focus {
+    border: 1.5px solid #232b6c;
+}
+.faq-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+.faq-tab {
+    background: #e3e6ff;
+    color: #232b6c;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 22px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+.faq-tab.active, .faq-tab:hover {
+    background: #232b6c;
+    color: #fff;
+}
+.faq-panels {
+    background: #ffe5e5;
+    border-radius: 24px;
+    box-shadow: 0 4px 32px #e5737322;
+    padding: 32px 32px 24px 32px;
+    margin-bottom: 40px;
+    color: #232b6c;
+}
+.faq-panel {
+    padding: 0 18px;
+}
+.faq-item {
+    margin: 18px 0 0 0;
+    border-bottom: 1px solid #e3e6ff;
+}
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #232b6c;
+    font-size: 1.13rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 16px 0 8px 0;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.18s;
+    position: relative;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+.faq-question[aria-expanded="true"] {
+    color: #ff7a00;
+}
+.faq-answer {
+    padding: 0 0 16px 0;
+    color: #232b6c;
+    font-size: 1.05rem;
+    background: none;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 0;
+    animation: faqFadeIn 0.3s;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+@keyframes faqFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.faq-empty {
+    color: #bdbfff;
+    text-align: center;
+    padding: 32px 0;
+    font-size: 1.1rem;
+}
+/* Facebook card as rightmost column */
+.footer-facebook-col-right {
+    flex: 1 1 160px;
+    min-width: 160px;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* Facebook card at bottom center of footer */
+.footer-facebook-card-bottom-center-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 18px 0;
+}
+.footer-facebook-card-bottom-center {
+    background: #232b6c;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px 0 #0002, 0 1.5px 8px 0 #1877f355;
+    padding: 22px 18px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 210px;
+    min-width: 160px;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.footer-facebook-card-bottom-center:hover {
+    box-shadow: 0 0 0 6px #ff7a00, 0 4px 24px #ff7a0033, 0 1.5px 8px 0 #1877f355;
+    transform: scale(1.03);
+}
 /* Floating Facebook card over fundraising panel */
 .footer-facebook-card-floating {
     position: absolute;
@@ -7,8 +426,10 @@
     z-index: 2;
     background: #232b6c;
     border-radius: 18px;
-    box-shadow: 0 4px 18px 0 #0002, 0 1.5px 8px 0 #1877f355;
+    box-shadow: 0 8px 32px 0 #0004, 0 2px 12px 0 #1877f355;
+    border: 3px solid #fff;
     padding: 22px 18px 16px 18px;
+    margin-bottom: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
