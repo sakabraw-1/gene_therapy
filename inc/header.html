@@ -43,6 +43,7 @@
                             if (window.innerWidth <= 900) {
                                 navToggle.style.display = 'block';
                                 navLinks.classList.remove('is-open');
+                                navLinks.style.display = ''; // Reset inline style to let CSS handle it
                             } else {
                                 navToggle.style.display = 'none';
                                 navLinks.style.display = 'flex';
