@@ -22,6 +22,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const TRIAL_DATE = new Date('2026-06-30T23:59:59Z');
     const CAROUSEL_INTERVAL_MS = 5000;
 
+    // Ensure FAQ nav always goes to faq.html, even after includes-loader runs
+    function fixFaqNavLink() {
+        var faqLink = document.getElementById('nav-faq-link');
+        if (faqLink) {
+            faqLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'faq.html';
+            });
+        }
+    }
+    document.addEventListener('includes:loaded', fixFaqNavLink);
+    // Also run on DOMContentLoaded in case header is present from the start
+    document.addEventListener('DOMContentLoaded', fixFaqNavLink);
+
     // Get current raised amount from localStorage or use initial value
     function getCurrentRaisedAmount() {
         const stored = localStorage.getItem('cdkl5_raised_amount');
@@ -837,3 +851,5 @@ document.addEventListener('click', (e) => {
         closeLightbox();
     }
 });
+
+})();
