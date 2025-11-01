@@ -1,19 +1,52 @@
 <header>
-    <nav class="navbar container" aria-label="Main navigation">
-        <a href="index.html" class="logo" aria-label="CDKL5 Gene Therapy home">
-            <img src="images/logos/helix_icon.svg" alt="CDKL5 helix logo" style="height:48px; width:auto;">
-            <span class="site-name">
-                <span class="site-name-top">CDKL5</span>
-                <span class="site-name-bottom">Gene Therapy</span>
-            </span>
-        </a>
-        <ul class="nav-links" id="primary-navigation" data-nav-links>
-            <li><a href="about.html">About</a></li>
-            <li><a href="get-involved.html">Get Involved</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li class="nav-donate-item"><a href="donate.html" class="nav-donate">Donate</a></li>
-        </ul>
-    </nav>
+        <nav class="navbar container" aria-label="Main navigation">
+                <a href="index.html" class="logo" aria-label="CDKL5 Gene Therapy home">
+                        <img src="images/logos/helix_icon.svg" alt="CDKL5 helix logo" style="height:48px; width:auto;">
+                        <span class="site-name">
+                                <span class="site-name-top">CDKL5</span>
+                                <span class="site-name-bottom">Gene Therapy</span>
+                        </span>
+                </a>
+                <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav" style="background:none; border:none; display:none; margin-left:auto; font-size:2rem; cursor:pointer;">
+                        <span style="display:block; width:32px; height:32px;">
+                                <svg viewBox="0 0 32 32" width="32" height="32"><rect y="6" width="32" height="4" rx="2" fill="#303f9f"/><rect y="14" width="32" height="4" rx="2" fill="#303f9f"/><rect y="22" width="32" height="4" rx="2" fill="#303f9f"/></svg>
+                        </span>
+                </button>
+                <ul class="nav-links" id="main-nav">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="donate.html" class="btn btn-donate-pill">DONATE</a></li>
+                </ul>
+                <script>
+                // Mobile nav toggle
+                (function() {
+                    var navToggle = document.querySelector('.nav-toggle');
+                    var navLinks = document.querySelector('.nav-links');
+                    if (navToggle && navLinks) {
+                        function toggleNav() {
+                            var open = navLinks.classList.toggle('is-open');
+                            navToggle.setAttribute('aria-expanded', open);
+                        }
+                        navToggle.addEventListener('click', toggleNav);
+                        // Show toggle button on mobile
+                        function checkWidth() {
+                            if (window.innerWidth <= 900) {
+                                navToggle.style.display = 'block';
+                                navLinks.classList.remove('is-open');
+                            } else {
+                                navToggle.style.display = 'none';
+                                navLinks.style.display = 'flex';
+                                navLinks.classList.remove('is-open');
+                            }
+                        }
+                        window.addEventListener('resize', checkWidth);
+                        checkWidth();
+                    }
+                })();
+                </script>
+        </nav>
 </header>
 
 <!-- Structured data for important images to help search engines pick up keywords -->
