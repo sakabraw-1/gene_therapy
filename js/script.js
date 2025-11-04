@@ -859,5 +859,3 @@ document.addEventListener('click', (e) => {
         closeLightbox();
     }
 });
-
-})();
