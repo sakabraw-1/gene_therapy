@@ -560,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function () {
         initDonationPage();
     initDonateStepper();
         checkForCompletedDonation();
-        initGallery();
+        // initGallery(); // Moved outside IIFE
         // Initialize footer fundraising if the include is already present
         initFooterFundraising();
 
@@ -627,8 +627,15 @@ document.addEventListener('DOMContentLoaded', function () {
         highlightActiveNav();
     });
 
-} // Close any remaining unclosed blocks in main IIFE
+}
 })(); // Close main IIFE
+
+// Initialize gallery after IIFE
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof initGallery === 'function') {
+        initGallery();
+    }
+});
 
 // Diagnostic helper removed: previously inspected #navToggle. Hamburger was removed; keep diagnostics lean.
 
