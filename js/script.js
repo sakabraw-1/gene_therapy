@@ -161,7 +161,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function buildCarouselSlides(container) {
         const track = container.querySelector('.carousel-track');
         const dotsContainer = container.querySelector('.carousel-dots');
+        console.log('buildCarouselSlides called', { track, dotsContainer });
         if (!track || !dotsContainer) {
+            console.error('Carousel track or dots container not found!');
             return;
         }
 
@@ -212,12 +214,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function initCarousel() {
         const carousel = document.querySelector('[data-carousel]');
+        console.log('initCarousel called', { carousel });
         if (!carousel) {
+            console.error('Carousel element not found!');
             return;
         }
 
         const { slides, dots, track } = buildCarouselSlides(carousel) || {};
+        console.log('Carousel built', { slidesCount: slides?.length });
         if (!slides || slides.length === 0) {
+            console.error('No slides created!');
             return;
         }
 
