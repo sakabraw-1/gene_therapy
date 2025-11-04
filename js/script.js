@@ -626,7 +626,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initDonateStepper();
         highlightActiveNav();
     });
-}());
 
 // Diagnostic helper removed: previously inspected #navToggle. Hamburger was removed; keep diagnostics lean.
 
@@ -778,6 +777,9 @@ function openGalleryModal() {
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 }
+
+// Expose globally for HTML onclick
+window.openGalleryModal = openGalleryModal;
 
 // Close gallery modal
 function closeGalleryModal() {
