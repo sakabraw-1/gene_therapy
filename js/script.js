@@ -627,6 +627,9 @@ document.addEventListener('DOMContentLoaded', function () {
         highlightActiveNav();
     });
 
+} // Close any remaining unclosed blocks in main IIFE
+})(); // Close main IIFE
+
 // Diagnostic helper removed: previously inspected #navToggle. Hamburger was removed; keep diagnostics lean.
 
 // Mobile bottom nav: mark active link and ensure focusable
@@ -765,7 +768,7 @@ function initGallery() {
             item.appendChild(img);
             item.appendChild(overlay);
             galleryGrid.appendChild(item);
-        }
+        } // Close for loop
     })();
 }
 
