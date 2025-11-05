@@ -3,587 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate | CDKL5 Gene Therapy</title>
-    <meta name="description" content="Support CDKL5 gene therapy research. Your donation brings hope to 500+ families waiting for a cure.">
+    <title>Support CDKL5 Research | CDKL5 Gene Therapy</title>
+    <meta name="description" content="Support CDKL5 gene therapy research. Multiple secure payment methods available.">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .donate-clean-page {
-            background: linear-gradient(135deg, #f7f6fd 0%, #ffffff 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
+        /* Clean Minimal Donate Page */
+        .donate-simple {
+            background: #faf9f6;
+            min-height: 80vh;
+            padding: 4rem 1.5rem;
         }
-        .donate-container {
-            max-width: 1100px;
+        .donate-content {
+            max-width: 600px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 2.5rem;
             background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(79, 91, 213, 0.08);
-        }
-        @media (max-width: 968px) {
-            .donate-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-        
-        /* LEFT SIDEBAR - TRUST SIGNALS */
-        .donate-sidebar {
-            background: linear-gradient(135deg, #E8EAF6 0%, #F5F5FF 100%);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 2px solid #4f5bd5;
-        }
-        .sidebar-title {
-            font-size: 1.4rem;
-            color: #303f9f;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-        }
-        .trust-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            margin-bottom: 1.3rem;
-            padding-bottom: 1.3rem;
-            border-bottom: 1px solid rgba(79, 91, 213, 0.15);
-        }
-        .trust-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .trust-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        .trust-content h4 {
-            margin: 0 0 0.3rem 0;
-            font-size: 1rem;
-            color: #303f9f;
-            font-weight: 600;
-        }
-        .trust-content p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-        }
-        .partner-logos {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        .partner-logo {
-            background: white;
-            padding: 0.8rem;
+            padding: 3rem 2.5rem;
             border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             text-align: center;
-            font-size: 0.85rem;
-            color: #5e35b1;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
-        /* RIGHT FORM */
-        .donate-form-section {
-            padding: 0;
-        }
-        .form-title {
-            font-size: 1.8rem;
-            color: #303f9f;
-            margin-bottom: 0.5rem;
+        /* Typography */
+        .donate-title {
+            font-size: 2rem;
             font-weight: 700;
-        }
-        .form-subtitle {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-        
-        /* Frequency Toggle */
-        .frequency-toggle {
-            display: flex;
-            gap: 0;
-            margin-bottom: 2rem;
-            background: #f0f0f0;
-            border-radius: 12px;
-            padding: 4px;
-        }
-        .frequency-btn {
-            flex: 1;
-            padding: 0.9rem 1.5rem;
-            border: none;
-            background: transparent;
-            color: #666;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        .frequency-btn.active {
-            background: #4f5bd5;
-            color: white;
-            box-shadow: 0 2px 8px rgba(79, 91, 213, 0.3);
-        }
-        
-        /* Amount Selection */
-        .amount-label {
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-        .amount-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-        @media (max-width: 600px) {
-            .amount-buttons {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        .amount-btn {
-            padding: 0.9rem;
-            border: 2px solid #ddd;
-            background: white;
-            color: #333;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        .amount-btn:hover {
-            border-color: #4f5bd5;
-            background: #f7f6fd;
-        }
-        .amount-btn.active {
-            border-color: #4f5bd5;
-            background: #4f5bd5;
-            color: white;
-        }
-        
-        /* Custom Amount Input */
-        .custom-amount {
-            margin-bottom: 2rem;
-        }
-        .amount-input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .dollar-sign {
-            position: absolute;
-            left: 1rem;
-            font-size: 1.3rem;
-            color: #666;
-            font-weight: 600;
-        }
-        .amount-input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 2.5rem;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .amount-input:focus {
-            outline: none;
-            border-color: #4f5bd5;
-            box-shadow: 0 0 0 3px rgba(79, 91, 213, 0.1);
-        }
-        .currency-label {
-            position: absolute;
-            right: 1rem;
-            color: #999;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        /* Payment Methods */
-        .payment-methods {
-            margin-bottom: 2rem;
-        }
-        .payment-methods-label {
-            font-size: 1rem;
             color: #333;
             margin-bottom: 1rem;
-            font-weight: 600;
         }
+        .donate-intro {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Payment Grid */
         .payment-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+            gap: 1rem;
+            margin: 2.5rem 0;
         }
-        @media (max-width: 600px) {
-            .payment-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        .payment-method {
-            padding: 1rem 0.5rem;
-            border: 2px solid #ddd;
+        .payment-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
             background: white;
-            border-radius: 10px;
-            cursor: pointer;
+            border: 2px solid #4f5bd5;
+            border-radius: 8px;
+            color: #4f5bd5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s;
-            text-align: center;
+            cursor: pointer;
+            min-height: 100px;
         }
-        .payment-method:hover {
-            border-color: #4f5bd5;
-            background: #f7f6fd;
-        }
-        .payment-method.active {
-            border-color: #4f5bd5;
+        .payment-btn:hover {
             background: #4f5bd5;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 91, 213, 0.3);
         }
         .payment-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.3rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
-        .payment-method.active .payment-icon {
-            filter: brightness(0) invert(1);
+        
+        /* Info Section */
+        .donate-info {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
         }
-        .payment-label {
-            font-size: 0.8rem;
-            font-weight: 600;
+        .info-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .info-item strong {
             color: #333;
         }
-        .payment-method.active .payment-label {
-            color: white;
+        
+        /* Contact */
+        .donate-contact {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .donate-contact a {
+            color: #4f5bd5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .donate-contact a:hover {
+            text-decoration: underline;
         }
         
-        /* Donate Button */
-        .donate-submit {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(135deg, #ff6600 0%, #ff8c00 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 16px rgba(255, 102, 0, 0.3);
-            margin-bottom: 1.5rem;
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .donate-content {
+                padding: 2rem 1.5rem;
+            }
+            .donate-title {
+                font-size: 1.75rem;
+            }
+            .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            .payment-btn {
+                padding: 1.25rem 0.75rem;
+                min-height: 90px;
+                font-size: 0.9rem;
+            }
+            .payment-icon {
+                font-size: 1.75rem;
+            }
+            .info-row {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
         }
-        .donate-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
-        }
-        
-        /* Tax Info */
-        .tax-info {
-            background: #f7f6fd;
-            padding: 1.2rem;
-            border-radius: 10px;
-            border-left: 4px solid #4f5bd5;
-        }
-        .tax-info p {
-            margin: 0 0 0.5rem 0;
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.6;
-        }
-        .tax-info p:last-child {
-            margin: 0;
-        }
-        .tax-info strong {
-            color: #303f9f;
+        @media (max-width: 480px) {
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div data-include="inc/header.html"></div>
     
-    <main class="donate-clean-page">
-        <div class="donate-container">
-            <!-- LEFT SIDEBAR - TRUST SIGNALS -->
-            <aside class="donate-sidebar">
-                <h2 class="sidebar-title">
-                    <span>🛡️</span> Your Impact
-                </h2>
-                
-                <div class="trust-item">
-                    <span class="trust-icon">✅</span>
-                    <div class="trust-content">
-                        <h4>Tax Deductible</h4>
-                        <p>501(c)(3) nonprofit<br>EIN: 83-3715487</p>
-                    </div>
-                </div>
-                
-                <div class="trust-item">
-                    <span class="trust-icon">💯</span>
-                    <div class="trust-content">
-                        <h4>100% to Research</h4>
-                        <p>Every dollar funds gene therapy development. Zero administrative costs.</p>
-                    </div>
-                </div>
-                
-                <div class="trust-item">
-                    <span class="trust-icon">🏥</span>
-                    <div class="trust-content">
-                        <h4>Real Progress</h4>
-                        <p>We're in Phase 1/2 clinical trials with AAV gene therapy.</p>
-                    </div>
-                </div>
-                
-                <div class="trust-item">
-                    <span class="trust-icon">👨‍👩‍👧</span>
-                    <div class="trust-content">
-                        <h4>500+ Families</h4>
-                        <p>Your donation brings hope to children waiting for a cure.</p>
-                    </div>
-                </div>
-                
-                <div class="trust-item">
-                    <span class="trust-icon">🤝</span>
-                    <div class="trust-content">
-                        <h4>Trusted Partners</h4>
-                        <div class="partner-logos">
-                            <div class="partner-logo">Child's Cure Foundation</div>
-                            <div class="partner-logo">University of Missouri</div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
+    <main class="donate-simple">
+        <div class="donate-content">
+            <!-- Title -->
+            <h1 class="donate-title">Support CDKL5 Research</h1>
+            <p class="donate-intro">Choose your preferred payment method to donate securely</p>
             
-            <!-- RIGHT - DONATION FORM -->
-            <section class="donate-form-section">
-                <h1 class="form-title">Support CDKL5 Gene Therapy</h1>
-                <p class="form-subtitle">Your donation brings hope to 500+ families worldwide</p>
+            <!-- Payment Grid -->
+            <div class="payment-grid">
+                <!-- Credit Card -->
+                <a href="https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr" target="_blank" class="payment-btn">
+                    <div class="payment-icon">💳</div>
+                    <div>Credit Card</div>
+                </a>
                 
-                <!-- CDKL5 Info Box -->
-                <div style="background: linear-gradient(135deg, #f7f6fd 0%, #ffffff 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #4f5bd5; margin-bottom: 2rem;">
-                    <h3 style="margin: 0 0 0.8rem 0; color: #303f9f; font-size: 1.1rem;">What is CDKL5 Deficiency Disorder?</h3>
-                    <p style="margin: 0 0 0.8rem 0; color: #555; line-height: 1.6;">CDKL5 Deficiency Disorder (CDD) is a rare genetic condition causing severe seizures, developmental delays, and motor impairments. Children with CDD face daily challenges, but gene therapy offers real hope.</p>
-                    <p style="margin: 0; color: #555; line-height: 1.6;"><strong style="color: #303f9f;">Our Mission:</strong> Develop AAV9 gene therapy to restore missing CDKL5 protein function and give these children a chance at a better life.</p>
+                <!-- PayPal -->
+                <a href="https://www.paypal.com/us/fundraiser/charity/3700987" target="_blank" class="payment-btn">
+                    <div class="payment-icon">🅿️</div>
+                    <div>PayPal</div>
+                </a>
+                
+                <!-- Zelle -->
+                <a href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0hJTEQnUyBDVVJFIEdFTkVUSUMgUkVTRUFSQ0ggTk9OIFBST0ZJVCIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6ImphaW51am9nYW5pQGdtYWlsLmNvbSJ9" target="_blank" class="payment-btn">
+                    <div class="payment-icon">⚡</div>
+                    <div>Zelle</div>
+                </a>
+                
+                <!-- Apple Pay -->
+                <a href="https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr" target="_blank" class="payment-btn">
+                    <div class="payment-icon">🍎</div>
+                    <div>Apple Pay</div>
+                </a>
+                
+                <!-- Crypto -->
+                <a href="mailto:support@cdkl5genetherapy.com?subject=Crypto%20Donation" class="payment-btn">
+                    <div class="payment-icon">₿</div>
+                    <div>Crypto</div>
+                </a>
+                
+                <!-- DAF -->
+                <a href="mailto:support@cdkl5genetherapy.com?subject=DAF%20Donation" class="payment-btn">
+                    <div class="payment-icon">🏦</div>
+                    <div>DAF</div>
+                </a>
+                
+                <!-- Stocks -->
+                <a href="mailto:support@cdkl5genetherapy.com?subject=Stock%20Donation" class="payment-btn">
+                    <div class="payment-icon">📈</div>
+                    <div>Stocks</div>
+                </a>
+            </div>
+            
+            <!-- Impact Info Box -->
+            <div style="background: white; border: 2px solid #e0e0e0; border-radius: 10px; padding: 1.5rem; margin: 2.5rem 0;">
+                <h3 style="margin: 0 0 1rem 0; color: #4f5bd5; font-size: 1.05rem; font-weight: 600;">How will my donation help CDKL5 research?</h3>
+                <p style="margin: 0 0 1rem 0; color: #555; font-size: 0.95rem; line-height: 1.7;">Your donation directly funds <strong>AAV9 gene therapy development</strong> for CDKL5 Deficiency Disorder.</p>
+                <p style="margin: 0 0 0.5rem 0; color: #555; font-size: 0.95rem; font-weight: 600;">Your donation funds:</p>
+                <ul style="margin: 0 0 1rem 0; padding-left: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.7;">
+                    <li>Clinical trial costs & patient support (40%)</li>
+                    <li>Gene therapy manufacturing (35%)</li>
+                    <li>Preclinical testing & FDA approval (25%)</li>
+                </ul>
+                <p style="margin: 0; color: #555; font-size: 0.95rem; line-height: 1.7;">This is a <strong>parent-led initiative</strong> bringing hope to 500+ families worldwide affected by CDKL5.</p>
+            </div>
+            
+            <!-- Info Section -->
+            <div class="donate-info">
+                <div class="info-row">
+                    <div class="info-item">
+                        <span>✓</span>
+                        <span><strong>Tax-Deductible</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <span>|</span>
+                        <span>EIN: <strong>83-3715487</strong></span>
+                    </div>
                 </div>
-                
-                <!-- Research Progress -->
-                <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e0e0e0; margin-bottom: 2rem;">
-                    <h3 style="margin: 0 0 1rem 0; color: #303f9f; font-size: 1.1rem;">🔬 Where We Are Now</h3>
-                    <div style="display: grid; gap: 0.8rem;">
-                        <div style="display: flex; align-items: start; gap: 0.8rem;">
-                            <span style="font-size: 1.3rem;">✅</span>
-                            <div>
-                                <strong style="color: #303f9f;">Preclinical Success</strong>
-                                <p style="margin: 0.2rem 0 0 0; color: #555; font-size: 0.95rem;">Proven efficacy in animal models including breakthrough pig model</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start; gap: 0.8rem;">
-                            <span style="font-size: 1.3rem;">⏳</span>
-                            <div>
-                                <strong style="color: #303f9f;">FDA Preparations</strong>
-                                <p style="margin: 0.2rem 0 0 0; color: #555; font-size: 0.95rem;">Compiling regulatory submissions for clinical trial approval</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start; gap: 0.8rem;">
-                            <span style="font-size: 1.3rem;">🎯</span>
-                            <div>
-                                <strong style="color: #303f9f;">Target: Q2 2026</strong>
-                                <p style="margin: 0.2rem 0 0 0; color: #555; font-size: 0.95rem;">First-in-human Phase 1/2 clinical trials to begin</p>
-                            </div>
-                        </div>
+                <div class="info-row">
+                    <div class="info-item">
+                        <span>✓</span>
+                        <span>100% funds research</span>
+                    </div>
+                    <div class="info-item">
+                        <span>|</span>
+                        <span>Secure & encrypted</span>
                     </div>
                 </div>
-                
-                <form id="donate-form" name="donate" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="donate">
-                    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-                    <input type="hidden" name="amount" id="custom-amount" value="">
-                    
-                    <!-- Payment Methods -->
-                    <div class="payment-methods">
-                        <label class="payment-methods-label">Payment Method</label>
-                        <div class="payment-grid">
-                            <div class="payment-method" data-method="card">
-                                <div class="payment-icon">💳</div>
-                                <div class="payment-label">Card</div>
-                            </div>
-                            <div class="payment-method" data-method="paypal">
-                                <div class="payment-icon">🅿️</div>
-                                <div class="payment-label">PayPal</div>
-                            </div>
-                            <div class="payment-method" data-method="crypto">
-                                <div class="payment-icon">₿</div>
-                                <div class="payment-label">Crypto</div>
-                            </div>
-                            <div class="payment-method" data-method="daf">
-                                <div class="payment-icon">🏦</div>
-                                <div class="payment-label">DAF</div>
-                            </div>
-                            <div class="payment-method" data-method="stocks">
-                                <div class="payment-icon">📈</div>
-                                <div class="payment-label">Stocks</div>
-                            </div>
-                            <div class="payment-method" data-method="zelle">
-                                <div class="payment-icon">⚡</div>
-                                <div class="payment-label">Zelle</div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="payment-method" id="payment-method-input">
-                    </div>
-                    
-                    <!-- FAQ Accordion -->
-                    <div class="donation-faq" style="margin-top: 2rem;">
-                        <div class="faq-item" style="margin-bottom: 0.8rem;">
-                            <button type="button" class="faq-question" style="width: 100%; text-align: left; background: white; border: 2px solid #e0e0e0; border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.95rem; font-weight: 600; color: #303f9f; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
-                                <span>How does the donation process work?</span>
-                                <span class="faq-arrow" style="font-size: 1.2rem; transition: transform 0.3s;">▼</span>
-                            </button>
-                            <div class="faq-answer" style="display: none; padding: 1.2rem; background: #f7f6fd; border: 2px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; margin-top: -10px; font-size: 0.9rem; color: #555; line-height: 1.7;">
-                                <p style="margin: 0;"><strong>1. Select your amount</strong> - Choose a preset amount or enter custom<br>
-                                <strong>2. Choose payment method</strong> - Card, PayPal, or Zelle<br>
-                                <strong>3. Click the payment button below</strong> - You'll be redirected to secure checkout<br>
-                                <strong>4. Complete donation</strong> - Follow the payment platform's process<br>
-                                <strong>5. Get instant receipt</strong> - Tax-deductible receipt sent to your email</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item" style="margin-bottom: 0.8rem;">
-                            <button type="button" class="faq-question" style="width: 100%; text-align: left; background: white; border: 2px solid #e0e0e0; border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.95rem; font-weight: 600; color: #303f9f; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
-                                <span>Are there any fees?</span>
-                                <span class="faq-arrow" style="font-size: 1.2rem; transition: transform 0.3s;">▼</span>
-                            </button>
-                            <div class="faq-answer" style="display: none; padding: 1.2rem; background: #f7f6fd; border: 2px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; margin-top: -10px; font-size: 0.9rem; color: #555; line-height: 1.7;">
-                                <p style="margin: 0;"><strong>Zero administrative fees!</strong> 100% of your donation goes directly to CDKL5 gene therapy research.</p>
-                                <p style="margin: 0.8rem 0 0 0;">Payment platforms may charge small processing fees (2-3% for cards, free for Zelle). We absorb these costs - your full donation amount funds research.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item" style="margin-bottom: 0.8rem;">
-                            <button type="button" class="faq-question" style="width: 100%; text-align: left; background: white; border: 2px solid #e0e0e0; border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.95rem; font-weight: 600; color: #303f9f; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
-                                <span>Will I receive a tax-deductible receipt?</span>
-                                <span class="faq-arrow" style="font-size: 1.2rem; transition: transform 0.3s;">▼</span>
-                            </button>
-                            <div class="faq-answer" style="display: none; padding: 1.2rem; background: #f7f6fd; border: 2px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; margin-top: -10px; font-size: 0.9rem; color: #555; line-height: 1.7;">
-                                <p style="margin: 0;"><strong>Yes!</strong> Child's Cure Genetic Research Foundation is a 501(c)(3) nonprofit. Your donation is tax-deductible to the fullest extent allowed by law.</p>
-                                <p style="margin: 0.8rem 0 0 0;"><strong>EIN:</strong> 83-3715487<br>
-                                You'll receive an email receipt immediately after your donation for your tax records.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item" style="margin-bottom: 1.5rem;">
-                            <button type="button" class="faq-question" style="width: 100%; text-align: left; background: white; border: 2px solid #e0e0e0; border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.95rem; font-weight: 600; color: #303f9f; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
-                                <span>How will my donation help CDKL5 research?</span>
-                                <span class="faq-arrow" style="font-size: 1.2rem; transition: transform 0.3s;">▼</span>
-                            </button>
-                            <div class="faq-answer" style="display: none; padding: 1.2rem; background: #f7f6fd; border: 2px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; margin-top: -10px; font-size: 0.9rem; color: #555; line-height: 1.7;">
-                                <p style="margin: 0;">Your donation directly funds <strong>AAV9 gene therapy development</strong> for CDKL5 Deficiency Disorder. We're targeting Q2 2026 clinical trials.</p>
-                                <p style="margin: 0.8rem 0;"><strong>Your donation funds:</strong><br>
-                                • Clinical trial costs & patient support (40%)<br>
-                                • Gene therapy manufacturing (35%)<br>
-                                • Preclinical testing & FDA approval (25%)</p>
-                                <p style="margin: 0.8rem 0 0 0;">This is a <strong>parent-led initiative</strong> bringing hope to 500+ families worldwide affected by CDKL5.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Tax Information -->
-                    <div class="tax-info">
-                        <p><strong>🔒 Secure & Safe</strong></p>
-                        <p>All payments are processed through encrypted, industry-standard platforms. Your financial information is never stored on our servers.</p>
-                        <p><strong>Questions?</strong> Email <a href="mailto:support@cdkl5genetherapy.com" style="color:#4f5bd5;">support@cdkl5genetherapy.com</a></p>
-                    </div>
-                </form>
-            </section>
+            </div>
+            
+            <!-- Contact -->
+            <div class="donate-contact">
+                <p><strong>Questions about donating?</strong></p>
+                <p>
+                    Email: <a href="mailto:support@cdkl5genetherapy.com">support@cdkl5genetherapy.com</a>
+                </p>
+            </div>
         </div>
     </main>
     
     <div data-include="inc/footer.html"></div>
     
     <script src="js/includes-loader.js"></script>
-    <script>
-        // Payment method links
-        const paymentLinks = {
-            'card': 'https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr',
-            'paypal': 'https://www.paypal.com/us/fundraiser/charity/3700987',
-            'zelle': 'https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0hJTEQnUyBDVVJFIEdFTkVUSUMgUkVTRUFSQ0ggTk9OIFBST0ZJVCIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6ImphaW51am9nYW5pQGdtYWlsLmNvbSJ9',
-            'crypto': '#',
-            'daf': '#',
-            'stocks': '#'
-        };
-        
-        // Process donation function
-        function processDonation(method) {
-            const amount = document.getElementById('custom-amount').value;
-            if (!amount || amount <= 0) {
-                alert('Please select or enter a donation amount first.');
-                return;
-            }
-            if (paymentLinks[method] && paymentLinks[method] !== '#') {
-                window.location.href = paymentLinks[method];
-            } else {
-                alert('This payment method is coming soon! Please contact us at support@cdkl5genetherapy.com');
-            }
-        }
-        
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const arrow = this.querySelector('.faq-arrow');
-                const isOpen = answer.style.display === 'block';
-                
-                // Close all answers
-                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-                document.querySelectorAll('.faq-arrow').forEach(arr => arr.style.transform = 'rotate(0deg)');
-                document.querySelectorAll('.faq-question').forEach(q => q.style.background = 'white');
-                
-                // Toggle current
-                if (!isOpen) {
-                    answer.style.display = 'block';
-                    arrow.style.transform = 'rotate(180deg)';
-                    this.style.background = '#f0f0f0';
-                }
-            });
-        });
-        
-        // Hover effects for payment buttons
-        document.querySelectorAll('button[onclick^="processDonation"]').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-                this.style.boxShadow = '0 6px 20px rgba(79, 91, 213, 0.4)';
-            });
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 4px 16px rgba(79, 91, 213, 0.3)';
-            });
-        });
-        
-        // Payment Methods - Click to redirect directly
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function() {
-                const paymentMethod = this.dataset.method;
-                
-                // Mark as active
-                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('payment-method-input').value = paymentMethod;
-                
-                // Redirect to payment link
-                if (paymentLinks[paymentMethod] && paymentLinks[paymentMethod] !== '#') {
-                    window.location.href = paymentLinks[paymentMethod];
-                } else {
-                    alert('This payment method is coming soon! For Crypto, DAF, or Stock donations, please contact us at support@cdkl5genetherapy.com');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
