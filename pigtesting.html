@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Remove sticky header for better reading experience */
+        header {
+            position: relative !important;
+        }
+        
         /* Clean Blog Layout */
         .blog-container {
             max-width: 750px;
@@ -194,10 +199,6 @@
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            /* Remove sticky header on mobile for better reading */
-            header {
-                position: relative !important;
-            }
             .blog-container {
                 padding: 2rem 1rem;
             }
