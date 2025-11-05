@@ -276,6 +276,10 @@
         min-width: 0;
         width: 100%;
     }
+    /* Hide donate card on mobile to reduce clutter */
+    .footer-card:first-child {
+        display: none;
+    }
 }
 /* FAQ PAGE STYLES (MATCH ABOUT PAGE) */
 .faq-title {
