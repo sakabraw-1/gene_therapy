@@ -9,6 +9,132 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <style>
+        /* Unified Color System Overrides for About Page */
+        
+        /* Page background - warm cream */
+        body {
+            background: var(--bg-page) !important;  /* Warm cream */
+        }
+        
+        .section {
+            background: transparent !important;
+        }
+        
+        /* First section - warm pastel */
+        .section:first-of-type {
+            background: var(--section-warm) !important;  /* Soft peach */
+            padding: 4rem 1.5rem;
+        }
+        
+        /* Alternating section backgrounds */
+        .section:nth-of-type(even) {
+            background: var(--section-cool) !important;  /* Soft blue */
+            padding: 4rem 1.5rem;
+        }
+        
+        /* Remove badge or make it subtle */
+        .badge {
+            background: #f0f4ff !important;
+            color: var(--heading-secondary) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        /* Page title - dark blue H1 */
+        h1 {
+            color: var(--heading-primary) !important;  /* Dark blue */
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        /* Section titles - softer blue H2 */
+        h2 {
+            color: var(--heading-secondary) !important;  /* Softer blue */
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        /* Card titles - softer blue H3 */
+        h3 {
+            color: var(--heading-secondary) !important;  /* Softer blue */
+            font-weight: 700;
+        }
+        
+        /* Mission statement */
+        .mission-statement {
+            background: var(--section-accent) !important;  /* Soft lavender */
+            padding: 2rem;
+            border-left: 4px solid var(--primary-orange) !important;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .mission-statement p {
+            color: #333 !important;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* Cards - Change from pink to white */
+        .card {
+            padding: 2rem;
+            background: #ffffff !important;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+        }
+        
+        .card h3 {
+            color: #303f9f !important;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .card p, .card ul {
+            color: #666666 !important;
+            line-height: 1.6;
+        }
+        
+        /* Group titles */
+        .group-title {
+            color: var(--heading-secondary) !important;  /* Softer blue */
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Page background */
+        body {
+            background: var(--bg-page) !important;  /* Warm cream */
+        }
+        
+        .section {
+            background: transparent !important;
+        }
+        
+        /* Info list */
+        .info-list {
+            color: #666666 !important;
+        }
+        
+        .info-list li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+    </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -28,8 +154,8 @@
             </section>
 
             <div class="mission-statement">
-    <p>We aren't waiting for a cure for CDKL5, we are making it happen.</p>
-</div>
+                <p>We aren't waiting for a cure for CDKL5, we are making it happen.</p>
+            </div>
 
             <section class="section fade-in" aria-labelledby="mechanism-heading">
                 <h2 id="mechanism-heading">How the therapy works</h2>
@@ -44,7 +170,7 @@
                     </article>
                     <article class="card">
                         <h3>Long-Lasting Effect</h3>
-                        <p>This treatment is designed to work steadily over time, offering lasting benefits without altering a child’s natural DNA.</p>
+                        <p>This treatment is designed to work steadily over time, offering lasting benefits without altering a child's natural DNA.</p>
                     </article>
                 </div>
             </section>
@@ -156,65 +282,18 @@
                         </article>
                     </div>
                 </div>
-                                <!-- Screenshot-style Timeline Tracker -->
-                                <div class="roadmap-timeline">
+                <div class="roadmap-timeline">
                     <div class="mobile-tabs-timeline">
-            </section>
-
-            <!-- Timeline Progress Panel -->
-            </section>
-
-            <section class="section fade-in" aria-labelledby="data-heading">
-                <!--
-                <section class="section fade-in" aria-labelledby="data-heading">
-                    <h2 id="data-heading">Preclinical evidence at a glance</h2>
-                    <div class="card-grid">
-                        <article class="card">
-                            <h3>Neuron targeting</h3>
-                            <ul class="info-list">
-                                <li>i.c.v. dosing transduced ≥50% of neurons in cortex, hippocampus, and thalamus.[1]</li>
-                                <li>Improved hindlimb clasping, open-field exploration, and contextual fear conditioning.[5]</li>
-                            </ul>
-                        </article>
-                        <article class="card">
-                            <h3>Functional recovery</h3>
-                            <ul class="info-list">
-                                <li>UX055 restored motor and cognitive function in CDKL5 knockout mouse models.[2]</li>
-                                <li>Human induced pluripotent stem cell organoids showed corrected hyperexcitability.[2]</li>
-                            </ul>
-                        </article>
-                        <article class="card">
-                            <h3>Safety and biodistribution</h3>
-                            <ul class="info-list">
-                                <li>Favorable biodistribution compared with intrathecal delivery, reducing peripheral exposure.[5]</li>
-                                <li>No vector-related toxicity observed at efficacious doses (3e11–5e11 vg/g brain).[1]</li>
-                            </ul>
-                        </article>
                     </div>
-                </section>
-                -->
-
-            <section class="section fade-in" aria-labelledby="milestones-heading">
-                <!--
-                <section class="section fade-in" aria-labelledby="milestones-heading">
-                    <h2 id="milestones-heading">Milestones</h2>
-                    <ul class="info-list">
-                        <li>April 2024: Completed vector design freeze and pre-IND meeting feedback integration.</li>
-                        <li>Q4 2024: Launch translational toxicology in partnership with CRO network.</li>
-                        <li>Q2 2025: Manufacture GMP batch and finalize release assays.</li>
-                        <li>Q2 2026: Target first participant dosing pending $3.5M fundraising goal.</li>
-                    </ul>
-                </section>
-                -->
+                </div>
+            </section>
         </div>
     </main>
-
 
     <div data-include="inc/footer.html"></div>
 
     <script src="js/includes-loader.js" defer></script>
     <script src="js/script.js" defer></script>
-</script>
     <script src="js/timeline-slider.js" defer></script>
 </body>
 </html>
