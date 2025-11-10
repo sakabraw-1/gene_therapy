@@ -6,10 +6,11 @@
     <title>Support CDKL5 Research | CDKL5 Gene Therapy</title>
     <meta name="description" content="Support CDKL5 gene therapy research. Multiple secure payment methods available.">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
     <style>
         /* Clean Minimal Donate Page */
         .donate-simple {
-            background: #faf9f6;
+            background: var(--bg-page);  /* Warm cream */
             min-height: 80vh;
             padding: 4rem 1.5rem;
         }
@@ -27,7 +28,7 @@
         .donate-title {
             font-size: 2rem;
             font-weight: 700;
-            color: #333;
+            color: var(--heading-primary);  /* Dark blue H1 */
             margin-bottom: 1rem;
         }
         .donate-intro {
@@ -51,9 +52,9 @@
             justify-content: center;
             padding: 1.5rem 1rem;
             background: white;
-            border: 2px solid #4f5bd5;
+            border: 2px solid var(--primary-orange);
             border-radius: 8px;
-            color: #4f5bd5;
+            color: var(--primary-orange);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
@@ -62,10 +63,10 @@
             min-height: 100px;
         }
         .payment-btn:hover {
-            background: #4f5bd5;
+            background: var(--gradient-orange);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(79, 91, 213, 0.3);
+            box-shadow: var(--shadow-orange);
         }
         .payment-icon {
             font-size: 2rem;

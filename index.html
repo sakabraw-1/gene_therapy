@@ -9,6 +9,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <style>
+        /* Override default hero with unified pastel colors */
+        .hero {
+            background: var(--section-warm) !important;  /* Soft peach */
+        }
+        
+        .hero-content h1 {
+            color: var(--heading-primary) !important;  /* Dark blue H1 */
+        }
+        
+        .hero-content .subhead,
+        .hero-content .supporting {
+            color: #666666 !important;
+        }
+        
+        .hero-content .badge {
+            background: #f0f4ff !important;
+            color: var(--heading-secondary) !important;
+        }
+        
+        /* Update Latest Win box to soft blue instead of purple */
+        .section .card {
+            background: var(--section-cool) !important;  /* Soft blue - matches About page */
+        }
+        
+        /* Override purple cards with soft blue for info boxes */
+        .card-grid .card {
+            background: var(--section-cool) !important;  /* Soft blue */
+            border: none !important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
+        }
+        
+        /* Page background */
+        body {
+            background: var(--bg-page) !important;  /* Warm cream */
+        }
+    </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

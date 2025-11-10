@@ -15,7 +15,7 @@
         .community-events-hero {
             background: var(--section-warm) !important;  /* Soft peach */
             color: #333333 !important;
-            padding: 4rem 1.5rem;
+            padding: 3.5rem 1.5rem;
             text-align: center;
         }
         
@@ -42,7 +42,7 @@
         
         .section {
             background: var(--bg-page) !important;
-            padding: 4rem 0;
+            padding: 3.5rem 0;
         }
         
         /* Update cards to use unified white boxes */
@@ -64,12 +64,44 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            white-space: nowrap;  /* Keep titles on one line */
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .card p {
             color: #666666 !important;
             line-height: 1.6;
             margin-bottom: 1.5rem;
+        }
+        
+        /* Force 2x2 grid layout */
+        .card-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2rem !important;
+            max-width: 950px !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+        }
+        
+        /* Mobile: single column + allow title wrapping */
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            .card h2 {
+                white-space: normal !important;  /* Allow wrapping on mobile */
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* Tablet: keep 2 columns but smaller font */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .card h2 {
+                font-size: 1.3rem;
+            }
         }
         
         /* Unified button styles - Orange gradient */
@@ -99,14 +131,120 @@
             color: white !important;
         }
         
-        /* Page background */
-        .ways-to-help-page {
-            background: var(--bg-page) !important;  /* Warm cream */
+        /* GoFundMe Section Styles */
+        .gofundme-section {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 3.5rem 0;
         }
         
-        .section {
-            background: var(--bg-page) !important;
-            padding: 4rem 0;
+        .gofundme-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .gofundme-header h2 {
+            font-size: 2rem;
+            color: var(--heading-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gofundme-header p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        
+        .gofundme-campaigns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .campaign-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            border: 2px solid transparent;
+        }
+        
+        .campaign-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border-color: #ff6600;
+        }
+        
+        .campaign-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .campaign-title {
+            font-size: 1.3rem;
+            color: var(--heading-secondary);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .campaign-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+        
+        .campaign-cta {
+            color: #ff6600;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .gofundme-info {
+            background: var(--section-cool);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .gofundme-info p {
+            color: #555;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .community-events-hero {
+                padding: 2.5rem 1.5rem;
+            }
+            .community-events-hero .page-title {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 2.5rem 1.5rem;
+            }
+            .gofundme-section {
+                padding: 2.5rem 1.5rem;
+            }
+            .gofundme-header h2 {
+                font-size: 1.5rem;
+            }
+            .gofundme-campaigns {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .campaign-card {
+                padding: 1.5rem;
+            }
+            .campaign-title {
+                font-size: 1.2rem;
+            }
         }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
@@ -137,6 +275,12 @@
                 </article>
 
                 <article class="card">
+                    <h2>Start a Fundraiser</h2>
+                    <p>Create a GoFundMe campaign to support CDKL5 research in honor of your loved one.</p>
+                    <a href="https://www.gofundme.com/create/start/personal" target="_blank" class="btn">Create Campaign</a>
+                </article>
+
+                <article class="card">
                     <h2 class="volunteer-heading">Volunteer</h2>
                     <p>Volunteer your time to help with awareness campaigns, events, and caregiver support.</p>
                     <a href="volunteer.html" class="btn">Sign up</a>
@@ -147,6 +291,48 @@
                     <p>Host a community fundraiser or informational session to raise funds and awareness locally.</p>
                     <a href="plan-event.html" class="btn">Plan an Event</a>
                 </article>
+            </div>
+        </section>
+
+        <!-- Active GoFundMe Campaigns -->
+        <section class="gofundme-section">
+            <div class="gofundme-header">
+                <h2>Active GoFundMe Campaigns</h2>
+                <p>Support existing campaigns making a difference for CDKL5 research</p>
+            </div>
+
+            <div class="gofundme-campaigns">
+                <!-- Campaign 1: Ahaana -->
+                <a href="https://www.gofundme.com/f/a-cure-for-ahaana-your-gift-towards-cdkl5-gene-therapy" 
+                   target="_blank" 
+                   class="campaign-card">
+                    <div class="campaign-icon">💜</div>
+                    <h3 class="campaign-title">A Cure for Ahaana</h3>
+                    <p class="campaign-description">
+                        Support Ahaana's journey toward CDKL5 gene therapy. Every contribution brings hope to her family and advances research for all CDKL5 patients.
+                    </p>
+                    <span class="campaign-cta">Donate on GoFundMe →</span>
+                </a>
+
+                <!-- Campaign 2: Child's Cure -->
+                <a href="https://www.gofundme.com/f/support-childs-cure-genetic-research" 
+                   target="_blank" 
+                   class="campaign-card">
+                    <div class="campaign-icon">🧬</div>
+                    <h3 class="campaign-title">Child's Cure Genetic Research</h3>
+                    <p class="campaign-description">
+                        Fund critical genetic research for CDKL5 deficiency. Your donation directly supports the development of life-saving gene therapy.
+                    </p>
+                    <span class="campaign-cta">Donate on GoFundMe →</span>
+                </a>
+            </div>
+
+            <!-- Info Box -->
+            <div class="gofundme-info">
+                <p>
+                    💡 <strong>Why GoFundMe?</strong> GoFundMe campaigns allow you to create personal fundraisers, share your family's story, 
+                    and rally your community to support CDKL5 gene therapy research. All funds support the same mission: bringing hope to families.
+                </p>
             </div>
         </section>
     </main>
