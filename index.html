@@ -30,12 +30,13 @@
             color: var(--heading-secondary) !important;
         }
         
-        /* Update Latest Win box to soft blue instead of purple */
-        .section .card {
-            background: var(--section-cool) !important;  /* Soft blue - matches About page */
+        /* Keep Latest Win box PURPLE - don't change it */
+        .section:first-of-type .card {
+            background: linear-gradient(135deg, #7E57C2 0%, #9575CD 100%) !important;
+            color: white !important;
         }
         
-        /* Override purple cards with soft blue for info boxes */
+        /* Only the card-grid cards should be soft blue */
         .card-grid .card {
             background: var(--section-cool) !important;  /* Soft blue */
             border: none !important;
