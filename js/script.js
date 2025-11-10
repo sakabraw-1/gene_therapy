@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'image 34.jpg', 'image 35.jpg', 'image 36.jpg', 'image 37.jpg', 'image 38.jpg',
             'image 39.jpg', 'image 40.jpg', 'image 41.jpg', 'image 42.jpg', 'image 43.jpg',
             'image 44.jpg', 'image 45.jpg', 'image 46.jpg', 'image 47.jpg', 'image 48.jpg',
-            'image 49.jpg', 'image 50.jpg', 'image 51.jpg', 'image 52.jpg', 'image 53.jpg',
+            'image 49.jpg', 'image 50.jpg', 'image 51.jpg', 'image 52.jpg',
             'image 54.jpg', 'image 55.jpg'
         ];
 
