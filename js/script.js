@@ -715,7 +715,9 @@ window.galleryImages = [
     { file: 'image 49.jpg', quote: 'Our greatest blessing' },
     { file: 'image 50.jpg', quote: 'Hope never fades' },
     { file: 'image 51.jpg', quote: 'Shining bright through challenges' },
-    { file: 'image 52.jpg', quote: 'A heart full of courage' }
+    { file: 'image 52.jpg', quote: 'A heart full of courage' },
+    { file: 'image 54.jpg', quote: 'Embracing every moment' },
+    { file: 'image 55.jpg', quote: 'Love lights the way' }
 ];
 
 let currentLightboxIndex = 0;
