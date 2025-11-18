@@ -267,6 +267,24 @@
     margin-top: 32px;
     border-radius: 0 0 18px 18px;
 }
+
+/* Footer Partnership Links */
+.footer-partner-link {
+    font-weight: 700 !important;
+    color: white !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+    text-decoration-color: rgba(255, 186, 140, 0.6) !important;
+    text-decoration-thickness: 2px !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer-partner-link:hover {
+    color: #ffba8c !important;
+    text-decoration-color: #ffba8c !important;
+    text-decoration-thickness: 2px !important;
+    transform: translateY(-1px);
+}
 @media (max-width: 900px) {
     .footer-grid {
         flex-direction: column;
@@ -1403,6 +1421,10 @@ header {
     font-size: 0.95rem;
 }
 
+.nav-links > li {
+    position: relative;
+}
+
 .nav-links a {
     font-weight: 600;
     transition: color var(--transition);
@@ -1411,6 +1433,56 @@ header {
 .nav-links a.active,
 .nav-links a:focus,
 .nav-links a:hover {
+    color: var(--red);
+}
+
+/* Dropdown Menu Styles */
+.nav-item-with-dropdown {
+    position: relative;
+}
+
+.nav-item-with-dropdown > a {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0 0 0;
+    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-item-with-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--navy);
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #f5f5f5;
     color: var(--red);
 }
 
@@ -2247,6 +2319,22 @@ blockquote {
 
     .nav-links.is-open {
         display: flex;
+    }
+    
+    /* Mobile dropdown styles */
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: rgba(245, 245, 245, 0.5);
+        margin-left: 1rem;
+        display: none;
+    }
+    
+    .nav-item-with-dropdown:hover .dropdown-menu {
+        display: block;
     }
 
     main {
