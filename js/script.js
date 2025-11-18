@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const img = document.createElement('img');
             img.src = `images/${filename}`;
             img.alt = `Child ${slideNum} impacted by CDKL5 Disorder`;
+            img.loading = 'lazy'; // Add lazy loading for better performance
 
             img.addEventListener('error', () => {
                 img.alt = 'Joyful child placeholder image';

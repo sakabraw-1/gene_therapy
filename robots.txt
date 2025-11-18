@@ -1,0 +1,15 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://cdkl5genetherapy.com/sitemap.xml
+
+# Disallow admin and test pages
+Disallow: /admin/
+Disallow: /*_test.html
+Disallow: /*_new.html
+Disallow: /*_old.html
+Disallow: /archive/
+Disallow: /demos/
+Disallow: /netlify-forms.html
