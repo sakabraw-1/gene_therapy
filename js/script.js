@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const TRIAL_DATE = new Date('2026-06-30T23:59:59Z');
     const CAROUSEL_INTERVAL_MS = 5000;
 
-    // Ensure FAQ nav always goes to faq.html, even after includes-loader runs
+    // Ensure FAQ nav always goes to frequently-asked-questions.html, even after includes-loader runs
     function fixFaqNavLink() {
         var faqLink = document.getElementById('nav-faq-link');
         if (faqLink) {
             faqLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location.href = 'faq.html';
+                window.location.href = 'frequently-asked-questions.html';
             });
         }
     }

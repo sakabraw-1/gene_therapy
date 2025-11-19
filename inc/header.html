@@ -21,7 +21,7 @@
                                 </ul>
                         </li>
                         <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="faq.html" id="nav-faq-link">FAQ</a></li>
+                        <li><a href="frequently-asked-questions.html" id="nav-faq-link">FAQ</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="donate.html" class="btn btn-donate-pill">DONATE</a></li>
                 </ul>
@@ -30,12 +30,12 @@
                 (function() {
                     var navToggle = document.querySelector('.nav-toggle');
                     var navLinks = document.querySelector('.nav-links');
-                    // Ensure FAQ nav always goes to faq.html
+                    // Ensure FAQ nav always goes to frequently-asked-questions.html
                     var faqLink = document.getElementById('nav-faq-link');
                     if (faqLink) {
                         faqLink.addEventListener('click', function(e) {
                             e.preventDefault();
-                            window.location.href = 'faq.html';
+                            window.location.href = 'frequently-asked-questions.html';
                         });
                     }
                     if (navToggle && navLinks) {
