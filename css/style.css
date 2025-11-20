@@ -6237,3 +6237,215 @@ section[id] {
     }
 }
 
+
+/* ========================================
+   Biosketch Styles - Option A: Simple List with Read More
+   ======================================== */
+
+.biosketches-simple {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.biosketch-simple {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--primary-orange);
+    transition: all 0.3s ease;
+}
+
+.biosketch-simple:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateX(4px);
+}
+
+.bio-header-simple h3 {
+    color: var(--heading-primary);
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+}
+
+.bio-subtitle {
+    color: var(--primary-orange);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.bio-summary {
+    margin-bottom: 1.25rem;
+}
+
+.bio-summary p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.read-more-btn {
+    background: transparent;
+    border: 2px solid var(--primary-orange);
+    color: var(--primary-orange);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.read-more-btn:hover {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+.read-more-btn.active {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+.read-more-btn .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+.bio-full {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #f0f0f0;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bio-section {
+    margin-bottom: 1.5rem;
+}
+
+.bio-section:last-child {
+    margin-bottom: 0;
+}
+
+.bio-section h4 {
+    color: var(--heading-secondary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.25rem;
+}
+
+.bio-section p {
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.bio-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bio-section ul li {
+    color: #555;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.bio-section ul li:before {
+    content: "•";
+    color: var(--primary-orange);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.3rem;
+}
+
+.bio-section a {
+    color: var(--primary-orange);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.bio-section a:hover {
+    color: #d35400;
+    text-decoration: underline;
+}
+
+.bio-section em {
+    font-style: italic;
+    color: #666;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .biosketch-simple {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .bio-header-simple h3 {
+        font-size: 1.25rem;
+    }
+    
+    .bio-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .bio-summary p {
+        font-size: 0.95rem;
+    }
+    
+    .read-more-btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .bio-section h4 {
+        font-size: 1rem;
+    }
+    
+    .bio-section p,
+    .bio-section ul li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .biosketch-simple {
+        padding: 1.25rem;
+        border-left-width: 3px;
+    }
+    
+    .bio-header-simple h3 {
+        font-size: 1.15rem;
+    }
+}
+
