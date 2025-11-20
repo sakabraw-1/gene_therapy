@@ -5492,11 +5492,12 @@ section[id] {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 70%, transparent 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, transparent 100%);
     color: white;
-    padding: 20px 15px;
+    padding: 12px 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    max-height: 35%;
 }
 
 .gallery-item:hover .gallery-item-overlay {
