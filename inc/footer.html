@@ -74,7 +74,7 @@
 </footer>
 
 <!-- Mobile Bottom Tab Bar Navigation - ONLY ON MOBILE -->
-<nav class="mobile-tab-bar" id="mobile-tab-bar">
+<nav class="mobile-tab-bar" id="mobile-tab-bar" style="display: none;">
     <a href="index.html" class="tab-item" data-page="index">
         <svg class="tab-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -120,7 +120,7 @@
 </nav>
 
 <!-- About Popup for Mobile Tab Bar -->
-<div class="about-popup" id="about-popup">
+<div class="about-popup" id="about-popup" style="display: none;">
     <div class="about-popup-content">
         <a href="about.html" class="about-popup-item">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -143,6 +143,24 @@
         </a>
     </div>
 </div>
+
+<!-- IMMEDIATE SCRIPT - Runs before CSS -->
+<script>
+(function() {
+    var tabBar = document.getElementById('mobile-tab-bar');
+    var popup = document.getElementById('about-popup');
+    
+    // On desktop: remove completely
+    if (window.innerWidth > 900) {
+        if (tabBar) tabBar.remove();
+        if (popup) popup.remove();
+    } else {
+        // On mobile: show them
+        if (tabBar) tabBar.style.display = 'flex';
+        if (popup) popup.style.display = 'block';
+    }
+})();
+</script>
 
 <script>
 // Footer newsletter: AJAX POST to the current page so Netlify (once the site is deployed)
