@@ -72,69 +72,7 @@
     <span>Privacy Policy: We respect your privacy. | Terms of Use: Standard terms apply. | Medical Disclaimer: This site shares research updates and is not medical advice. Donations support 501(c)(3) led programs.</span>
   </div>
 </footer>
-<!-- Mobile bottom navigation (visible only on small screens) -->
-<nav class="mobile-bottom-nav" role="navigation" aria-label="Primary mobile navigation">
-    <a href="index.html" class="mbn-item" data-path="index.html">Home</a>
-    <a href="#" class="mbn-item" id="mobile-about-trigger" data-path="about.html">About</a>
-    <a href="get-involved.html" class="mbn-item" data-path="get-involved.html">Get Involved</a>
-    <a href="frequently-asked-questions.html" class="mbn-item" data-path="frequently-asked-questions.html">FAQ</a>
-    <a href="contact.html" class="mbn-item" data-path="contact.html">Contact</a>
-    <a href="donate.html" class="mbn-item mbn-donate" data-path="donate.html">Donate</a>
-</nav>
-
-<!-- Mobile About Modal Overlay -->
-<div class="mobile-about-modal" id="mobile-about-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-        <button class="modal-close" aria-label="Close menu">&times;</button>
-        <h3 class="modal-title">Where would you like to go?</h3>
-        <div class="modal-options">
-            <a href="about.html" class="modal-option">
-                <div class="modal-option-title">About Us</div>
-                <div class="modal-option-subtitle">Our Team & Mission</div>
-            </a>
-            <a href="about-cdkl5.html" class="modal-option">
-                <div class="modal-option-title">New to CDKL5 Disorder?</div>
-                <div class="modal-option-subtitle">Learn About the Condition</div>
-            </a>
-        </div>
-    </div>
-</div>
-
 <script>
-// Mobile About Modal functionality
-(function() {
-    var trigger = document.getElementById('mobile-about-trigger');
-    var modal = document.getElementById('mobile-about-modal');
-    var modalClose = modal ? modal.querySelector('.modal-close') : null;
-    var modalOverlay = modal ? modal.querySelector('.modal-overlay') : null;
-    
-    if (trigger && modal) {
-        // Open modal
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            modal.classList.add('modal-active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-        
-        // Close modal - close button
-        if (modalClose) {
-            modalClose.addEventListener('click', function() {
-                modal.classList.remove('modal-active');
-                document.body.style.overflow = ''; // Restore scrolling
-            });
-        }
-        
-        // Close modal - click outside
-        if (modalOverlay) {
-            modalOverlay.addEventListener('click', function() {
-                modal.classList.remove('modal-active');
-                document.body.style.overflow = ''; // Restore scrolling
-            });
-        }
-    }
-})();
-</script>
 <script>
 // Footer newsletter: AJAX POST to the current page so Netlify (once the site is deployed)
 // records the submission. Shows a friendly success message on completion.

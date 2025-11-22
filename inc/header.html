@@ -7,12 +7,9 @@
                                 <span class="site-name-bottom">Gene Therapy</span>
                         </span>
                 </a>
-                <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav" style="background:none; border:none; display:none; margin-left:auto; font-size:2rem; cursor:pointer;">
-                        <span style="display:block; width:32px; height:32px;">
-                                <svg viewBox="0 0 32 32" width="32" height="32"><rect y="6" width="32" height="4" rx="2" fill="#303f9f"/><rect y="14" width="32" height="4" rx="2" fill="#303f9f"/><rect y="22" width="32" height="4" rx="2" fill="#303f9f"/></svg>
-                        </span>
-                </button>
-                <ul class="nav-links" id="main-nav">
+                
+                <!-- Desktop Navigation -->
+                <ul class="nav-links desktop-nav" id="main-nav">
                         <li class="nav-item-with-dropdown">
                                 <a href="#" onclick="return false;" class="dropdown-toggle">About</a>
                                 <ul class="dropdown-menu">
@@ -21,62 +18,107 @@
                                 </ul>
                         </li>
                         <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="frequently-asked-questions.html" id="nav-faq-link">FAQ</a></li>
+                        <li><a href="frequently-asked-questions.html">FAQ</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="donate.html" class="btn btn-donate-pill">DONATE</a></li>
                 </ul>
-                <script>
-                // Mobile nav toggle
-                (function() {
-                    var navToggle = document.querySelector('.nav-toggle');
-                    var navLinks = document.querySelector('.nav-links');
-                    
-                    // Mobile dropdown toggle
-                    var dropdownToggle = document.querySelector('.dropdown-toggle');
-                    var dropdownParent = document.querySelector('.nav-item-with-dropdown');
-                    
-                    if (dropdownToggle && dropdownParent) {
-                        dropdownToggle.addEventListener('click', function(e) {
-                            if (window.innerWidth <= 900) {
-                                e.preventDefault();
-                                dropdownParent.classList.toggle('dropdown-open');
-                            }
-                        });
-                    }
-                    
-                    // Ensure FAQ nav always goes to frequently-asked-questions.html
-                    var faqLink = document.getElementById('nav-faq-link');
-                    if (faqLink) {
-                        faqLink.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            window.location.href = 'frequently-asked-questions.html';
-                        });
-                    }
-                    if (navToggle && navLinks) {
-                        function toggleNav() {
-                            var open = navLinks.classList.toggle('is-open');
-                            navToggle.setAttribute('aria-expanded', open);
-                        }
-                        navToggle.addEventListener('click', toggleNav);
-                        // Show toggle button on mobile
-                        function checkWidth() {
-                            if (window.innerWidth <= 900) {
-                                navToggle.style.display = 'block';
-                                navLinks.classList.remove('is-open');
-                                navLinks.style.display = ''; // Reset inline style to let CSS handle it
-                            } else {
-                                navToggle.style.display = 'none';
-                                navLinks.style.display = 'flex';
-                                navLinks.classList.remove('is-open');
-                            }
-                        }
-                        window.addEventListener('resize', checkWidth);
-                        checkWidth();
-                    }
-                })();
-                </script>
+                
+                <!-- Hamburger Button (Mobile Only) -->
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                </button>
         </nav>
 </header>
+
+<!-- Mobile Full-Screen Menu -->
+<div class="mobile-fullscreen-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+                <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                </button>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+                <ul class="mobile-menu-list">
+                        <li><a href="index.html" class="mobile-menu-link">Home</a></li>
+                        
+                        <li class="mobile-menu-dropdown">
+                                <a href="#" class="mobile-menu-link mobile-dropdown-toggle" id="mobile-about-toggle">
+                                        About
+                                        <svg class="mobile-dropdown-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                </a>
+                                <ul class="mobile-submenu">
+                                        <li><a href="about.html" class="mobile-menu-link mobile-submenu-link">About Us</a></li>
+                                        <li><a href="about-cdkl5.html" class="mobile-menu-link mobile-submenu-link">New to CDKL5 Disorder?</a></li>
+                                </ul>
+                        </li>
+                        
+                        <li><a href="get-involved.html" class="mobile-menu-link">Get Involved</a></li>
+                        <li><a href="frequently-asked-questions.html" class="mobile-menu-link">FAQ</a></li>
+                        <li><a href="contact.html" class="mobile-menu-link">Contact Us</a></li>
+                </ul>
+                
+                <a href="donate.html" class="mobile-menu-donate-btn">DONATE NOW</a>
+        </nav>
+</div>
+
+<script>
+// Mobile hamburger menu functionality
+(function() {
+        var hamburgerBtn = document.getElementById('hamburger-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var closeBtn = document.getElementById('mobile-menu-close');
+        var dropdownToggle = document.getElementById('mobile-about-toggle');
+        var dropdownParent = document.querySelector('.mobile-menu-dropdown');
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+                var isOpen = mobileMenu.classList.toggle('active');
+                hamburgerBtn.classList.toggle('active');
+                hamburgerBtn.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+        
+        // Open menu
+        if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Close menu
+        if (closeBtn) {
+                closeBtn.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Toggle About dropdown in mobile menu
+        if (dropdownToggle && dropdownParent) {
+                dropdownToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        dropdownParent.classList.toggle('active');
+                });
+        }
+        
+        // Close menu when clicking a regular link (not dropdown toggle)
+        var menuLinks = document.querySelectorAll('.mobile-menu-link:not(.mobile-dropdown-toggle)');
+        menuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                        toggleMobileMenu();
+                });
+        });
+        
+        // Desktop dropdown (hover) - only on desktop
+        var desktopDropdown = document.querySelector('.nav-item-with-dropdown');
+        if (desktopDropdown) {
+                // No click handler needed on desktop - CSS hover handles it
+        }
+})();
+</script>
 
 <!-- Structured data for important images to help search engines pick up keywords -->
 <script type="application/ld+json">
