@@ -2865,10 +2865,23 @@ blockquote {
        MOBILE TAB BAR NAVIGATION
        ==================================== */
     
-    /* Hide tab bar on desktop */
+    /* FORCE HIDE tab bar on desktop - NEVER show above 900px */
+    @media (min-width: 901px) {
+        .mobile-tab-bar,
+        .about-popup {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            position: absolute !important;
+            left: -9999px !important;
+        }
+    }
+    
+    /* Default: hidden */
     .mobile-tab-bar,
     .about-popup {
-        display: none !important;
+        display: none;
     }
     
     /* Show ONLY on mobile */
@@ -2876,16 +2889,17 @@ blockquote {
         /* Mobile Bottom Tab Bar */
         .mobile-tab-bar {
             display: flex !important;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
             height: 65px;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
-            z-index: 1000;
+            z-index: 9999 !important;
             padding-bottom: env(safe-area-inset-bottom, 0);
         }
         
@@ -2942,25 +2956,25 @@ blockquote {
         /* About Popup */
         .about-popup {
             display: block !important;
-            position: fixed;
-            bottom: 65px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: fixed !important;
+            bottom: 65px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
             background: white;
             border-radius: 16px;
             box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0 !important;
+            visibility: hidden !important;
             transition: all 0.3s ease;
-            z-index: 999;
+            z-index: 10000 !important;
             min-width: 280px;
             max-width: 90%;
         }
         
         .about-popup.active {
-            opacity: 1;
-            visibility: visible;
-            bottom: 75px;
+            opacity: 1 !important;
+            visibility: visible !important;
+            bottom: 75px !important;
         }
         
         .about-popup-content {
