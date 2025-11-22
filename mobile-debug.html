@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Tab Bar Debug</title>
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Debug Output Box -->
+    <div style="position: fixed; top: 10px; left: 10px; right: 10px; background: rgba(0,0,0,0.9); color: lime; padding: 15px; font-family: monospace; font-size: 12px; z-index: 9999; max-height: 200px; overflow-y: auto; border-radius: 8px;">
+        <div style="color: white; font-weight: bold; margin-bottom: 10px;">🐛 Debug Console</div>
+        <div id="debug-output"></div>
+    </div>
+
+    <!-- Simple content -->
+    <div style="padding: 220px 20px 100px 20px;">
+        <h1>Mobile Tab Bar Test</h1>
+        <p>This page tests the mobile bottom tab bar. Scroll down to see if the tab bar stays fixed at the bottom.</p>
+        <div style="height: 500px; background: linear-gradient(to bottom, #f0f0f0, #e0e0e0); margin: 20px 0; padding: 20px; border-radius: 8px;">
+            <p>Scroll area - the tab bar should stay fixed at the bottom even when you scroll.</p>
+        </div>
+        <p>More content...</p>
+        <div style="height: 300px; background: linear-gradient(to bottom, #e0e0e0, #d0d0d0); margin: 20px 0; padding: 20px; border-radius: 8px;">
+            <p>More scroll area...</p>
+        </div>
+    </div>
+
+    <!-- Load includes -->
+    <div id="footer-placeholder"></div>
+    <script src="js/includes-loader.js"></script>
+
+    <!-- Debug Script -->
+    <script>
+        var debugOutput = document.getElementById('debug-output');
+        var logCount = 0;
+        
+        function debugLog(message, color) {
+            logCount++;
+            var timestamp = new Date().toLocaleTimeString();
+            var line = document.createElement('div');
+            line.style.color = color || 'lime';
+            line.style.marginBottom = '5px';
+            line.innerHTML = '[' + timestamp + '] ' + message;
+            debugOutput.appendChild(line);
+            debugOutput.scrollTop = debugOutput.scrollHeight;
+        }
+        
+        // Override console.log to show on screen
+        var originalLog = console.log;
+        console.log = function() {
+            var args = Array.prototype.slice.call(arguments);
+            debugLog(args.join(' '), 'lime');
+            originalLog.apply(console, arguments);
+        };
+        
+        debugLog('📱 Debug page loaded', 'cyan');
+        debugLog('Screen width: ' + window.innerWidth + 'px', 'yellow');
+        debugLog('Screen height: ' + window.innerHeight + 'px', 'yellow');
+        
+        // Check if elements exist every 500ms
+        var checkInterval = setInterval(function() {
+            var tabBar = document.getElementById('mobile-tab-bar');
+            var aboutBtn = document.getElementById('about-tab-btn');
+            var aboutPopup = document.getElementById('about-popup');
+            
+            if (tabBar) {
+                debugLog('✅ Tab bar found!', 'lightgreen');
+                var styles = window.getComputedStyle(tabBar);
+                debugLog('Tab bar display: ' + styles.display, 'yellow');
+                debugLog('Tab bar position: ' + styles.position, 'yellow');
+                debugLog('Tab bar bottom: ' + styles.bottom, 'yellow');
+                debugLog('Tab bar z-index: ' + styles.zIndex, 'yellow');
+            } else {
+                debugLog('❌ Tab bar NOT found', 'red');
+            }
+            
+            if (aboutBtn) {
+                debugLog('✅ About button found!', 'lightgreen');
+                
+                // Add click listener with debug
+                aboutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    debugLog('🖱️ ABOUT BUTTON CLICKED!', 'cyan');
+                    
+                    if (aboutPopup) {
+                        var wasActive = aboutPopup.classList.contains('active');
+                        aboutPopup.classList.toggle('active');
+                        debugLog('Popup toggled. Now ' + (wasActive ? 'hidden' : 'visible'), 'yellow');
+                    } else {
+                        debugLog('❌ Popup element not found!', 'red');
+                    }
+                });
+                
+                clearInterval(checkInterval);
+            } else {
+                debugLog('⏳ Waiting for about button...', 'orange');
+            }
+        }, 500);
+        
+        // Stop checking after 10 seconds
+        setTimeout(function() {
+            clearInterval(checkInterval);
+            debugLog('⏹️ Stopped checking', 'gray');
+        }, 10000);
+        
+        // Listen for includes:loaded event
+        document.addEventListener('includes:loaded', function() {
+            debugLog('🎉 includes:loaded event fired!', 'cyan');
+        });
+        
+        // Touch feedback
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.closest('.tab-item')) {
+                debugLog('👆 Touch on tab item', 'lightblue');
+            }
+        });
+    </script>
+</body>
+</html>
