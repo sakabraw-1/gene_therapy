@@ -199,77 +199,112 @@
 
 // Mobile Tab Bar functionality - Wait for includes to load
 function initMobileTabBar() {
+    // Check if already initialized
+    if (window.mobileTabBarInitialized) {
+        console.log('Tab bar already initialized, skipping...');
+        return;
+    }
+    
     var tabBar = document.getElementById('mobile-tab-bar');
     var aboutPopup = document.getElementById('about-popup');
+    var aboutTabBtn = document.getElementById('about-tab-btn');
+    
+    console.log('Initializing mobile tab bar...');
+    console.log('Elements found:', {
+        tabBar: !!tabBar,
+        aboutPopup: !!aboutPopup, 
+        aboutTabBtn: !!aboutTabBtn
+    });
     
     // FORCE REMOVE on desktop - if screen width > 900px, delete the elements
     if (window.innerWidth > 900) {
         console.log('Desktop detected - removing mobile tab bar');
         if (tabBar) tabBar.remove();
         if (aboutPopup) aboutPopup.remove();
+        window.mobileTabBarInitialized = true;
         return; // Exit early
     }
     
-    console.log('Mobile detected - initializing tab bar');
+    console.log('Mobile detected - screen width:', window.innerWidth);
     
-    var aboutTabBtn = document.getElementById('about-tab-btn');
-    
-    console.log('Tab bar elements:', tabBar, aboutTabBtn, aboutPopup); // Debug
-    
-    if (aboutTabBtn && aboutPopup) {
-        // Remove any existing listeners
-        var newAboutBtn = aboutTabBtn.cloneNode(true);
-        aboutTabBtn.parentNode.replaceChild(newAboutBtn, aboutTabBtn);
-        aboutTabBtn = newAboutBtn;
-        
-        // Toggle About popup
-        aboutTabBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('About button clicked!'); // Debug
-            
-            var isActive = aboutPopup.classList.contains('active');
-            aboutPopup.classList.toggle('active');
-            console.log('Popup now:', isActive ? 'hidden' : 'visible'); // Debug
-        }, true); // Use capture phase
-        
-        // Close popup when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!aboutTabBtn.contains(e.target) && !aboutPopup.contains(e.target)) {
-                aboutPopup.classList.remove('active');
-            }
-        });
-        
-        console.log('About button listener attached');
-    } else {
-        console.log('Missing elements - aboutTabBtn:', aboutTabBtn, 'aboutPopup:', aboutPopup);
+    // Check if elements exist
+    if (!tabBar || !aboutPopup || !aboutTabBtn) {
+        console.log('Missing required elements, cannot initialize');
+        return;
     }
+    
+    console.log('All elements present, setting up click handler...');
+    
+    // Toggle About popup on button click
+    aboutTabBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var wasActive = aboutPopup.classList.contains('active');
+        aboutPopup.classList.toggle('active');
+        
+        console.log('About button clicked! Popup is now:', wasActive ? 'HIDDEN' : 'VISIBLE');
+    });
+    
+    // Close popup when clicking outside
+    document.addEventListener('click', function(e) {
+        var clickedInsideButton = aboutTabBtn.contains(e.target);
+        var clickedInsidePopup = aboutPopup.contains(e.target);
+        
+        if (!clickedInsideButton && !clickedInsidePopup && aboutPopup.classList.contains('active')) {
+            console.log('Clicked outside, closing popup');
+            aboutPopup.classList.remove('active');
+        }
+    });
+    
+    console.log('Click handlers attached successfully');
     
     // Highlight active tab based on current page
     var currentPage = window.location.pathname.split('/').pop() || 'index.html';
     var tabItems = document.querySelectorAll('.tab-item');
     
+    console.log('Current page:', currentPage);
+    
     tabItems.forEach(function(tab) {
         var tabPage = tab.getAttribute('data-page');
         if (currentPage.includes(tabPage) || (currentPage === '' && tabPage === 'index')) {
             tab.classList.add('active');
+            console.log('Activated tab:', tabPage);
         }
     });
+    
+    // Mark as initialized
+    window.mobileTabBarInitialized = true;
+    console.log('Mobile tab bar initialization complete!');
 }
 
-// Initialize when includes are loaded
+// Try multiple initialization methods
+console.log('Setting up mobile tab bar initialization...');
+
+// Method 1: DOMContentLoaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(initMobileTabBar, 100); // Small delay for includes
+        console.log('DOMContentLoaded fired');
+        setTimeout(initMobileTabBar, 200);
     });
 } else {
-    setTimeout(initMobileTabBar, 100);
+    console.log('DOM already loaded');
+    setTimeout(initMobileTabBar, 200);
 }
 
-// Also try to init on includes:loaded event
-document.addEventListener('includes:loaded', initMobileTabBar);
+// Method 2: includes:loaded event
+document.addEventListener('includes:loaded', function() {
+    console.log('includes:loaded event fired');
+    setTimeout(initMobileTabBar, 200);
+});
 
-// Also check on window resize
+// Method 3: Window load (fallback)
+window.addEventListener('load', function() {
+    console.log('window load event fired');
+    setTimeout(initMobileTabBar, 200);
+});
+
+// Handle window resize
 window.addEventListener('resize', function() {
     if (window.innerWidth > 900) {
         var tabBar = document.getElementById('mobile-tab-bar');
