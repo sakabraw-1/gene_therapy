@@ -155,9 +155,9 @@
         if (tabBar) tabBar.remove();
         if (popup) popup.remove();
     } else {
-        // On mobile: show them
-        if (tabBar) tabBar.style.display = 'flex';
-        if (popup) popup.style.display = 'block';
+        // On mobile: REMOVE inline styles so CSS can work
+        if (tabBar) tabBar.removeAttribute('style');
+        if (popup) popup.removeAttribute('style');
     }
 })();
 </script>
