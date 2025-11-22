@@ -14,7 +14,7 @@
                 </button>
                 <ul class="nav-links" id="main-nav">
                         <li class="nav-item-with-dropdown">
-                                <a href="#" onclick="return false;">About</a>
+                                <a href="#" onclick="return false;" class="dropdown-toggle">About</a>
                                 <ul class="dropdown-menu">
                                         <li><a href="about.html">About Us</a></li>
                                         <li><a href="about-cdkl5.html">New to CDKL5 Disorder?</a></li>
@@ -30,6 +30,20 @@
                 (function() {
                     var navToggle = document.querySelector('.nav-toggle');
                     var navLinks = document.querySelector('.nav-links');
+                    
+                    // Mobile dropdown toggle
+                    var dropdownToggle = document.querySelector('.dropdown-toggle');
+                    var dropdownParent = document.querySelector('.nav-item-with-dropdown');
+                    
+                    if (dropdownToggle && dropdownParent) {
+                        dropdownToggle.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 900) {
+                                e.preventDefault();
+                                dropdownParent.classList.toggle('dropdown-open');
+                            }
+                        });
+                    }
+                    
                     // Ensure FAQ nav always goes to frequently-asked-questions.html
                     var faqLink = document.getElementById('nav-faq-link');
                     if (faqLink) {

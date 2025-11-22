@@ -2330,11 +2330,15 @@ blockquote {
         transform: none;
         background: rgba(245, 245, 245, 0.5);
         margin-left: 1rem;
-        display: none;
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
     }
     
-    .nav-item-with-dropdown:hover .dropdown-menu {
-        display: block;
+    /* Show dropdown when parent has dropdown-open class (mobile tap) */
+    .nav-item-with-dropdown.dropdown-open .dropdown-menu {
+        max-height: 500px;
     }
 
     main {
