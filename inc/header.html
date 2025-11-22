@@ -70,9 +70,15 @@
 </div>
 
 <script>
-// Mobile hamburger menu functionality - Define globally for onclick handlers
+// Mobile hamburger menu functionality - ONLY ON MOBILE
 window.toggleMobileMenu = function() {
-        console.log('toggleMobileMenu called'); // Debug log
+        // Only work on mobile screens
+        if (window.innerWidth > 900) {
+                console.log('Desktop detected, ignoring mobile menu toggle');
+                return;
+        }
+        
+        console.log('toggleMobileMenu called - Mobile view'); // Debug log
         
         var mobileMenu = document.getElementById('mobile-menu');
         var hamburgerBtn = document.getElementById('hamburger-btn');
@@ -93,6 +99,7 @@ window.toggleMobileMenu = function() {
 
 // Test that function is defined
 console.log('toggleMobileMenu function defined:', typeof window.toggleMobileMenu);
+console.log('Current window width:', window.innerWidth);
 
 // Initialize dropdown and link handlers after includes load
 document.addEventListener('includes:loaded', function() {
@@ -106,6 +113,7 @@ document.addEventListener('includes:loaded', function() {
                 dropdownToggle.addEventListener('click', function(e) {
                         e.preventDefault();
                         dropdownParent.classList.toggle('active');
+                        console.log('Dropdown toggled');
                 });
         }
         
@@ -116,6 +124,8 @@ document.addEventListener('includes:loaded', function() {
                         window.toggleMobileMenu();
                 });
         });
+        
+        console.log('Mobile menu initialized, links found:', menuLinks.length);
 });
 
 // Also try to initialize immediately in case includes:loaded already fired
