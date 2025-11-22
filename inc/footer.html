@@ -179,15 +179,19 @@
     }, false);
 })();
 
-// Mobile Tab Bar functionality
-(function() {
+// Mobile Tab Bar functionality - Wait for includes to load
+function initMobileTabBar() {
     var aboutTabBtn = document.getElementById('about-tab-btn');
     var aboutPopup = document.getElementById('about-popup');
+    
+    console.log('Tab bar init:', aboutTabBtn, aboutPopup); // Debug
     
     if (aboutTabBtn && aboutPopup) {
         // Toggle About popup
         aboutTabBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            console.log('About button clicked'); // Debug
             aboutPopup.classList.toggle('active');
         });
         
@@ -209,5 +213,17 @@
             tab.classList.add('active');
         }
     });
-})();
+}
+
+// Initialize when includes are loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initMobileTabBar, 100); // Small delay for includes
+    });
+} else {
+    setTimeout(initMobileTabBar, 100);
+}
+
+// Also try to init on includes:loaded event
+document.addEventListener('includes:loaded', initMobileTabBar);
 </script>
