@@ -72,19 +72,32 @@
 <script>
 // Mobile hamburger menu functionality - Define globally for onclick handlers
 window.toggleMobileMenu = function() {
+        console.log('toggleMobileMenu called'); // Debug log
+        
         var mobileMenu = document.getElementById('mobile-menu');
         var hamburgerBtn = document.getElementById('hamburger-btn');
+        
+        console.log('mobileMenu:', mobileMenu); // Debug log
+        console.log('hamburgerBtn:', hamburgerBtn); // Debug log
         
         if (mobileMenu && hamburgerBtn) {
                 var isOpen = mobileMenu.classList.toggle('active');
                 hamburgerBtn.classList.toggle('active');
                 hamburgerBtn.setAttribute('aria-expanded', isOpen);
                 document.body.style.overflow = isOpen ? 'hidden' : '';
+                console.log('Menu toggled, isOpen:', isOpen); // Debug log
+        } else {
+                console.error('Elements not found!'); // Debug log
         }
 };
 
+// Test that function is defined
+console.log('toggleMobileMenu function defined:', typeof window.toggleMobileMenu);
+
 // Initialize dropdown and link handlers after includes load
 document.addEventListener('includes:loaded', function() {
+        console.log('includes:loaded event fired'); // Debug log
+        
         var dropdownToggle = document.getElementById('mobile-about-toggle');
         var dropdownParent = document.querySelector('.mobile-menu-dropdown');
         
@@ -108,6 +121,8 @@ document.addEventListener('includes:loaded', function() {
 // Also try to initialize immediately in case includes:loaded already fired
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
         setTimeout(function() {
+                console.log('Immediate initialization attempt'); // Debug log
+                
                 var dropdownToggle = document.getElementById('mobile-about-toggle');
                 var dropdownParent = document.querySelector('.mobile-menu-dropdown');
                 
