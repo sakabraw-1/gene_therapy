@@ -2865,14 +2865,32 @@ blockquote {
        HAMBURGER MENU STYLES (MOBILE ONLY)
        ==================================== */
     
-    /* Hamburger button - ALWAYS hidden on desktop, only show on mobile */
+    /* FORCE HIDE on desktop - NEVER show these elements above 900px */
+    @media (min-width: 901px) {
+        .hamburger-btn,
+        .hamburger-btn.active,
+        .mobile-fullscreen-menu,
+        .mobile-fullscreen-menu.active,
+        #hamburger-btn,
+        #mobile-menu {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            position: absolute !important;
+            left: -9999px !important;
+        }
+    }
+    
+    /* Hamburger button - ALWAYS hidden by default */
     .hamburger-btn {
         display: none !important;
     }
     
-    /* Mobile full-screen menu - ALWAYS hidden on desktop */
+    /* Mobile full-screen menu - ALWAYS hidden by default */
     .mobile-fullscreen-menu {
         display: none !important;
+        visibility: hidden !important;
     }
     
     /* Only enable on mobile */
