@@ -181,19 +181,39 @@
 
 // Mobile Tab Bar functionality - Wait for includes to load
 function initMobileTabBar() {
-    var aboutTabBtn = document.getElementById('about-tab-btn');
+    var tabBar = document.getElementById('mobile-tab-bar');
     var aboutPopup = document.getElementById('about-popup');
     
-    console.log('Tab bar init:', aboutTabBtn, aboutPopup); // Debug
+    // FORCE REMOVE on desktop - if screen width > 900px, delete the elements
+    if (window.innerWidth > 900) {
+        console.log('Desktop detected - removing mobile tab bar');
+        if (tabBar) tabBar.remove();
+        if (aboutPopup) aboutPopup.remove();
+        return; // Exit early
+    }
+    
+    console.log('Mobile detected - initializing tab bar');
+    
+    var aboutTabBtn = document.getElementById('about-tab-btn');
+    
+    console.log('Tab bar elements:', tabBar, aboutTabBtn, aboutPopup); // Debug
     
     if (aboutTabBtn && aboutPopup) {
+        // Remove any existing listeners
+        var newAboutBtn = aboutTabBtn.cloneNode(true);
+        aboutTabBtn.parentNode.replaceChild(newAboutBtn, aboutTabBtn);
+        aboutTabBtn = newAboutBtn;
+        
         // Toggle About popup
         aboutTabBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('About button clicked'); // Debug
+            console.log('About button clicked!'); // Debug
+            
+            var isActive = aboutPopup.classList.contains('active');
             aboutPopup.classList.toggle('active');
-        });
+            console.log('Popup now:', isActive ? 'hidden' : 'visible'); // Debug
+        }, true); // Use capture phase
         
         // Close popup when clicking outside
         document.addEventListener('click', function(e) {
@@ -201,6 +221,10 @@ function initMobileTabBar() {
                 aboutPopup.classList.remove('active');
             }
         });
+        
+        console.log('About button listener attached');
+    } else {
+        console.log('Missing elements - aboutTabBtn:', aboutTabBtn, 'aboutPopup:', aboutPopup);
     }
     
     // Highlight active tab based on current page
@@ -226,4 +250,14 @@ if (document.readyState === 'loading') {
 
 // Also try to init on includes:loaded event
 document.addEventListener('includes:loaded', initMobileTabBar);
+
+// Also check on window resize
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 900) {
+        var tabBar = document.getElementById('mobile-tab-bar');
+        var aboutPopup = document.getElementById('about-popup');
+        if (tabBar) tabBar.remove();
+        if (aboutPopup) aboutPopup.remove();
+    }
+});
 </script>
