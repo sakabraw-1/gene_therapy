@@ -2906,6 +2906,48 @@ blockquote {
                 border-radius: 999px;
                 box-shadow: 0 6px 18px rgba(255,102,0,0.25);
             }
+            
+            /* Mobile bottom nav dropdown styles */
+            .mbn-item-with-dropdown {
+                position: relative;
+            }
+            
+            .mbn-dropdown-menu {
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 -8px 24px rgba(0,0,0,0.15);
+                padding: 8px 0;
+                margin-bottom: 8px;
+                min-width: 200px;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 5000;
+            }
+            
+            .mbn-item-with-dropdown.mbn-dropdown-open .mbn-dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mbn-dropdown-menu a {
+                display: block;
+                padding: 12px 20px;
+                color: var(--navy);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.95rem;
+                white-space: nowrap;
+                transition: background 0.2s ease;
+            }
+            
+            .mbn-dropdown-menu a:hover {
+                background: rgba(255, 102, 0, 0.08);
+            }
 
             /* Reserve space so page content isn't hidden under the nav */
             body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 8px)); }

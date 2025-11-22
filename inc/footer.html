@@ -75,12 +75,39 @@
 <!-- Mobile bottom navigation (visible only on small screens) -->
 <nav class="mobile-bottom-nav" role="navigation" aria-label="Primary mobile navigation">
     <a href="index.html" class="mbn-item" data-path="index.html">Home</a>
-    <a href="about.html" class="mbn-item" data-path="about.html">About</a>
+    <div class="mbn-item-with-dropdown">
+        <a href="#" class="mbn-item mbn-dropdown-toggle" data-path="about.html">About</a>
+        <div class="mbn-dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="about-cdkl5.html">New to CDKL5 Disorder?</a>
+        </div>
+    </div>
     <a href="get-involved.html" class="mbn-item" data-path="get-involved.html">Get Involved</a>
     <a href="frequently-asked-questions.html" class="mbn-item" data-path="frequently-asked-questions.html">FAQ</a>
     <a href="contact.html" class="mbn-item" data-path="contact.html">Contact</a>
     <a href="donate.html" class="mbn-item mbn-donate" data-path="donate.html">Donate</a>
 </nav>
+<script>
+// Mobile bottom nav dropdown functionality
+(function() {
+    var mbnDropdownToggle = document.querySelector('.mbn-dropdown-toggle');
+    var mbnDropdownParent = document.querySelector('.mbn-item-with-dropdown');
+    
+    if (mbnDropdownToggle && mbnDropdownParent) {
+        mbnDropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            mbnDropdownParent.classList.toggle('mbn-dropdown-open');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mbnDropdownParent.contains(e.target)) {
+                mbnDropdownParent.classList.remove('mbn-dropdown-open');
+            }
+        });
+    }
+})();
+</script>
 <script>
 // Footer newsletter: AJAX POST to the current page so Netlify (once the site is deployed)
 // records the submission. Shows a friendly success message on completion.
