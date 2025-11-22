@@ -24,7 +24,7 @@
                 </ul>
                 
                 <!-- Hamburger Button (Mobile Only) -->
-                <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false" onclick="window.toggleMobileMenu()">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -35,7 +35,7 @@
 <!-- Mobile Full-Screen Menu -->
 <div class="mobile-fullscreen-menu" id="mobile-menu">
         <div class="mobile-menu-header">
-                <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+                <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu" onclick="window.toggleMobileMenu()">
                         <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -70,32 +70,23 @@
 </div>
 
 <script>
-// Mobile hamburger menu functionality
-// Wait for includes to be loaded before initializing
-document.addEventListener('includes:loaded', function() {
-        var hamburgerBtn = document.getElementById('hamburger-btn');
+// Mobile hamburger menu functionality - Define globally for onclick handlers
+window.toggleMobileMenu = function() {
         var mobileMenu = document.getElementById('mobile-menu');
-        var closeBtn = document.getElementById('mobile-menu-close');
-        var dropdownToggle = document.getElementById('mobile-about-toggle');
-        var dropdownParent = document.querySelector('.mobile-menu-dropdown');
+        var hamburgerBtn = document.getElementById('hamburger-btn');
         
-        // Toggle mobile menu
-        function toggleMobileMenu() {
+        if (mobileMenu && hamburgerBtn) {
                 var isOpen = mobileMenu.classList.toggle('active');
                 hamburgerBtn.classList.toggle('active');
                 hamburgerBtn.setAttribute('aria-expanded', isOpen);
                 document.body.style.overflow = isOpen ? 'hidden' : '';
         }
-        
-        // Open menu
-        if (hamburgerBtn) {
-                hamburgerBtn.addEventListener('click', toggleMobileMenu);
-        }
-        
-        // Close menu
-        if (closeBtn) {
-                closeBtn.addEventListener('click', toggleMobileMenu);
-        }
+};
+
+// Initialize dropdown and link handlers after includes load
+document.addEventListener('includes:loaded', function() {
+        var dropdownToggle = document.getElementById('mobile-about-toggle');
+        var dropdownParent = document.querySelector('.mobile-menu-dropdown');
         
         // Toggle About dropdown in mobile menu
         if (dropdownToggle && dropdownParent) {
@@ -109,16 +100,36 @@ document.addEventListener('includes:loaded', function() {
         var menuLinks = document.querySelectorAll('.mobile-menu-link:not(.mobile-dropdown-toggle)');
         menuLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
-                        toggleMobileMenu();
+                        window.toggleMobileMenu();
                 });
         });
-        
-        // Desktop dropdown (hover) - only on desktop
-        var desktopDropdown = document.querySelector('.nav-item-with-dropdown');
-        if (desktopDropdown) {
-                // No click handler needed on desktop - CSS hover handles it
-        }
 });
+
+// Also try to initialize immediately in case includes:loaded already fired
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(function() {
+                var dropdownToggle = document.getElementById('mobile-about-toggle');
+                var dropdownParent = document.querySelector('.mobile-menu-dropdown');
+                
+                if (dropdownToggle && dropdownParent && !dropdownToggle.dataset.initialized) {
+                        dropdownToggle.dataset.initialized = 'true';
+                        dropdownToggle.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                dropdownParent.classList.toggle('active');
+                        });
+                }
+                
+                var menuLinks = document.querySelectorAll('.mobile-menu-link:not(.mobile-dropdown-toggle)');
+                menuLinks.forEach(function(link) {
+                        if (!link.dataset.initialized) {
+                                link.dataset.initialized = 'true';
+                                link.addEventListener('click', function() {
+                                        window.toggleMobileMenu();
+                                });
+                        }
+                });
+        }, 100);
+}
 </script>
 
 <!-- Structured data for important images to help search engines pick up keywords -->
