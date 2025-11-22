@@ -71,7 +71,8 @@
 
 <script>
 // Mobile hamburger menu functionality
-(function() {
+// Wait for includes to be loaded before initializing
+document.addEventListener('includes:loaded', function() {
         var hamburgerBtn = document.getElementById('hamburger-btn');
         var mobileMenu = document.getElementById('mobile-menu');
         var closeBtn = document.getElementById('mobile-menu-close');
@@ -117,7 +118,7 @@
         if (desktopDropdown) {
                 // No click handler needed on desktop - CSS hover handles it
         }
-})();
+});
 </script>
 
 <!-- Structured data for important images to help search engines pick up keywords -->
