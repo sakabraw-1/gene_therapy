@@ -1,0 +1,8 @@
+{
+  "name": "cdkl5-gene-therapy-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for CDKL5 Gene Therapy website",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  }
+}

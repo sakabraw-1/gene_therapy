@@ -29,19 +29,14 @@
       <!-- Newsletter Card -->
       <div class="footer-card">
         <h3>Stay Connected</h3>
-        <form id="footer-newsletter" name="footer-newsletter" class="footer-form" method="POST" data-netlify="true" data-netlify-ajax="true" netlify-honeypot="bot-field">
+        <form id="footer-newsletter" name="footer-newsletter" class="footer-form" method="POST">
           <input type="hidden" name="form-name" value="footer-newsletter">
-          <p style="display:none">
-            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-          </p>
-          <input type="text" name="firstName" placeholder="First name" required>
-          <input type="text" name="lastName" placeholder="Last name" required>
-          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="firstName" id="newsletter-fname" placeholder="First name" required>
+          <input type="text" name="lastName" id="newsletter-lname" placeholder="Last name" required>
+          <input type="email" name="email" id="newsletter-email" placeholder="Email" required>
           <button type="submit" class="footer-btn">Subscribe</button>
         </form>
-        <div id="footer-newsletter-success" style="display:none; margin-top:1rem; padding:1rem; background:rgba(255,255,255,0.2); border-radius:8px; text-align:center; color:#fff; font-weight:600;">
-          ✓ Thank you for subscribing! We'll keep you updated.
-        </div>
+        <div id="footer-newsletter-message"></div>
       </div>
       <!-- Fundraising Card -->
       <div class="footer-card">
