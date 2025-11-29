@@ -1,17 +1,20 @@
 // Newsletter / Stay Connected Form Handler
 // Handles form submission, duplicate checking, and sends confirmation emails
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Newsletter form handler loaded');
+// Wait for both DOM and includes to load
+function initNewsletterForm() {
+    console.log('Initializing newsletter form...');
     
     const footerForm = document.getElementById('footer-newsletter');
     
     if (!footerForm) {
-        console.log('Footer newsletter form not found');
+        console.log('Footer newsletter form not found, will retry...');
+        // Footer might not be loaded yet, try again after a short delay
+        setTimeout(initNewsletterForm, 100);
         return;
     }
     
-    console.log('Footer newsletter form found');
+    console.log('Footer newsletter form found!');
     
     // Track subscribers in localStorage to prevent duplicates
     const SUBSCRIBERS_KEY = 'cdkl5_newsletter_subscribers';
@@ -136,8 +139,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    console.log('Form event listener attached');
-});
+    console.log('Newsletter form event listener attached successfully!');
+}
+
+// Start initialization when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNewsletterForm);
+} else {
+    // DOM already loaded, start immediately
+    initNewsletterForm();
+}
 
 // Show message function
 function showMessage(container, message, type) {
