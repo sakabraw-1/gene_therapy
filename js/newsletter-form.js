@@ -100,6 +100,7 @@ function initNewsletterForm() {
                 
                 // Send confirmation email via Netlify Function
                 try {
+                    console.log('Calling email function with data:', { firstName, lastName, email });
                     const emailResponse = await fetch('/.netlify/functions/send-newsletter-confirmation', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -109,9 +110,18 @@ function initNewsletterForm() {
                             email: email
                         })
                     });
-                    console.log('Email function response:', emailResponse.status);
+                    console.log('Email function response status:', emailResponse.status);
+                    
+                    // Check if email was sent successfully
+                    if (emailResponse.ok) {
+                        const result = await emailResponse.json();
+                        console.log('Email sent successfully:', result);
+                    } else {
+                        const errorText = await emailResponse.text();
+                        console.error('Email function error:', emailResponse.status, errorText);
+                    }
                 } catch (emailError) {
-                    console.error('Email sending failed:', emailError);
+                    console.error('Email sending failed with error:', emailError);
                     // Don't show error to user, email is optional
                 }
                 
