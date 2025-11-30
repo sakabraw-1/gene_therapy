@@ -1,9 +1,18 @@
 // Netlify Function to send newsletter confirmation email
 // This function is triggered when someone subscribes to the newsletter
 
-const nodemailer = require('nodemailer');
+// Import nodemailer - ensure it's bundled correctly
+let nodemailer;
+try {
+  nodemailer = require('nodemailer');
+  console.log('Nodemailer loaded successfully');
+} catch (error) {
+  console.error('Failed to load nodemailer:', error);
+}
 
 exports.handler = async (event, context) => {
+  console.log('Function invoked - Method:', event.httpMethod);
+  
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
@@ -13,12 +22,23 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    // Check if nodemailer loaded
+    if (!nodemailer) {
+      console.error('Nodemailer is not available');
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Email service not available', details: 'nodemailer not loaded' })
+      };
+    }
+
     // Parse the request body
     const data = JSON.parse(event.body);
     const { firstName, lastName, email } = data;
+    console.log('Processing request for:', email);
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
+      console.error('Missing required fields');
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Missing required fields' })
@@ -26,8 +46,8 @@ exports.handler = async (event, context) => {
     }
 
     // Email configuration (using environment variables)
-    // You'll need to set these in Netlify: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS
-    const transporter = nodemailer.createTransporter({
+    console.log('Creating transporter...');
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: process.env.SMTP_PORT || 587,
       secure: false,
@@ -161,6 +181,7 @@ support@cdkl5genetherapy.com
     `;
 
     // Send email
+    console.log('Attempting to send email to:', email);
     const info = await transporter.sendMail({
       from: '"CDKL5 Gene Therapy" <support@cdkl5genetherapy.com>',
       to: email,
@@ -169,7 +190,7 @@ support@cdkl5genetherapy.com
       html: emailHTML
     });
 
-    console.log('Email sent:', info.messageId);
+    console.log('Email sent successfully! Message ID:', info.messageId);
 
     return {
       statusCode: 200,
@@ -181,12 +202,18 @@ support@cdkl5genetherapy.com
 
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code
+    });
     
     return {
       statusCode: 500,
       body: JSON.stringify({
         error: 'Failed to send confirmation email',
-        details: error.message
+        details: error.message,
+        type: error.constructor.name
       })
     };
   }
