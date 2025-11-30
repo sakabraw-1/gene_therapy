@@ -1,17 +1,13 @@
 // Netlify Function to send newsletter confirmation email
 // This function is triggered when someone subscribes to the newsletter
 
-// Import nodemailer - ensure it's bundled correctly
-let nodemailer;
-try {
-  nodemailer = require('nodemailer');
-  console.log('Nodemailer loaded successfully');
-} catch (error) {
-  console.error('Failed to load nodemailer:', error);
-}
+const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
   console.log('Function invoked - Method:', event.httpMethod);
+  console.log('Environment check - SMTP_HOST:', process.env.SMTP_HOST ? 'Set' : 'NOT SET');
+  console.log('Environment check - SMTP_USER:', process.env.SMTP_USER ? 'Set' : 'NOT SET');
+  console.log('Environment check - SMTP_PASS:', process.env.SMTP_PASS ? 'Set' : 'NOT SET');
   
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
@@ -22,19 +18,10 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Check if nodemailer loaded
-    if (!nodemailer) {
-      console.error('Nodemailer is not available');
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Email service not available', details: 'nodemailer not loaded' })
-      };
-    }
-
     // Parse the request body
     const data = JSON.parse(event.body);
     const { firstName, lastName, email } = data;
-    console.log('Processing request for:', email);
+    console.log('Processing request for:', firstName, lastName, email);
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
