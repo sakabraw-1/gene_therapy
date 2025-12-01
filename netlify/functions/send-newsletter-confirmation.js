@@ -169,8 +169,13 @@ support@cdkl5genetherapy.com
 
     // Send email
     console.log('Attempting to send email to:', email);
+    
+    // IMPORTANT: Gmail requires the FROM address to match the authenticated user
+    // So we use SMTP_USER (your Gmail) as the FROM address
+    const fromEmail = process.env.SMTP_USER || 'support@cdkl5genetherapy.com';
+    
     const info = await transporter.sendMail({
-      from: '"CDKL5 Gene Therapy" <support@cdkl5genetherapy.com>',
+      from: `"CDKL5 Gene Therapy" <${fromEmail}>`,
       to: email,
       subject: 'Welcome to CDKL5 Gene Therapy Updates',
       text: emailText,
