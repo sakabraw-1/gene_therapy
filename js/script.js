@@ -1,4 +1,3 @@
-
 // Timeline Accordion Interactivity
 document.addEventListener('DOMContentLoaded', function () {
     var panels = document.querySelectorAll('.timeline-panel');
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const INITIAL_RAISED_AMOUNT = 200000;
     const TRIAL_DATE = new Date('2026-06-30T23:59:59Z');
     const CAROUSEL_INTERVAL_MS = 5000;
-
     // Ensure FAQ nav always goes to frequently-asked-questions.html, even after includes-loader runs
     function fixFaqNavLink() {
         var faqLink = document.getElementById('nav-faq-link');
@@ -35,19 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('includes:loaded', fixFaqNavLink);
     // Also run on DOMContentLoaded in case header is present from the start
     document.addEventListener('DOMContentLoaded', fixFaqNavLink);
-
     // Get current raised amount from localStorage or use initial value
     function getCurrentRaisedAmount() {
         const stored = localStorage.getItem('cdkl5_raised_amount');
         return stored ? parseFloat(stored) : INITIAL_RAISED_AMOUNT;
     }
-
     // Update raised amount in localStorage
     function updateRaisedAmount(newAmount) {
         localStorage.setItem('cdkl5_raised_amount', newAmount.toString());
         localStorage.setItem('cdkl5_last_update', new Date().toISOString());
     }
-
     // Add a donation to the total
     function addDonation(amount) {
         const current = getCurrentRaisedAmount();
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initProgressBars();
         return newTotal;
     }
-
     function formatCurrency(amount) {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
@@ -65,15 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
             maximumFractionDigits: 0
         }).format(amount);
     }
-
     function initProgressBars() {
         const bars = document.querySelectorAll('[data-progress-bar]');
         const currentRaised = getCurrentRaisedAmount();
-        
         bars.forEach((bar) => {
             const track = bar.querySelector('.progress-bar');
             let goalEl = bar.querySelector('[data-goal]') || bar.querySelector('.hero-progress-copy strong[data-goal]');
-
             // hero progress wrapper uses a different structure; allow it through
             if (!track || !goalEl) {
                 // still attempt to update a hero-style progress wrapper
@@ -87,18 +78,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // If the goal element carries a data-goal attribute use it, otherwise fall back to the constant
             const goalAmount = Number((goalEl && goalEl.dataset && goalEl.dataset.goal) ? goalEl.dataset.goal : GOAL_AMOUNT);
             const percentage = Math.min(100, Math.max(0, (raisedAmount / goalAmount) * 100));
-            
             // Animate the progress bar
             track.style.transition = 'width 1s ease-out';
             track.style.width = `${percentage.toFixed(2)}%`;
-            
             // Update the goal text only (no raised amount display)
             try {
                 goalEl.textContent = formatCurrency(goalAmount);
             } catch (e) {
                 // ignore
             }
-            
             // Update data attributes for consistency
             // If the wrapper contains a hero progress copy paragraph, update it as well
             const heroCopy = bar.querySelector('.hero-progress-copy');
@@ -108,10 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
     function initCountdown() {
     // Countdown removed as per user request
-
     function initFadeIns() {
         const fadeEls = document.querySelectorAll('.fade-in');
         if (!('IntersectionObserver' in window)) {
@@ -130,43 +116,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { threshold: 0.2 });
         fadeEls.forEach((el) => observer.observe(el));
     }
-
     // Initialize fundraising panel inside the shared footer if present
     function initFooterFundraising() {
         try {
             const footer = document.querySelector('footer');
             if (!footer) return;
-
             // Find our fundraising panel elements
             const fundPanel = footer.querySelector('.fundraising-panel');
             const fundAmountEl = footer.querySelector('.fundraising-amount');
             const fundBar = footer.querySelector('.fundraising-bar');
             // Countdown logic removed as per user request
             if (!fundPanel || !fundAmountEl || !fundBar) return;
-
             const current = getCurrentRaisedAmount();
             const goal = GOAL_AMOUNT;
             const pct = Math.min(100, Math.max(0, (current / goal) * 100));
-
             // Format and set text - only show goal, no raised amount
             fundAmountEl.innerHTML = `Goal: <strong>${formatCurrency(goal)}</strong>`;
             fundBar.style.transition = 'width 1s ease-out';
             fundBar.style.width = `${pct.toFixed(2)}%`;
         } catch (e) {
             // non-fatal
-            console.warn('initFooterFundraising error', e);
         }
     }
-
     function buildCarouselSlides(container) {
         const track = container.querySelector('.carousel-track');
         const dotsContainer = container.querySelector('.carousel-dots');
-        console.log('buildCarouselSlides called', { track, dotsContainer });
         if (!track || !dotsContainer) {
-            console.error('Carousel track or dots container not found!');
             return;
         }
-
         // Array of actual image filenames in the images folder (all lowercase)
         const imageFiles = [
             'image 1.jpg', 'image 2.jpg', 'image 3.jpg', 'image 4.jpg', 'image 5.jpg',
@@ -181,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
             'image 49.jpg', 'image 50.jpg', 'image 51.jpg', 'image 52.jpg',
             'image 54.jpg', 'image 55.jpg'
         ];
-
         const slides = [];
         imageFiles.forEach((filename, index) => {
             const slideNum = index + 1;
@@ -190,21 +166,17 @@ document.addEventListener('DOMContentLoaded', function () {
             slide.setAttribute('role', 'group');
             slide.setAttribute('aria-roledescription', 'slide');
             slide.setAttribute('aria-label', `Child photo ${slideNum} of ${imageFiles.length}`);
-
             const img = document.createElement('img');
             img.src = `images/${filename}`;
             img.alt = `Child ${slideNum} impacted by CDKL5 Disorder`;
             img.loading = 'lazy'; // Add lazy loading for better performance
-
             img.addEventListener('error', () => {
                 img.alt = 'Joyful child placeholder image';
                 img.src = 'https://via.placeholder.com/1200x800/FFE5E5/303F9F?text=CDKL5+Community';
             }, { once: true });
-
             slide.appendChild(img);
             track.appendChild(slide);
             slides.push(slide);
-
             const dot = document.createElement('button');
             dot.className = 'carousel-dot';
             dot.type = 'button';
@@ -213,28 +185,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         return { slides, dots: Array.from(dotsContainer.children), track };
     }
-
     function initCarousel() {
         const carousel = document.querySelector('[data-carousel]');
-        console.log('initCarousel called', { carousel });
         if (!carousel) {
-            console.error('Carousel element not found!');
             return;
         }
-
         const { slides, dots, track } = buildCarouselSlides(carousel) || {};
-        console.log('Carousel built', { slidesCount: slides?.length });
         if (!slides || slides.length === 0) {
-            console.error('No slides created!');
             return;
         }
-
         let currentIndex = 0;
         let timerId;
-
         const prevBtn = carousel.querySelector('[data-carousel-prev]');
         const nextBtn = carousel.querySelector('[data-carousel-next]');
-
         function updateCarousel(index) {
             currentIndex = (index + slides.length) % slides.length;
             const offset = -currentIndex * 100;
@@ -243,50 +206,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 dot.classList.toggle('active', idx === currentIndex);
             });
         }
-
         function startAutoRotate() {
             stopAutoRotate();
             timerId = setInterval(() => {
                 updateCarousel(currentIndex + 1);
             }, CAROUSEL_INTERVAL_MS);
         }
-
         function stopAutoRotate() {
             if (timerId) {
                 clearInterval(timerId);
             }
         }
-
         dots.forEach((dot, idx) => {
             dot.addEventListener('click', () => {
                 updateCarousel(idx);
                 startAutoRotate();
             });
         });
-
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
                 updateCarousel(currentIndex - 1);
                 startAutoRotate();
             });
         }
-
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 updateCarousel(currentIndex + 1);
                 startAutoRotate();
             });
         }
-
         carousel.addEventListener('mouseenter', stopAutoRotate);
         carousel.addEventListener('mouseleave', startAutoRotate);
         carousel.addEventListener('focusin', stopAutoRotate);
         carousel.addEventListener('focusout', startAutoRotate);
-
         updateCarousel(0);
         startAutoRotate();
     }
-
     function highlightActiveNav() {
         const path = window.location.pathname.split('/').pop() || 'index.html';
         const links = document.querySelectorAll('[data-nav-links] a');
@@ -299,18 +254,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link.classList.toggle('active', target === path);
         });
     }
-
     // Mobile hamburger removed; bottom nav used instead
-
     function initDonationPage() {
         // Only run on donate page
         if (!document.querySelector('.donate-page')) {
             return;
         }
-
         let selectedAmount = 0;
         let isMonthly = false;
-
         // Toggle between One Time and Monthly
         const toggleButtons = document.querySelectorAll('.toggle-btn');
         toggleButtons.forEach(button => {
@@ -324,11 +275,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 updatePaymentButtons();
             });
         });
-
         // Amount button selection
         const amountButtons = document.querySelectorAll('.amount-btn');
         const customAmountInput = document.getElementById('custom-amount');
-        
         amountButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Remove active from all amount buttons
@@ -341,14 +290,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 // Get selected amount
                 selectedAmount = parseInt(button.dataset.amount) || 0;
-                console.log('Amount button clicked:', selectedAmount);
                 updatePaymentButtons();
                 // sync hidden field for form
                 const hiddenAmt = document.getElementById('donation-amount-hidden');
                 if (hiddenAmt) hiddenAmt.value = selectedAmount;
             });
         });
-
         // Custom amount input
         if (customAmountInput) {
             customAmountInput.addEventListener('input', () => {
@@ -362,7 +309,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
         // Frequency toggle sync to hidden field
         const toggleButtonsAll = document.querySelectorAll('.toggle-btn');
         toggleButtonsAll.forEach(btn => {
@@ -371,19 +317,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (hiddenFreq) hiddenFreq.value = btn.dataset.giftType || 'one-time';
             });
         });
-
         // Update payment button URLs with selected amount
         function updatePaymentButtons() {
-            console.log('updatePaymentButtons called, selectedAmount:', selectedAmount, 'isMonthly:', isMonthly);
             const paymentButtons = document.querySelectorAll('.btn-give');
-            console.log('Found payment buttons:', paymentButtons.length);
-            
             paymentButtons.forEach(button => {
                 // Store original URL if not already stored
                 if (!button.dataset.baseUrl) {
                     button.dataset.baseUrl = button.href;
                 }
-                
                 // Identify button type by href if not already set
                 if (!button.dataset.paymentType) {
                     if (button.href.includes('square')) {
@@ -394,12 +335,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         button.dataset.paymentType = 'venmo';
                     }
                 }
-
                 // Update button text to show amount
                 if (selectedAmount > 0) {
                     const amountText = `$${selectedAmount.toLocaleString()}`;
                     const frequency = isMonthly ? '/month' : '';
-                    
                     if (button.dataset.paymentType === 'square') {
                         button.innerHTML = `
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -423,14 +362,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             Give ${amountText}${frequency} via Venmo
                         `;
                     }
-
                     // Add amount to Square URL (Square supports amount parameter)
                     if (button.dataset.paymentType === 'square') {
                         // Square URLs can accept amount in cents via checkout API
                         // For now, we'll just update the display text
                         // You can customize the URL here if Square provides amount parameters
                     }
-                    
                 } else {
                     // Reset to original text if no amount selected
                     if (button.dataset.paymentType === 'square') {
@@ -459,7 +396,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
         // Store donation info in localStorage when payment button is clicked
         const paymentButtons = document.querySelectorAll('.btn-give');
         paymentButtons.forEach(button => {
@@ -478,7 +414,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
-
         // Checkbox interactions
         const checkboxOptions = document.querySelectorAll('.checkbox-option');
         checkboxOptions.forEach(option => {
@@ -493,11 +428,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
-
         // Initialize button states
         updatePaymentButtons();
     }
-
     // --- Multi-step donate form controller ---
     function initDonateStepper() {
         // For single-page donate layout we don't use a stepper. Keep this function as a no-op
@@ -505,28 +438,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (document.querySelector('.donate-steps')) {
             // If someone still has the old step markup, we won't interfere — the original logic
             // is intentionally conservative and will not run if missing parts are present.
-            console.log('initDonateStepper: donate-steps present but single-page layout expected.');
         } else {
-            console.log('initDonateStepper: single-page donate layout - stepper disabled');
         }
         return;
     }
-
     // Check for completed donation (when user returns from payment gateway)
     function checkForCompletedDonation() {
         const pendingDonation = localStorage.getItem('pendingDonation');
-        
         if (pendingDonation) {
             try {
                 const donation = JSON.parse(pendingDonation);
                 const timeSince = Date.now() - donation.timestamp;
-                
                 // If donation was initiated in last 10 minutes, consider it completed
                 if (timeSince < 600000) { // 10 minutes
                     // Add donation to total raised amount
                     const newTotal = addDonation(donation.amount);
-                    console.log(`Donation of $${donation.amount} added! New total: $${newTotal}`);
-                    
                     // Show thank you modal
                     setTimeout(() => {
                         if (typeof showThankYouModal === 'function') {
@@ -544,7 +470,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-
     // Expose functions globally for manual updates and testing
     window.CDKL5 = {
         addDonation: addDonation,
@@ -552,7 +477,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateRaisedAmount: updateRaisedAmount,
         refreshProgress: initProgressBars
     };
-
     document.addEventListener('DOMContentLoaded', () => {
         initProgressBars();
         initCountdown();
@@ -565,10 +489,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // initGallery(); // Moved outside IIFE
         // Initialize footer fundraising if the include is already present
         initFooterFundraising();
-
         // Enforce validation on payment buttons
         enforceDonationValidation();
-
         // Footer Awareness Image Auto-Rotate (every 24 hours)
         const footerImg = document.getElementById('footer-awareness-img');
         if (footerImg && window.galleryImages && Array.isArray(window.galleryImages)) {
@@ -585,14 +507,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-
     // Runtime: ensure images have keyword-rich alt/title attributes (non-destructive)
     document.addEventListener('DOMContentLoaded', () => {
         try {
             const siteKeywords = [
                 'India', 'US', 'Gene Therapy', 'Rare Disease', 'CDKL5', 'CDD', 'International', 'Foundation', 'CDKL5 Research', 'Rare Disease Research', 'LouLou'
             ];
-
             const keywordString = siteKeywords.join(', ');
             const imgs = Array.from(document.querySelectorAll('img'));
             imgs.forEach((img, idx) => {
@@ -614,12 +534,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     img.setAttribute('title', t);
                 }
             });
-            console.log('Image alt/title enrichment applied');
         } catch (e) {
-            console.warn('Image enrichment error', e);
         }
     });
-
     // Also initialize footer fundraising after includes are loaded (includes-loader dispatches this event)
     document.addEventListener('includes:loaded', () => {
         initProgressBars();
@@ -628,19 +545,15 @@ document.addEventListener('DOMContentLoaded', function () {
         initDonateStepper();
         highlightActiveNav();
     });
-
 }
 })(); // Close main IIFE
-
 // Initialize gallery after IIFE
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof initGallery === 'function') {
         initGallery();
     }
 });
-
 // Diagnostic helper removed: previously inspected #navToggle. Hamburger was removed; keep diagnostics lean.
-
 // Mobile bottom nav: mark active link and ensure focusable
 (function() {
     function initMobileBottomNav() {
@@ -654,18 +567,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 a.classList.toggle('active', p === path);
             });
         } catch (e) {
-            console.warn('initMobileBottomNav error', e);
         }
     }
-
     document.addEventListener('DOMContentLoaded', initMobileBottomNav);
     document.addEventListener('includes:loaded', initMobileBottomNav);
 })();
-
 // ========================================
 // Gallery Modal & Lightbox Functions
 // ========================================
-
 // Array of images with inspirational quotes (using actual image filenames)
 window.galleryImages = [
     { file: 'image 1.jpg', quote: 'Every smile is a victory' },
@@ -720,17 +629,13 @@ window.galleryImages = [
     { file: 'image 54.jpg', quote: 'Embracing every moment' },
     { file: 'image 55.jpg', quote: 'Love lights the way' }
 ];
-
 let currentLightboxIndex = 0;
-
 // Initialize gallery
 function initGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
     if (!galleryGrid) return;
-
     // Populate gallery grid with all images. We'll pre-check images to avoid broken tiles.
     const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23ddd" width="400" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
-
     // Helper: verifies an image URL is loadable (returns a promise)
     function checkImage(url) {
         return new Promise((resolve) => {
@@ -741,7 +646,6 @@ function initGallery() {
             img.src = url;
         });
     }
-
     // Build DOM entries in sequence to keep indices stable
     (async function buildGallery() {
         for (let index = 0; index < galleryImages.length; index++) {
@@ -749,32 +653,25 @@ function initGallery() {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.onclick = () => openLightbox(index);
-
             const img = document.createElement('img');
             img.alt = imageData.quote || '';
             img.loading = 'lazy';
-
             const url = `images/${imageData.file}`;
             try {
                 const res = await checkImage(url);
                 if (res.ok) {
                     img.src = url;
                 } else {
-                    console.warn(`gallery preload failed for: ${imageData.file}`);
                     img.src = PLACEHOLDER_SVG;
                 }
             } catch (e) {
-                console.warn('error checking image', imageData.file, e);
                 img.src = PLACEHOLDER_SVG;
             }
-
             const overlay = document.createElement('div');
             overlay.className = 'gallery-item-overlay';
-
             const quoteText = document.createElement('p');
             quoteText.className = 'gallery-quote';
             quoteText.textContent = `"${imageData.quote}"`;
-
             overlay.appendChild(quoteText);
             item.appendChild(img);
             item.appendChild(overlay);
@@ -782,7 +679,6 @@ function initGallery() {
         } // Close for loop
     })();
 }
-
 // Open gallery modal
 function openGalleryModal() {
     const modal = document.getElementById('galleryModal');
@@ -791,10 +687,8 @@ function openGalleryModal() {
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 }
-
 // Expose globally for HTML onclick
 window.openGalleryModal = openGalleryModal;
-
 // Close gallery modal
 function closeGalleryModal() {
     const modal = document.getElementById('galleryModal');
@@ -803,14 +697,12 @@ function closeGalleryModal() {
         document.body.style.overflow = ''; // Restore scrolling
     }
 }
-
 // Open lightbox with specific image
 function openLightbox(index) {
     currentLightboxIndex = index;
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const counter = document.getElementById('lightboxCounter');
-    
     if (lightbox && lightboxImage) {
         const imageData = galleryImages[index];
         lightboxImage.src = `images/${imageData.file}`;
@@ -820,7 +712,6 @@ function openLightbox(index) {
         document.body.style.overflow = 'hidden';
     }
 }
-
 // Close lightbox
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
@@ -829,19 +720,16 @@ function closeLightbox() {
         document.body.style.overflow = '';
     }
 }
-
 // Previous image in lightbox
 function prevLightboxImage() {
     currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
     openLightbox(currentLightboxIndex);
 }
-
 // Next image in lightbox
 function nextLightboxImage() {
     currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
     openLightbox(currentLightboxIndex);
 }
-
 // Keyboard navigation for lightbox
 document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
@@ -854,20 +742,17 @@ document.addEventListener('keydown', (e) => {
             closeLightbox();
         }
     }
-    
     const modal = document.getElementById('galleryModal');
     if (modal && modal.classList.contains('active') && e.key === 'Escape') {
         closeGalleryModal();
     }
 });
-
 // Close modal when clicking outside
 document.addEventListener('click', (e) => {
     const galleryModal = document.getElementById('galleryModal');
     if (e.target === galleryModal) {
         closeGalleryModal();
     }
-    
     const lightbox = document.getElementById('lightbox');
     if (e.target === lightbox) {
         closeLightbox();
