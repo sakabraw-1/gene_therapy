@@ -4,11 +4,6 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
-  console.log('Function invoked - Method:', event.httpMethod);
-  console.log('Environment check - SMTP_HOST:', process.env.SMTP_HOST ? 'Set' : 'NOT SET');
-  console.log('Environment check - SMTP_USER:', process.env.SMTP_USER ? 'Set' : 'NOT SET');
-  console.log('Environment check - SMTP_PASS:', process.env.SMTP_PASS ? 'Set' : 'NOT SET');
-  
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
@@ -21,11 +16,9 @@ exports.handler = async (event, context) => {
     // Parse the request body
     const data = JSON.parse(event.body);
     const { firstName, lastName, email } = data;
-    console.log('Processing request for:', firstName, lastName, email);
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
-      console.error('Missing required fields');
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Missing required fields' })
@@ -33,7 +26,6 @@ exports.handler = async (event, context) => {
     }
 
     // Email configuration (using environment variables)
-    console.log('Creating transporter...');
     const smtpPort = parseInt(process.env.SMTP_PORT) || 587;
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtppro.zoho.eu',
