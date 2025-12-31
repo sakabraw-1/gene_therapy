@@ -101,6 +101,7 @@
 
             <!-- Upcoming Events Section -->
             <section class="section fade-in event-announcement" id="upcoming-events">
+                <h2 class="section-heading">Upcoming Events</h2>
                 <!-- Upcoming events will be dynamically inserted here by JavaScript -->
             </section>
 
@@ -218,22 +219,35 @@
                         const upcomingEventsContainer = document.querySelector('#upcoming-events');
 
                         // Render Upcoming Events
-                        upcomingEvents.forEach(event => {
-                            const eventElement = document.createElement('div');
-                            eventElement.innerHTML = `
-                                <div class="event-panel" style="display: flex; align-items: center; justify-content: space-between;">
-                                    <div style="flex: 1; padding-right: 20px;">
-                                        <div class="event-badge">UPCOMING EVENT</div>
-                                        <h2 class="event-title">${event.title}</h2>
-                                        <a href="event-details.html" class="btn btn-event">View Details & Register</a>
+                        if (upcomingEvents.length > 0) {
+                            upcomingEvents.forEach(event => {
+                                const eventElement = document.createElement('div');
+                                eventElement.innerHTML = `
+                                    <div class="event-panel" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+                                        <div style="flex: 1; min-width: 300px;">
+                                            <div class="event-badge">UPCOMING EVENT</div>
+                                            <h2 class="event-title">${event.title}</h2>
+                                            <div class="event-meta">
+                                                <div class="event-meta-item">
+                                                    <span><strong>📅 ${event.date}</strong></span>
+                                                </div>
+                                                <div class="event-meta-item">
+                                                    <span><strong>🕒 ${event.time}</strong></span>
+                                                </div>
+                                                ${event.location ? `<div class="event-meta-item">
+                                                    <span><strong>📍 ${event.location}</strong></span>
+                                                </div>` : ''}
+                                            </div>
+                                            <p class="event-description">${event.description}</p>
+                                            <a href="event-details.html" class="btn btn-event">View Details & Register</a>
+                                        </div>
                                     </div>
-                                    <div style="flex: 1;">
-                                        <img src="images/upcoming-placeholder.jpg" alt="Upcoming Event Placeholder" style="width: 100%; border-radius: 8px;">
-                                    </div>
-                                </div>
-                            `;
-                            upcomingEventsContainer.appendChild(eventElement);
-                        });
+                                `;
+                                upcomingEventsContainer.appendChild(eventElement);
+                            });
+                        } else {
+                            upcomingEventsContainer.style.display = 'none';
+                        }
 
                         // Render Past Events
                         pastEvents.forEach(event => {
