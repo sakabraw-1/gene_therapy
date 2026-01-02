@@ -7,9 +7,9 @@
       "time": "5:00 - 8:00 PM PST",
       "description": "Join us for a Clinical Team Dinner at the University of California San Francisco. All are welcome. Dinner will be served. Please RSVP to CDKL5@ChildsCure.org",
       "speakers": [
-        { "name": "Dr. Nalin Gupta", "role": "Clinical Team" },
-        { "name": "Dr. Adam Numis", "role": "Clinical Team" },
-        { "name": "Dr. Narsihn Kazim", "role": "Clinical Team" }
+        { "name": "Dr. Nalin Gupta", "role": "Principal Investigator and Neurosurgeon" },
+        { "name": "Dr. Adam Numis", "role": "Neurologist" },
+        { "name": "Dr. Narsihn Kazim", "role": "Neuroradiologist" }
       ],
       "hostedBy": "Child's Cure Genetic Research",
       "location": "University of California San Francisco",
