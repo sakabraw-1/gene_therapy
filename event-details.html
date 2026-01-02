@@ -45,9 +45,10 @@
                     </div>
                     <div class="event-hero-meta-item">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            <path d="M21 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
                         </svg>
-                        <span id="event-format">Virtual Event (Webinar)</span>
+                        <span id="event-location">University of California San Francisco</span>
                     </div>
                 </div>
             </section>
@@ -72,8 +73,11 @@
                     <!-- Right Column - Registration Form -->
                     <div class="event-registration-sidebar">
                         <h3>Register for This Event</h3>
-                        <form name="event-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <form name="event-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
                             <input type="hidden" name="form-name" value="event-registration">
+                            <p style="display:none;">
+                                <label>Don't fill this out: <input name="bot-field" /></label>
+                            </p>
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required>
@@ -87,11 +91,38 @@
                                 <input type="tel" id="phone" name="phone">
                             </div>
                             <div class="form-group">
+                                <label for="attendees">Number of Attendees *</label>
+                                <select id="attendees" name="attendees" required>
+                                    <option value="">Select number of people</option>
+                                    <option value="1">1 person</option>
+                                    <option value="2">2 people</option>
+                                    <option value="3">3 people</option>
+                                    <option value="4">4 people</option>
+                                    <option value="5">5 people</option>
+                                    <option value="6">6 people</option>
+                                    <option value="7">7 people</option>
+                                    <option value="8">8 people</option>
+                                    <option value="9">9 people</option>
+                                    <option value="10">10 people</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dietary">Dietary Preferences</label>
+                                <textarea id="dietary" name="dietary_preferences" rows="3" placeholder="Any dietary restrictions or preferences? (Optional)"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label for="message">Questions or Comments</label>
-                                <textarea id="message" name="message" rows="4"></textarea>
+                                <textarea id="message" name="message" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Register Now</button>
                         </form>
+                        
+                        <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                            <p style="font-size: 0.95rem; color: #666; margin-bottom: 10px;">Or email us to RSVP:</p>
+                            <a href="mailto:CDKL5@ChildsCure.org?subject=RSVP for Clinical Team Dinner" style="color: #5e35b1; font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+                                CDKL5@ChildsCure.org
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -105,18 +136,25 @@
 
     <!-- Script to load upcoming event details -->
     <script>
-        fetch('data/events.json')
+        fetch('data/events.json?v=' + Date.now())
             .then(response => response.json())
             .then(data => {
+                console.log('Event data loaded:', data);
                 const upcomingEvents = data.events.filter(event => event.type === 'upcoming');
                 if (upcomingEvents.length > 0) {
                     const event = upcomingEvents[0]; // Show the first upcoming event
+                    console.log('Upcoming event:', event);
 
                     // Update hero section
                     document.getElementById('event-badge').textContent = 'UPCOMING EVENT';
                     document.getElementById('event-title').textContent = event.title;
                     document.getElementById('event-date').textContent = event.date;
                     document.getElementById('event-time').textContent = event.time;
+                    
+                    // Update location if available
+                    if (event.location) {
+                        document.getElementById('event-location').textContent = event.location;
+                    }
 
                     // Update details section
                     document.getElementById('event-description').textContent = event.description;
@@ -124,14 +162,17 @@
 
                     // Populate speakers
                     const speakersContainer = document.getElementById('event-speakers');
-                    speakersContainer.innerHTML = event.speakers.map(speaker => `
-                        <div class="speaker">
-                            <div class="speaker-info">
-                                <strong>${speaker.name}</strong>
-                                <span>${speaker.role}</span>
+                    if (event.speakers && event.speakers.length > 0) {
+                        console.log('Loading speakers:', event.speakers);
+                        speakersContainer.innerHTML = event.speakers.map(speaker => `
+                            <div class="speaker" style="margin-bottom: 15px; padding: 10px; background: #f5f5f5; border-radius: 8px;">
+                                <div class="speaker-info">
+                                    <strong style="display: block; font-size: 1.1rem; color: #333;">${speaker.name}</strong>
+                                    <span style="color: #666; font-size: 0.9rem;">${speaker.role}</span>
+                                </div>
                             </div>
-                        </div>
-                    `).join('');
+                        `).join('');
+                    }
                 } else {
                     // No upcoming events
                     document.getElementById('event-title').textContent = 'No Upcoming Events';
