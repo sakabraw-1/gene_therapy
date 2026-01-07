@@ -107,11 +107,23 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="attendance-type">Attendance Type *</label>
+                                <select id="attendance-type" name="attendance_type" required>
+                                    <option value="">Select how you will attend</option>
+                                    <option value="in-person">In Person</option>
+                                    <option value="virtually">Virtually</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="dietary">Dietary Preferences</label>
                                 <textarea id="dietary" name="dietary_preferences" rows="3" placeholder="Any dietary restrictions or preferences? (Optional)"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="message">Questions or Comments</label>
+                                <label for="clinical-questions">Any questions for the clinical team?</label>
+                                <textarea id="clinical-questions" name="clinical_questions" rows="3" placeholder="Please type your questions here..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Other Questions or Comments</label>
                                 <textarea id="message" name="message" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Register Now</button>
