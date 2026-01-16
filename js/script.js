@@ -632,53 +632,106 @@ window.galleryImages = [
 let currentLightboxIndex = 0;
 // Initialize gallery
 function initGallery() {
+    console.log('initGallery called'); // FORCE LOG
     const galleryGrid = document.getElementById('galleryGrid');
-    if (!galleryGrid) return;
-    // Populate gallery grid with all images. We'll pre-check images to avoid broken tiles.
-    const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23ddd" width="400" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
-    // Helper: verifies an image URL is loadable (returns a promise)
-    function checkImage(url) {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.onload = () => resolve({ ok: true });
-            img.onerror = () => resolve({ ok: false });
-            // Start load
-            img.src = url;
+    const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23ddd" width="400" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage Loading...%3C/text%3E%3C/svg%3E';
+
+    // Initialize carousel items array for the homepage mosaic
+    const carouselItems = [];
+
+    // Process all images synchronously
+    galleryImages.forEach((imageData, index) => {
+        // Encode filename to handle spaces correctly
+        const url = `images/${encodeURIComponent(imageData.file)}`;
+        
+        // Add to carousel/mosaic list immediately
+        carouselItems.push({
+            src: url,
+            quote: imageData.quote,
+            index: index
         });
-    }
-    // Build DOM entries in sequence to keep indices stable
-    (async function buildGallery() {
-        for (let index = 0; index < galleryImages.length; index++) {
-            const imageData = galleryImages[index];
+
+        // Add to Modal Grid (if it exists)
+        if (galleryGrid) {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.onclick = () => openLightbox(index);
+            
             const img = document.createElement('img');
+            img.src = url;
             img.alt = imageData.quote || '';
             img.loading = 'lazy';
-            const url = `images/${imageData.file}`;
-            try {
-                const res = await checkImage(url);
-                if (res.ok) {
-                    img.src = url;
-                } else {
-                    img.src = PLACEHOLDER_SVG;
-                }
-            } catch (e) {
-                img.src = PLACEHOLDER_SVG;
-            }
+            img.onerror = function() { this.src = PLACEHOLDER_SVG; }; // Fallback
+
             const overlay = document.createElement('div');
             overlay.className = 'gallery-item-overlay';
             const quoteText = document.createElement('p');
             quoteText.className = 'gallery-quote';
             quoteText.textContent = `"${imageData.quote}"`;
+
             overlay.appendChild(quoteText);
             item.appendChild(img);
             item.appendChild(overlay);
             galleryGrid.appendChild(item);
-        } // Close for loop
-    })();
+        }
+    });
+
+    // Initialize the Mosaic Grid
+    initMosaic(carouselItems);
 }
+
+// ========================================
+// Homepage Mosaic Grid Logic
+// ========================================
+function initMosaic(items) {
+    const grid = document.getElementById('familiesGrid');
+    if (!grid) {
+        console.error('Grid element #familiesGrid not found in DOM');
+        return;
+    }
+    if (items.length === 0) {
+        console.warn('No items provided to initMosaic');
+        return;
+    }
+
+    // Clear existing content
+    grid.innerHTML = '';
+
+    // Randomize items to keep it fresh
+    const shuffled = [...items].sort(() => 0.5 - Math.random());
+    
+    // Pick the first 8 items (or fewer if not enough)
+    const selectedItems = shuffled.slice(0, 8);
+
+    selectedItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'mosaic-item';
+        div.onclick = () => openLightbox(item.index); 
+        div.style.backgroundColor = '#e0e0e0'; // Debug: Visible bg even if image fails
+        
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = item.quote;
+        img.loading = 'lazy';
+        // Debug: Log if image fails
+        img.onerror = () => console.error('Failed to load image:', item.src);
+
+        const overlay = document.createElement('div');
+        overlay.className = 'mosaic-overlay';
+
+        const quote = document.createElement('p');
+        quote.className = 'mosaic-quote';
+        quote.textContent = item.quote;
+        
+        overlay.appendChild(quote);
+        div.appendChild(img);
+        div.appendChild(overlay);
+        
+        grid.appendChild(div);
+    });
+    console.log('Mosaic initialized with', selectedItems.length, 'items');
+}
+
 // Open gallery modal
 function openGalleryModal() {
     const modal = document.getElementById('galleryModal');

@@ -8,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
     <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/carousel.css?v=4">
     <style>
         /* Override default hero with unified pastel colors */
         .hero {
@@ -90,7 +91,7 @@
                 <!-- Upcoming events will be dynamically inserted here by JavaScript -->
             </section>
 
-            <!-- Latest Win Purple Box -->
+            <!-- Latest Win Purple Box - REMOVED PER REQUEST (Moved event to past) 
             <section class="section fade-in" style="margin-top: -2rem;">
                 <div class="card" style="background: linear-gradient(135deg, #7E57C2 0%, #9575CD 100%); color: white; padding: 2rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(126, 87, 194, 0.3);">
                     <h2 style="color: white; font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
@@ -104,24 +105,29 @@
                     </a>
                 </div>
             </section>
+            -->
 
             <!-- Past Events Section -->
-            <section class="section fade-in event-announcement" id="past-events">
-                <!-- Past events will be dynamically inserted here by JavaScript -->
+            <section class="section fade-in event-announcement" id="past-events-section">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    <h2 class="section-heading">Webinar Archive</h2>
+                    <p style="margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
+                        Did you miss our latest update? Explore our archive of past town halls, clinical team meetings, and research webinars to stay informed about our progress toward gene therapy.
+                    </p>
+                    <a href="past-events.html" class="btn btn-secondary btn-large">View All Past Events</a>
+                </div>
             </section>
 
-            <section class="section fade-in" aria-labelledby="carousel-heading">
+            <section class="section fade-in" aria-labelledby="carousel-heading" style="margin-bottom: 0; padding-bottom: 2rem;">
                 <h2 id="carousel-heading">Families powering the journey</h2>
-                <!-- Carousel dynamically loads images via script.js -->
-                <div class="carousel" data-carousel aria-label="CDKL5 community photo carousel">
-                    <div class="carousel-track"></div>
-                    <div class="carousel-controls" aria-hidden="true">
-                        <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous slide">‹</button>
-                        <button class="carousel-btn" type="button" data-carousel-next aria-label="Next slide">›</button>
+                <div class="mosaic-grid" id="familiesGrid">
+                    <!-- Setup Check -->
+                    <div style="grid-column: 1/-1; text-align: center; padding: 20px;">
+                        Loading families...
                     </div>
-                    <div class="carousel-dots" role="tablist" aria-label="Carousel pagination"></div>
                 </div>
-                <div style="text-align: center; margin-top: 30px;">
+                
+                <div style="text-align: center; margin-top: 5px;">
                     <button class="btn btn-view-all" onclick="openGalleryModal()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
                             <rect x="3" y="3" width="7" height="7"/>
@@ -209,13 +215,11 @@
             </section>
 
             <script>
-                fetch('data/events.json')
+                fetch('data/events.json?v=' + Date.now())
                     .then(response => response.json())
                     .then(data => {
-                        const pastEvents = data.events.filter(event => event.type === 'past');
                         const upcomingEvents = data.events.filter(event => event.type === 'upcoming');
 
-                        const pastEventsContainer = document.querySelector('#past-events');
                         const upcomingEventsContainer = document.querySelector('#upcoming-events');
 
                         // Render Upcoming Events
@@ -249,47 +253,7 @@
                             upcomingEventsContainer.style.display = 'none';
                         }
 
-                        // Render Past Events
-                        pastEvents.forEach(event => {
-                            const eventElement = document.createElement('div');
-                            eventElement.innerHTML = `
-                                <div class="event-panel" style="display: flex; align-items: center; justify-content: space-between;">
-                                    <div style="flex: 1; padding-right: 20px;">
-                                        <div class="event-badge">PAST WEBINAR</div>
-                                        <h2 class="event-title">${event.title}</h2>
-                                        <div class="event-meta">
-                                            <div class="event-meta-item">
-                                                <span><strong>${event.date}</strong></span>
-                                            </div>
-                                            <div class="event-meta-item">
-                                                <span><strong>${event.time}</strong></span>
-                                            </div>
-                                        </div>
-                                        <p class="event-description">${event.description}</p>
-                                        <div class="event-speakers">
-                                            ${event.speakers.map(speaker => `
-                                                <div class="speaker">
-                                                    <div class="speaker-info">
-                                                        <strong>${speaker.name}</strong>
-                                                        <span>${speaker.role}</span>
-                                                    </div>
-                                                </div>
-                                            `).join('')}
-                                        </div>
-                                        <p class="event-organizations">
-                                            <strong>Hosted by:</strong> ${event.hostedBy}
-                                        </p>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <video width="100%" height="315" controls controlsList="nodownload" preload="metadata">
-                                            <source src="${event.videoLink}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    </div>
-                                </div>
-                            `;
-                            pastEventsContainer.appendChild(eventElement);
-                        });
+
                     });
             </script>
 
@@ -302,7 +266,7 @@
     </div>
 
     <script src="js/includes-loader.js" defer></script>
-    <script src="js/script.js?v=5" defer></script>
+    <script src="js/script.js?v=7" defer></script>
     <script src="js/newsletter-form.js" defer></script>
     <script>
         // Thank You Modal Functions

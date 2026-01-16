@@ -1,0 +1,75 @@
+/* Mosaic Grid Styles (Replaces Carousel) */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 16px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 3rem auto 0 auto !important; /* Force removed bottom margin */
+    /* Debug Border - remove later if desired */
+    /* border: 1px solid red; */
+}
+
+@media (min-width: 768px) {
+    .mosaic-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+        gap: 24px;
+        padding: 0 40px;
+    }
+}
+
+.mosaic-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; /* Perfect squares */
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    background-color: #f0f0f0; /* Placeholder color */
+}
+
+/* Hover Effect */
+.mosaic-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.mosaic-item:hover img {
+    transform: scale(1.05); /* Subtle zoom */
+}
+
+/* Optional: Quote overlay on hover */
+.mosaic-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    height: 50%;
+}
+
+.mosaic-item:hover .mosaic-overlay {
+    opacity: 1;
+}
+
+.mosaic-quote {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.4;
+}
