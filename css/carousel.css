@@ -5,7 +5,7 @@
     gap: 16px;
     padding: 0 20px;
     max-width: 1200px;
-    margin: 3rem auto 0 auto !important; /* Force removed bottom margin */
+    margin: 3rem auto 0 auto !important; /* Force removed bottom margin and reduce top */
     /* Debug Border - remove later if desired */
     /* border: 1px solid red; */
 }
@@ -15,6 +15,7 @@
         grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
         gap: 24px;
         padding: 0 40px;
+        margin-top: 2rem !important; /* Reduced top margin on desktop */
     }
 }
 
