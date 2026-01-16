@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Events Archive - CDKL5 Gene Therapy</title>
+    <meta name="description" content="Archive of past CDKL5 gene therapy clinical updates, webinars, and fundraising events. Watch recordings and read summaries.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reusing community event grid styles but customized for past events */
+        .past-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .past-event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .past-event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .past-event-header {
+            background: var(--primary-color-light); /* Using a lighter purple/lavender if available */
+            padding: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .past-event-badge {
+            display: inline-block;
+            background: #E0E0E0;
+            color: #555;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .past-event-title {
+            font-size: 1.25rem;
+            color: #333;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+        }
+        
+        .past-event-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .past-event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .past-event-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .past-event-description {
+            color: #555;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .past-event-footer {
+            margin-top: auto;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            margin-bottom: 15px;
+        }
+        
+        .video-container video, 
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .speaker-list {
+            font-size: 0.85rem;
+            color: #666;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .speaker-item {
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .speaker-item:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div data-include="inc/header.html"></div>
+
+    <main class="past-events-page">
+        <!-- Hero Section -->
+        <section class="section">
+            <div class="container">
+                <h1 class="page-title">Past Events Archive</h1>
+                <p class="page-description">Browse our library of past clinical updates, webinars, and community events.</p>
+                
+                <div id="past-events-grid" class="past-events-grid">
+                    <!-- Events will be loaded here via JS -->
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        Loading event archive...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="inc/footer.html"></div>
+
+    <script src="js/includes-loader.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('data/events.json?v=' + Date.now())
+                .then(response => response.json())
+                .then(data => {
+                    const pastEvents = data.events.filter(event => event.type === 'past');
+                    const container = document.getElementById('past-events-grid');
+                    
+                    if (pastEvents.length === 0) {
+                        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center;">No past events found.</div>';
+                        return;
+                    }
+
+                    container.innerHTML = ''; // Clear loading message
+
+                    // Sort events by date (newest first)
+                    // Assuming date format is either "YYYY-MM-DD" or standard date string
+                    pastEvents.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                    pastEvents.forEach(event => {
+                        const card = document.createElement('div');
+                        card.className = 'past-event-card';
+                        
+                        let mediaContent = '';
+                        if (event.videoLink) {
+                            mediaContent = `
+                                <div class="video-container">
+                                    <video controls controlsList="nodownload" preload="metadata">
+                                        <source src="${event.videoLink}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `;
+                        } else {
+                             // Placeholder if no video, maybe an image or just text? 
+                             // For now, no media content if no video link.
+                        }
+
+                        let speakersHtml = '';
+                        if (event.speakers && event.speakers.length > 0) {
+                            speakersHtml = `<div class="speaker-list">
+                                <strong>Speakers:</strong><br>
+                                ${event.speakers.map(s => `<span class="speaker-item">• ${s.name} (${s.role})</span>`).join('')}
+                            </div>`;
+                        }
+
+                        card.innerHTML = `
+                            <div class="past-event-header">
+                                <span class="past-event-badge">Past Event</span>
+                                <h2 class="past-event-title">${event.title}</h2>
+                                <div class="past-event-meta">
+                                    <div class="past-event-meta-item">
+                                        📅 <strong>${event.date}</strong>
+                                    </div>
+                                    <div class="past-event-meta-item">
+                                        🕒 ${event.time}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="past-event-body">
+                                ${mediaContent}
+                                ${speakersHtml}
+                                <p class="past-event-description">${event.description}</p>
+                                <div class="past-event-footer">
+                                    <small>Hosted by: ${event.hostedBy || 'CDKL5 Gene Therapy'}</small>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading events:', err);
+                    document.getElementById('past-events-grid').innerHTML = 
+                        '<div style="grid-column: 1/-1; text-align: center; color: red;">Error loading events. Please try again later.</div>';
+                });
+        });
+    </script>
+</body>
+</html>
