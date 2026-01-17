@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Clinical Team - January 15, 2026 | CDKL5 Gene Therapy</title>
+    <meta name="description" content="Learn about the UCSF clinical team leading the first-in-human CDKL5 gene therapy trial. Meet Dr. Nalin Gupta, Dr. Adam Numis, and Dr. Kazim Narsinh.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .event-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .event-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 15px;
+        }
+        .event-meta-hero {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .back-link:hover {
+            opacity: 1;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        .content-section h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .content-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .intro-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f5e9 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+        .intro-box p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #444;
+        }
+        .team-photo {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin: 30px 0;
+        }
+        .doctor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .doctor-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #667eea;
+        }
+        .doctor-card h3 {
+            color: #333;
+            margin: 0 0 5px 0;
+            font-size: 1.25rem;
+        }
+        .doctor-card .role {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .doctor-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .doctor-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .doctor-card a:hover {
+            text-decoration: underline;
+        }
+        .ucsf-section {
+            background: #f8f9fa;
+            padding: 50px 20px;
+        }
+        .ucsf-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .ucsf-content h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .highlight-box {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .highlight-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .highlight-box li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            line-height: 1.6;
+        }
+        .highlight-box li:last-child {
+            border-bottom: none;
+        }
+        .highlight-box li::before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .pdf-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+        }
+        .pdf-section h2 {
+            margin-bottom: 15px;
+        }
+        .pdf-section p {
+            opacity: 0.9;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .pdf-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .newsletter-section {
+            background: #fff7f0;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .newsletter-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .newsletter-section p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .newsletter-section a {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        /* PDF Download Modal */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .pdf-modal.active {
+            display: flex;
+        }
+        .pdf-modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .pdf-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .pdf-modal h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .pdf-modal p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .pdf-form-group {
+            margin-bottom: 15px;
+        }
+        .pdf-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        .pdf-form-group input,
+        .pdf-form-group select,
+        .pdf-form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .pdf-form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .pdf-form-group input:focus,
+        .pdf-form-group select:focus,
+        .pdf-form-group textarea:focus {
+            outline: none;
+            border-color: #5e35b1;
+            box-shadow: 0 0 0 3px rgba(94,53,177,0.1);
+        }
+        .pdf-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #5e35b1 0%, #9c27b0 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .pdf-submit-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div data-include="inc/header.html"></div>
+
+    <!-- Hero Section -->
+    <section class="event-hero">
+        <a href="past-events.html" class="back-link">
+            ← Back to All Past Events
+        </a>
+        <h1>CDKL5 Gene Therapy - Meet the Clinical Team!</h1>
+        <div class="event-meta-hero">
+            <span>📅 January 15, 2026</span>
+            <span>🕒 5:00 - 8:00 PM PST</span>
+            <span>📍 University of California San Francisco</span>
+        </div>
+    </section>
+
+    <main>
+        <!-- Intro Section -->
+        <section class="content-section">
+            <div class="intro-box">
+                <p>Missed the webinar with the clinical team? Here are the details:</p>
+            </div>
+
+            <h2>The CDKL5 Gene Therapy Journey: A Community-Driven Path</h2>
+            
+            <p>For years, our community held onto the hope of a gene therapy breakthrough. Unfortunately, shifts in research priorities and the discontinuation of programs meant those promises were not realized.</p>
+            
+            <p>Seeing this gap, the <strong>Child's Cure Genetic Foundation</strong>—a non-profit led by parents just like you—took the lead in April 2024. We decided that our children could not wait any longer for others to prioritize them.</p>
+            
+            <p>In the past two years, our team has worked tirelessly and made remarkable progress:</p>
+            
+            <ul style="color: #555; line-height: 2; padding-left: 20px; margin-bottom: 30px;">
+                <li>We designed and tested multiple gene therapy vectors and selected the one with the strongest results.</li>
+                <li>We completed efficacy studies in mice treated at different ages and held a successful pre-IND meeting with the FDA.</li>
+                <li>We developed the groundbreaking <strong>CDKL5 pig model</strong>—the first of its kind—which shows seizures similar to those seen in patients with CDKL5.</li>
+                <li>This model gives us an unprecedented opportunity to better understand the disease and how this gene therapy may behave in humans, something that has not been possible with mouse models alone.</li>
+                <li>We are now working closely with UCSF to plan the first-in-human clinical trial and IND submission.</li>
+            </ul>
+            
+            <p><em>We are incredibly grateful to the families and clinical partners who made this possible.</em></p>
+        </section>
+
+        <!-- Team Photo -->
+        <section class="content-section" style="padding-top: 0;">
+            <h2>The Clinical Team</h2>
+            <img src="images/team/clinical-team.jpg" alt="CDKL5 Clinical Team - Dr. Nalin Gupta, Dr. Adam Numis, Dr. Kazim Narsinh" class="team-photo">
+        </section>
+
+        <!-- UCSF Section -->
+        <section class="ucsf-section">
+            <div class="ucsf-content">
+                <h2>About UCSF</h2>
+                <div class="highlight-box">
+                    <p style="margin-bottom: 20px; color: #555; line-height: 1.8;">UCSF needs no introduction. In just a few lines, their accomplishments speak for themselves:</p>
+                    <ul>
+                        <li>From genomics & immunology to specialty care for women and children, UCSF brings together the world's leading experts in nearly every area of health.</li>
+                        <li>They are home to five Nobel laureates who have advanced the understanding of cancer, neurodegenerative diseases, aging and stem cells.</li>
+                        <li>Their hospitals and educational programs consistently rank among the best in the country, according to the latest surveys by U.S. News & World Report.</li>
+                        <li>Excellence is in their DNA.</li>
+                    </ul>
+                    <p style="margin-top: 20px; color: #555;">For more information: <a href="https://www.ucsfhealth.org" target="_blank" style="color: #667eea;">www.ucsfhealth.org</a></p>
+                </div>
+                <p style="margin-top: 30px; text-align: center; color: #555; font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    We are deeply grateful that this world-renowned institution will serve as the center for the first-in-human CDKL5 gene therapy study, helping ensure the highest standard of care for our children.
+                </p>
+            </div>
+        </section>
+
+        <!-- Doctor Cards -->
+        <section class="content-section">
+            <h2>Meet Our Clinical Experts</h2>
+            <div class="doctor-grid">
+                <div class="doctor-card">
+                    <h3>Dr. Nalin Gupta</h3>
+                    <div class="role">Neurosurgeon</div>
+                    <p>Dr. Gupta is the Chief of Pediatric Neurological Surgery at UCSF and a pioneer in delivering therapies directly to the brain. He specializes in treating complex neurological conditions in children and has led numerous clinical trials for rare pediatric brain diseases, ensuring the highest level of surgical safety.</p>
+                    <a href="https://profiles.ucsf.edu/nalin.gupta" target="_blank">View UCSF Profile →</a>
+                </div>
+                
+                <div class="doctor-card">
+                    <h3>Dr. Adam Numis</h3>
+                    <div class="role">Neurologist</div>
+                    <p>Dr. Numis is the pediatric epilepsy specialist who will lead seizure monitoring and neurologic assessments in the trial. He focuses on epilepsy care and outcome measures relevant to children with CDKL5, and will guide seizure management before, during, and after treatment.</p>
+                    <a href="https://profiles.ucsf.edu/adam.numis" target="_blank">View UCSF Profile →</a>
+                </div>
+                
+                <div class="doctor-card">
+                    <h3>Dr. Kazim Narsinh</h3>
+                    <div class="role">Neuroradiologist</div>
+                    <p>Dr. Narsinh is the neuroradiologist who will read and interpret imaging for safety and distribution of the vector. He brings expertise in pediatric brain imaging and will support image-based safety and efficacy assessments.</p>
+                    <a href="https://profiles.ucsf.edu/kazim.narsinh" target="_blank">View UCSF Profile →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PDF Download Section -->
+        <section class="pdf-section">
+            <h2>📄 Clinical Trial Readiness Overview</h2>
+            <p>Download the presentation slides from this event to learn more about our progress toward clinical trials.</p>
+            <button class="pdf-btn" onclick="openPdfModal()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF
+            </button>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <h2>Stay Updated</h2>
+            <p>Missed the webinar? Join our newsletter to receive updates about our clinical trial progress.</p>
+            <p>Email us at <a href="mailto:support@cdkl5genetherapy.com">support@cdkl5genetherapy.com</a> to subscribe.</p>
+            <p style="margin-top: 30px;">
+                <a href="past-events.html" style="color: #667eea;">← Back to All Past Events</a>
+            </p>
+        </section>
+    </main>
+
+    <div data-include="inc/footer.html"></div>
+
+    <!-- PDF Download Modal -->
+    <div id="pdfDownloadModal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <button class="pdf-modal-close" onclick="closePdfModal()">&times;</button>
+            <h3>📄 Download Clinical Trial Readiness Overview</h3>
+            <p>Please provide your details to access this document. We'd love to keep you updated on our progress!</p>
+            
+            <form name="pdf-download-detail" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="pdfDownloadForm">
+                <input type="hidden" name="form-name" value="pdf-download-detail">
+                <input type="hidden" name="pdf-requested" value="Clinical Trial Readiness Overview - Jan 2026">
+                <p style="display:none;"><input name="bot-field"></p>
+                
+                <div class="pdf-form-group">
+                    <label for="pdf-name">Your Name *</label>
+                    <input type="text" id="pdf-name" name="name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="pdf-form-group">
+                    <label for="pdf-email">Email Address *</label>
+                    <input type="email" id="pdf-email" name="email" required placeholder="your@email.com">
+                </div>
+                
+                <div class="pdf-form-group">
+                    <label for="pdf-reason">Why are you interested in this document? *</label>
+                    <select id="pdf-reason" name="reason" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="Parent/Caregiver of CDKL5 child">Parent/Caregiver of CDKL5 child</option>
+                        <option value="Medical Professional">Medical Professional</option>
+                        <option value="Researcher">Researcher</option>
+                        <option value="Potential Donor/Supporter">Potential Donor/Supporter</option>
+                        <option value="Journalist/Media">Journalist/Media</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="pdf-form-group" id="otherReasonGroup" style="display: none;">
+                    <label for="pdf-other-reason">Please specify:</label>
+                    <textarea id="pdf-other-reason" name="other-reason" placeholder="Tell us more..."></textarea>
+                </div>
+                
+                <button type="submit" class="pdf-submit-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Submit & Download PDF
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/includes-loader.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        const pdfLink = 'documents/CDKL5 Gene Therapy 15-Jan-2026_NG.pdf';
+        
+        function openPdfModal() {
+            document.getElementById('pdfDownloadModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePdfModal() {
+            document.getElementById('pdfDownloadModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close modal on outside click
+        document.getElementById('pdfDownloadModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePdfModal();
+            }
+        });
+        
+        // Show/hide "Other" reason field
+        document.getElementById('pdf-reason').addEventListener('change', function() {
+            const otherGroup = document.getElementById('otherReasonGroup');
+            otherGroup.style.display = this.value === 'Other' ? 'block' : 'none';
+        });
+        
+        // Handle form submission
+        document.getElementById('pdfDownloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Download the PDF
+                const link = document.createElement('a');
+                link.href = pdfLink;
+                link.download = '';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Close modal and reset form
+                closePdfModal();
+                document.getElementById('pdfDownloadForm').reset();
+                
+                // Show thank you message
+                alert('Thank you! Your download should begin shortly.');
+            })
+            .catch(err => {
+                console.error('Form submission error:', err);
+                alert('There was an error. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

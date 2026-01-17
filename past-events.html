@@ -128,6 +128,100 @@
         .speaker-item:last-child {
             margin-bottom: 0;
         }
+        
+        /* PDF Download Modal */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .pdf-modal.active {
+            display: flex;
+        }
+        .pdf-modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .pdf-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .pdf-modal h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .pdf-modal p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .pdf-form-group {
+            margin-bottom: 15px;
+        }
+        .pdf-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        .pdf-form-group input,
+        .pdf-form-group select,
+        .pdf-form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .pdf-form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .pdf-form-group input:focus,
+        .pdf-form-group select:focus,
+        .pdf-form-group textarea:focus {
+            outline: none;
+            border-color: #5e35b1;
+            box-shadow: 0 0 0 3px rgba(94,53,177,0.1);
+        }
+        .pdf-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #5e35b1 0%, #9c27b0 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .pdf-submit-btn:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -151,6 +245,58 @@
     </main>
 
     <div data-include="inc/footer.html"></div>
+
+    <!-- PDF Download Modal -->
+    <div id="pdfDownloadModal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <button class="pdf-modal-close" onclick="closePdfModal()">&times;</button>
+            <h3>📄 Download Clinical Trial Readiness Overview</h3>
+            <p>Please provide your details to access this document. We'd love to keep you updated on our progress!</p>
+            
+            <form name="pdf-download" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="pdfDownloadForm">
+                <input type="hidden" name="form-name" value="pdf-download">
+                <input type="hidden" name="pdf-requested" id="pdfRequested" value="">
+                <p style="display:none;"><input name="bot-field"></p>
+                
+                <div class="pdf-form-group">
+                    <label for="pdf-name">Your Name *</label>
+                    <input type="text" id="pdf-name" name="name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="pdf-form-group">
+                    <label for="pdf-email">Email Address *</label>
+                    <input type="email" id="pdf-email" name="email" required placeholder="your@email.com">
+                </div>
+                
+                <div class="pdf-form-group">
+                    <label for="pdf-reason">Why are you interested in this document? *</label>
+                    <select id="pdf-reason" name="reason" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="Parent/Caregiver of CDKL5 child">Parent/Caregiver of CDKL5 child</option>
+                        <option value="Medical Professional">Medical Professional</option>
+                        <option value="Researcher">Researcher</option>
+                        <option value="Potential Donor/Supporter">Potential Donor/Supporter</option>
+                        <option value="Journalist/Media">Journalist/Media</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="pdf-form-group" id="otherReasonGroup" style="display: none;">
+                    <label for="pdf-other-reason">Please specify:</label>
+                    <textarea id="pdf-other-reason" name="other-reason" placeholder="Tell us more..."></textarea>
+                </div>
+                
+                <button type="submit" class="pdf-submit-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Submit & Download PDF
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script src="js/includes-loader.js"></script>
     <script src="js/script.js"></script>
@@ -195,14 +341,14 @@
                             pdfContent = `
                                 <div style="background: #f0f4ff; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #5e35b1;">
                                     <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">📄 ${pdfTitle}</p>
-                                    <a href="${event.pdfLink}" target="_blank" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                                    <button onclick="openPdfModal('${event.pdfLink}', '${pdfTitle}')" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer;">
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                             <polyline points="7 10 12 15 17 10"></polyline>
                                             <line x1="12" y1="15" x2="12" y2="3"></line>
                                         </svg>
                                         Download PDF
-                                    </a>
+                                    </button>
                                 </div>
                             `;
                         }
@@ -213,6 +359,15 @@
                                 <strong>Speakers:</strong><br>
                                 ${event.speakers.map(s => `<span class="speaker-item">• ${s.name} (${s.role})</span>`).join('')}
                             </div>`;
+                        }
+                        
+                        let detailsButton = '';
+                        if (event.detailsPage) {
+                            detailsButton = `
+                                <a href="${event.detailsPage}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; text-decoration: none;">
+                                    Read Full Details →
+                                </a>
+                            `;
                         }
 
                         card.innerHTML = `
@@ -233,6 +388,7 @@
                                 ${pdfContent}
                                 ${speakersHtml}
                                 <p class="past-event-description">${event.description}</p>
+                                ${detailsButton}
                                 <div class="past-event-footer">
                                     <small>Hosted by: ${event.hostedBy || 'CDKL5 Gene Therapy'}</small>
                                 </div>
@@ -246,6 +402,68 @@
                     document.getElementById('past-events-grid').innerHTML = 
                         '<div style="grid-column: 1/-1; text-align: center; color: red;">Error loading events. Please try again later.</div>';
                 });
+        });
+        
+        // PDF Modal Functions
+        let currentPdfLink = '';
+        
+        function openPdfModal(pdfLink, pdfTitle) {
+            currentPdfLink = pdfLink;
+            document.getElementById('pdfRequested').value = pdfTitle;
+            document.getElementById('pdfDownloadModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePdfModal() {
+            document.getElementById('pdfDownloadModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close modal on outside click
+        document.getElementById('pdfDownloadModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePdfModal();
+            }
+        });
+        
+        // Show/hide "Other" reason field
+        document.getElementById('pdf-reason').addEventListener('change', function() {
+            const otherGroup = document.getElementById('otherReasonGroup');
+            otherGroup.style.display = this.value === 'Other' ? 'block' : 'none';
+        });
+        
+        // Handle form submission
+        document.getElementById('pdfDownloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Download the PDF
+                const link = document.createElement('a');
+                link.href = currentPdfLink;
+                link.download = '';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Close modal and reset form
+                closePdfModal();
+                document.getElementById('pdfDownloadForm').reset();
+                
+                // Show thank you message
+                alert('Thank you! Your download should begin shortly.');
+            })
+            .catch(err => {
+                console.error('Form submission error:', err);
+                alert('There was an error. Please try again.');
+            });
         });
     </script>
 </body>
