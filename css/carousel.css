@@ -1,5 +1,5 @@
 /* Mosaic Grid Styles (Replaces Carousel) */
-.mosaic-grid {
+.families-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
     gap: 16px;
@@ -11,7 +11,7 @@
 }
 
 @media (min-width: 768px) {
-    .mosaic-grid {
+    .families-grid {
         grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
         gap: 24px;
         padding: 0 40px;
@@ -19,7 +19,7 @@
     }
 }
 
-.mosaic-item {
+.families-item {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -31,24 +31,24 @@
 }
 
 /* Hover Effect */
-.mosaic-item:hover {
+.families-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
-.mosaic-item img {
+.families-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.mosaic-item:hover img {
+.families-item:hover img {
     transform: scale(1.05); /* Subtle zoom */
 }
 
 /* Optional: Quote overlay on hover */
-.mosaic-overlay {
+.families-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -62,11 +62,11 @@
     height: 50%;
 }
 
-.mosaic-item:hover .mosaic-overlay {
+.families-item:hover .families-overlay {
     opacity: 1;
 }
 
-.mosaic-quote {
+.families-quote {
     color: white;
     font-size: 0.9rem;
     font-weight: 600;

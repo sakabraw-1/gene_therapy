@@ -705,7 +705,7 @@ function initMosaic(items) {
 
     selectedItems.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'mosaic-item';
+        div.className = 'families-item';
         div.onclick = () => openLightbox(item.index); 
         div.style.backgroundColor = '#e0e0e0'; // Debug: Visible bg even if image fails
         
@@ -717,10 +717,10 @@ function initMosaic(items) {
         img.onerror = () => console.error('Failed to load image:', item.src);
 
         const overlay = document.createElement('div');
-        overlay.className = 'mosaic-overlay';
+        overlay.className = 'families-overlay';
 
         const quote = document.createElement('p');
-        quote.className = 'mosaic-quote';
+        quote.className = 'families-quote';
         quote.textContent = item.quote;
         
         overlay.appendChild(quote);
