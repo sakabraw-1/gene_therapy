@@ -2,14 +2,14 @@
   "events": [
     {
       "type": "past",
-      "title": "CDKL5 Gene Therapy - Meet the Clinical Team!",
+      "title": "Inside the CDKL5 Gene Therapy Journey",
       "date": "January 15, 2026",
       "time": "5:00 - 8:00 PM PST",
-      "description": "Missed the webinar with the clinical team? Learn about the CDKL5 gene therapy journey, meet the University of California San Francisco clinical experts, and download the presentation slides.",
+      "description": "A comprehensive look at the UCSF Clinical Dinner where the Phase I trial was presented. Read the full story by Nyesha Bahl & Nicholas Schein.",
       "speakers": [
         { "name": "Dr. Nalin Gupta", "role": "Principal Investigator and Neurosurgeon" },
         { "name": "Dr. Adam Numis", "role": "Neurologist" },
-        { "name": "Dr. Narsihn Kazim", "role": "Neuroradiologist" }
+        { "name": "Dr. Kazim Narsinh", "role": "Neuroradiologist" }
       ],
       "hostedBy": "University of California San Francisco & Child's Cure Genetic Research",
       "location": "University of California San Francisco",
