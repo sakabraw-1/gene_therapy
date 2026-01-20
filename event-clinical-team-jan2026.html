@@ -157,38 +157,82 @@
         }
         .doctor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
         .doctor-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-top: 4px solid #667eea;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.12);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+        .doctor-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
         .doctor-card h4 {
-            color: #333;
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
+            color: #2d3748;
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            font-weight: 700;
         }
         .doctor-card .role {
             color: #667eea;
             font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
         }
         .doctor-card p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #4a5568;
         }
         .doctor-card a {
-            color: #667eea;
+            color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .doctor-card a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
         }
         .author-section {
             background: #f8f9fa;
@@ -217,17 +261,14 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             text-align: center;
         }
-        .author-avatar {
-            width: 100px;
-            height: 100px;
+        .author-photo {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
             margin: 0 auto 20px;
-            font-size: 2.5rem;
-            color: white;
+            border: 4px solid #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
         .author-card h3 {
             color: #333;
@@ -491,6 +532,98 @@
             .donate-btn { padding: 15px 35px; font-size: 1.1rem; }
             .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
             .social-share a { width: 40px; height: 40px; }
+            .gallery-nav { width: 40px; height: 40px; }
+        }
+
+        /* Event Photo Gallery */
+        .event-gallery {
+            margin: 40px 0;
+            position: relative;
+        }
+        .event-gallery h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+        .gallery-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+        .gallery-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .gallery-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.95);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .gallery-nav:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .gallery-nav.prev { left: 15px; }
+        .gallery-nav.next { right: 15px; }
+        .gallery-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery-dot.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.2);
+        }
+        .gallery-dot:hover {
+            background: #667eea;
+        }
+        .gallery-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -541,24 +674,29 @@
             
             <p>On January 15, 2026, families gathered virtually and in person for a UCSF Clinical Dinner, where a "working draft" of the planned Phase I clinical trial was presented. The event featured key members of the UCSF clinical team:</p>
 
+            <img src="images/team/clinical-team.jpg" alt="CDKL5 Clinical Team at UCSF - Dr. Nalin Gupta, Dr. Adam Numis, Dr. Kazim Narsinh" class="team-photo">
+
             <div class="doctor-grid">
                 <div class="doctor-card">
+                    <div class="doctor-icon">🧠</div>
                     <h4>Dr. Nalin Gupta</h4>
-                    <div class="role">Pediatric Neurosurgeon & Principal Investigator</div>
-                    <p>Experience in multiple Phase I studies</p>
-                    <a href="https://profiles.ucsf.edu/nalin.gupta" target="_blank">View Profile →</a>
+                    <div class="role">Pediatric Neurosurgeon</div>
+                    <p>Chief of Pediatric Neurological Surgery at UCSF and pioneer in delivering therapies directly to the brain. Principal Investigator leading numerous clinical trials for rare pediatric brain diseases.</p>
+                    <a href="https://profiles.ucsf.edu/nalin.gupta" target="_blank">View Profile ↗</a>
                 </div>
                 <div class="doctor-card">
+                    <div class="doctor-icon">⚡</div>
                     <h4>Dr. Adam Numis</h4>
-                    <div class="role">Pediatric Neurologist & Epilepsy Specialist</div>
-                    <p>Leading seizure monitoring and neurologic assessments</p>
-                    <a href="https://profiles.ucsf.edu/adam.numis" target="_blank">View Profile →</a>
+                    <div class="role">Epilepsy Specialist</div>
+                    <p>Pediatric epilepsy specialist leading seizure monitoring and neurologic assessments in the trial. Expert in epilepsy care and outcome measures for children with CDKL5.</p>
+                    <a href="https://profiles.ucsf.edu/adam.numis" target="_blank">View Profile ↗</a>
                 </div>
                 <div class="doctor-card">
+                    <div class="doctor-icon">📊</div>
                     <h4>Dr. Kazim Narsinh</h4>
                     <div class="role">Neurointerventional Radiologist</div>
-                    <p>Imaging for safety and vector distribution</p>
-                    <a href="https://profiles.ucsf.edu/kazim.narsinh" target="_blank">View Profile →</a>
+                    <p>Neuroradiologist interpreting imaging for safety and vector distribution. Expert in pediatric brain imaging and safety assessments for clinical trials.</p>
+                    <a href="https://profiles.ucsf.edu/kazim.narsinh" target="_blank">View Profile ↗</a>
                 </div>
             </div>
 
@@ -566,7 +704,47 @@
 
             <p>The purpose of the meeting was to explain what is being built, why certain decisions are being made, and what participation in a first-in-human gene therapy trial would truly involve.</p>
 
-            <img src="images/team/clinical-team.jpg" alt="CDKL5 Clinical Team at UCSF" class="team-photo">
+            <!-- Event Photo Gallery -->
+            <div class="event-gallery">
+                <h3>📸 Moments from the Event</h3>
+                <div class="gallery-container">
+                    <div class="gallery-slides" id="gallerySlides">
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event.jpeg" alt="CDKL5 Clinical Dinner - January 15, 2026">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event1.jpeg" alt="Families and clinical team discussion">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event2.jpeg" alt="UCSF presentation on gene therapy">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event3.jpeg" alt="Q&A session with doctors">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event4.jpeg" alt="Community gathering at UCSF">
+                        </div>
+                    </div>
+                    <button class="gallery-nav prev" onclick="changeSlide(-1)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="gallery-nav next" onclick="changeSlide(1)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <div class="gallery-dots" id="galleryDots">
+                    <button class="gallery-dot active" onclick="goToSlide(0)"></button>
+                    <button class="gallery-dot" onclick="goToSlide(1)"></button>
+                    <button class="gallery-dot" onclick="goToSlide(2)"></button>
+                    <button class="gallery-dot" onclick="goToSlide(3)"></button>
+                    <button class="gallery-dot" onclick="goToSlide(4)"></button>
+                </div>
+                <p class="gallery-caption">Photos from the January 15, 2026 Clinical Dinner at UCSF</p>
+            </div>
 
             <h2>The Science: Why Gene Therapy?</h2>
 
@@ -689,6 +867,12 @@
                     <li><strong>Most importantly—help fund the path to the clinic.</strong> This program exists because families decided not to wait passively.</li>
                 </ul>
             </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="donate.html" class="btn" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s;">
+                    💜 Donate Now
+                </a>
+            </div>
 
             <div class="contact-box">
                 <p><strong>Questions?</strong> For any clinical or non-clinical questions, reach out to <a href="mailto:cdkl5@childscure.org">cdkl5@childscure.org</a></p>
@@ -701,6 +885,12 @@
 
             <p>This meeting was a working session with the people designing a serious clinical study. It reflected determination, realism, and responsibility. The foundation made clear that it welcomes collaboration from any organization willing to help. The UCSF team emphasized its role: to build the safest possible study with the highest likelihood of answering the questions that matter.</p>
 
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="mailto:cdkl5@childscure.org?subject=Collaboration Inquiry - CDKL5 Gene Therapy" class="btn" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s;">
+                    🤝 Join Our Mission
+                </a>
+            </div>
+
             <p><em>We are incredibly grateful to the families and clinical partners who made this possible.</em></p>
 
         </article>
@@ -711,12 +901,12 @@
                 <h2>About the Authors</h2>
                 <div class="author-grid">
                     <div class="author-card">
-                        <div class="author-avatar">👩‍🎓</div>
+                        <img src="images/team/Nysha_bahl.jpeg" alt="Nyesha Bahl" class="author-photo">
                         <h3>Nyesha Bahl</h3>
                         <p>I am a high schooler passionate about solving pressing issues in neuroscience and genetics. Reyna is my neighbor, and I got to attend this meeting at the UCSF campus in person.</p>
                     </div>
                     <div class="author-card">
-                        <div class="author-avatar">🔬</div>
+                        <img src="images/team/Nicolas.jpeg" alt="Nicholas Schein" class="author-photo">
                         <h3>Nicholas Schein</h3>
                         <p>Currently interning as a Research Assistant at Buck Institute for Research on Aging. My research interests include Neurodegenerative Disease, Aging and Epilepsy. I accompanied my mom who works at iXCell Biotechnologies and has collaborated with Child's Cure Genetic Research on this vital project.</p>
                     </div>
@@ -740,10 +930,10 @@
 
         <!-- Donate CTA -->
         <section class="donate-cta">
-            <h2>🧡 Help Us Reach the Clinic</h2>
+            <h2>💜 Help Us Reach the Clinic</h2>
             <p>This program exists because families decided not to wait passively. Your donation brings us one step closer to the first-in-human CDKL5 gene therapy trial.</p>
             <a href="donate.html" class="donate-btn">
-                ❤️ Donate Now
+                💜 Donate Now
             </a>
             <p class="goal-text">Goal: $3.5 Million for Phase I & Phase II</p>
         </section>
@@ -886,6 +1076,43 @@
         
         backToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Photo Gallery Slider
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const slides = document.getElementById('gallerySlides');
+        const dots = document.querySelectorAll('.gallery-dot');
+
+        function updateGallery() {
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateGallery();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateGallery();
+        }
+
+        // Auto-advance every 5 seconds
+        let autoSlide = setInterval(() => changeSlide(1), 5000);
+
+        // Pause auto-advance on hover
+        document.querySelector('.gallery-container').addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+
+        document.querySelector('.gallery-container').addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => changeSlide(1), 5000);
         });
     </script>
 </body>
