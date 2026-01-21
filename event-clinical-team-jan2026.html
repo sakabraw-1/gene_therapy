@@ -337,21 +337,36 @@
         .pdf-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: white;
+            gap: 12px;
+            background: linear-gradient(135deg, #fff 0%, #f0f4ff 100%);
             color: #667eea;
-            padding: 15px 30px;
+            padding: 20px 45px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
+            border: 3px solid rgba(255,255,255,0.5);
             cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,255,255,0.3);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 8px 30px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,255,255,0.3);
+            }
+            50% {
+                box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 0 8px rgba(255,255,255,0.4), 0 0 30px rgba(255,255,255,0.3);
+            }
         }
         .pdf-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 0 6px rgba(255,255,255,0.5);
+            animation: none;
+        }
+        .pdf-btn svg {
+            width: 24px;
+            height: 24px;
         }
         .contact-box {
             background: #e8f5e9;
@@ -724,6 +739,12 @@
                         <div class="gallery-slide">
                             <img src="images/events/15_jan_event4.jpeg" alt="Community gathering at UCSF">
                         </div>
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event5.jpeg" alt="Clinical dinner presentation">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/events/15_jan_event6.jpeg" alt="Families connecting at the event">
+                        </div>
                     </div>
                     <button class="gallery-nav prev" onclick="changeSlide(-1)">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -742,6 +763,8 @@
                     <button class="gallery-dot" onclick="goToSlide(2)"></button>
                     <button class="gallery-dot" onclick="goToSlide(3)"></button>
                     <button class="gallery-dot" onclick="goToSlide(4)"></button>
+                    <button class="gallery-dot" onclick="goToSlide(5)"></button>
+                    <button class="gallery-dot" onclick="goToSlide(6)"></button>
                 </div>
                 <p class="gallery-caption">Photos from the January 15, 2026 Clinical Dinner at UCSF</p>
             </div>
@@ -903,12 +926,12 @@
                     <div class="author-card">
                         <img src="images/team/Nysha_bahl.jpeg" alt="Nyesha Bahl" class="author-photo">
                         <h3>Nyesha Bahl</h3>
-                        <p>I am a high schooler passionate about solving pressing issues in neuroscience and genetics. Reyna is my neighbor, and I got to attend this meeting at the UCSF campus in person.</p>
+                        <p>Nyesha is a high school student with a strong passion for neuroscience, genetics, psychology, and sports medicine, driven by a desire to understand how the brain and body work and how science can improve lives. She actively pursues these interests through advanced coursework, Science Olympiad, and academic enrichment programs. Beyond academics, Nyesha volunteers with Friends of Children with Special Needs (FCSN), where she works closely with children to support life skills and confidence, and creates exercise videos specifically designed for people with cerebral palsy. A nationally competitive cricketer who has competed in elite tournaments across the United States, she brings discipline, resilience, and leadership to everything she does, with a long-term goal of building a career in neuroscience, genetic engineering, or sports medicine.</p>
                     </div>
                     <div class="author-card">
                         <img src="images/team/Nicolas.jpeg" alt="Nicholas Schein" class="author-photo">
                         <h3>Nicholas Schein</h3>
-                        <p>Currently interning as a Research Assistant at Buck Institute for Research on Aging. My research interests include Neurodegenerative Disease, Aging and Epilepsy. I accompanied my mom who works at iXCell Biotechnologies and has collaborated with Child's Cure Genetic Research on this vital project.</p>
+                        <p>Nick graduated with a BS in Cognitive Science from Lehigh University in May 2025. He is interested in researching the relationship between epilepsy/epileptogenesis and aging, particularly via hiPSC-derived brain organoids. Nick may eventually focus on determining mechanisms of epilepsy and epileptogenesis in "rare" and medically intractable epilepsies (LGS, Dravet, MAE, SCN8A, etc.). He is currently building experience with laboratory and research techniques at the Buck Institute for Research on Aging until May 2026 before applying to full-time RA positions at institutions like UCSF, Gladstone, Stanford, and others. After obtaining RA experience, Nick intends to apply for the 2027 PhD cycle.</p>
                     </div>
                 </div>
             </div>
@@ -916,7 +939,7 @@
 
         <!-- PDF Download Section -->
         <section class="pdf-section">
-            <h2>📄 Download the Presentation</h2>
+            <h2>Get the Presentation Slides</h2>
             <p>Access the Clinical Trial Readiness Overview slides from this event.</p>
             <button class="pdf-btn" onclick="openPdfModal()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1080,7 +1103,7 @@
 
         // Photo Gallery Slider
         let currentSlide = 0;
-        const totalSlides = 5;
+        const totalSlides = 7;
         const slides = document.getElementById('gallerySlides');
         const dots = document.querySelectorAll('.gallery-dot');
 
