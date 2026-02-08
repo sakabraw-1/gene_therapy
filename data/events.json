@@ -1,6 +1,23 @@
 {
   "events": [
     {
+      "type": "upcoming",
+      "title": "UCSF Rare Disease Symposium 2026",
+      "date": "February 13, 2026",
+      "time": "1:30 - 2:10 PM PST",
+      "description": "Team CDKL5 Gene Therapy is honored to participate as panelists at the UCSF Rare Disease Symposium 2026. Join us for 'Moving Mountains: Reyna's Story and the Summit Still Ahead for CDKL5 Gene Therapy.'",
+      "speakers": [
+        { "name": "Jainu Jogani", "role": "Co-Founder, Child's Cure Genetics Research" },
+        { "name": "Jacinthe Gingras, PhD", "role": "Scientific Advisor, Child's Cure Genetics Research" },
+        { "name": "Nalin Gupta, MD, PhD", "role": "Chief, Division of Pediatric Neurosurgery at UCSF" },
+        { "name": "Sohela Shah, PhD", "role": "Program Director, Catalyst Program and Invent Fund, UCSF" }
+      ],
+      "hostedBy": "UCSF Innovation Ventures, Foundation Ipsen & UCSF Institute for Human Genetics",
+      "location": "William J. Rutter Center (Robertson Auditorium), UCSF Mission Bay, 1675 Owens St, San Francisco, CA 94158",
+      "registrationLink": "https://humangenetics.ucsf.edu/rare-disease-symposium-2026",
+      "detailsPage": "event-ucsf-symposium-feb2026.html"
+    },
+    {
       "type": "past",
       "title": "Inside the CDKL5 Gene Therapy Journey",
       "date": "January 15, 2026",

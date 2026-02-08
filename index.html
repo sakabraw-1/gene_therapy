@@ -226,6 +226,7 @@
                         if (upcomingEvents.length > 0) {
                             upcomingEvents.forEach(event => {
                                 const eventElement = document.createElement('div');
+                                const detailsLink = event.detailsPage || 'event-details.html';
                                 eventElement.innerHTML = `
                                     <div class="event-panel" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
                                         <div style="flex: 1; min-width: 300px;">
@@ -243,7 +244,7 @@
                                                 </div>` : ''}
                                             </div>
                                             <p class="event-description">${event.description}</p>
-                                            <a href="event-details.html" class="btn btn-event">View Details & Register</a>
+                                            <a href="${detailsLink}" class="btn btn-event">View Details & Register</a>
                                         </div>
                                     </div>
                                 `;
