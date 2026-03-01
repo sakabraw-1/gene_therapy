@@ -97,7 +97,50 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Event data loaded:', data);
-                const upcomingEvents = data.events.filter(event => event.type === 'upcoming');
+                const parseEventDateTime = (event) => {
+                    if (!event || !event.date) return null;
+
+                    const baseDate = new Date(event.date);
+                    if (Number.isNaN(baseDate.getTime())) return null;
+
+                    const dateTime = new Date(baseDate);
+                    dateTime.setHours(23, 59, 59, 999);
+
+                    if (event.time) {
+                        const timeMatch = event.time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+                        if (timeMatch) {
+                            let hour = parseInt(timeMatch[1], 10);
+                            const minute = parseInt(timeMatch[2], 10);
+                            const period = timeMatch[3].toUpperCase();
+
+                            if (period === 'PM' && hour !== 12) hour += 12;
+                            if (period === 'AM' && hour === 12) hour = 0;
+
+                            dateTime.setHours(hour, minute, 0, 0);
+
+                            const rangeMatch = event.time.match(/-\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+                            if (rangeMatch) {
+                                let endHour = parseInt(rangeMatch[1], 10);
+                                const endMinute = parseInt(rangeMatch[2], 10);
+                                const endPeriod = rangeMatch[3].toUpperCase();
+
+                                if (endPeriod === 'PM' && endHour !== 12) endHour += 12;
+                                if (endPeriod === 'AM' && endHour === 12) endHour = 0;
+
+                                dateTime.setHours(endHour, endMinute, 0, 0);
+                            }
+                        }
+                    }
+
+                    return dateTime;
+                };
+
+                const now = new Date();
+                const upcomingEvents = data.events.filter(event => {
+                    const eventDateTime = parseEventDateTime(event);
+                    if (!eventDateTime) return false;
+                    return eventDateTime >= now;
+                });
                 if (upcomingEvents.length > 0) {
                     const event = upcomingEvents[0]; // Show the first upcoming event
                     console.log('Upcoming event:', event);
