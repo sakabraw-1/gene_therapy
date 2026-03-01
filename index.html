@@ -257,7 +257,11 @@
                         };
 
                         const now = new Date();
+                        const hiddenUpcomingTitles = new Set([
+                            'UCSF Rare Disease Symposium 2026'
+                        ]);
                         const upcomingEvents = data.events.filter(event => {
+                            if (hiddenUpcomingTitles.has(event.title)) return false;
                             const eventDateTime = parseEventDateTime(event);
                             if (!eventDateTime) return false;
                             return eventDateTime >= now;
