@@ -37,6 +37,13 @@
             margin-bottom: 2.5rem;
             line-height: 1.6;
         }
+        .payment-hint {
+            margin-top: -1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 500;
+        }
         
         /* Payment Grid */
         .payment-grid {
@@ -71,6 +78,12 @@
         .payment-icon {
             font-size: 2rem;
             margin-bottom: 0.5rem;
+        }
+        .payment-note {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-weight: 500;
         }
         
         /* Info Section */
@@ -155,19 +168,22 @@
             <!-- Title -->
             <h1 class="donate-title">Support CDKL5 Gene Therapy</h1>
             <p class="donate-intro">Choose your preferred payment method to donate securely</p>
+            <p class="payment-hint">Choose one checkout option below</p>
             
             <!-- Payment Grid -->
             <div class="payment-grid">
                 <!-- Credit Card -->
                 <a href="https://checkout.square.site/merchant/ML47GBM1M9YW9/checkout/7O336ARIT4X5SQTAEX5RDSR3?src=qr" target="_blank" rel="noopener noreferrer" class="payment-btn">
                     <div class="payment-icon">💳</div>
-                    <div>Credit Card</div>
+                    <div>Credit / Debit Card</div>
+                    <div class="payment-note">Direct card checkout</div>
                 </a>
-                
-                <!-- PayPal -->
-                <a href="https://www.paypal.com/us/fundraiser/charity/3700987" target="_blank" rel="noopener noreferrer" class="payment-btn">
-                    <div class="payment-icon">🅿️</div>
-                    <div>PayPal</div>
+
+                <!-- Online Donation (Givebutter) -->
+                <a href="https://givebutter.com/4QU1H5" target="_blank" rel="noopener noreferrer" class="payment-btn">
+                    <div class="payment-icon">🎗️</div>
+                    <div>PayPal / Venmo / Card</div>
+                    <div class="payment-note">More payment options</div>
                 </a>
                 
                 <!-- Zelle -->
