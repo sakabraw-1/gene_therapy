@@ -30,6 +30,11 @@
             background: #f0f4ff !important;
             color: var(--heading-secondary) !important;
         }
+
+        .hero-content .btn-donate-hero {
+            display: inline-flex;
+            margin: 1.5rem auto 0;
+        }
         
         /* Keep Latest Win box PURPLE - don't change it */
         .section:first-of-type .card {
@@ -47,6 +52,51 @@
         /* Page background */
         body {
             background: var(--bg-page) !important;  /* Warm cream */
+        }
+
+        .fundraiser-spotlight {
+            background: #ffffff;
+            border: 2px solid var(--primary-orange);
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+
+        .fundraiser-spotlight h2 {
+            color: var(--heading-secondary);
+            margin-bottom: 0.75rem;
+            font-size: 1.8rem;
+        }
+
+        .fundraiser-spotlight p {
+            color: #666;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            font-size: 1.02rem;
+        }
+
+        .fundraiser-date {
+            color: var(--heading-primary);
+            font-weight: 700;
+        }
+
+        .fundraiser-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .fundraiser-spotlight {
+                padding: 1.5rem;
+            }
+
+            .fundraiser-spotlight h2 {
+                font-size: 1.45rem;
+            }
         }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
@@ -89,6 +139,20 @@
             <section class="section fade-in event-announcement" id="upcoming-events">
                 <h2 class="section-heading">Upcoming Events</h2>
                 <!-- Upcoming events will be dynamically inserted here by JavaScript -->
+            </section>
+
+            <section class="section fade-in">
+                <div class="fundraiser-spotlight">
+                    <h2>Upcoming Fundraiser</h2>
+                    <p>
+                        Sappadu/Sadhya Lunch to Support CDKL5 is coming up on
+                        <span class="fundraiser-date">Sunday, March 22 | 11:30am to 12:30pm</span>.
+                    </p>
+                    <div class="fundraiser-actions">
+                        <a href="https://givebutter.com/sappadusadhya-lunch-to-support-cdkl5-jeyccx" target="_blank" rel="noopener noreferrer" class="btn btn-donate-pill">View Fundraiser</a>
+                        <a href="get-involved.html" class="btn btn-donate-pill">Get Involved</a>
+                    </div>
+                </div>
             </section>
 
             <!-- Latest Win Purple Box - REMOVED PER REQUEST (Moved event to past) 
