@@ -139,6 +139,15 @@
     </div>
 </div>
 
+<!-- Mobile Campaign CTA (mobile only) -->
+<div id="mobile-campaign-cta" class="mobile-campaign-cta" aria-hidden="true" style="display:none;">
+    <a id="mobileCampaignLink" class="mobile-sticky-cta" href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer">
+        <span class="cta-icon">👜</span>
+        <span class="cta-label">Buy the Bag — support CDKL5</span>
+    </a>
+    <button id="mobileCampaignClose" class="mobile-sticky-close" aria-label="Dismiss campaign CTA">×</button>
+</div>
+
 <!-- IMMEDIATE SCRIPT - Runs before CSS -->
 <script>
 (function() {
@@ -229,6 +238,9 @@ function initMobileTabBar() {
     }
     
     console.log('All elements present, setting up click handler...');
+
+    // Mark body so CSS can account for mobile tab bar presence
+    document.body.classList.add('has-mobile-tabbar');
     
     // Toggle About popup on button click
     aboutTabBtn.addEventListener('click', function(e) {
@@ -308,4 +320,63 @@ window.addEventListener('resize', function() {
         if (aboutPopup) aboutPopup.remove();
     }
 });
+</script>
+
+<script>
+// Mobile campaign CTA initializer
+(function(){
+    var KEY = 'mobileCampaignDismissed_v1';
+    var el = document.getElementById('mobile-campaign-cta');
+    var closeBtn = document.getElementById('mobileCampaignClose');
+    if(!el) return;
+
+    function shouldShow(){
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('show_campaign') === '1') return true; // override for testing
+        if (window.innerWidth > 640) return false;
+        if (localStorage.getItem(KEY) === '1') return false;
+        // don't show on campaign landing
+        var page = (window.location.pathname || '').split('/').pop() || 'index.html';
+        if (page === 'this-bag.html') return false;
+        return true;
+    }
+
+    function show(){
+        el.style.display = '';
+        el.setAttribute('aria-hidden','false');
+    }
+
+    function hide(){
+        el.style.display = 'none';
+        el.setAttribute('aria-hidden','true');
+    }
+
+    function init(){
+        if(shouldShow()) show(); else hide();
+
+        // attach close handler
+        if(closeBtn && !closeBtn._mobileCampaignAttached){
+            closeBtn.addEventListener('click', function(e){
+                e.preventDefault();
+                localStorage.setItem(KEY,'1');
+                hide();
+            });
+            closeBtn._mobileCampaignAttached = true;
+        }
+
+        // hide if window resized to large
+        window.addEventListener('resize', function(){
+            if(window.innerWidth > 640) hide();
+            else if(shouldShow()) show();
+        });
+    }
+
+    // Initialize on the same events used elsewhere
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+
+    document.addEventListener('includes:loaded', function(){ setTimeout(init,150); });
+    window.addEventListener('load', function(){ setTimeout(init,200); });
+})();
 </script>

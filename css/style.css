@@ -1212,6 +1212,53 @@ footer .footer-supported-divider {
         justify-content: center;
     }
 }
+/* Mobile campaign CTA (shared styles for footer + donate page) */
+.mobile-campaign-cta {
+    display: none; /* JS toggles inline style to show */
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 72px; /* sit above mobile tab bar */
+    z-index: 10050;
+    max-width: calc(100% - 24px);
+    margin: 0 auto;
+    background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.16);
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    justify-content: center;
+}
+.mobile-campaign-cta .mobile-sticky-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+}
+.mobile-campaign-cta .mobile-sticky-cta .cta-icon { font-size: 1.15rem; }
+.mobile-campaign-cta .mobile-sticky-close {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .mobile-campaign-cta { display: flex; }
+}
+
+/* If no mobile-tab-bar exists, lower the CTA slightly to sit closer to bottom */
+@media (max-width: 768px) {
+    body:not(.has-mobile-tabbar) .mobile-campaign-cta { bottom: 24px; }
+}
 /* Horizontal logo strip for partner logos (footer and donate) */
 .logo-strip {
     display: flex;
@@ -1616,6 +1663,45 @@ header {
     transform: translateY(-2px);
     filter: brightness(1.05);
     box-shadow: 0 8px 22px rgba(48, 63, 159, 0.18);
+}
+
+/* Mobile sticky campaign CTA */
+.mobile-campaign-cta {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 -6px 18px rgba(0,0,0,0.14);
+    align-items: center;
+    gap: 0.6rem;
+}
+.mobile-campaign-cta .mobile-sticky-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+}
+.mobile-campaign-cta .mobile-sticky-cta .cta-icon { font-size: 1.15rem; }
+.mobile-campaign-cta .mobile-sticky-close {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .mobile-campaign-cta { display: flex; }
 }
 
 /* Orange pill variant for hero CTA that mirrors the nav donate style */
