@@ -72,8 +72,8 @@
             .hero-frame { padding-top: calc(96px + env(safe-area-inset-top, 0px)); }
         }
 
-        /* Hide internal CTA elements on the campaign page itself */
-        .hero-cta, .campaign-grid aside .btn-donate-pill, #mobile-top-cta-thisbag { display: none !important; }
+        /* Hide only the mobile top CTA element on the campaign page itself; keep Donate buttons visible */
+        #mobile-top-cta-thisbag { display: none !important; }
 
         /* Hide the header "BUY THE BAG" link when on the campaign page */
         .this-bag-page a[href="this-bag.html"] { display: none !important; }
