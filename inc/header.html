@@ -33,6 +33,21 @@
         <button id="mobileTopCampaignCloseHome" class="mobile-sticky-close" aria-label="Dismiss">×</button>
 </div>
 
+<!-- Inline initializer to ensure home mobile pill shows immediately on mobile index pages -->
+<script>
+(function(){
+        try{
+                var page = (window.location.pathname||'').split('/').pop() || '';
+                if(page === '' || page === 'index.html'){
+                        if(window.innerWidth <= 768 && !localStorage.getItem('mobileTopCampaignDismissedHome_v1')){
+                                var el = document.getElementById('mobile-top-cta-home');
+                                if(el) el.style.display = '';
+                        }
+                }
+        }catch(e){/* ignore */}
+})();
+</script>
+
 <!-- Structured data for important images to help search engines pick up keywords -->
 <script type="application/ld+json">
 {
