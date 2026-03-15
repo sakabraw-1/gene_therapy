@@ -1285,6 +1285,20 @@ body.has-mobile-cta .container {
 @media (max-width: 768px) {
     .mobile-top-cta { display: flex; }
 }
+
+/* Fixed top pill specifically for the campaign page to sit under the sticky header */
+.this-bag-page .mobile-top-cta {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: calc(env(safe-area-inset-top, 0px) + 56px);
+    z-index: 10080;
+}
+
+/* When top CTA is visible on campaign page, push main content down so hero isn't overlapped */
+.this-bag-page.has-mobile-cta main {
+    padding-top: calc(56px + env(safe-area-inset-top, 0px) + 12px) !important;
+}
 /* Horizontal logo strip for partner logos (footer and donate) */
 .logo-strip {
     display: flex;

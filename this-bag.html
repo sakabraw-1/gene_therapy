@@ -66,8 +66,13 @@
         }
     </style>
 </head>
-<body>
+<body class="this-bag-page">
     <div data-include="inc/header.html"></div>
+    <!-- Mobile top sticky pill for campaign (fixed under header) -->
+    <div id="mobile-top-cta-thisbag" class="mobile-top-cta" style="display:none;">
+        <a id="mobileTopCampaignLinkThisBag" class="mobile-sticky-cta" href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer">HELP US CARRY HOPE — BUY THE BAG</a>
+        <button id="mobileTopCampaignCloseThisBag" class="mobile-sticky-close" aria-label="Dismiss">×</button>
+    </div>
 
     <main class="container">
         <section class="campaign-hero">
@@ -150,6 +155,39 @@
 
     <script src="js/includes-loader.js" defer></script>
     <script src="js/script.js" defer></script>
+    <script>
+    // Mobile top CTA for this-bag page: fixed pill under header
+    (function(){
+        var KEY = 'mobileTopCampaignDismissedThisBag_v1';
+        var el = document.getElementById('mobile-top-cta-thisbag');
+        var closeBtn = document.getElementById('mobileTopCampaignCloseThisBag');
+        if(!el) return;
+
+        function shouldShow(){
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('show_campaign') === '1') return true;
+            if (window.innerWidth > 768) return false;
+            if (localStorage.getItem(KEY) === '1') return false;
+            return true;
+        }
+
+        function show(){ el.style.display = ''; document.body.classList.add('has-mobile-cta'); }
+        function hide(){ el.style.display = 'none'; document.body.classList.remove('has-mobile-cta'); }
+
+        function init(){
+            if(shouldShow()) show(); else hide();
+            if(closeBtn && !closeBtn._attached){
+                closeBtn.addEventListener('click', function(e){ e.preventDefault(); localStorage.setItem(KEY,'1'); hide(); });
+                closeBtn._attached = true;
+            }
+            window.addEventListener('resize', function(){ if(window.innerWidth > 768) hide(); else if(shouldShow()) show(); });
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        document.addEventListener('includes:loaded', function(){ setTimeout(init,120); });
+        window.addEventListener('load', function(){ setTimeout(init,200); });
+    })();
+    </script>
     <script>
         // Hero tagline variant switching
         (function(){
