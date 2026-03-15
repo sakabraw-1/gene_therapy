@@ -33,8 +33,18 @@
 
         .hero-content .btn-donate-hero {
             display: inline-flex;
-            margin: 1.5rem auto 0;
+            margin: 1.5rem 0 0;
         }
+
+        /* Hero CTA alignment helper: left on desktop, centered on small screens */
+        .hero-actions { display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-start; }
+        @media (max-width: 768px) { .hero-actions { justify-content:center; } }
+        /* Constrain hero copy so CTA aligns neatly under heading */
+        .hero .hero-content { max-width: 680px; }
+        .hero .hero-content .btn-donate-hero { margin-left: 0; }
+        /* Force hero CTA to align with the left edge of the hero copy */
+        .hero .hero-actions { justify-content: flex-start !important; margin-left: 0 !important; }
+        .hero .hero-content h1 { margin-left: 0 !important; }
         
         /* Keep Latest Win box PURPLE - don't change it */
         .section:first-of-type .card {
@@ -105,6 +115,28 @@
                 font-size: 1.45rem;
             }
         }
+
+        /* Top announcement banner for short-lived campaigns */
+        .top-banner {
+            background: linear-gradient(90deg, #fff8f0, #ffffff);
+            border-bottom: 2px solid var(--primary-orange);
+            padding: 0.6rem 0;
+            text-align: center;
+        }
+
+        .top-banner .container { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+
+        .top-banner .top-banner-close {
+            background: transparent;
+            border: none;
+            font-size: 1.25rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 6px 8px;
+            color: #333;
+        }
+
+        .top-banner.hidden { display: none !important; }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
     <script>
@@ -117,6 +149,20 @@
 <body>
     <div data-include="inc/header.html"></div>
 
+        <!-- Top announcement banner: points to Givebutter campaign. Dismissible, persists via localStorage. -->
+        <div class="top-banner" id="topBanner" role="region" aria-label="Announcement">
+            <div class="container">
+                <div style="flex:1; min-width:0; text-align:left;">
+                    <strong>Support: This Bag Carries Hope</strong>
+                    <span style="margin-left:0.5rem; color:#555; display:inline-block;">Limited fundraiser — proceeds support CDKL5 gene therapy work.</span>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <a href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer" class="btn btn-donate-pill">Donate</a>
+                    <button class="top-banner-close" id="topBannerClose" aria-label="Dismiss announcement">×</button>
+                </div>
+            </div>
+        </div>
+
     <main>
         <div class="container">
             <section class="hero fade-in">
@@ -125,7 +171,9 @@
                     <h1>Bringing Treatment with CDKL5 Gene Therapy</h1>
                     <p class="subhead">Help us raise $3.5M to start life-changing trials for kids with CDKL5 Deficiency Disorder.</p>
                     <p class="supporting">Every dollar brings us closer to helping children with CDKL5 reach new milestones. Join the movement!</p>
-                    <a class="btn btn-donate-hero" href="donate.html">DONATE NOW</a>
+                    <div class="hero-actions">
+                        <a class="btn btn-donate-hero" href="donate.html">DONATE NOW</a>
+                    </div>
                 </div>
                 <div class="progress-wrapper" data-progress-bar>
                     <div class="footer-card" style="max-width: 420px; margin: 0 auto; box-shadow: 0 4px 24px 0 rgba(255,186,140,0.10), 0 2px 8px rgba(0,0,0,0.07);">
@@ -158,6 +206,7 @@
                     <p class="fundraiser-punchline">Come for the meal, stay for the mission.</p>
                     <div class="fundraiser-actions">
                         <a href="https://givebutter.com/sappadusadhya-lunch-to-support-cdkl5-jeyccx" target="_blank" rel="noopener noreferrer" class="btn btn-donate-pill">View Fundraiser</a>
+                        <a href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer" class="btn btn-donate-pill">Support This Bag Carries Hope</a>
                         <a href="get-involved.html" class="btn btn-donate-pill">Get Involved</a>
                     </div>
                 </div>
@@ -240,8 +289,8 @@
                         <h2 id="what-heading">What is CDKL5 gene therapy?</h2>
                         <p><strong>CDKL5 Deficiency Disorder (CDD)</strong> is a rare condition (about 1 in 40,000 children) that can cause developmental delays and seizures when the <strong>CDKL5</strong> gene is missing or not working properly.</p>
                         <p><strong>Our solution:</strong> we use a special delivery system called AAV9—like a tiny ship—to bring a healthy <strong>CDKL5</strong> gene to a child’s brain cells, helping them grow and stay healthy.</p>
-                        <p><strong>Why it matters:</strong> this could give kids with <strong>CDD</strong> a chance at a better life, bringing hope to thousands of waiting families. Early tests in mice show improvements in movement and thinking, and the approach is designed as a one-time treatment with lasting benefit.</p>
-                        <p><strong>Where we are:</strong> we’re in the research phase and planning human trials—your support can help
+                            <a class="btn btn-donate-pill" href="get-involved.html">Get Involved</a>
+                            <a class="btn btn btn-donate-pill" href="donate.html">Donate Now</a>
                         <ul class="info-list">
                             <li>Targets the root cause by replacing the missing gene.</li>
                             <li>Designed for one-time dosing with durable benefit.</li>
@@ -423,6 +472,25 @@
         document.getElementById('thankYouModal')?.addEventListener('click', function(e) {
             if (e.target === this) closeThankYouModal();
         });
+    </script>
+
+    <script>
+        // Top banner dismissal + persistence for local testing
+        (function(){
+            try{
+                const banner = document.getElementById('topBanner');
+                const closeBtn = document.getElementById('topBannerClose');
+                if (!banner || !closeBtn) return;
+                if (localStorage.getItem('topBannerDismissed') === '1') {
+                    banner.style.display = 'none';
+                    return;
+                }
+                closeBtn.addEventListener('click', function(){
+                    banner.style.display = 'none';
+                    localStorage.setItem('topBannerDismissed','1');
+                });
+            }catch(e){ /* silent */ }
+        })();
     </script>
 </body>
 </html>

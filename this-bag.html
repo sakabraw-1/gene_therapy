@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>This Bag Carries Hope — Campaign</title>
+    <meta name="description" content="Buy the 'This Bag Carries Hope' tote — proceeds support CDKL5 gene therapy research.">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="This Bag Carries Hope — Support CDKL5 Gene Therapy">
+    <meta property="og:description" content="Buy a limited-edition tote and help fund CDKL5 gene therapy research.">
+    <meta property="og:image" content="/images/this-bag-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root{ --accent:#ff5f00; --deep:#101224; }
+        body{ font-family: 'Open Sans', system-ui, Arial, sans-serif; color:var(--deep); }
+        .campaign-hero { background: #ffffff; padding:2rem 0 3rem; }
+        .hero-frame { max-width:760px; margin:0 auto; position:relative; padding-top:6px; }
+
+        /* Tall tote image centered (constrained for smaller display) */
+        .hero-tote { width:auto; max-width:520px; display:block; margin:0 auto; border-radius:10px; box-shadow:0 18px 40px rgba(16,18,36,0.12); }
+
+        /* Speech-bubble style overlay */
+        .hero-bubble {
+            position:absolute; left:50%; transform:translateX(-50%); top:10px;
+            background: rgba(255,255,255,0.96);
+            color: #222;
+            padding:10px 18px;
+            border-radius:16px;
+            font-weight:700;
+            font-size:1.15rem;
+            line-height:1.1;
+            text-align:center;
+            max-width:86%;
+            border: 3px solid #7E57C2; /* purple accent */
+            box-shadow: 0 10px 26px rgba(16,18,36,0.08);
+        }
+
+        .hero-bubble.small { font-size:1rem; padding:6px 12px; border-radius:14px; border-width:2px; }
+
+        .hero-cta { text-align:center; margin-top:1.25rem; }
+        .hero-cta .btn-donate-pill{ background:var(--accent); color:white; padding:0.95rem 1.4rem; border-radius:28px; font-weight:800; font-size:1.05rem; box-shadow:0 12px 30px rgba(255,95,0,0.12); border:none; }
+
+        .variants { display:flex; gap:10px; justify-content:center; margin-top:1rem; }
+        .variants button{ background:#fff; border:2px solid #eee; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
+        .variants button.active{ border-color:var(--accent); box-shadow:0 6px 20px rgba(255,95,0,0.08); }
+
+        .campaign-content { max-width:980px; margin:2rem auto; padding:0 1rem; display:flex; gap:1.25rem; flex-wrap:wrap; }
+        .product-card{ flex:1 1 520px; background:#fff; padding:1.25rem; border-radius:12px; box-shadow:0 6px 18px rgba(16,18,36,0.06); }
+        .sidebar{ flex:0 0 320px; }
+
+        @media(max-width:780px){
+            .hero-bubble{ font-size:1.6rem; padding:12px 18px; top:8px; }
+            .variants{ gap:6px; }
+            .campaign-content{ flex-direction:column; }
+            .sidebar{ width:100%; }
+        }
+    </style>
+</head>
+<body>
+    <div data-include="inc/header.html"></div>
+
+    <main class="container">
+        <section class="campaign-hero">
+            <div class="hero-frame">
+                <div class="hero-bubble" id="heroBubble">This bag carries hope</div>
+                <img class="hero-tote" id="heroTote" src="images/events/totebag.png" alt="Tote bag" loading="lazy">
+                <div class="hero-cta">
+                    <a class="btn-donate-pill" href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer">Help us carry hope — Buy the bag</a>
+                </div>
+                <div class="variants" role="tablist" aria-label="Tagline variants">
+                    <button data-text="This bag carries groceries" aria-selected="false">groceries</button>
+                    <button data-text="This bag carries progress" aria-selected="false">progress</button>
+                    <button data-text="This bag carries love" aria-selected="false">love</button>
+                    <button data-text="This bag carries energy" aria-selected="false">energy</button>
+                    <button data-text="This bag carries optimism" aria-selected="false">optimism</button>
+                    <button data-text="This bag carries excitement" aria-selected="false">excitement</button>
+                    <button class="active" data-text="This bag carries hope" aria-selected="true">hope</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="campaign-grid">
+            <div class="product-card">
+                <h2>About the bag</h2>
+                <p>The tote is 100% cotton canvas, 15" x 16" with comfortable straps. Each purchase supports CDKL5 gene therapy research and family programs.</p>
+                <ul>
+                    <li>Price: $25 (example)</li>
+                    <li>Ships worldwide — shipping fees vary</li>
+                    <li>Proceeds go to the Givebutter campaign</li>
+                </ul>
+
+                <h3>Share this campaign</h3>
+                <div class="share-links">
+                    <a href="https://twitter.com/intent/tweet?text=This+Bag+Carries+Hope+—+support+CDKL5+gene+therapy&url=http://localhost:8000/this-bag.html" target="_blank" rel="noopener noreferrer" class="btn">Share on Twitter</a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/this-bag.html" target="_blank" rel="noopener noreferrer" class="btn">Share on Facebook</a>
+                </div>
+            </div>
+
+            <aside class="product-card">
+                <h3>Why this matters</h3>
+                <p>Funding helps move gene therapy from research to clinical trials — giving real hope to families affected by CDKL5 deficiency disorder.</p>
+                <h4>Quick details</h4>
+                <p><strong>Organizer:</strong> CDKL5 Gene Therapy</p>
+                <p><strong>Platform:</strong> Givebutter</p>
+                <a class="btn btn-donate-pill" href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer">Donate / Buy</a>
+            </aside>
+        </section>
+
+        <section class="campaign-content">
+            <article class="product-card">
+                <h2>Donation details</h2>
+                <p><strong>When you donate $25 or more, you’ll receive our special “Carry Hope” tote bag</strong> as a small thank-you for supporting a much bigger mission.</p>
+
+                <p>This tote is more than just a bag. Its message says it all:</p>
+                <blockquote style="background:#fff8f6;border-left:4px solid #ffd2b3;padding:12px 16px;border-radius:8px;">“This bag carries more than groceries — it carries hope.”</blockquote>
+
+                <p>Every donation helps advance CDKL5 Deficiency Disorder gene therapy research, bringing us closer to treatments for children affected by this devastating condition.</p>
+
+                <p>Your contribution will support the work of the Child's Cure Genetic Research Foundation, funding critical progress toward gene therapy.</p>
+
+                <h3>✨ Your impact goes even further</h3>
+                <ul>
+                    <li>Donations are tax-deductible.</li>
+                    <li>Many employers offer matching gift programs which may double your contribution.</li>
+                    <li>If your employer participates, we encourage you to submit a match request to increase the impact of your gift.</li>
+                </ul>
+
+                <p>Thank you for standing with our community and helping carry hope forward.</p>
+                <p>Learn more at <a href="https://cdkl5genetherapy.com">www.CDKL5GeneTherapy.com</a>.</p>
+
+                <hr>
+                <p><strong>Shipping & Returns</strong></p>
+                <p>Tote bags will be shipped during the first week of April 2026 via ground shipping.</p>
+                <p>Please note that this item is provided as a thank-you gift for your donation. As such, returns or refunds are not available, including for concerns related to the tote bag itself. We sincerely appreciate your understanding and support of this cause.</p>
+            </article>
+        </section>
+    </main>
+
+    <div data-include="inc/footer.html"></div>
+
+    <script src="js/includes-loader.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script>
+        // Hero tagline variant switching
+        (function(){
+            const bubble = document.getElementById('heroBubble');
+            const tote = document.getElementById('heroTote');
+            const buttons = document.querySelectorAll('.variants button');
+            if(!bubble || !buttons) return;
+
+            buttons.forEach(btn=>{
+                btn.addEventListener('click', ()=>{
+                    buttons.forEach(b=>b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const text = btn.getAttribute('data-text') || 'This bag carries hope';
+                    bubble.textContent = text;
+                    // optionally change image if dataset provided
+                    const img = btn.getAttribute('data-img');
+                    if(img && tote) tote.src = img;
+                });
+            });
+
+            // small accessibility: allow arrow key navigation
+            let idx = Array.from(buttons).findIndex(b=>b.classList.contains('active'));
+            document.addEventListener('keydown', (e)=>{
+                if(e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+                if(e.key === 'ArrowRight') idx = Math.min(buttons.length-1, idx+1);
+                if(e.key === 'ArrowLeft') idx = Math.max(0, idx-1);
+                buttons[idx].click();
+            });
+        })();
+    </script>
+</body>
+</html>
