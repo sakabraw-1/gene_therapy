@@ -166,6 +166,11 @@
 </head>
 <body>
     <div data-include="inc/header.html"></div>
+    <!-- Mobile top CTA under header (mobile only) -->
+    <div id="mobile-top-cta-donate" class="mobile-top-cta" style="display:none;">
+        <a id="mobileTopCampaignLinkDonate" class="mobile-sticky-cta" href="this-bag.html">Buy the Bag — support CDKL5</a>
+        <button id="mobileTopCampaignCloseDonate" class="mobile-sticky-close" aria-label="Dismiss">×</button>
+    </div>
     
     <main class="donate-simple">
         <div class="donate-content">
@@ -315,6 +320,39 @@
 
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
         document.addEventListener('includes:loaded', function(){ setTimeout(init,150); });
+        window.addEventListener('load', function(){ setTimeout(init,200); });
+    })();
+    </script>
+    <script>
+    // Mobile top CTA initializer for donate page
+    (function(){
+        var KEY = 'mobileTopCampaignDismissedDonate_v1';
+        var el = document.getElementById('mobile-top-cta-donate');
+        var closeBtn = document.getElementById('mobileTopCampaignCloseDonate');
+        if(!el) return;
+
+        function shouldShow(){
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('show_campaign') === '1') return true;
+            if (window.innerWidth > 768) return false;
+            if (localStorage.getItem(KEY) === '1') return false;
+            return true;
+        }
+
+        function show(){ el.style.display = ''; document.body.classList.add('has-mobile-cta'); }
+        function hide(){ el.style.display = 'none'; document.body.classList.remove('has-mobile-cta'); }
+
+        function init(){
+            if(shouldShow()) show(); else hide();
+            if(closeBtn && !closeBtn._attached){
+                closeBtn.addEventListener('click', function(e){ e.preventDefault(); localStorage.setItem(KEY,'1'); hide(); });
+                closeBtn._attached = true;
+            }
+            window.addEventListener('resize', function(){ if(window.innerWidth > 768) hide(); else if(shouldShow()) show(); });
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        document.addEventListener('includes:loaded', function(){ setTimeout(init,120); });
         window.addEventListener('load', function(){ setTimeout(init,200); });
     })();
     </script>
