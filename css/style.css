@@ -1255,9 +1255,14 @@ footer .footer-supported-divider {
     .mobile-campaign-cta { display: flex; }
 }
 
-/* If no mobile-tab-bar exists, lower the CTA slightly to sit closer to bottom */
-@media (max-width: 768px) {
-    body:not(.has-mobile-tabbar) .mobile-campaign-cta { bottom: 24px; }
+/* Position adjustments when mobile tab bar is present */
+body.has-mobile-tabbar .mobile-campaign-cta { bottom: calc(56px + 12px); }
+body:not(.has-mobile-tabbar) .mobile-campaign-cta { bottom: 24px; }
+
+/* When the CTA is visible, add extra bottom padding so page content isn't obscured */
+body.has-mobile-cta main,
+body.has-mobile-cta .container {
+    padding-bottom: 140px !important;
 }
 /* Horizontal logo strip for partner logos (footer and donate) */
 .logo-strip {

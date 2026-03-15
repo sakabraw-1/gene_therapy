@@ -344,11 +344,13 @@ window.addEventListener('resize', function() {
     function show(){
         el.style.display = '';
         el.setAttribute('aria-hidden','false');
+        document.body.classList.add('has-mobile-cta');
     }
 
     function hide(){
         el.style.display = 'none';
         el.setAttribute('aria-hidden','true');
+        document.body.classList.remove('has-mobile-cta');
     }
 
     function init(){
