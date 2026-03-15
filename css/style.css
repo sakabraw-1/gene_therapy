@@ -1336,6 +1336,11 @@ body.has-mobile-cta .container {
     padding-top: calc(72px + env(safe-area-inset-top, 0px) + 12px) !important;
 }
 
+/* Ensure mobile CTAs never show on larger screens */
+@media (min-width: 769px) {
+    .mobile-top-cta, .mobile-campaign-cta { display: none !important; }
+}
+
 /* Campaign page: emphasize Donate / Buy button in the aside/product card */
 .this-bag-page .campaign-grid aside .btn-donate-pill {
     background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);

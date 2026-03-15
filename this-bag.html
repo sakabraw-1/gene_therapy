@@ -36,7 +36,8 @@
             padding:14px 22px;
             border-radius:20px;
             font-weight:900;
-            font-size:1.28rem;
+            /* responsive font-size so it fits mobile widths without awkward wrapping */
+            font-size: clamp(1rem, 4.2vw, 1.28rem);
             line-height:1.2;
             text-align:center;
             max-width:96%;
@@ -61,8 +62,8 @@
         .sidebar{ flex:0 0 320px; }
 
         @media(max-width:780px){
-            /* increase bubble size and spacing on narrow screens so words remain legible */
-            .hero-bubble{ font-size:1.9rem; padding:18px 22px; top:calc(14px + env(safe-area-inset-top, 0px)); }
+            /* increase bubble spacing and top offset on narrow screens */
+            .hero-bubble{ padding:16px 20px; top:calc(18px + env(safe-area-inset-top, 0px)); }
             .variants{ gap:6px; }
             .campaign-content{ flex-direction:column; }
             .sidebar{ width:100%; }
@@ -70,6 +71,12 @@
             /* add generous top padding so bubble doesn't sit under header/notch */
             .hero-frame { padding-top: calc(96px + env(safe-area-inset-top, 0px)); }
         }
+
+        /* Hide internal CTA elements on the campaign page itself */
+        .hero-cta, .campaign-grid aside .btn-donate-pill, #mobile-top-cta-thisbag { display: none !important; }
+
+        /* Hide the header "BUY THE BAG" link when on the campaign page */
+        .this-bag-page a[href="this-bag.html"] { display: none !important; }
     </style>
 </head>
 <body class="this-bag-page">
@@ -170,11 +177,8 @@
         if(!el) return;
 
         function shouldShow(){
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('show_campaign') === '1') return true;
-            if (window.innerWidth > 768) return false;
-            if (localStorage.getItem(KEY) === '1') return false;
-            return true;
+            // Do not show the campaign pill on the campaign landing page itself.
+            return false;
         }
 
         function show(){ el.style.display = ''; document.body.classList.add('has-mobile-cta'); }
