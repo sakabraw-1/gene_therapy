@@ -21,15 +21,16 @@
     <style>
         :root{ --accent:#ff5f00; --deep:#101224; }
         body{ font-family: 'Open Sans', system-ui, Arial, sans-serif; color:var(--deep); }
-        .campaign-hero { background: #ffffff; padding:2rem 0 3rem; }
-        .hero-frame { max-width:760px; margin:0 auto; position:relative; padding-top:6px; }
+        /* Respect device safe areas (notch / status bar) and add small extra top spacing */
+        .campaign-hero { background: #ffffff; padding: calc(1.5rem + env(safe-area-inset-top, 0px)) 0 calc(3rem + env(safe-area-inset-bottom, 0px)); }
+        .hero-frame { max-width:760px; margin:0 auto; position:relative; padding-top:calc(6px + env(safe-area-inset-top, 0px)); }
 
         /* Tall tote image centered (constrained for smaller display) */
         .hero-tote { width:auto; max-width:520px; display:block; margin:0 auto; border-radius:10px; box-shadow:0 18px 40px rgba(16,18,36,0.12); }
 
         /* Speech-bubble style overlay */
         .hero-bubble {
-            position:absolute; left:50%; transform:translateX(-50%); top:10px;
+            position:absolute; left:50%; transform:translateX(-50%); top:calc(10px + env(safe-area-inset-top, 0px));
             background: rgba(255,255,255,0.96);
             color: #222;
             padding:10px 18px;
@@ -57,10 +58,11 @@
         .sidebar{ flex:0 0 320px; }
 
         @media(max-width:780px){
-            .hero-bubble{ font-size:1.6rem; padding:12px 18px; top:8px; }
+            .hero-bubble{ font-size:1.25rem; padding:10px 14px; top:calc(8px + env(safe-area-inset-top, 0px)); }
             .variants{ gap:6px; }
             .campaign-content{ flex-direction:column; }
             .sidebar{ width:100%; }
+            .hero-tote { max-width: 320px; }
         }
     </style>
 </head>
