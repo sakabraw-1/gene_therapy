@@ -1286,6 +1286,25 @@ body.has-mobile-cta .container {
     .mobile-top-cta { display: flex; }
 }
 
+/* Top announcement banner (shared) */
+.top-banner {
+    background: linear-gradient(90deg, #fff8f0, #ffffff);
+    border-bottom: 2px solid var(--primary-orange);
+    padding: 0.6rem 0;
+    text-align: center;
+}
+.top-banner .container { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.top-banner .top-banner-close {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: #333;
+}
+.top-banner.hidden { display: none !important; }
+
 /* Fixed top pill specifically for the campaign page to sit under the sticky header */
 .this-bag-page .mobile-top-cta {
     position: fixed;

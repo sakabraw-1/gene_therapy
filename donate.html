@@ -166,6 +166,19 @@
 </head>
 <body>
     <div data-include="inc/header.html"></div>
+    <!-- Top announcement banner (donate page) -->
+    <div class="top-banner" id="topBannerDonate" role="region" aria-label="Announcement">
+        <div class="container">
+            <div style="flex:1; min-width:0; text-align:left;">
+                <strong>Support: This Bag Carries Hope</strong>
+                <span style="margin-left:0.5rem; color:#555; display:inline-block;">Limited fundraiser — proceeds support CDKL5 gene therapy work.</span>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <a href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer" class="btn btn-donate-pill">Donate</a>
+                <button class="top-banner-close" id="topBannerCloseDonate" aria-label="Dismiss announcement">×</button>
+            </div>
+        </div>
+    </div>
     <!-- Mobile top CTA under header (mobile only) -->
     <div id="mobile-top-cta-donate" class="mobile-top-cta" style="display:none;">
         <a id="mobileTopCampaignLinkDonate" class="mobile-sticky-cta" href="this-bag.html">Buy the Bag — support CDKL5</a>
@@ -289,6 +302,17 @@
     
     <script src="js/includes-loader.js"></script>
     <script src="js/newsletter-form.js" defer></script>
+    <script>
+    // Top banner dismissal for donate page
+    (function(){
+        var KEY = 'topBannerDismissedDonate_v1';
+        var banner = document.getElementById('topBannerDonate');
+        var btn = document.getElementById('topBannerCloseDonate');
+        if(!banner) return;
+        if(localStorage.getItem(KEY) === '1') { banner.classList.add('hidden'); return; }
+        if(btn){ btn.addEventListener('click', function(e){ e.preventDefault(); banner.classList.add('hidden'); localStorage.setItem(KEY,'1'); }); }
+    })();
+    </script>
     <script>
     // Mobile-only CTA for donate page: dismiss persisted separately
     (function(){
