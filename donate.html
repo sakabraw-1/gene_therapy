@@ -174,16 +174,12 @@
                 <span style="margin-left:0.5rem; color:#555; display:inline-block;">Limited fundraiser — proceeds support CDKL5 gene therapy work.</span>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
-                <a href="https://givebutter.com/this-bag-carries-hope-qynidg" target="_blank" rel="noopener noreferrer" class="btn btn-donate-pill">Donate</a>
+                <a href="this-bag.html" class="btn btn-donate-pill">Donate</a>
                 <button class="top-banner-close" id="topBannerCloseDonate" aria-label="Dismiss announcement">×</button>
             </div>
         </div>
     </div>
-    <!-- Mobile top CTA under header (mobile only) -->
-    <div id="mobile-top-cta-donate" class="mobile-top-cta" style="display:none;">
-        <a id="mobileTopCampaignLinkDonate" class="mobile-sticky-cta" href="this-bag.html">Buy the Bag — support CDKL5</a>
-        <button id="mobileTopCampaignCloseDonate" class="mobile-sticky-close" aria-label="Dismiss">×</button>
-    </div>
+    
     
     <main class="donate-simple">
         <div class="donate-content">
@@ -290,16 +286,7 @@
     </main>
     
     <div data-include="inc/footer.html"></div>
-    <!-- campaign sticky button removed -->
-        <!-- Mobile-only campaign CTA for donate page -->
-        <div id="mobile-campaign-cta-donate" class="mobile-campaign-cta" aria-hidden="true" style="display:none;">
-            <a id="mobileCampaignLinkDonate" class="mobile-sticky-cta" href="this-bag.html">
-                <span class="cta-icon">👜</span>
-                <span class="cta-label">Buy the Bag — support CDKL5</span>
-            </a>
-            <button id="mobileCampaignCloseDonate" class="mobile-sticky-close" aria-label="Dismiss campaign CTA">×</button>
-        </div>
-    
+
     <script src="js/includes-loader.js"></script>
     <script src="js/newsletter-form.js" defer></script>
     <script>
@@ -313,72 +300,6 @@
         if(btn){ btn.addEventListener('click', function(e){ e.preventDefault(); banner.classList.add('hidden'); localStorage.setItem(KEY,'1'); }); }
     })();
     </script>
-    <script>
-    // Mobile-only CTA for donate page: dismiss persisted separately
-    (function(){
-        var KEY = 'mobileCampaignDismissedDonate_v1';
-        var el = document.getElementById('mobile-campaign-cta-donate');
-        var closeBtn = document.getElementById('mobileCampaignCloseDonate');
-        if(!el) return;
-
-        function shouldShow(){
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('show_campaign') === '1') return true;
-            if (window.innerWidth > 640) return false;
-            if (localStorage.getItem(KEY) === '1') return false;
-            return true;
-        }
-
-        function show(){ el.style.display = ''; el.setAttribute('aria-hidden','false'); }
-        function show(){ el.style.display = ''; el.setAttribute('aria-hidden','false'); document.body.classList.add('has-mobile-cta'); }
-        function hide(){ el.style.display = 'none'; el.setAttribute('aria-hidden','true'); document.body.classList.remove('has-mobile-cta'); }
-
-        function init(){
-            if(shouldShow()) show(); else hide();
-            if(closeBtn && !closeBtn._attached){
-                closeBtn.addEventListener('click', function(e){ e.preventDefault(); localStorage.setItem(KEY,'1'); hide(); });
-                closeBtn._attached = true;
-            }
-            window.addEventListener('resize', function(){ if(window.innerWidth > 640) hide(); else if(shouldShow()) show(); });
-        }
-
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-        document.addEventListener('includes:loaded', function(){ setTimeout(init,150); });
-        window.addEventListener('load', function(){ setTimeout(init,200); });
-    })();
-    </script>
-    <script>
-    // Mobile top CTA initializer for donate page
-    (function(){
-        var KEY = 'mobileTopCampaignDismissedDonate_v1';
-        var el = document.getElementById('mobile-top-cta-donate');
-        var closeBtn = document.getElementById('mobileTopCampaignCloseDonate');
-        if(!el) return;
-
-        function shouldShow(){
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('show_campaign') === '1') return true;
-            if (window.innerWidth > 768) return false;
-            if (localStorage.getItem(KEY) === '1') return false;
-            return true;
-        }
-
-        function show(){ el.style.display = ''; document.body.classList.add('has-mobile-cta'); }
-        function hide(){ el.style.display = 'none'; document.body.classList.remove('has-mobile-cta'); }
-
-        function init(){
-            if(shouldShow()) show(); else hide();
-            if(closeBtn && !closeBtn._attached){
-                closeBtn.addEventListener('click', function(e){ e.preventDefault(); localStorage.setItem(KEY,'1'); hide(); });
-                closeBtn._attached = true;
-            }
-            window.addEventListener('resize', function(){ if(window.innerWidth > 768) hide(); else if(shouldShow()) show(); });
-        }
-
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-        document.addEventListener('includes:loaded', function(){ setTimeout(init,120); });
-        window.addEventListener('load', function(){ setTimeout(init,200); });
-    })();
-    </script>
+    
 </body>
 </html>

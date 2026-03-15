@@ -1260,9 +1260,10 @@ body.has-mobile-tabbar .mobile-campaign-cta { bottom: calc(56px + 12px); }
 body:not(.has-mobile-tabbar) .mobile-campaign-cta { bottom: 24px; }
 
 /* When the CTA is visible, add extra bottom padding so page content isn't obscured */
+/* When the CTA is visible, add extra bottom padding so page content isn't obscured */
 body.has-mobile-cta main,
 body.has-mobile-cta .container {
-    padding-bottom: 140px !important;
+    padding-bottom: 100px !important;
 }
 
 /* Mobile top CTA - appears just under the header on small screens */
@@ -1307,16 +1308,43 @@ body.has-mobile-cta .container {
 
 /* Fixed top pill specifically for the campaign page to sit under the sticky header */
 .this-bag-page .mobile-top-cta {
-    position: fixed;
+    /* Force fixed positioning to ensure the pill sits under the sticky header */
+    position: fixed !important;
     left: 12px;
     right: 12px;
-    top: calc(env(safe-area-inset-top, 0px) + 56px);
+    top: calc(env(safe-area-inset-top, 0px) + 72px);
     z-index: 10080;
 }
 
 /* When top CTA is visible on campaign page, push main content down so hero isn't overlapped */
 .this-bag-page.has-mobile-cta main {
-    padding-top: calc(56px + env(safe-area-inset-top, 0px) + 12px) !important;
+    /* Push main content down so hero isn't overlapped by the fixed pill */
+    padding-top: calc(72px + env(safe-area-inset-top, 0px) + 12px) !important;
+}
+
+/* Campaign page: emphasize Donate / Buy button in the aside/product card */
+.this-bag-page .campaign-grid aside .btn-donate-pill {
+    background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    border-radius: 28px;
+    box-shadow: 0 14px 40px rgba(255,95,0,0.18);
+    display: inline-block;
+    text-decoration: none;
+}
+
+@media (max-width: 780px) {
+    .this-bag-page .campaign-grid aside .btn-donate-pill {
+        display: block;
+        width: calc(100% - 40px);
+        margin: 0.8rem auto;
+        padding: 0.95rem 1rem;
+        font-size: 1.12rem;
+        text-align: center;
+    }
 }
 /* Horizontal logo strip for partner logos (footer and donate) */
 .logo-strip {
