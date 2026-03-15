@@ -177,14 +177,7 @@
                     <div class="hero-actions">
                         <a class="btn btn-donate-hero" href="donate.html">DONATE NOW</a>
                     </div>
-                    <!-- Mobile-only campaign CTA (homepage) -->
-                    <div id="mobile-campaign-home" class="mobile-campaign-cta" style="display:none;">
-                        <a id="mobileCampaignHomeLink" class="mobile-sticky-cta" href="this-bag.html">
-                            <span class="cta-icon">👜</span>
-                            <span class="cta-label">HELP US CARRY HOPE — BUY THE BAG</span>
-                        </a>
-                        <button id="mobileCampaignCloseHome" class="mobile-sticky-close" aria-label="Dismiss campaign CTA">×</button>
-                    </div>
+                    
                 </div>
                 <div class="progress-wrapper" data-progress-bar>
                     <div class="footer-card" style="max-width: 420px; margin: 0 auto; box-shadow: 0 4px 24px 0 rgba(255,186,140,0.10), 0 2px 8px rgba(0,0,0,0.07);">
@@ -201,37 +194,7 @@
                 </div>
             </section>
 
-    <script>
-    // Homepage mobile CTA: show only on small screens and persist dismissal separately
-    (function(){
-        var KEY = 'mobileCampaignDismissedHome_v1';
-        var el = document.getElementById('mobile-campaign-home');
-        var closeBtn = document.getElementById('mobileCampaignCloseHome');
-        if(!el) return;
-
-        function shouldShow(){
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('show_campaign') === '1') return true;
-            if (window.innerWidth > 768) return false;
-            if (localStorage.getItem(KEY) === '1') return false;
-            return true;
-        }
-
-        function show(){ el.style.display = ''; document.body.classList.add('has-mobile-cta'); }
-        function hide(){ el.style.display = 'none'; document.body.classList.remove('has-mobile-cta'); }
-
-        function init(){
-            if(shouldShow()) show(); else hide();
-            if(closeBtn && !closeBtn._attached){
-                closeBtn.addEventListener('click', function(e){ e.preventDefault(); localStorage.setItem(KEY,'1'); hide(); });
-                closeBtn._attached = true;
-            }
-            window.addEventListener('resize', function(){ if(window.innerWidth > 768) hide(); else if(shouldShow()) show(); });
-        }
-
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-    })();
-    </script>
+    
 
             <!-- Upcoming Events Section -->
             <section class="section fade-in event-announcement" id="upcoming-events">
