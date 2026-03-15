@@ -1341,8 +1341,8 @@ body.has-mobile-cta .container {
     background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);
     color: #fff;
     border: none;
-    padding: 0.7rem 1.1rem;
-    font-size: 1.05rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.12rem;
     font-weight: 800;
     border-radius: 28px;
     box-shadow: 0 14px 40px rgba(255,95,0,0.18);
@@ -1356,8 +1356,16 @@ body.has-mobile-cta .container {
         width: calc(100% - 40px);
         margin: 0.8rem auto;
         padding: 0.95rem 1rem;
-        font-size: 1.12rem;
+        font-size: 1.18rem;
         text-align: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Larger laptop/desktop button for stronger call-to-action */
+    .this-bag-page .campaign-grid aside .btn-donate-pill {
+        padding: 1rem 1.4rem;
+        font-size: 1.22rem;
     }
 }
 /* Horizontal logo strip for partner logos (footer and donate) */
