@@ -1341,6 +1341,11 @@ body.has-mobile-cta .container {
     .mobile-top-cta, .mobile-campaign-cta { display: none !important; }
 }
 
+/* Also hide mobile pills on devices with a fine pointer (laptop/desktop) regardless of viewport width */
+@media (hover: hover) and (pointer: fine) {
+    .mobile-top-cta, .mobile-campaign-cta { display: none !important; }
+}
+
 /* Campaign page: emphasize Donate / Buy button in the aside/product card */
 .this-bag-page .campaign-grid aside .btn-donate-pill {
     background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);
