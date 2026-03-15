@@ -1322,6 +1322,20 @@ body.has-mobile-cta .container {
     padding-top: calc(72px + env(safe-area-inset-top, 0px) + 12px) !important;
 }
 
+/* Home page fixed pill variant */
+.mobile-top-cta.home-fixed {
+    position: fixed !important;
+    left: 12px;
+    right: 12px;
+    top: calc(env(safe-area-inset-top, 0px) + 72px);
+    z-index: 10080;
+}
+
+/* When home page CTA is visible, push content down to avoid overlap */
+.home-page.has-mobile-cta main {
+    padding-top: calc(72px + env(safe-area-inset-top, 0px) + 12px) !important;
+}
+
 /* Campaign page: emphasize Donate / Buy button in the aside/product card */
 .this-bag-page .campaign-grid aside .btn-donate-pill {
     background: linear-gradient(90deg, #ff7a00 0%, #ff4f2f 100%);

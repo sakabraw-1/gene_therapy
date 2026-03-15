@@ -381,4 +381,39 @@ window.addEventListener('resize', function() {
     document.addEventListener('includes:loaded', function(){ setTimeout(init,150); });
     window.addEventListener('load', function(){ setTimeout(init,200); });
 })();
+// Initialize home-page top CTA (shows fixed pill under header on index)
+(function(){
+    var KEY = 'mobileTopCampaignDismissedHome_v1';
+    var el = document.getElementById('mobile-top-cta-home');
+    var closeBtn = document.getElementById('mobileTopCampaignCloseHome');
+    if(!el) return;
+
+    function isHome(){
+        var page = (window.location.pathname || '').split('/').pop() || 'index.html';
+        return page === '' || page === 'index.html';
+    }
+
+    function shouldShow(){
+        if (!isHome()) return false;
+        if (window.innerWidth > 768) return false;
+        if (localStorage.getItem(KEY) === '1') return false;
+        return true;
+    }
+
+    function show(){ el.style.display = ''; el.classList.add('home-fixed'); document.body.classList.add('has-mobile-cta'); document.body.classList.add('home-page'); }
+    function hide(){ el.style.display = 'none'; el.classList.remove('home-fixed'); document.body.classList.remove('has-mobile-cta'); document.body.classList.remove('home-page'); }
+
+    function init(){
+        if(shouldShow()) show(); else hide();
+        if(closeBtn && !closeBtn._attached){
+            closeBtn.addEventListener('click', function(e){ e.preventDefault(); localStorage.setItem(KEY,'1'); hide(); });
+            closeBtn._attached = true;
+        }
+        window.addEventListener('resize', function(){ if(window.innerWidth > 768) hide(); else if(shouldShow()) show(); });
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    document.addEventListener('includes:loaded', function(){ setTimeout(init,150); });
+    window.addEventListener('load', function(){ setTimeout(init,200); });
+})();
 </script>
