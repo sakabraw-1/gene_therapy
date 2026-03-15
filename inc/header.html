@@ -38,8 +38,12 @@
 (function(){
         try{
                 var page = (window.location.pathname||'').split('/').pop() || '';
+                function isMobileDevice(){
+                        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+                }
+
                 if(page === '' || page === 'index.html'){
-                        if(window.innerWidth <= 768 && !localStorage.getItem('mobileTopCampaignDismissedHome_v1')){
+                        if(isMobileDevice() && !localStorage.getItem('mobileTopCampaignDismissedHome_v1')){
                                 var el = document.getElementById('mobile-top-cta-home');
                                 if(el) el.style.display = '';
                         }

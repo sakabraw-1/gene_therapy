@@ -393,9 +393,13 @@ window.addEventListener('resize', function() {
         return page === '' || page === 'index.html';
     }
 
+    function isMobileDevice(){
+        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    }
+
     function shouldShow(){
         if (!isHome()) return false;
-        if (window.innerWidth > 768) return false;
+        if (!isMobileDevice()) return false;
         if (localStorage.getItem(KEY) === '1') return false;
         return true;
     }
