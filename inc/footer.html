@@ -398,6 +398,8 @@ window.addEventListener('resize', function() {
     }
 
     function shouldShow(){
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('show_campaign') === '1') return true; // testing override
         if (!isHome()) return false;
         if (!isMobileDevice()) return false;
         if (localStorage.getItem(KEY) === '1') return false;

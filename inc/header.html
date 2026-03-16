@@ -43,7 +43,12 @@
                 }
 
                 if(page === '' || page === 'index.html'){
-                        if(isMobileDevice() && !localStorage.getItem('mobileTopCampaignDismissedHome_v1')){
+                        var params = new URLSearchParams(window.location.search);
+                        // testing override: append ?show_campaign=1 to force-show the pill
+                        if (params.get('show_campaign') === '1'){
+                                var el = document.getElementById('mobile-top-cta-home');
+                                if(el) el.style.display = '';
+                        } else if(isMobileDevice() && !localStorage.getItem('mobileTopCampaignDismissedHome_v1')){
                                 var el = document.getElementById('mobile-top-cta-home');
                                 if(el) el.style.display = '';
                         }
