@@ -487,13 +487,13 @@
                 const banner = document.getElementById('topBanner');
                 const closeBtn = document.getElementById('topBannerClose');
                 if (!banner || !closeBtn) return;
-                if (localStorage.getItem('topBannerDismissed') === '1') {
+                if (localStorage.getItem('topBannerDismissed_v2') === '1') {
                     banner.style.display = 'none';
                     return;
                 }
                 closeBtn.addEventListener('click', function(){
                     banner.style.display = 'none';
-                    localStorage.setItem('topBannerDismissed','1');
+                    localStorage.setItem('topBannerDismissed_v2','1');
                 });
             }catch(e){ /* silent */ }
         })();
