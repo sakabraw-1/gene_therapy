@@ -2,6 +2,16 @@
   "events": [
     {
       "type": "past",
+      "title": "Sappadu/Sadhya Lunch to Support CDKL5",
+      "date": "March 22, 2026",
+      "time": "11:30am – 12:30pm",
+      "description": "Our community came together for a Sappadu/Sadhya Lunch fundraiser in Pleasanton, CA — raising critical funds and spreading awareness for CDKL5 gene therapy. Come for the meal, stay for the mission.",
+      "hostedBy": "CDKL5 Community",
+      "location": "Madras Idli Kadai, Pleasanton, CA",
+      "detailsPage": "event-sappadu-fundraiser-mar2026.html"
+    },
+    {
+      "type": "past",
       "title": "UCSF Rare Disease Symposium 2026",
       "date": "February 13, 2026",
       "time": "1:30 - 2:10 PM PST",
