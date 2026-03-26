@@ -380,6 +380,108 @@
             .blog-sidebar { position: static; }
             .blog-meta-bar { gap: 12px; }
         }
+
+        /* ── Fundraiser Results ── */
+        .results-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border-top: 5px solid #22c55e;
+        }
+        .results-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .results-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .results-header h3 {
+            color: #1e1b4b;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .stat-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .stat-card.stat-primary {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-color: #86efac;
+            grid-column: 1 / -1;
+        }
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1e1b4b;
+            line-height: 1;
+        }
+        .stat-card.stat-primary .stat-value {
+            font-size: 2.4rem;
+            color: #15803d;
+        }
+        .stat-label {
+            font-size: 0.82rem;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 6px;
+        }
+        .stat-sub {
+            font-size: 0.8rem;
+            color: #15803d;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .stat-progress {
+            background: #bbf7d0;
+            border-radius: 10px;
+            height: 8px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .stat-progress-fill {
+            width: 100%;
+            height: 100%;
+            background: #22c55e;
+            border-radius: 10px;
+        }
+        .results-screenshot-wrap {
+            text-align: center;
+        }
+        .results-screenshot {
+            max-width: 320px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+        .results-caption {
+            font-size: 0.82rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -430,6 +532,40 @@
         <!-- ── MAIN ARTICLE ── -->
         <article class="blog-article" id="blog-top">
 
+            <!-- Fundraiser Results -->
+            <div class="results-section" id="results">
+                <div class="results-header">
+                    <span class="results-badge">🎉 Goal Reached!</span>
+                    <h3>Fundraiser Results</h3>
+                </div>
+                <div class="results-stats">
+                    <div class="stat-card stat-primary">
+                        <div class="stat-value">$1,500</div>
+                        <div class="stat-label">Total Raised</div>
+                        <div class="stat-sub">100% of $1,500 goal</div>
+                        <div class="stat-progress">
+                            <div class="stat-progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$1,020</div>
+                        <div class="stat-label">Ticket Sales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$480</div>
+                        <div class="stat-label">Donations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">32</div>
+                        <div class="stat-label">Attendees Checked In</div>
+                    </div>
+                </div>
+                <div class="results-screenshot-wrap">
+                    <img src="images/events/sappadu_results.jpg" alt="Givebutter fundraiser dashboard showing $1,500 goal met" class="results-screenshot">
+                    <p class="results-caption">Live fundraiser stats from our Givebutter dashboard — goal fully met on March 22, 2026.</p>
+                </div>
+            </div>
+
             <p>Hosting a local restaurant fundraiser is a simple and meaningful way to support the development of gene therapy for CDKL5. Recently, our community organized a Sappadu/Sadhya Lunch fundraiser, and it was encouraging to see how quickly support came together — from ticket sales to direct donations. With just a bit of coordination, a welcoming venue, and outreach to friends, family, and the broader community, we were able to successfully meet our fundraising goal. Events like these not only raise critical funds but also help spread awareness about CDKL5. 💙</p>
 
             <p>If you are passionate about making a difference, consider hosting a similar local restaurant event in your neighborhood. It can be as simple as partnering with a restaurant, setting a ticket price, and sharing the cause with your network. We can support you by creating a customized Givebutter fundraising link and providing management access, so you can track ticket sales, donations, and drive the event toward success with confidence. Every event — big or small — moves us one step closer to bringing gene therapy to children and families who need it. To get started, or if you have any questions about planning, promotion, or logistics, please reach out to us at <a href="mailto:support@cdkl5genetherapy.com" style="color:#f97316; font-weight:600;">support@cdkl5genetherapy.com</a>. Together, we can turn community gatherings into real hope and progress. 🙏✨</p>
@@ -475,9 +611,9 @@
             <div class="sidebar-card">
                 <h4>In This Article</h4>
                 <ul class="toc-list">
+                    <li><a href="#results">Fundraiser Results</a></li>
                     <li><a href="#blog-top">About This Fundraiser</a></li>
                     <li><a href="#host-your-own">Host a Fundraiser Near You</a></li>
-                    <li><a href="#thank-you">Thank You</a></li>
                 </ul>
             </div>
 
