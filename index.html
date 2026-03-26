@@ -197,6 +197,21 @@
 
     
 
+            <!-- UMEED Upcoming Fundraiser Spotlight -->
+            <section class="section fade-in">
+                <div class="fundraiser-spotlight">
+                    <div class="event-category" style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-orange);margin-bottom:0.5rem;">Upcoming Fundraiser &middot; May 23, 2026</div>
+                    <h2>UMEED! A Bollywood Musical Fundraiser</h2>
+                    <p class="fundraiser-punchline">TriValley Melodies presents a night of Bollywood music by Bay Area&rsquo;s top singers to benefit children with CDKL5 Deficiency Disorder.</p>
+                    <p><span class="fundraiser-date">Saturday, May 23, 2026 &middot; 6&ndash;10 PM</span><br>
+                    Tandoori Pizza &middot; 3350 Zanker Rd, San Jose, CA &middot; Entry $10</p>
+                    <div class="fundraiser-actions">
+                        <a href="https://givebutter.com/umeed" target="_blank" rel="noopener noreferrer" class="btn btn-donate-hero">Get Tickets &rarr;</a>
+                        <a href="event-umeed-may2026.html" class="btn btn-secondary">Event Details</a>
+                    </div>
+                </div>
+            </section>
+
             <!-- Upcoming Events Section -->
             <section class="section fade-in event-announcement" id="upcoming-events">
                 <h2 class="section-heading">Upcoming Events</h2>
@@ -372,7 +387,8 @@
 
                         const now = new Date();
                         const hiddenUpcomingTitles = new Set([
-                            'UCSF Rare Disease Symposium 2026'
+                            'UCSF Rare Disease Symposium 2026',
+                            'UMEED! A Bollywood Musical Fundraiser'
                         ]);
                         const upcomingEvents = data.events.filter(event => {
                             if (hiddenUpcomingTitles.has(event.title)) return false;

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UMEED! A Bollywood Musical Fundraiser by TriValley Melodies on May 23, 2026 — benefiting CDKL5 gene therapy research. Entry $10.">
+    <title>UMEED! Bollywood Musical Fundraiser &mdash; May 23, 2026 | CDKL5 Gene Therapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <style>
+        body { background: var(--bg-page); }
+
+        .event-wrap {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--heading-secondary);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .event-category {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary-orange);
+            margin-bottom: 0.6rem;
+        }
+
+        .event-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--heading-primary);
+            line-height: 1.2;
+            margin: 0 0 0.5rem;
+        }
+
+        .event-tagline {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 0 0 1.5rem;
+            line-height: 1.6;
+        }
+
+        .event-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+        .event-meta-grid .meta-item strong {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #999;
+            margin-bottom: 0.2rem;
+        }
+        .event-meta-grid .meta-item span {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--heading-primary);
+        }
+
+        @media (max-width: 560px) {
+            .event-meta-grid { grid-template-columns: 1fr; }
+            .event-title { font-size: 1.7rem; }
+        }
+
+        .flyer-wrap {
+            margin-bottom: 2rem;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        .flyer-wrap img {
+            width: 100%;
+            display: block;
+        }
+
+        .ticket-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .ticket-box h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0 0 0.5rem;
+        }
+        .ticket-box p {
+            color: rgba(255,255,255,0.8);
+            margin: 0 0 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .ticket-price-badge {
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            margin-bottom: 1rem;
+        }
+        .btn-ticket {
+            background: var(--primary-orange);
+            color: #fff;
+            padding: 0.9rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+        .btn-ticket:hover { opacity: 0.88; }
+
+        .about-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+        .about-section h2 {
+            font-size: 1.25rem;
+            color: var(--heading-secondary);
+            margin: 0 0 0.75rem;
+        }
+        .about-section p {
+            color: #555;
+            line-height: 1.7;
+            margin: 0 0 0.75rem;
+        }
+        .about-section p:last-child { margin-bottom: 0; }
+
+        .contact-section {
+            background: #f9f6ff;
+            border-left: 4px solid var(--heading-secondary);
+            border-radius: 0 10px 10px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .contact-section h3 {
+            font-size: 1rem;
+            color: var(--heading-primary);
+            margin: 0 0 0.5rem;
+        }
+        .contact-section p {
+            color: #555;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .contact-section a { color: var(--heading-secondary); }
+
+        .mission-note {
+            background: #fff8f0;
+            border: 1.5px solid var(--primary-orange);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .mission-note p {
+            color: #555;
+            margin: 0 0 1rem;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div data-include="inc/header.html"></div>
+
+    <main>
+        <div class="event-wrap">
+
+            <a href="community-events.html" class="back-link">&larr; Back to Events</a>
+
+            <div class="event-category">Community Fundraiser &middot; May 23, 2026</div>
+            <h1 class="event-title">UMEED! A Bollywood Musical Fundraiser</h1>
+            <p class="event-tagline">Bay Area&rsquo;s top singers come together for a night of Bollywood music to benefit children with CDKL5 Deficiency Disorder.</p>
+
+            <!-- Event Details Grid -->
+            <div class="event-meta-grid">
+                <div class="meta-item">
+                    <strong>Date</strong>
+                    <span>Saturday, May 23, 2026</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Time</strong>
+                    <span>6:00 &ndash; 10:00 PM</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Venue</strong>
+                    <span>Tandoori Pizza, 3350 Zanker Rd, San Jose, CA</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Entry</strong>
+                    <span>$10 per person</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Hosted By</strong>
+                    <span>TriValley Melodies</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Special Feature</strong>
+                    <span>Open Mic for an hour</span>
+                </div>
+            </div>
+
+            <!-- Flyer -->
+            <div class="flyer-wrap">
+                <img src="images/events/umeed_flyer.jpg" alt="UMEED! Bollywood Musical Fundraiser flyer &mdash; May 23, 2026 at Tandoori Pizza, San Jose">
+            </div>
+
+            <!-- Tickets CTA -->
+            <div class="ticket-box">
+                <div class="ticket-price-badge">$10</div>
+                <h2>Get Your Tickets</h2>
+                <p>All proceeds benefit CDKL5 gene therapy research. Purchase your tickets through Givebutter.</p>
+                <a href="https://givebutter.com/umeed" target="_blank" rel="noopener noreferrer" class="btn-ticket">Buy Tickets on Givebutter &rarr;</a>
+            </div>
+
+            <!-- About -->
+            <div class="about-section">
+                <h2>About the Event</h2>
+                <p><strong>TriValley Melodies</strong> is proud to present <em>UMEED!</em> &mdash; a Bollywood musical fundraiser featuring Bay Area&rsquo;s top singers. &ldquo;Umeed&rdquo; means <em>hope</em> in Hindi and Urdu, and that&rsquo;s exactly what this evening is about.</p>
+                <p>Every ticket purchased and every dollar raised goes directly toward funding CDKL5 gene therapy clinical trials &mdash; giving hope to children and families affected by CDKL5 Deficiency Disorder.</p>
+                <p>The evening includes live Bollywood music performances, an Open Mic hour, and a chance to connect with the CDKL5 community. Come for the music, stay for the mission.</p>
+            </div>
+
+            <!-- Contact -->
+            <div class="contact-section">
+                <h3>Questions &amp; Inquiries</h3>
+                <p>Contact <strong>Gururaj</strong> at <a href="tel:6506706213">650-670-6213</a> or <strong>Jainu Jogani</strong> at <a href="tel:6692516646">669-251-6646</a></p>
+            </div>
+
+            <!-- Mission note -->
+            <div class="mission-note">
+                <p>This fundraiser supports <strong>Child&rsquo;s Cure Genetics Research</strong> and the CDKL5 gene therapy program &mdash; working to bring a treatment to children with CDKL5 Deficiency Disorder.</p>
+                <a href="donate.html" class="btn btn-secondary">Learn More About Our Mission</a>
+            </div>
+
+        </div>
+    </main>
+
+    <div data-include="inc/footer.html"></div>
+
+    <script src="js/includes-loader.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>
