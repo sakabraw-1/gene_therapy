@@ -3,244 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sappadu/Sadhya Lunch Fundraiser - March 22, 2026 | CDKL5 Gene Therapy</title>
+    <title>How a Community Lunch Raised Hope for CDKL5 Gene Therapy | CDKL5 Gene Therapy</title>
     <meta name="description" content="A recap of the Sappadu/Sadhya Lunch community fundraiser held on March 22, 2026, to support CDKL5 gene therapy research. Learn how to host your own local restaurant fundraiser.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/colors.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .event-hero {
-            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+        /* ── Blog layout ── */
+        body { background: #fafaf9; }
+
+        .blog-breadcrumb {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 12px 20px;
+            font-size: 0.88rem;
+            color: #888;
+        }
+        .blog-breadcrumb a { color: #f97316; text-decoration: none; }
+        .blog-breadcrumb a:hover { text-decoration: underline; }
+        .blog-breadcrumb span { margin: 0 6px; }
+
+        /* Hero banner */
+        .blog-hero {
+            position: relative;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #f97316 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 70px 20px 60px;
             text-align: center;
+            overflow: hidden;
         }
-        .event-hero h1 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            margin-bottom: 15px;
-            line-height: 1.3;
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(249,115,22,0.25) 0%, transparent 60%);
         }
-        .event-hero .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            margin-bottom: 10px;
-        }
-        .event-meta-hero {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-top: 20px;
-        }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            opacity: 0.8;
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .back-link:hover {
-            opacity: 1;
-        }
-        .event-hero-badge {
+        .blog-hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+
+        .blog-category-tag {
             display: inline-block;
-            background: rgba(255,255,255,0.25);
-            border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(249,115,22,0.9);
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             padding: 5px 14px;
             border-radius: 20px;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .article-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-        .article-container h2 {
-            color: #333;
-            font-size: 1.6rem;
-            margin: 50px 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #f97316;
-        }
-        .article-container h2:first-of-type {
-            margin-top: 0;
-        }
-        .article-container p {
-            color: #444;
-            line-height: 1.9;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-        .article-container ul {
-            color: #444;
-            line-height: 1.9;
-            margin-bottom: 25px;
-            padding-left: 25px;
-        }
-        .article-container li {
-            margin-bottom: 12px;
-        }
-        .intro-box {
-            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-left: 5px solid #f97316;
-        }
-        .intro-box p {
-            margin-bottom: 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-        .highlight-box {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
-            border-left: 4px solid #f97316;
-        }
-        .highlight-box p {
-            margin-bottom: 10px;
-        }
-        .highlight-box ul {
-            margin-bottom: 0;
-        }
-        .cta-box {
-            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-            border-radius: 16px;
-            padding: 35px;
-            text-align: center;
-            margin: 40px 0;
-            border: 2px solid #fed7aa;
-        }
-        .cta-box h3 {
-            color: #c2410c;
-            font-size: 1.4rem;
-            margin: 0 0 15px 0;
-        }
-        .cta-box p {
-            color: #555;
             margin-bottom: 20px;
         }
-        .cta-box a.btn {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            color: white;
-            padding: 14px 30px;
-            border-radius: 30px;
-            text-decoration: none;
+        .blog-hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.7rem, 4vw, 2.6rem);
+            line-height: 1.35;
+            margin: 0 0 18px;
             font-weight: 700;
-            display: inline-block;
-            font-size: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .cta-box a.btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        .blog-hero .blog-subtitle {
+            font-size: 1.15rem;
+            opacity: 0.88;
+            margin-bottom: 28px;
+            font-style: italic;
         }
-        .fundraiser-image {
+
+        /* Author / meta bar */
+        .blog-meta-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+        .blog-meta-bar .author-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .blog-meta-bar .divider { opacity: 0.4; }
+
+        /* Featured image */
+        .blog-featured-image-wrap {
+            max-width: 860px;
+            margin: -30px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .blog-featured-image-wrap img {
             width: 100%;
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            margin: 30px 0;
-            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            display: block;
         }
-        .thank-you-note {
+        .blog-featured-image-wrap .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Two-column blog layout */
+        .blog-layout {
+            max-width: 1100px;
+            margin: 50px auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* Main article */
+        .blog-article { min-width: 0; }
+
+        .blog-article h2 {
+            font-family: 'Merriweather', serif;
+            color: #1e1b4b;
+            font-size: 1.5rem;
+            margin: 45px 0 16px;
+            line-height: 1.4;
+        }
+        .blog-article h2:first-child { margin-top: 0; }
+        .blog-article h2::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #f97316;
+            border-radius: 2px;
+            margin-bottom: 12px;
+        }
+        .blog-article p {
+            color: #374151;
+            line-height: 1.95;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
+        }
+        .blog-article ul {
+            color: #374151;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            padding-left: 0;
+            list-style: none;
+        }
+        .blog-article ul li {
+            padding: 10px 0 10px 32px;
+            position: relative;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 1rem;
+        }
+        .blog-article ul li:last-child { border-bottom: none; }
+        .blog-article ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #f97316;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            border-left: 5px solid #f97316;
+            background: #fff7ed;
+            border-radius: 0 12px 12px 0;
+            padding: 24px 28px;
+            margin: 35px 0;
+        }
+        .pull-quote p {
+            font-family: 'Merriweather', serif;
+            font-size: 1.15rem !important;
+            color: #92400e !important;
+            font-style: italic;
+            margin: 0 !important;
+            line-height: 1.7 !important;
+        }
+
+        /* Checklist box */
+        .checklist-box {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            border-top: 4px solid #f97316;
+        }
+        .checklist-box h3 {
+            color: #1e1b4b;
+            font-size: 1.1rem;
+            margin: 0 0 18px;
+        }
+
+        /* CTA */
+        .blog-cta {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px 35px;
+            text-align: center;
+            margin: 45px 0;
+        }
+        .blog-cta h3 {
+            color: white;
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin: 0 0 12px;
+        }
+        .blog-cta p {
+            color: rgba(255,255,255,0.85) !important;
+            margin-bottom: 22px !important;
+        }
+        .blog-cta a {
+            display: inline-block;
+            background: #f97316;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .blog-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249,115,22,0.45);
+        }
+
+        /* Thank you */
+        .thank-you-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 16px;
             padding: 35px;
             text-align: center;
-            margin: 40px 0;
+            margin: 40px 0 10px;
         }
-        .thank-you-note h3 {
+        .thank-you-banner h3 { color: white; font-size: 1.4rem; margin: 0 0 12px; }
+        .thank-you-banner p { color: rgba(255,255,255,0.9); margin: 0; line-height: 1.8; }
+
+        /* Tags row */
+        .blog-tags { margin: 35px 0 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .blog-tags span { font-size: 0.85rem; color: #888; margin-right: 4px; }
+        .blog-tag {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        /* Share bar */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            margin: 30px 0 0;
+        }
+        .share-bar span { font-size: 0.9rem; font-weight: 700; color: #374151; }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+        .share-btn:hover { transform: translateY(-1px); }
+        .share-btn.twitter { background: #1da1f2; color: white; }
+        .share-btn.facebook { background: #1877f2; color: white; }
+        .share-btn.copy { background: #f1f5f9; color: #374151; }
+
+        /* ── Sidebar ── */
+        .blog-sidebar { position: sticky; top: 100px; }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .sidebar-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #f97316;
+            font-weight: 700;
+            margin: 0 0 16px;
+        }
+
+        /* Table of contents */
+        .toc-list { list-style: none; padding: 0; margin: 0; }
+        .toc-list li { margin-bottom: 10px; }
+        .toc-list a {
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+        .toc-list a:hover { color: #f97316; }
+        .toc-list a::before {
+            content: '→';
+            color: #f97316;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Quick facts */
+        .fact-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.9rem;
+        }
+        .fact-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .fact-icon { font-size: 1.1rem; flex-shrink: 0; }
+        .fact-label { color: #888; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .fact-value { color: #1e1b4b; font-weight: 600; }
+
+        /* Donate sidebar */
+        .sidebar-donate {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             color: white;
-            font-size: 1.5rem;
-            margin: 0 0 15px 0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
         }
-        .thank-you-note p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 0;
-            font-size: 1.05rem;
+        .sidebar-donate h4 { color: white; font-size: 1rem; margin: 0 0 10px; }
+        .sidebar-donate p { color: rgba(255,255,255,0.88); font-size: 0.88rem; margin-bottom: 16px; line-height: 1.6; }
+        .sidebar-donate a {
+            display: block;
+            background: white;
+            color: #ea580c;
+            padding: 11px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
         }
-        @media (max-width: 600px) {
-            .event-meta-hero {
-                flex-direction: column;
-                gap: 10px;
-            }
+        .sidebar-donate a:hover { background: #fff7ed; }
+
+        @media (max-width: 768px) {
+            .blog-layout { grid-template-columns: 1fr; }
+            .blog-sidebar { position: static; }
+            .blog-meta-bar { gap: 12px; }
         }
     </style>
 </head>
 <body>
     <div data-include="inc/header.html"></div>
 
-    <!-- Event Hero -->
-    <section class="event-hero">
+    <!-- Breadcrumb -->
+    <nav class="blog-breadcrumb">
         <div class="container">
-            <a href="past-events.html" class="back-link">← Back to Past Events</a>
-            <div class="event-hero-badge">Community Fundraiser</div>
-            <h1>Sappadu/Sadhya Lunch to Support CDKL5</h1>
-            <p class="subtitle">Come for the meal, stay for the mission.</p>
-            <div class="event-meta-hero">
-                <span>📅 Sunday, March 22, 2026</span>
-                <span>🕒 11:30am – 12:30pm</span>
-                <span>📍 Madras Idli Kadai, Pleasanton, CA</span>
-                <span>🏠 Hosted by the CDKL5 Community</span>
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="past-events.html">Past Events</a>
+            <span>›</span>
+            Sappadu/Sadhya Lunch Fundraiser
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-inner">
+            <div class="blog-category-tag">Community Fundraiser &nbsp;•&nbsp; Event Recap</div>
+            <h1>How a Community Lunch Raised Hope for CDKL5 Gene Therapy</h1>
+            <p class="blog-subtitle">Come for the meal, stay for the mission.</p>
+            <div class="blog-meta-bar">
+                <div class="author-chip">
+                    <div class="author-avatar">👤</div>
+                    <div>
+                        <div style="font-weight:600;">CDKL5 Gene Therapy Team</div>
+                        <div style="font-size:0.8rem; opacity:0.7;">Community Stories</div>
+                    </div>
+                </div>
+                <span class="divider">|</span>
+                <span>📅 March 22, 2026</span>
+                <span class="divider">|</span>
+                <span>⏱ 3 min read</span>
             </div>
         </div>
     </section>
 
-    <!-- Article Body -->
-    <div class="article-container">
+    <!-- Featured Image -->
+    <div class="blog-featured-image-wrap">
+        <img src="images/events/sappadu_lunch.jpeg" alt="Sappadu Sadhya Lunch fundraiser flyer">
+        <p class="image-caption">Sappadu/Sadhya Lunch — Madras Idli Kadai, Pleasanton, CA · March 22, 2026</p>
+    </div>
 
-        <div class="intro-box">
-            <p>What began as a simple community gathering turned into a powerful demonstration of what's possible when people come together for a shared mission. The Sappadu/Sadhya Lunch fundraiser on March 22, 2026 is a story worth telling — and a model worth replicating. 💙</p>
-        </div>
+    <!-- Blog Layout: Article + Sidebar -->
+    <div class="blog-layout">
 
-        <img src="images/events/sappadu_lunch.jpeg" alt="Sappadu Sadhya Lunch fundraiser flyer" class="fundraiser-image">
+        <!-- ── MAIN ARTICLE ── -->
+        <article class="blog-article" id="blog-top">
 
-        <h2>How It Came Together</h2>
-        <p>Hosting a local restaurant fundraiser is a simple and meaningful way to support the development of gene therapy for CDKL5. Our community organized a Sappadu/Sadhya Lunch fundraiser, and it was encouraging to see how quickly support came together — from ticket sales to direct donations.</p>
-        <p>With just a bit of coordination, a welcoming venue, and outreach to friends, family, and the broader community, we were able to successfully meet our fundraising goal. Events like these not only raise critical funds but also help spread awareness about CDKL5.</p>
+            <h2 id="came-together">How It Came Together</h2>
+            <p>Hosting a local restaurant fundraiser is a simple and meaningful way to support the development of gene therapy for CDKL5. Recently, our community organized a Sappadu/Sadhya Lunch fundraiser, and it was encouraging to see how quickly support came together — from ticket sales to direct donations.</p>
+            <p>With just a bit of coordination, a welcoming venue, and outreach to friends, family, and the broader community, we were able to successfully meet our fundraising goal. Events like these not only raise critical funds but also help spread awareness about CDKL5. 💙</p>
 
-        <h2>Why Events Like This Matter</h2>
-        <p>Every dollar raised brings us closer to clinical trials. But beyond the funds, community events like this one do something equally important: they build a network of people who care, who understand the urgency, and who will champion this cause in their own circles.</p>
-        <p>A restaurant fundraiser requires no lab, no technical expertise — just heart and a community willing to show up. That's exactly what happened here.</p>
+            <div class="pull-quote">
+                <p>"It can be as simple as partnering with a restaurant, setting a ticket price, and sharing the cause with your network."</p>
+            </div>
 
-        <div class="highlight-box">
-            <p><strong>Key ingredients of a successful restaurant fundraiser:</strong></p>
-            <ul>
-                <li>A welcoming local venue willing to partner with you</li>
-                <li>A clear ticket price and fundraising goal</li>
-                <li>Outreach to friends, family, and the broader community</li>
-                <li>A customized Givebutter fundraising link to track ticket sales and donations</li>
-                <li>Passion and belief in the mission</li>
-            </ul>
-        </div>
+            <h2 id="why-it-matters">Why Events Like This Matter</h2>
+            <p>Every dollar raised brings us closer to clinical trials. But beyond the funds, community events like this one do something equally important: they build a network of people who care, who understand the urgency, and who will champion this cause in their own circles.</p>
+            <p>A restaurant fundraiser requires no lab, no technical expertise — just heart and a community willing to show up. That's exactly what happened here.</p>
 
-        <h2>Host a Fundraiser in Your Neighborhood</h2>
-        <p>If you are passionate about making a difference, consider hosting a similar local restaurant event in your neighborhood. It can be as simple as partnering with a restaurant, setting a ticket price, and sharing the cause with your network.</p>
-        <p>We can support you by creating a customized Givebutter fundraising link and providing management access, so you can track ticket sales, donations, and drive the event toward success with confidence. Every event — big or small — moves us one step closer to bringing gene therapy to children and families who need it.</p>
+            <h2 id="ingredients">Key Ingredients for Success</h2>
+            <div class="checklist-box">
+                <h3>What made this fundraiser work:</h3>
+                <ul>
+                    <li>A welcoming local venue willing to partner with you</li>
+                    <li>A clear ticket price and a defined fundraising goal</li>
+                    <li>Outreach to friends, family, and the broader community</li>
+                    <li>A customized Givebutter fundraising link to track ticket sales and donations</li>
+                    <li>Passion and belief in the mission</li>
+                </ul>
+            </div>
 
-        <div class="cta-box">
-            <h3>Ready to Host Your Own Fundraiser?</h3>
-            <p>Reach out to us and we'll set you up with everything you need — a Givebutter link, management access, and guidance every step of the way.</p>
-            <a href="mailto:support@cdkl5genetherapy.com" class="btn">Contact Us to Get Started</a>
-        </div>
+            <h2 id="host-your-own">Host a Fundraiser in Your Neighborhood</h2>
+            <p>If you are passionate about making a difference, consider hosting a similar local restaurant event in your neighborhood. We can support you by creating a customized Givebutter fundraising link and providing management access, so you can track ticket sales, donations, and drive the event toward success with confidence.</p>
+            <p>Every event — big or small — moves us one step closer to bringing gene therapy to children and families who need it. To get started, or if you have any questions about planning, promotion, or logistics, please reach out to us at <a href="mailto:support@cdkl5genetherapy.com" style="color:#f97316; font-weight:600;">support@cdkl5genetherapy.com</a>.</p>
 
-        <div class="thank-you-note">
-            <h3>Thank You 🙏✨</h3>
-            <p>Together, we can turn community gatherings into real hope and progress. Thank you to everyone who attended, donated, and spread the word. Every action moves us one step closer to a cure.</p>
-        </div>
+            <div class="blog-cta">
+                <h3>Ready to Host Your Own Fundraiser?</h3>
+                <p>We'll set you up with a Givebutter link, management access, and support every step of the way.</p>
+                <a href="mailto:support@cdkl5genetherapy.com">Get in Touch →</a>
+            </div>
+
+            <div class="thank-you-banner">
+                <h3>Thank You 🙏✨</h3>
+                <p>Together, we can turn community gatherings into real hope and progress. Thank you to everyone who attended, donated, and spread the word. Every action moves us one step closer to a cure.</p>
+            </div>
+
+            <!-- Tags -->
+            <div class="blog-tags">
+                <span>Tags:</span>
+                <span class="blog-tag">Community Fundraiser</span>
+                <span class="blog-tag">CDKL5</span>
+                <span class="blog-tag">Gene Therapy</span>
+                <span class="blog-tag">Restaurant Event</span>
+                <span class="blog-tag">Pleasanton CA</span>
+            </div>
+
+            <!-- Share bar -->
+            <div class="share-bar">
+                <span>Share this story:</span>
+                <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=How+a+community+lunch+raised+hope+for+CDKL5+Gene+Therapy&url=https://cdkl5genetherapy.com/event-sappadu-fundraiser-mar2026.html" target="_blank" rel="noopener noreferrer">
+                    𝕏 &nbsp;Twitter
+                </a>
+                <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cdkl5genetherapy.com/event-sappadu-fundraiser-mar2026.html" target="_blank" rel="noopener noreferrer">
+                    f &nbsp;Facebook
+                </a>
+                <button class="share-btn copy" onclick="navigator.clipboard.writeText(window.location.href); this.textContent='✓ Copied!'">
+                    🔗 &nbsp;Copy Link
+                </button>
+            </div>
+
+        </article>
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="blog-sidebar">
+
+            <!-- Table of Contents -->
+            <div class="sidebar-card">
+                <h4>In This Article</h4>
+                <ul class="toc-list">
+                    <li><a href="#came-together">How It Came Together</a></li>
+                    <li><a href="#why-it-matters">Why Events Like This Matter</a></li>
+                    <li><a href="#ingredients">Key Ingredients for Success</a></li>
+                    <li><a href="#host-your-own">Host a Fundraiser Near You</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Facts -->
+            <div class="sidebar-card">
+                <h4>Event Details</h4>
+                <div class="fact-item">
+                    <div class="fact-icon">📅</div>
+                    <div>
+                        <div class="fact-label">Date</div>
+                        <div class="fact-value">Sunday, March 22, 2026</div>
+                    </div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">🕒</div>
+                    <div>
+                        <div class="fact-label">Time</div>
+                        <div class="fact-value">11:30am – 12:30pm</div>
+                    </div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">📍</div>
+                    <div>
+                        <div class="fact-label">Venue</div>
+                        <div class="fact-value">Madras Idli Kadai, Pleasanton, CA</div>
+                    </div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">🏠</div>
+                    <div>
+                        <div class="fact-label">Hosted by</div>
+                        <div class="fact-value">CDKL5 Community</div>
+                    </div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">🎯</div>
+                    <div>
+                        <div class="fact-label">Goal</div>
+                        <div class="fact-value">Successfully Met ✅</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donate CTA -->
+            <div class="sidebar-donate">
+                <h4>Support the Mission</h4>
+                <p>Every dollar brings us closer to clinical trials for children with CDKL5.</p>
+                <a href="donate.html">Donate Now →</a>
+            </div>
+
+        </aside>
 
     </div>
 
