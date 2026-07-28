@@ -86,6 +86,48 @@
             border-radius: 8px;
         }
 
+        .travel-tag-image {
+            width: 58%;
+            max-width: 180px;
+            max-height: 78%;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .travel-tag-container {
+            padding: 16px;
+        }
+
+        .travel-tag-frame {
+            position: relative;
+            width: min(62%, 220px);
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 14px;
+            padding: 14px 10px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .travel-tag-frame::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid #d5d5d5;
+            background: #f7f7f7;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+
         .merch-content {
             padding: 1.5rem;
             display: flex;
@@ -146,6 +188,110 @@
             display: inline-block;
             margin-bottom: 0.5rem;
         }
+
+        .seller-section {
+            max-width: 950px;
+            margin: 2rem auto 0;
+            padding: 0 1.5rem;
+        }
+
+        .seller-card {
+            background: #ffffff;
+            border: 2px solid #ffd7b8;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+        }
+
+        .seller-title {
+            margin: 0 0 0.5rem;
+            color: var(--heading-secondary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .seller-description {
+            margin: 0 0 1.25rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .seller-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem 1rem;
+        }
+
+        .seller-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .seller-field-full {
+            grid-column: 1 / -1;
+        }
+
+        .seller-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 0.92rem;
+        }
+
+        .seller-input,
+        .seller-textarea,
+        .seller-select {
+            width: 100%;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            padding: 0.75rem 0.8rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: #333;
+            background: #fff;
+            box-sizing: border-box;
+        }
+
+        .seller-input:focus,
+        .seller-textarea:focus,
+        .seller-select:focus {
+            outline: none;
+            border-color: #ff8c00;
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.14);
+        }
+
+        .seller-textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .seller-note {
+            margin: 0;
+            color: #666;
+            font-size: 0.88rem;
+            line-height: 1.4;
+        }
+
+        .seller-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .seller-form {
+                grid-template-columns: 1fr;
+            }
+
+            .seller-actions {
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -170,7 +316,7 @@
                     <div class="merch-content">
                         <span class="merch-badge">Apparel</span>
                         <h2 class="merch-title">"This Bag Carries Hope" Tote</h2>
-                        <div class="merch-price">$10+ Donation</div>
+                        <div class="merch-price">Minimum Donation $10</div>
                         <p class="merch-description">
                             A 100% cotton canvas tote measuring 15" x 16" with comfortable straps. This bag carries more than groceries — it carries hope. Let's stand together!
                         </p>
@@ -180,13 +326,15 @@
 
                 <!-- Travel Tag -->
                 <article class="merch-card">
-                    <div class="merch-image-container">
-                        <div style="font-size: 5rem; text-align: center; color: var(--primary-orange);">🏷️</div>
+                    <div class="merch-image-container travel-tag-container">
+                        <div class="travel-tag-frame">
+                            <img src="images/stroller_wheelchair.png" alt="Stroller Travel Tag" class="merch-image travel-tag-image">
+                        </div>
                     </div>
                     <div class="merch-content">
                         <span class="merch-badge">Travel & Gear</span>
                         <h2 class="merch-title">Stroller Travel Tag</h2>
-                        <div class="merch-price">$10+ Donation</div>
+                        <div class="merch-price">Minimum Donation $10</div>
                         <p class="merch-description">
                             "This stroller is being used as a wheelchair. Please handle with care and attention." Meaningful tags designed by Appy's Studio to ensure dignity and awareness during travel.
                         </p>
@@ -194,6 +342,64 @@
                     </div>
                 </article>
 
+            </div>
+
+            <div class="seller-section">
+                <div class="seller-card">
+                    <h2 class="seller-title">List An Item In Support Store</h2>
+                    <p class="seller-description">Have something meaningful to sell for the cause? Submit your item details below. After review, we will add approved items to the Support Store.</p>
+
+                    <form name="support-store-item" method="POST" data-netlify="true" action="thank-you.html" class="seller-form">
+                        <input type="hidden" name="form-name" value="support-store-item">
+
+                        <div class="seller-field">
+                            <label for="sellerName" class="seller-label">Your Name</label>
+                            <input id="sellerName" name="sellerName" type="text" required class="seller-input" placeholder="Enter your name">
+                        </div>
+
+                        <div class="seller-field">
+                            <label for="sellerEmail" class="seller-label">Email</label>
+                            <input id="sellerEmail" name="sellerEmail" type="email" required class="seller-input" placeholder="name@example.com">
+                        </div>
+
+                        <div class="seller-field">
+                            <label for="itemName" class="seller-label">Item Name</label>
+                            <input id="itemName" name="itemName" type="text" required class="seller-input" placeholder="Example: Awareness Tote Bag">
+                        </div>
+
+                        <div class="seller-field">
+                            <label for="itemCategory" class="seller-label">Category</label>
+                            <select id="itemCategory" name="itemCategory" class="seller-select" required>
+                                <option value="">Select category</option>
+                                <option value="Apparel">Apparel</option>
+                                <option value="Travel & Gear">Travel & Gear</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Home & Decor">Home & Decor</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="seller-field">
+                            <label for="minimumDonation" class="seller-label">Minimum Donation</label>
+                            <input id="minimumDonation" name="minimumDonation" type="text" required class="seller-input" placeholder="Example: 10">
+                        </div>
+
+                        <div class="seller-field">
+                            <label for="itemImageUrl" class="seller-label">Item Image URL</label>
+                            <input id="itemImageUrl" name="itemImageUrl" type="url" class="seller-input" placeholder="https://...">
+                        </div>
+
+                        <div class="seller-field seller-field-full">
+                            <label for="itemDescription" class="seller-label">Item Description</label>
+                            <textarea id="itemDescription" name="itemDescription" required class="seller-textarea" placeholder="Share size, materials, purpose, and any details buyers should know."></textarea>
+                        </div>
+
+                        <div class="seller-actions">
+                            <p class="seller-note">By submitting, you confirm this item supports CDKL5 fundraising and can be listed publicly after approval.</p>
+                            <button type="submit" class="btn-merch">Submit Item For Review</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
