@@ -140,6 +140,95 @@
         }
 
         .top-banner.hidden { display: none !important; }
+
+        .lucky-home-strip {
+            background: linear-gradient(135deg, #fff9ef 0%, #ffe7c0 100%);
+            border: 1px solid #f5d3a1;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(117, 73, 11, 0.10);
+            margin: 1.25rem auto 1.5rem;
+            padding: 1rem 1.1rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 0.9rem 1rem;
+            align-items: center;
+        }
+
+        .lucky-home-copy {
+            min-width: 0;
+        }
+
+        .lucky-home-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .lucky-home-pill {
+            display: inline-block;
+            background: #ffffff;
+            color: #925300;
+            border: 1px solid #efcc96;
+            border-radius: 999px;
+            padding: 0.28rem 0.65rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .lucky-home-title {
+            margin: 0;
+            font-size: 1.35rem;
+            line-height: 1.25;
+            color: var(--heading-primary);
+        }
+
+        .lucky-home-subtext {
+            margin: 0.3rem 0 0;
+            color: #6a430b;
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+
+        .lucky-home-details {
+            margin: 0.45rem 0 0;
+            color: #5f5850;
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
+        .lucky-home-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            align-items: stretch;
+        }
+
+        .lucky-home-link {
+            display: inline-block;
+            text-align: center;
+            color: #5E35B1;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.93rem;
+        }
+
+        .lucky-home-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .lucky-home-strip {
+                grid-template-columns: 1fr;
+                margin-top: 1rem;
+            }
+
+            .lucky-home-actions {
+                width: 100%;
+            }
+        }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
     <script>
@@ -169,6 +258,23 @@
 
     <main>
         <div class="container">
+            <section class="lucky-home-strip" aria-label="Lucky Draw promotion">
+                <div class="lucky-home-copy">
+                    <div class="lucky-home-meta">
+                        <span class="lucky-home-pill">Lucky Draw</span>
+                        <span class="lucky-home-pill">Ends Aug 31</span>
+                    </div>
+                    <h2 class="lucky-home-title">Firefly Upsee Lucky Draw • Minimum Donation $20/entry</h2>
+                    <p class="lucky-home-subtext">Upsee - Large Pink, with Adult Belt</p>
+                    <p class="lucky-home-details">Each entry is tax deductible. Enter multiple times to increase your chances of winning. Winner shipment starts Sep 1.</p>
+                </div>
+                <div class="lucky-home-actions">
+                    <a class="btn btn-donate-hero" href="https://givebutter.com/upsee-firefly-mrikjm/join" target="_blank" rel="noopener noreferrer">Enter Lucky Draw</a>
+                    <a class="lucky-home-link" href="merch.html">View Support Store</a>
+                    <a class="lucky-home-link" href="https://firefly.sunrisemedical.com/us/en/our-products/upsee/" target="_blank" rel="noopener noreferrer">Learn About Upsee</a>
+                </div>
+            </section>
+
             <section class="hero fade-in">
                 <div class="hero-content">
                     <span class="badge">Phase I/II readiness</span>
