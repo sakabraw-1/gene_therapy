@@ -189,6 +189,73 @@
             margin-bottom: 0.5rem;
         }
 
+        .merch-badge-lucky {
+            background-color: #fff1d9;
+            color: #a45700;
+        }
+
+        .lucky-draw-container {
+            background: linear-gradient(160deg, #fff8eb 0%, #ffeaca 100%);
+            border-bottom: 1px solid #f3d7ad;
+            position: relative;
+        }
+
+        .lucky-draw-visual {
+            width: min(84%, 330px);
+            background: #ffffff;
+            border: 1px solid #f0cf9f;
+            border-radius: 14px;
+            box-shadow: 0 10px 22px rgba(149, 85, 0, 0.12);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .lucky-draw-icon {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .lucky-draw-item {
+            color: #5a3a0a;
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .lucky-draw-deadline {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #ff7f11;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .merch-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .merch-link-secondary {
+            color: #5E35B1;
+            font-weight: 700;
+            text-decoration: none;
+            align-self: center;
+        }
+
+        .merch-link-secondary:hover {
+            text-decoration: underline;
+        }
+
         .seller-section {
             max-width: 950px;
             margin: 2rem auto 0;
@@ -307,6 +374,29 @@
 
         <section class="section">
             <div class="merch-grid">
+
+                <!-- Lucky Draw -->
+                <article class="merch-card">
+                    <div class="merch-image-container lucky-draw-container">
+                        <span class="lucky-draw-deadline">Open Until Aug 31</span>
+                        <div class="lucky-draw-visual">
+                            <div class="lucky-draw-icon">🎟️</div>
+                            <p class="lucky-draw-item">Upsee (Large Pink) with Adult Belt</p>
+                        </div>
+                    </div>
+                    <div class="merch-content">
+                        <span class="merch-badge merch-badge-lucky">Lucky Draw</span>
+                        <h2 class="merch-title">Firefly Upsee Lucky Draw</h2>
+                        <div class="merch-price">Minimum Donation $20 per entry</div>
+                        <p class="merch-description">
+                            Each entry is tax deductible. You can enter multiple times to increase your chances of winning. Lucky draw entries close on Aug 31, and the item will be shipped on Sep 1.
+                        </p>
+                        <div class="merch-links">
+                            <a href="https://givebutter.com/upsee-firefly-mrikjm/join" target="_blank" rel="noopener noreferrer" class="btn-merch">Enter Lucky Draw</a>
+                            <a href="https://firefly.sunrisemedical.com/us/en/our-products/upsee/" target="_blank" rel="noopener noreferrer" class="merch-link-secondary">Learn About Upsee</a>
+                        </div>
+                    </div>
+                </article>
                 
                 <!-- Tote Bag -->
                 <article class="merch-card">
